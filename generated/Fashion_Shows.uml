@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_oTZrMN8tEeetfsF_VzB_gg" name="Fashion_Shows">
+  <packagedElement xmi:type="uml:Package" xmi:id="_oTZrMd8tEeetfsF_VzB_gg" name="Composite VDM Types">
+    <packagedElement xmi:type="uml:Class" xmi:id="_oTZrMt8tEeetfsF_VzB_gg" name="Set&lt;T>">
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="_oTZrM98tEeetfsF_VzB_gg" name="T" parameter="_oTZrNN8tEeetfsF_VzB_gg">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_oTZrNN8tEeetfsF_VzB_gg" parameteredElement="_oTZrNd8tEeetfsF_VzB_gg">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="_oTZrNd8tEeetfsF_VzB_gg" name="T" templateParameter="_oTZrNN8tEeetfsF_VzB_gg"/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_oTZrNt8tEeetfsF_VzB_gg" name="Seq&lt;T>">
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="_oTZrN98tEeetfsF_VzB_gg" name="T" parameter="_oTZrON8tEeetfsF_VzB_gg">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_oTZrON8tEeetfsF_VzB_gg" parameteredElement="_oTZrOd8tEeetfsF_VzB_gg">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="_oTZrOd8tEeetfsF_VzB_gg" name="T" templateParameter="_oTZrON8tEeetfsF_VzB_gg"/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_oTZrOt8tEeetfsF_VzB_gg" name="Optional&lt;T>">
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="_oTZrO98tEeetfsF_VzB_gg" name="T" parameter="_oTZrPN8tEeetfsF_VzB_gg">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_oTZrPN8tEeetfsF_VzB_gg" parameteredElement="_oTZrPd8tEeetfsF_VzB_gg">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="_oTZrPd8tEeetfsF_VzB_gg" name="T" templateParameter="_oTZrPN8tEeetfsF_VzB_gg"/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_oTZrPt8tEeetfsF_VzB_gg" name="Designer" visibility="public">
+    <ownedAttribute xmi:id="_oTZrP98tEeetfsF_VzB_gg" name="designer" visibility="private" type="_oTZrVt8tEeetfsF_VzB_gg" association="_oTZriN8tEeetfsF_VzB_gg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oTZrQN8tEeetfsF_VzB_gg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oTZrQd8tEeetfsF_VzB_gg" value="*"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrQt8tEeetfsF_VzB_gg" value="(undefined)"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrQ98tEeetfsF_VzB_gg" name="Nome" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrRN8tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrRd8tEeetfsF_VzB_gg" name="Idade" visibility="private" type="_oTZrjt8tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrRt8tEeetfsF_VzB_gg" value="0"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrR98tEeetfsF_VzB_gg" name="Nacionalidade" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrSN8tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrSd8tEeetfsF_VzB_gg" name="Residencia" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrSt8tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrS98tEeetfsF_VzB_gg" name="Estilo" visibility="private" type="_oTZrgt8tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrTN8tEeetfsF_VzB_gg" value="{&quot;&quot;}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_oTZrTd8tEeetfsF_VzB_gg" name="ShowEvent" visibility="public">
+    <ownedAttribute xmi:id="_oTZrTt8tEeetfsF_VzB_gg" name="Nome" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrT98tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrUN8tEeetfsF_VzB_gg" name="Local" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrUd8tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrUt8tEeetfsF_VzB_gg" name="DataInicio" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrU98tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrVN8tEeetfsF_VzB_gg" name="DataFim" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrVd8tEeetfsF_VzB_gg" value="[]"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_oTZrVt8tEeetfsF_VzB_gg" name="Show" visibility="public">
+    <ownedAttribute xmi:id="_oTZrV98tEeetfsF_VzB_gg" name="Nome" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrWN8tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrWd8tEeetfsF_VzB_gg" name="Data" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrWt8tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrW98tEeetfsF_VzB_gg" name="Hora" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrXN8tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrXd8tEeetfsF_VzB_gg" name="Duração" visibility="private" type="_oTZrjt8tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrXt8tEeetfsF_VzB_gg" value="0"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrX98tEeetfsF_VzB_gg" name="Tema" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrYN8tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrYd8tEeetfsF_VzB_gg" name="Coleção" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrYt8tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrY98tEeetfsF_VzB_gg" name="Género" visibility="private" type="_oTZrjd8tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrZN8tEeetfsF_VzB_gg" value="'U'"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrZd8tEeetfsF_VzB_gg" name="Local" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrZt8tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_oTZrZ98tEeetfsF_VzB_gg" name="Utilizador" visibility="public">
+    <ownedAttribute xmi:id="_oTZraN8tEeetfsF_VzB_gg" name="participantes" visibility="private" type="_oTZrVt8tEeetfsF_VzB_gg" association="_oTZrkN8tEeetfsF_VzB_gg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oTZrad8tEeetfsF_VzB_gg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oTZrat8tEeetfsF_VzB_gg" value="*"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZra98tEeetfsF_VzB_gg" value="(undefined)"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrbN8tEeetfsF_VzB_gg" name="designer" visibility="private" type="_oTZrhd8tEeetfsF_VzB_gg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oTZrbd8tEeetfsF_VzB_gg"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrbt8tEeetfsF_VzB_gg" value="(undefined)"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrb98tEeetfsF_VzB_gg" name="Nome" visibility="private" type="_oTZrf98tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrcN8tEeetfsF_VzB_gg" value="&quot;&quot;"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrcd8tEeetfsF_VzB_gg" name="Idade" visibility="private" type="_oTZrjt8tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrct8tEeetfsF_VzB_gg" value="0"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_oTZrc98tEeetfsF_VzB_gg" name="Género" visibility="private" type="_oTZrjd8tEeetfsF_VzB_gg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_oTZrdN8tEeetfsF_VzB_gg" value="'U'"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_oTZrdd8tEeetfsF_VzB_gg" name="Login" visibility="public">
+      <ownedParameter xmi:id="_oTZrdt8tEeetfsF_VzB_gg" type="_oTZrj98tEeetfsF_VzB_gg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_oTZrd98tEeetfsF_VzB_gg" name="Logout" visibility="public">
+      <ownedParameter xmi:id="_oTZreN8tEeetfsF_VzB_gg" type="_oTZrj98tEeetfsF_VzB_gg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_oTZred8tEeetfsF_VzB_gg" name="Register" visibility="public">
+      <ownedParameter xmi:id="_oTZret8tEeetfsF_VzB_gg" type="_oTZrj98tEeetfsF_VzB_gg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_oTZre98tEeetfsF_VzB_gg" name="Binding classes">
+    <packagedElement xmi:type="uml:Class" xmi:id="_oTZrfN8tEeetfsF_VzB_gg" name="Set&lt;Show>">
+      <templateBinding xmi:id="_oTZrfd8tEeetfsF_VzB_gg" signature="_oTZrM98tEeetfsF_VzB_gg">
+        <parameterSubstitution xmi:id="_oTZrft8tEeetfsF_VzB_gg" actual="_oTZrVt8tEeetfsF_VzB_gg" formal="_oTZrNN8tEeetfsF_VzB_gg"/>
+      </templateBinding>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_oTZrf98tEeetfsF_VzB_gg" name="Seq&lt;char>">
+      <templateBinding xmi:id="_oTZrgN8tEeetfsF_VzB_gg" signature="_oTZrN98tEeetfsF_VzB_gg">
+        <parameterSubstitution xmi:id="_oTZrgd8tEeetfsF_VzB_gg" actual="_oTZrjd8tEeetfsF_VzB_gg" formal="_oTZrON8tEeetfsF_VzB_gg"/>
+      </templateBinding>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_oTZrgt8tEeetfsF_VzB_gg" name="Set&lt;Seq&lt;char>>">
+      <templateBinding xmi:id="_oTZrg98tEeetfsF_VzB_gg" signature="_oTZrM98tEeetfsF_VzB_gg">
+        <parameterSubstitution xmi:id="_oTZrhN8tEeetfsF_VzB_gg" actual="_oTZrf98tEeetfsF_VzB_gg" formal="_oTZrNN8tEeetfsF_VzB_gg"/>
+      </templateBinding>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_oTZrhd8tEeetfsF_VzB_gg" name="Optional&lt;Designer>">
+      <templateBinding xmi:id="_oTZrht8tEeetfsF_VzB_gg" signature="_oTZrO98tEeetfsF_VzB_gg">
+        <parameterSubstitution xmi:id="_oTZrh98tEeetfsF_VzB_gg" actual="_oTZrPt8tEeetfsF_VzB_gg" formal="_oTZrPN8tEeetfsF_VzB_gg"/>
+      </templateBinding>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_oTZriN8tEeetfsF_VzB_gg" visibility="private" memberEnd="_oTZrP98tEeetfsF_VzB_gg _oTZrid8tEeetfsF_VzB_gg">
+    <ownedEnd xmi:id="_oTZrid8tEeetfsF_VzB_gg" name="" type="_oTZrPt8tEeetfsF_VzB_gg" association="_oTZriN8tEeetfsF_VzB_gg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oTZrit8tEeetfsF_VzB_gg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oTZri98tEeetfsF_VzB_gg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_oTZrjN8tEeetfsF_VzB_gg" name="Basic VDM Types">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_oTZrjd8tEeetfsF_VzB_gg" name="char"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_oTZrjt8tEeetfsF_VzB_gg" name="int"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_oTZrj98tEeetfsF_VzB_gg" name="Void"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_oTZrkN8tEeetfsF_VzB_gg" visibility="private" memberEnd="_oTZraN8tEeetfsF_VzB_gg _oTZrkd8tEeetfsF_VzB_gg">
+    <ownedEnd xmi:id="_oTZrkd8tEeetfsF_VzB_gg" name="" type="_oTZrZ98tEeetfsF_VzB_gg" association="_oTZrkN8tEeetfsF_VzB_gg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oTZrkt8tEeetfsF_VzB_gg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oTZrk98tEeetfsF_VzB_gg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

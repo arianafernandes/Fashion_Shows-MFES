@@ -1,0 +1,9 @@
+class ShowEvent
+instance variables
+ --data Type:Data Type;
+  private Nome:seq of (char) := "";
+  private Local:seq of (char):= "";
+  private DataInicio:seq of (char):= "";
+  private DataFim:seq of (char):= [];
+
+end ShowEvent

@@ -1,0 +1,13 @@
+class Show
+instance variables
+  --data Type:Data Type;
+  private Nome:seq of (char) := "";
+  private Data:seq of (char) := "";
+  private Hora:seq of (char) := "";
+  private Duração:int  := 0;
+  private Tema:seq of (char) := "";
+  private Coleção:seq of (char) := "";
+  private Género:char := 'U';
+  private Local:seq of (char) := "";
+
+end Show
