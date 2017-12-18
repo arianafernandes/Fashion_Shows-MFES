@@ -1,0 +1,36 @@
+class ShowEvent
+	
+types
+	public Nome = seq of char;
+	public DataInicio = seq of char;
+	public DataFim = seq of char;
+	public Local = seq of char;
+
+	
+instance variables
+	public nome:seq of char;
+	public dataInicio: seq of char;
+	public dataFim: seq of char;
+	public local: seq of char;
+
+operations
+public ShowEvent : () ==> ShowEvent
+  ShowEvent() ==
+  (
+    nome := "";
+    dataInicio := "";
+    dataFim := "";
+    local := "";
+    return self;
+  );
+  
+  public ShowEvent : Nome * DataInicio   ==> ShowEvent
+  ShowEvent(Nome, DataInicio) ==
+  (
+    nome := Nome;
+    dataInicio := DataInicio;
+    
+    return self;
+  );
+  
+end ShowEvent

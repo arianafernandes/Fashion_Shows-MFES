@@ -1,0 +1,48 @@
+class Show
+	
+types
+	public Nome = seq of char;
+	public Data = seq of char;
+	public Local = seq of char;
+	public Hora = nat;
+	public Duração = nat;
+	public Tema = seq of char;
+	public Coleção = seq of char;
+	public Genero = seq of char;
+	
+instance variables
+	public nome:seq of char;
+	public data: seq of char;
+	public local:seq of char;
+	public hora: nat;
+	public duração:nat;
+	public tema: seq of char;
+	public coleção:seq of char;
+	public genero: seq of char;
+
+operations
+public Show : () ==> Show
+  Show() ==
+  (
+    nome := "";
+    data := "";
+    hora := 0;
+    duração := 0;
+    tema := "";
+    coleção := "";
+    genero := "";
+    local := "";
+    return self;
+  );
+  
+  public Show : Nome * Data   ==> Show
+  Show(Nome, Data) ==
+  (
+    nome := Nome;
+    data := Data;
+    
+    return self;
+  );
+  
+  
+end Show
