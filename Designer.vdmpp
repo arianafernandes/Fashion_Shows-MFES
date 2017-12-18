@@ -1,0 +1,36 @@
+class Designer
+
+types
+	public Nome = seq of char;
+	public Idade = nat;
+	public Nacionalidade = seq of char;
+	public Residencia = seq of char;
+	public Estilo = seq of char;
+instance variables
+	public nome:seq of char;
+	public idade: nat;
+	public nacionalidade: seq of char;
+	public residencia: seq of char;
+	public estilo: seq of char;
+	
+	operations
+	public Designer : () ==> Designer
+	  Designer() ==
+	  (
+	    nome := "";
+	    idade := 0;
+	    nacionalidade := "";
+	    residencia := "";
+	    estilo := "";
+	    return self;
+	  );
+  
+  public Designer : Nome * Idade   ==> Designer
+  Designer(Nome, Idade) ==
+  (
+    nome := Nome;
+    idade := Idade;
+    
+    return self;
+  );
+end Designer
