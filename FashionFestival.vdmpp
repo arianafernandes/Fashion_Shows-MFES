@@ -1,36 +1,39 @@
 class FashionFestival
 	
 types
-	public Nome = seq of char;
-	public DataInicio = seq of char;
-	public DataFim = seq of char;
-	public Local = seq of char;
+	public FestivalName = seq of char;
+	public FestivalDateBegin = seq of char;
+	public FestivalDateEnd = seq of char;
+	public FestivalLocal = seq of char;
 	
-	public ShowNome = Show`ShowNome;
+	--public ShowNome = Show`ShowNome;
 	
 instance variables
-	public nome:seq of char;
-	public dataInicio: seq of char;
-	public dataFim: seq of char;
-	public local: seq of char;
+	public name : FestivalName;
+	public dateBegin : FestivalDateBegin;
+	public dateEend : FestivalDateEnd;
+	public local : FestivalLocal;
+	
 
 operations
 public FashionFestival : () ==> FashionFestival
   FashionFestival() ==
   (
-    nome := "";
-    dataInicio := "";
-    dataFim := "";
-    local := "";
     return self;
   );
   
-  public FashionFestival : Nome * DataInicio   ==> FashionFestival
-  FashionFestival(Nome, DataInicio) ==
+  public FashionFestival : 
+  												FestivalName *
+  												FestivalDateBegin * 
+  												FestivalDateEnd *
+  												FestivalLocal												
+  												==> FashionFestival
+  FashionFestival(nm, di, df , lc) ==
   (
-    nome := Nome;
-    dataInicio := DataInicio;
-    
+    name := nm;
+    dateBegin := di;
+    dateEend := df;
+    local := lc;    
     return self;
   );
   
