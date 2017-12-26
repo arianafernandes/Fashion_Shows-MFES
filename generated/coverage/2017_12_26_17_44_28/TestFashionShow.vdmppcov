@@ -17,12 +17,8 @@ public static main : () ==> ()
     --new TestCell().run();
     IO`print("\nExecuting TestDesigner.vdmpp operations...\n");
     new TestDesigner().run();
-     IO`print("\nExecuting TestFashionFestival.vdmpp operations...\n");
-    new TestFashionFestival().run();
-     IO`print("\nExecuting TestEvent.vdmpp operations...\n");
-    new TestEvent().run();
-    IO`print("\nExecuting TestFashionUser.vdmpp operations...\n");
-    new TestFashionUser().run();
+    IO`print("\nExecuting TestDesigner.vdmpp operations...\n");
+    new TestDesigner().run();
   );
 functions
 -- TODO Define functiones here

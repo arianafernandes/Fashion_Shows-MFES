@@ -1,0 +1,56 @@
+class FashionUser
+
+types
+	public UserName = seq of char;
+	public UserAge = nat;
+	public UserGender = <Homem> | <Mulher> | <Unisexo>;
+	
+instance variables
+	public name: UserName;
+	public age: UserAge;
+	public gender: UserGender;
+
+operations
+
+public FashionUser: () ==> FashionUser
+  FashionUser() ==
+   (
+    return self;
+  );
+  
+  public FashionUser : 
+  										UserName *
+  										UserAge *
+  										UserGender ==> FashionUser
+  FashionUser(nm, ag, gr) ==
+  (
+    name := nm;
+    age := ag;
+    gender := gr;
+    return self;
+  );
+  
+  --retorna os parametros da class fashionUSer
+	 public pure getName : () ==> seq of char
+	   getName() == return name;
+	   
+	  public pure getAge : () ==> nat
+		   getAge() == return age;
+		   
+		public pure getGender : () ==> UserGender
+		   getGender() == return gender;
+  
+  public  Login : ()  ==> ()
+  Login() ==
+    is not yet specified;
+
+  public  Logout : ()  ==> ()
+  Logout() ==
+    is not yet specified;
+
+  public  Register : ()  ==> ()
+  Register() ==
+    is not yet specified;
+
+
+end FashionUser
