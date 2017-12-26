@@ -1,32 +1,32 @@
-class Utilizador
+class FashionUser
 
 types
-	public Nome = seq of char;
-	public Idade = nat;
-	public Genero = seq of char;
+	public UserName = seq of char;
+	public UserAge = nat;
+	public UserGender = <Homem> | <Mulher> | <Unisexo>;
 	
 instance variables
-	public nome:seq of char;
-	public idade: nat;
-	public genero: seq of char;
+	public name: UserName;
+	public age: UserAge;
+	public gender: UserGender;
 
 operations
 
-public Utilizador : () ==> Utilizador
-  Utilizador() ==
-  (
-    nome := "";
-		idade := 0;
-    genero := "";
+public FashionUser: () ==> FashionUser
+  FashionUser() ==
+   (
     return self;
   );
   
-  public Utilizador : Nome * Idade   ==> Utilizador
-  Utilizador(Nome, Idade) ==
+  public FashionUser : 
+  										UserName *
+  										UserAge *
+  										UserGender ==> FashionUser
+  FashionUser(nm, ag, gr) ==
   (
-    nome := Nome;
-    idade := Idade;
-    
+    name := nm;
+    age := ag;
+    gender := gr;
     return self;
   );
   
@@ -43,4 +43,4 @@ public Utilizador : () ==> Utilizador
     is not yet specified;
 
 
-end Utilizador
+end FashionUser
