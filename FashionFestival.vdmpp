@@ -11,7 +11,7 @@ types
 instance variables
 	public name : FestivalName;
 	public dateBegin : FestivalDateBegin;
-	public dateEend : FestivalDateEnd;
+	public dateEnd : FestivalDateEnd;
 	public local : FestivalLocal;
 	public listOfEvents: map EventName to Event := { |-> };
 	public listOfDesigners: map DesignerName to Designer := { |-> };
@@ -33,9 +33,22 @@ public FashionFestival : () ==> FashionFestival
   (
     name := nm;
     dateBegin := di;
-    dateEend := df;
+    dateEnd := df;
     local := lc;    
     return self;
   );
   
+  --retorna os parametros da class event
+	 public pure getName : () ==> seq of char
+	   getName() == return name;
+	   
+	  public pure getDateBegin : () ==> seq of char
+		   getDateBegin() == return dateBegin;
+		
+		public pure getDateEnd : () ==> seq of char
+		   getDateEnd() == return dateEnd;
+		   
+		public pure getLocal : () ==> seq of char
+		   getLocal() == return local;
+		
 end FashionFestival

@@ -16,10 +16,7 @@ instance variables
 	
 	operations
 	public Designer : () ==> Designer
-	  Designer() ==
-	  (
-	     return self;
-	  );
+	  Designer() == return self;
   
   public Designer : 
   								DesignerName * 
@@ -36,4 +33,21 @@ instance variables
     style := sty;
     return self;
   );
+  
+  --retorna os parametros da class event
+	 public pure getName : () ==> seq of char
+	   getName() == return name;
+	   
+	  public pure getAge : () ==> nat
+		   getAge() == return age;
+		   
+		public pure getNationality : () ==> seq of char
+		   getNationality() == return nationality;
+		   
+		public pure getAddress : () ==> seq of char
+		   getAddress() == return address;  	   
+		   
+		public pure getStyle : () ==> seq of char
+		   getStyle() == return style;
+		   
 end Designer
