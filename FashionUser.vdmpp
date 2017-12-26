@@ -30,6 +30,16 @@ public FashionUser: () ==> FashionUser
     return self;
   );
   
+  --retorna os parametros da class fashionUSer
+	 public pure getName : () ==> seq of char
+	   getName() == return name;
+	   
+	  public pure getAge : () ==> nat
+		   getAge() == return age;
+		   
+		public pure getGender : () ==> UserGender
+		   getGender() == return gender;
+  
   public  Login : ()  ==> ()
   Login() ==
     is not yet specified;
