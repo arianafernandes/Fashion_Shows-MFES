@@ -18,7 +18,7 @@ public static main : () ==> ()
     IO`print("\nExecuting TestDesigner.vdmpp operations...\n");
     new TestDesigner().run();
     IO`print("\nExecuting TestDesigner.vdmpp operations...\n");
-    new TestFashionUser().run();
+    new TestDesigner().run();
   );
 functions
 -- TODO Define functiones here
