@@ -1,11 +1,12 @@
-class ShowEvent
+class FashionFestival
 	
 types
 	public Nome = seq of char;
 	public DataInicio = seq of char;
 	public DataFim = seq of char;
 	public Local = seq of char;
-
+	
+	public ShowNome = Show`ShowNome;
 	
 instance variables
 	public nome:seq of char;
@@ -14,8 +15,8 @@ instance variables
 	public local: seq of char;
 
 operations
-public ShowEvent : () ==> ShowEvent
-  ShowEvent() ==
+public FashionFestival : () ==> FashionFestival
+  FashionFestival() ==
   (
     nome := "";
     dataInicio := "";
@@ -24,8 +25,8 @@ public ShowEvent : () ==> ShowEvent
     return self;
   );
   
-  public ShowEvent : Nome * DataInicio   ==> ShowEvent
-  ShowEvent(Nome, DataInicio) ==
+  public FashionFestival : Nome * DataInicio   ==> FashionFestival
+  FashionFestival(Nome, DataInicio) ==
   (
     nome := Nome;
     dataInicio := DataInicio;
@@ -33,4 +34,4 @@ public ShowEvent : () ==> ShowEvent
     return self;
   );
   
-end ShowEvent
+end FashionFestival

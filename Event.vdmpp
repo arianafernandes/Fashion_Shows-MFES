@@ -1,0 +1,54 @@
+class Event
+	
+types
+	public EventName = seq of char;
+	public EventDate = seq of char;
+	public EventLocal = seq of char;
+	public EventTime = nat;
+	public EventDuration = nat;
+	public EventTheme = seq of char;
+	public EventGender = <Homem> | <Mulher> | <Unisexo>;
+  public EventColection = <Outono_Inverno> | <Primavera_Verão>;
+	
+instance variables
+
+public name : EventName;
+public date : EventDate;
+public local : EventLocal;
+public time : EventTime;
+public duration : EventDuration;
+public theme : EventTheme;
+public gender: EventGender;
+public colection: EventColection;
+
+operations
+public Event : () ==> Event
+  Event() ==
+  (
+    return self;
+  );
+  
+  
+  public Event : 
+  							EventName * 
+  							EventDate *
+  							EventLocal *
+  							EventTime *
+  							EventDuration *
+  							EventTheme *
+  							EventGender *  
+  							EventColection ==> Event
+	Event(nm, dt, lc, hr , dr, tm, gr, cl) == (
+		name := nm;
+		date := dt;
+		local := lc;
+		time := hr;
+		duration := dr;
+		theme := tm;
+		gender := gr;
+		colection := cl;
+		return self
+	);
+  
+  
+end Event
