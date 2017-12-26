@@ -5,15 +5,16 @@ types
 	public FestivalDateBegin = seq of char;
 	public FestivalDateEnd = seq of char;
 	public FestivalLocal = seq of char;
-	
-	--public ShowNome = Show`ShowNome;
+	public EventName = Event`EventName;
+	public DesignerName = Designer`DesignerName;
 	
 instance variables
 	public name : FestivalName;
 	public dateBegin : FestivalDateBegin;
 	public dateEend : FestivalDateEnd;
 	public local : FestivalLocal;
-	
+	public listOfEvents: map EventName to Event := { |-> };
+	public listOfDesigners: map DesignerName to Designer := { |-> };
 
 operations
 public FashionFestival : () ==> FashionFestival
