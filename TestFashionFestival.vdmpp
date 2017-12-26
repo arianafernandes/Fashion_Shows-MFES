@@ -1,0 +1,29 @@
+class TestFashionFestival is subclass of TestCommon
+
+operations
+
+  public run : () ==> ()
+  run() ==
+  (
+    -- VARIABLE DECLARATIONS
+    dcl f0: FashionFestival := new FashionFestival("Porto Fashion Week", "04/05/2018", "10/05/2018", "Porto");
+    														 
+    -- EXECUTE testInit()
+    IO`print("TestFashionFestival.vdmpp (1/10): testInit() started...\n");
+    assertNotNull(f0);
+    IO`print("TestFashionFestival.vdmpp (1/10): testInit() passed!\n");
+
+    
+   -- EXECUTE testParams()
+    IO`print("TestFashionFestival.vdmpp (2/10): testParams() started...\n");
+    assertEqual("Porto Fashion Week", f0.getName());
+    assertEqual("04/05/2018", f0.getDateBegin());
+    assertEqual("10/05/2018", f0.getDateEnd());
+    assertEqual("Porto", f0.getLocal());
+    IO`print("TestFashionFestival.vdmpp (2/10): testParams() passed!\n");
+    
+    -- PRINT SUCCESS MESSAGE
+    IO`print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
+  );
+
+end TestFashionFestival

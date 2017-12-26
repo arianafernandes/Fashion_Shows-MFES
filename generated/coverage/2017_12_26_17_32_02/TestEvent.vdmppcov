@@ -13,7 +13,12 @@ operations
     IO`print("TestEvent.vdmpp (1/10): testInit() started...\n");
     assertNotNull(ev0);
     IO`print("TestEvent.vdmpp (1/10): testInit() passed!\n");
-   
+
+ -- EXECUTE testGenders()
+    IO`print("TestEvent.vdmpp (1/10): testGenders() started...\n");
+    assertEqual(<Homem>, ev0.getName());
+    IO`print("TestEvent.vdmpp (1/10): testGenders() passed!\n");
+    
    -- EXECUTE testParams()
     IO`print("TestEvent.vdmpp (2/10): testParams() started...\n");
     assertEqual("BaixaShow", ev0.getName());
