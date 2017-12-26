@@ -1,16 +1,23 @@
+\begin{vdmpp}[breaklines=true]
 class TestEvent is subclass of TestCommon
 
 operations
 
+(*@
+\label{run:5}
+@*)
+(*@
+\label{run:5}
+@*)
   public run : () ==> ()
   run() ==
   (
     -- VARIABLE DECLARATIONS
     dcl ev0: Event := new Event("BaixaShow", "04/05/2018", "Baixa", 12, 60,
-    														 "flores", <Homem>, <Primavera_Verão>);
+                   "flores", <Homem>, <Primavera_Verão>);
     dcl d0: Designer:= new Designer("Yves S. L.", 72, "Frances", "Paris", "Classico");
     dcl d1: Designer:= new Designer("Ralph Lauren", 69, "Frances", "Paris", "Classico");
-    														 
+                   
     -- EXECUTE testInit()
     IO`print("TestEvent.vdmpp (1/10): testInit() started...\n");
     assertNotNull(ev0);
@@ -51,3 +58,19 @@ operations
   );
 
 end TestEvent
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[run:5]{run} & 5&100.0\% & 1 \\
+\hline
+\hyperref[run:5]{run} & 5&100.0\% & 1 \\
+\hline
+\hline
+TestEvent.vdmpp & & 100.0\% & 2 \\
+\hline
+\end{longtable}
+

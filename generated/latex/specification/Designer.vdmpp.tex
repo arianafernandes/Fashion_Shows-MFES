@@ -1,0 +1,122 @@
+\begin{vdmpp}[breaklines=true]
+class Designer
+
+types
+ public DesignerName = seq of char;
+ public DesignerAge = nat;
+ public DesignerNationality = seq of char;
+ public DesignerAddress = seq of char;
+ public DesignerStyle = seq of char;
+ 
+instance variables
+ public name : DesignerName;
+ public age : DesignerAge;
+ public nationality : DesignerNationality;
+ public address : DesignerAddress;
+ public style : DesignerStyle;
+ 
+(*@
+\label{Designer:17}
+@*)
+ operations
+ public Designer : () ==> Designer
+   Designer() == (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{self}@*);
+  
+  public Designer : 
+          DesignerName * 
+          DesignerAge *
+          DesignerNationality * 
+          DesignerAddress * 
+          DesignerStyle   ==> Designer
+  Designer(nm, ag, nt , ad, sty) ==
+  (
+    name := nm;
+    age := ag;
+    nationality := nt;
+    address := ad;
+    style := sty;
+    return self;
+  );
+  
+  --retorna os parametros da class event
+  public pure getName : () ==> seq of char
+    getName() == return name;
+    
+(*@
+\label{getName:41}
+@*)
+   public pure getAge : () ==> nat
+     getAge() == return age;
+     
+(*@
+\label{getDate:44}
+@*)
+(*@
+\label{getAge:44}
+@*)
+  public pure getNationality : () ==> seq of char
+     getNationality() == return nationality;
+     
+(*@
+\label{getLocal:47}
+@*)
+(*@
+\label{getNationality:47}
+@*)
+  public pure getAddress : () ==> seq of char
+     getAddress() == return address;      
+     
+(*@
+\label{getTime:50}
+@*)
+(*@
+\label{getAddress:50}
+@*)
+  public pure getStyle : () ==> seq of char
+     getStyle() == return style;
+     
+(*@
+\label{getStyle:53}
+@*)
+(*@
+\label{getDuration:53}
+@*)
+end Designer
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[Designer:17]{Designer} & 17&100.0\% & 5 \\
+\hline
+\hyperref[getAddress:50]{getAddress} & 50&100.0\% & 1 \\
+\hline
+\hyperref[getAge:44]{getAge} & 44&100.0\% & 1 \\
+\hline
+\hyperref[getColection:62]{getColection} & 62&0.0\% & 0 \\
+\hline
+\hyperref[getDate:44]{getDate} & 44&100.0\% & 1 \\
+\hline
+\hyperref[getDuration:53]{getDuration} & 53&0.0\% & 0 \\
+\hline
+\hyperref[getGender:59]{getGender} & 59&0.0\% & 0 \\
+\hline
+\hyperref[getLocal:47]{getLocal} & 47&100.0\% & 1 \\
+\hline
+\hyperref[getName:41]{getName} & 41&100.0\% & 7 \\
+\hline
+\hyperref[getNationality:47]{getNationality} & 47&100.0\% & 1 \\
+\hline
+\hyperref[getStyle:53]{getStyle} & 53&100.0\% & 1 \\
+\hline
+\hyperref[getTheme:56]{getTheme} & 56&0.0\% & 0 \\
+\hline
+\hyperref[getTime:50]{getTime} & 50&100.0\% & 1 \\
+\hline
+\hline
+Designer.vdmpp & & 92.0\% & 19 \\
+\hline
+\end{longtable}
+

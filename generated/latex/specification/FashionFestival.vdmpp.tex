@@ -1,0 +1,197 @@
+\begin{vdmpp}[breaklines=true]
+class FashionFestival
+ 
+types
+ public FestivalName = seq of char;
+ public FestivalDateBegin = seq of char;
+ public FestivalDateEnd = seq of char;
+ public FestivalLocal = seq of char;
+  
+instance variables
+ public name : FestivalName;
+ public dateBegin : FestivalDateBegin;
+ public dateEnd : FestivalDateEnd;
+ public local : FestivalLocal;
+ 
+ private events: set of Event`EventName := {};
+ private numberEvents: nat := 0;
+ private designers: set of Designer`DesignerName := {};
+(*@
+\label{ShowEvent:18}
+@*)
+(*@
+\label{FashionFestival:18}
+@*)
+ private numberDesigners: nat := 0;
+ 
+
+operations
+public FashionFestival : () ==> FashionFestival
+  FashionFestival() ==
+  (*@\vdmnotcovered{(}@*)
+    return (*@\vdmnotcovered{self}@*);
+  );
+  
+  public FashionFestival : 
+              FestivalName *
+              FestivalDateBegin * 
+              FestivalDateEnd *
+              FestivalLocal            
+              ==> FashionFestival
+  FashionFestival(nm, di, df , lc) ==
+  (
+    name := nm;
+    dateBegin := di;
+    dateEnd := df;
+    local := lc;    
+    return self;
+  );
+(*@
+\label{getName:42}
+@*)
+  
+  --retorna os parametros da class event
+  public pure getName : () ==> seq of char
+(*@
+\label{getDateBegin:45}
+@*)
+(*@
+\label{getDate:45}
+@*)
+    getName() == return name;
+    
+   public pure getDateBegin : () ==> seq of char
+(*@
+\label{getDateEnd:48}
+@*)
+(*@
+\label{getLocal:48}
+@*)
+     getDateBegin() == return dateBegin;
+  
+  public pure getDateEnd : () ==> seq of char
+(*@
+\label{getTime:51}
+@*)
+     getDateEnd() == return dateEnd;
+     
+  public pure getLocal : () ==> seq of char
+(*@
+\label{getDuration:54}
+@*)
+     getLocal() == return local;
+  
+ --Adiciona designer ao evento
+(*@
+\label{getTheme:57}
+@*)
+ public insertDesigner : Designer`DesignerName ==> ()
+  insertDesigner(designerName) ==
+(*@
+\label{insertDesigner:59}
+@*)
+  (
+(*@
+\label{getGender:60}
+@*)
+(*@
+\label{removeDesigner:60}
+@*)
+    numberDesigners := numberDesigners + 1;
+    designers := designers union { designerName };
+  );
+(*@
+\label{getColection:63}
+@*)
+  
+(*@
+\label{getNumberDesigners:64}
+@*)
+  --remove designer do festival
+  public removeDesigner : Designer`DesignerName ==> ()
+  removeDesigner(designerName) == 
+  (designers := designers \ {designerName};
+  numberDesigners := numberDesigners - 1;
+(*@
+\label{removeEvent:69}
+@*)
+  );
+
+ --retorna nr designers do festival
+  public pure getNumberDesigners : () ==> nat
+(*@
+\label{getNumberEvents:73}
+@*)
+  getNumberDesigners() == return numberDesigners;
+  
+(*@
+\label{insertEvent:75}
+@*)
+  --Adiciona evento ao festival
+ public insertEvent : Event`EventName ==> ()
+  insertEvent(eventName) ==
+  (
+    numberEvents := numberEvents + 1;
+    events := events union { eventName };
+  );
+  
+   --remove evento do festival
+  public removeEvent : Event`EventName ==> ()
+  removeEvent(eventName) == 
+  (events := events \ {eventName};
+  numberEvents := numberEvents - 1;
+ );
+ --retorna nr eventos do festival
+  public pure getNumberEvents : () ==> nat
+  getNumberEvents() == return numberEvents;
+  
+  
+end FashionFestival
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[FashionFestival:18]{FashionFestival} & 18&100.0\% & 1 \\
+\hline
+\hyperref[ShowEvent:18]{ShowEvent} & 18&100.0\% & 1 \\
+\hline
+\hyperref[getColection:63]{getColection} & 63&100.0\% & 1 \\
+\hline
+\hyperref[getDate:45]{getDate} & 45&100.0\% & 1 \\
+\hline
+\hyperref[getDateBegin:45]{getDateBegin} & 45&100.0\% & 1 \\
+\hline
+\hyperref[getDateEnd:48]{getDateEnd} & 48&100.0\% & 1 \\
+\hline
+\hyperref[getDuration:54]{getDuration} & 54&100.0\% & 2 \\
+\hline
+\hyperref[getGender:60]{getGender} & 60&0.0\% & 0 \\
+\hline
+\hyperref[getLocal:48]{getLocal} & 48&100.0\% & 1 \\
+\hline
+\hyperref[getName:42]{getName} & 42&100.0\% & 1 \\
+\hline
+\hyperref[getNumberDesigners:64]{getNumberDesigners} & 64&100.0\% & 3 \\
+\hline
+\hyperref[getNumberEvents:73]{getNumberEvents} & 73&100.0\% & 3 \\
+\hline
+\hyperref[getTheme:57]{getTheme} & 57&100.0\% & 2 \\
+\hline
+\hyperref[getTime:51]{getTime} & 51&100.0\% & 1 \\
+\hline
+\hyperref[insertDesigner:59]{insertDesigner} & 59&100.0\% & 2 \\
+\hline
+\hyperref[insertEvent:75]{insertEvent} & 75&100.0\% & 2 \\
+\hline
+\hyperref[removeDesigner:60]{removeDesigner} & 60&100.0\% & 1 \\
+\hline
+\hyperref[removeEvent:69]{removeEvent} & 69&100.0\% & 1 \\
+\hline
+\hline
+FashionFestival.vdmpp & & 95.7\% & 25 \\
+\hline
+\end{longtable}
+

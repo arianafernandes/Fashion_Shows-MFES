@@ -1,0 +1,198 @@
+\begin{vdmpp}[breaklines=true]
+class Event
+ 
+types
+ public EventName = seq of char;
+ public EventDate = seq of char;
+ public EventLocal = seq of char;
+ public EventTime = nat;
+ public EventDuration = nat;
+ public EventTheme = seq of char;
+ public EventGender = <Homem> | <Mulher> | <Unisexo>;
+  public EventCollection = <Outono_Inverno> | <Primavera_Verão>;
+ public DesginerName = Designer`DesignerName;
+ 
+instance variables
+ public name : EventName;
+ public date : EventDate;
+ public local : EventLocal;
+ public time : EventTime;
+ public duration : EventDuration;
+ public theme : EventTheme;
+ public gender: EventGender;
+ public collection: EventCollection;
+ --Lista de designers do evento
+ private designers: set of Designer`DesignerName := {};
+(*@
+\label{Show:25}
+@*)
+(*@
+\label{Event:25}
+@*)
+ private numberDesigners: nat := 0;
+ 
+operations
+ public Event : () ==> Event
+   Event() ==
+   (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{self}@*);
+  
+  
+  public Event : 
+         EventName * 
+         EventDate *
+         EventLocal *
+         EventTime *
+         EventDuration *
+         EventTheme *
+         EventGender *  
+         EventCollection ==> Event
+ Event(nm, dt, lc, hr , dr, tm, gr, cl) == (
+  name := nm;
+  date := dt;
+  local := lc;
+  time := hr;
+  duration := dr;
+  theme := tm;
+  gender := gr;
+  collection := cl;
+  return self
+ );
+(*@
+\label{insertPiece:53}
+@*)
+(*@
+\label{insertDesigner:53}
+@*)
+ 
+(*@
+\label{getName:54}
+@*)
+ --retorna os parametros da class event
+  public pure getName : () ==> seq of char
+    getName() == return name;
+    
+(*@
+\label{getDate:58}
+@*)
+   public pure getDate : () ==> seq of char
+     getDate() == return date;
+     
+(*@
+\label{getLocal:61}
+@*)
+(*@
+\label{removePiece:61}
+@*)
+(*@
+\label{removeDesigner:61}
+@*)
+  public pure getLocal : () ==> seq of char
+     getLocal() == return local;
+(*@
+\label{getTime:63}
+@*)
+     
+  public pure getTime : () ==> nat
+(*@
+\label{getDuration:65}
+@*)
+     getTime() == return time;      
+(*@
+\label{getNumberDesigners:66}
+@*)
+(*@
+\label{getRemainingPieces:66}
+@*)
+     
+(*@
+\label{getTheme:67}
+@*)
+  public pure getDuration : () ==> nat
+     getDuration() == return duration;
+(*@
+\label{getGender:69}
+@*)
+     
+  public pure getTheme : () ==> seq of char
+(*@
+\label{getColection:71}
+@*)
+     getTheme() == return theme;
+     
+  public pure getGender : () ==> EventGender
+     getGender() == return gender;
+     
+(*@
+\label{getCollection:76}
+@*)
+  public pure getCollection : () ==> EventCollection
+     getCollection() == return collection;
+  
+ --Adiciona designer ao evento
+ public insertDesigner : Designer`DesignerName ==> ()
+  insertDesigner(designerName) ==
+  (
+    numberDesigners := numberDesigners + 1;
+    designers := designers union { designerName };
+  );
+  
+  --remove designer do evento
+  public removeDesigner : Designer`DesignerName ==> ()
+  removeDesigner(designerName) == 
+  (
+   designers := designers \ {designerName};
+   numberDesigners := numberDesigners -1;
+ );
+ --retorna nr designers do evento
+  public pure getNumberDesigners : () ==> nat
+  getNumberDesigners() == return numberDesigners;
+  
+  
+  
+end Event
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[Event:25]{Event} & 25&100.0\% & 3 \\
+\hline
+\hyperref[Show:25]{Show} & 25&100.0\% & 3 \\
+\hline
+\hyperref[getColection:71]{getColection} & 71&100.0\% & 1 \\
+\hline
+\hyperref[getCollection:76]{getCollection} & 76&100.0\% & 1 \\
+\hline
+\hyperref[getDate:58]{getDate} & 58&100.0\% & 1 \\
+\hline
+\hyperref[getDuration:65]{getDuration} & 65&100.0\% & 1 \\
+\hline
+\hyperref[getGender:69]{getGender} & 69&100.0\% & 1 \\
+\hline
+\hyperref[getLocal:61]{getLocal} & 61&100.0\% & 1 \\
+\hline
+\hyperref[getName:54]{getName} & 54&100.0\% & 4 \\
+\hline
+\hyperref[getNumberDesigners:66]{getNumberDesigners} & 66&100.0\% & 3 \\
+\hline
+\hyperref[getRemainingPieces:66]{getRemainingPieces} & 66&100.0\% & 1 \\
+\hline
+\hyperref[getTheme:67]{getTheme} & 67&100.0\% & 1 \\
+\hline
+\hyperref[getTime:63]{getTime} & 63&100.0\% & 1 \\
+\hline
+\hyperref[insertDesigner:53]{insertDesigner} & 53&100.0\% & 2 \\
+\hline
+\hyperref[insertPiece:53]{insertPiece} & 53&100.0\% & 1 \\
+\hline
+\hyperref[removeDesigner:61]{removeDesigner} & 61&100.0\% & 1 \\
+\hline
+\hyperref[removePiece:61]{removePiece} & 61&100.0\% & 1 \\
+\hline
+\hline
+Event.vdmpp & & 96.4\% & 27 \\
+\hline
+\end{longtable}
+
