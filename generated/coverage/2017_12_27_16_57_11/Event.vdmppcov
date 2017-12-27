@@ -128,7 +128,6 @@ operations
   	printEventInf() == (
   	IO`print("Evento ");
   	IO`print(name);
-  	IO`print("\n");
   	);
   
   public static printDesigners: () ==> ()
@@ -144,12 +143,6 @@ operations
 			IO`print("\n");
 			)
 			);
-			
-	 public static printEvent: () ==> ()
-  	printEvent() == (
-  	printEventInf();
-  	printDesigners();
-  	);
  
 	
 	

@@ -19,7 +19,7 @@ public static main : () ==> ()
     new TestFashionUser().run();
     IO`print("\nExecuting TestModel.vdmpp operations...\n");
     new TestModel().run();
-    Event`printEvent();
+    Event`printDesigners();
   );
 functions
 -- TODO Define functiones here

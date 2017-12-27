@@ -124,32 +124,16 @@ operations
   public pure getNumberModels : () ==> nat
   getNumberModels() == return numberModels;
   
-  public static printEventInf: () ==> ()
-  	printEventInf() == (
-  	IO`print("Evento ");
-  	IO`print(name);
-  	IO`print("\n");
-  	);
-  
   public static printDesigners: () ==> ()
   	printDesigners() == (
-  	IO`print("Lista dos Designers:");
+  	IO`print("Lista dos Designers do Evento ");
+  	IO`print(name);
   	IO`print("\n");
   	for counter = 1 to len designers do (
-  		IO`print("Desginer Name: ");
 			IO`print((designers (counter)).getName());
-			IO`print("\n");
-			IO`print("Desginer Age: ");
-			IO`print((designers (counter)).getAge());
 			IO`print("\n");
 			)
 			);
-			
-	 public static printEvent: () ==> ()
-  	printEvent() == (
-  	printEventInf();
-  	printDesigners();
-  	);
  
 	
 	

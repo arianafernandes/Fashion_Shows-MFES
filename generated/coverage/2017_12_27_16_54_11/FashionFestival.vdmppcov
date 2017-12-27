@@ -1,0 +1,112 @@
+class FashionFestival
+	
+types
+	public FestivalName = seq of char;
+	public FestivalDateBegin = seq of char;
+	public FestivalDateEnd = seq of char;
+	public FestivalLocal = seq of char;
+		
+instance variables
+	public name : FestivalName;
+	public dateBegin : FestivalDateBegin;
+	public dateEnd : FestivalDateEnd;
+	public local : FestivalLocal;
+	
+	private events: set of Event`EventName := {};
+	private numberEvents: nat := 0;
+	private designers: set of Designer`DesignerName := {};
+	private numberDesigners: nat := 0;
+	
+	private event1: Event;
+	private event2: Event;
+	
+
+operations
+public FashionFestival : () ==> FashionFestival
+  FashionFestival() ==
+  (
+  	event1 := new Event("Fashion Night Out Porto", 
+  												"10/06/2018",
+  												"Baixa",
+  												20,
+  												2,
+  												"GeometricForms",
+  												<Unisexo>,
+  												<Primavera_Verao>);
+  	event2 := new Event("Black Friday", 
+  												"12/06/2018",
+  												"Vila do Conde",
+  												10,
+  												4,
+  												"Fashion Sales",
+  												<Unisexo>,
+  												<Outono_Inverno>);
+  );
+  
+  public FashionFestival : 
+  												FestivalName *
+  												FestivalDateBegin * 
+  												FestivalDateEnd *
+  												FestivalLocal												
+  												==> FashionFestival
+  FashionFestival(nm, di, df , lc) ==
+  (
+    name := nm;
+    dateBegin := di;
+    dateEnd := df;
+    local := lc;    
+    return self;
+  );
+  
+  --retorna os parametros da class event
+	 public pure getName : () ==> seq of char
+	   getName() == return name;
+	   
+	  public pure getDateBegin : () ==> seq of char
+		   getDateBegin() == return dateBegin;
+		
+		public pure getDateEnd : () ==> seq of char
+		   getDateEnd() == return dateEnd;
+		   
+		public pure getLocal : () ==> seq of char
+		   getLocal() == return local;
+		
+	--Adiciona designer ao evento
+	public insertDesigner : Designer`DesignerName ==> ()
+  insertDesigner(designerName) ==
+  (
+    numberDesigners := numberDesigners + 1;
+    designers := designers union { designerName };
+  );
+  
+	 --remove designer do festival
+  public removeDesigner : Designer`DesignerName ==> ()
+  removeDesigner(designerName) == 
+  (designers := designers \ {designerName};
+  numberDesigners := numberDesigners - 1;
+  );
+
+	--retorna nr designers do festival
+  public pure getNumberDesigners : () ==> nat
+  getNumberDesigners() == return numberDesigners;
+  
+  --Adiciona evento ao festival
+	public insertEvent : Event`EventName ==> ()
+  insertEvent(eventName) ==
+  (
+    numberEvents := numberEvents + 1;
+    events := events union { eventName };
+  );
+  
+   --remove evento do festival
+  public removeEvent : Event`EventName ==> ()
+  removeEvent(eventName) == 
+  (events := events \ {eventName};
+  numberEvents := numberEvents - 1;
+	);
+	--retorna nr eventos do festival
+  public pure getNumberEvents : () ==> nat
+  getNumberEvents() == return numberEvents;
+  
+  
+end FashionFestival
