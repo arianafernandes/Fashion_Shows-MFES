@@ -13,13 +13,13 @@ types
 	
 instance variables
 	public static name : EventName := "";
-	public static date : EventDate := "";
-	public static local : EventLocal := "";
-	public static time : EventTime := 0;
-	public static duration : EventDuration := 0;
-	public static theme : EventTheme := "";
-	public static gender: EventGender := <Homem>;
-	public static collection: EventCollection := <Outono_Inverno>;
+	public date : EventDate;
+	public local : EventLocal;
+	public time : EventTime;
+	public duration : EventDuration;
+	public theme : EventTheme;
+	public gender: EventGender;
+	public collection: EventCollection;
 	--Lista de designers do evento
 	private static designers: seq of Designer := [];
 	private static numberDesigners: int := 0;
@@ -129,29 +129,6 @@ operations
   	IO`print("Evento ");
   	IO`print(name);
   	IO`print("\n");
-  	IO`print("\n");
-  	IO`print("Date: ");
-  	IO`print(date);
-  	IO`print("\n");
-  	IO`print("Local: ");
-  	IO`print(local);
-  	IO`print("\n");
-  	IO`print("Time: ");
-  	IO`print(time);
-  	IO`print("\n");
-  	IO`print("Duration: ");
-  	IO`print(duration);
-  	IO`print("\n");
-  	IO`print("Theme: ");
-  	IO`print(theme);
-  	IO`print("\n");
-  	IO`print("Gender: ");
-  	IO`print(gender);
-  	IO`print("\n");
-  	IO`print("Collection: ");
-  	IO`print(collection);
-  	IO`print("\n");
-  	IO`print("\n");
   	);
   
   public static printDesigners: () ==> ()
@@ -159,25 +136,15 @@ operations
   	IO`print("Lista dos Designers:");
   	IO`print("\n");
   	for counter = 1 to len designers do (
-  		IO`print("\n");
-  		IO`print("Designer Name: ");
+  		IO`print("Desginer Name: ");
 			IO`print((designers (counter)).getName());
 			IO`print("\n");
-			IO`print("Age: ");
+			IO`print("Desginer Age: ");
 			IO`print((designers (counter)).getAge());
-			IO`print("\n");
-			IO`print("Nationality: ");
-			IO`print((designers (counter)).getNationality());
-			IO`print("\n");
-			IO`print("Address: ");
-			IO`print((designers (counter)).getAddress());
-			IO`print("\n");
-			IO`print("Style: ");
-			IO`print((designers (counter)).getStyle());
 			IO`print("\n");
 			)
 			);
-		
+			
 	 public static printEvent: () ==> ()
   	printEvent() == (
   	printEventInf();

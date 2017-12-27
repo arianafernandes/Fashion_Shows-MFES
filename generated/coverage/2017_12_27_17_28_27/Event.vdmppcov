@@ -13,13 +13,13 @@ types
 	
 instance variables
 	public static name : EventName := "";
-	public static date : EventDate := "";
-	public static local : EventLocal := "";
-	public static time : EventTime := 0;
-	public static duration : EventDuration := 0;
-	public static theme : EventTheme := "";
-	public static gender: EventGender := <Homem>;
-	public static collection: EventCollection := <Outono_Inverno>;
+	public date : EventDate;
+	public local : EventLocal;
+	public time : EventTime;
+	public duration : EventDuration;
+	public theme : EventTheme;
+	public gender: EventGender;
+	public collection: EventCollection;
 	--Lista de designers do evento
 	private static designers: seq of Designer := [];
 	private static numberDesigners: int := 0;
@@ -128,29 +128,6 @@ operations
   	printEventInf() == (
   	IO`print("Evento ");
   	IO`print(name);
-  	IO`print("\n");
-  	IO`print("\n");
-  	IO`print("Date: ");
-  	IO`print(date);
-  	IO`print("\n");
-  	IO`print("Local: ");
-  	IO`print(local);
-  	IO`print("\n");
-  	IO`print("Time: ");
-  	IO`print(time);
-  	IO`print("\n");
-  	IO`print("Duration: ");
-  	IO`print(duration);
-  	IO`print("\n");
-  	IO`print("Theme: ");
-  	IO`print(theme);
-  	IO`print("\n");
-  	IO`print("Gender: ");
-  	IO`print(gender);
-  	IO`print("\n");
-  	IO`print("Collection: ");
-  	IO`print(collection);
-  	IO`print("\n");
   	IO`print("\n");
   	);
   
