@@ -7,7 +7,7 @@ instance variables
 -- TODO Define instance variables here
 operations
 
-public printTests: () ==> ()
+public static printTests: () ==> ()
 	printTests() == 
 	(
 		IO`print("\nExecuting TestModel.vdmpp operations...\n");
@@ -23,10 +23,12 @@ public printTests: () ==> ()
    
    );
    
-public main : () ==> ()
+public static main : () ==> ()
   main() ==
   (
+  	FashionFestival`printFashionFestival();
   	printTests();
+    Event`printEvent();
     
   );
 functions

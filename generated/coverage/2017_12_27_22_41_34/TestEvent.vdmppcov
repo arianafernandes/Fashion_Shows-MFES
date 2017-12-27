@@ -6,9 +6,28 @@ operations
   run() ==
   (
     -- VARIABLE DECLARATIONS
-  	dcl ev0: Event := new Event("BaixaShow", "04/05/2018", "Baixa", 12, 60,
+  dcl ev0: Event := new Event("BaixaShow", "04/05/2018", "Baixa", 12, 60,
     														 "flores", <Homem>, <Primavera_Verao>);		
-  							 														 
+  
+   
+   dcl ev1: Event := new Event("Fashion Night Out Porto", 
+  												"10/06/2018",
+  												"Baixa",
+  												20,
+  												2,
+  												"GeometricForms",
+  												<Unisexo>,
+  												<Primavera_Verao>);
+   
+    
+	  dcl ev2: Event := new Event("Black Friday", 
+  												"12/06/2018",
+  												"Vila do Conde",
+  												10,
+  												4,
+  												"Fashion Sales",
+  												<Unisexo>,
+  												<Outono_Inverno>);										 														 
     dcl d0: Designer:= new Designer("Yves S. L.", 72, "Frances", "Paris", "Classico");
     dcl d1: Designer:= new Designer("Ralph Lauren", 69, "Frances", "Paris", "Classico");
     dcl m0: Model:= new Model("Sara Sampaio", 24, "Portuguesa", "New York");												 
@@ -65,10 +84,8 @@ operations
     --assertEqual(1,ev0.getNumberDesigners());
     IO`print("TestEvent.vdmpp (5/10): testRemoveDesigners() passed!\n");
     
-    ev0.printEvent();
     -- PRINT SUCCESS MESSAGE
     IO`print("TestEvent.vdmpp (DONE): all tests successfully executed!\n");
-    
     
   );
 

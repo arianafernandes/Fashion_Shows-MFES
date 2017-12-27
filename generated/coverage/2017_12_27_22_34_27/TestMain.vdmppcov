@@ -27,6 +27,8 @@ public main : () ==> ()
   main() ==
   (
   	printTests();
+  	FashionFestival`printFashionFestival();
+    Event`printEvent();
     
   );
 functions

@@ -85,7 +85,7 @@ public FashionFestival : () ==> FashionFestival
   	printEvents() == (
   	IO`print("Events list:");
   	IO`print("\n");
-  	for counter = 1 to len events do (
+  	for counter = 0 to len events do (
   		IO`print("\n");
   		IO`print(counter);
   		IO`print(":");

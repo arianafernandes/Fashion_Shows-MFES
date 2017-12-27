@@ -7,12 +7,12 @@ types
 	public FestivalLocal = seq of char;
 
 instance variables
-	public  name : FestivalName := "";
-	public  dateBegin : FestivalDateBegin := "";
-	public  dateEnd : FestivalDateEnd := "";
-	public  local : FestivalLocal := "";
-	private  events: seq of Event := [];
-	private  numberEvents: int := 0;	
+	public static name : FestivalName := "";
+	public static dateBegin : FestivalDateBegin := "";
+	public static dateEnd : FestivalDateEnd := "";
+	public static local : FestivalLocal := "";
+	private static events: seq of Event := [];
+	private static numberEvents: int := 0;	
 	
 operations
 public FashionFestival : () ==> FashionFestival
@@ -63,7 +63,7 @@ public FashionFestival : () ==> FashionFestival
   getNumberEvents() == return numberEvents;
   
   
-  public  printFestivalInf: () ==> ()
+  public static printFestivalInf: () ==> ()
   	printFestivalInf() == (
   	IO`print("Festival ");
   	IO`print(name);
@@ -81,7 +81,7 @@ public FashionFestival : () ==> FashionFestival
   	IO`print("\n");
   	);
   
-  public  printEvents: () ==> ()
+  public static printEvents: () ==> ()
   	printEvents() == (
   	IO`print("Events list:");
   	IO`print("\n");
@@ -94,7 +94,7 @@ public FashionFestival : () ==> FashionFestival
 			IO`print("\n");
 		);
 		);
-	 public  printFashionFestival: () ==> ()
+	 public static printFashionFestival: () ==> ()
   	printFashionFestival() == (
   	printFestivalInf();
   	printEvents();

@@ -6,30 +6,7 @@ operations
   run() ==
   (
     -- VARIABLE DECLARATIONS
-     dcl f0: FashionFestival := new FashionFestival("Porto Fashion Week", "04/05/2018", "10/05/2018", "Porto");
-    
-   dcl ev0: Event := new Event("BaixaShow", "04/05/2018", "Baixa", 12, 60,
-    														 "flores", <Homem>, <Primavera_Verao>);		
-  
    
-   dcl ev1: Event := new Event("Fashion Night Out Porto", 
-  												"10/06/2018",
-  												"Baixa",
-  												20,
-  												2,
-  												"GeometricForms",
-  												<Unisexo>,
-  												<Primavera_Verao>);
-   
-    
-	  dcl ev2: Event := new Event("Black Friday", 
-  												"12/06/2018",
-  												"Vila do Conde",
-  												10,
-  												4,
-  												"Fashion Sales",
-  												<Unisexo>,
-  												<Outono_Inverno>);										
 	
     
     -- EXECUTE testInit()
@@ -58,10 +35,7 @@ operations
     IO`print("TestFashionFestival.vdmpp (7/10): testNumberEvents() started...\n");
     --assertEqual(3,f0.getNumberEvents());
     IO`print("TestFashionFestival.vdmpp (7/10): testNumberEvents() passed!\n"); 
-    f0.insertEvent(ev0);
-		f0.insertEvent(ev1);
-		f0.insertEvent(ev2);
-		f0.printFashionFestival();
+    
     -- PRINT SUCCESS MESSAGE
     IO`print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
   );
