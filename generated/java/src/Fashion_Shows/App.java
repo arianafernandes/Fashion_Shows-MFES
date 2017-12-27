@@ -4,7 +4,7 @@ import java.util.*;
 import org.overture.codegen.runtime.*;
 
 @SuppressWarnings("all")
-public class TestMain {
+public class App {
   public static void main(final String[] args) {
 
     IO.print("\nExecuting TestDesigner.vdmpp operations...\n");
@@ -19,7 +19,7 @@ public class TestMain {
     new TestModel().run();
   }
 
-  public TestMain() {}
+  public App() {}
 
   public String toString() {
 

@@ -1,0 +1,138 @@
+class Event
+	
+types
+	public EventName = seq of char;
+	public EventDate = seq of char;
+	public EventLocal = seq of char;
+	public EventTime = nat;
+	public EventDuration = nat;
+	public EventTheme = seq of char;
+	public EventGender = <Homem> | <Mulher> | <Unisexo>;
+  public EventCollection = <Outono_Inverno> | <Primavera_Verao>;
+	public DesginerName = Designer`DesignerName;
+	
+instance variables
+	public name : EventName;
+	public date : EventDate;
+	public local : EventLocal;
+	public time : EventTime;
+	public duration : EventDuration;
+	public theme : EventTheme;
+	public gender: EventGender;
+	public collection: EventCollection;
+	--Lista de designers do evento
+	private designers: set of Designer`DesignerName := {};
+	private numberDesigners: nat := 0;
+	private models: set of Model`ModelName := {};
+	private numberModels: nat := 0;
+	private designer1: Designer;
+operations
+	public Event : () ==> Event
+	  Event() ==
+	  (
+	  designer1 := new Designer("Ralph Lauren",78,"Americano","America","Moderno");
+	  insertDesigner(designer1.getName());
+	  return self;
+  	);
+  
+  public Event : 
+  							EventName * 
+  							EventDate *
+  							EventLocal *
+  							EventTime *
+  							EventDuration *
+  							EventTheme *
+  							EventGender *  
+  							EventCollection ==> Event
+	Event(nm, dt, lc, hr , dr, tm, gr, cl) == (
+		name := nm;
+		date := dt;
+		local := lc;
+		time := hr;
+		duration := dr;
+		theme := tm;
+		gender := gr;
+		collection := cl;
+		return self
+	);
+	
+	--retorna os parametros da class event
+	 public pure getName : () ==> seq of char
+	   getName() == return name;
+	   
+	  public pure getDate : () ==> seq of char
+		   getDate() == return date;
+		   
+		public pure getLocal : () ==> seq of char
+		   getLocal() == return local;
+		   
+		public pure getTime : () ==> nat
+		   getTime() == return time;  	   
+		   
+		public pure getDuration : () ==> nat
+		   getDuration() == return duration;
+		   
+		public pure getTheme : () ==> seq of char
+		   getTheme() == return theme;
+		   
+		public pure getGender : () ==> EventGender
+		   getGender() == return gender;
+		   
+		public pure getCollection : () ==> EventCollection
+		   getCollection() == return collection;
+	
+	--DESIGNERS DO EVENTO	
+	--Adiciona designer ao evento
+	public insertDesigner : Designer`DesignerName ==> ()
+  insertDesigner(designerName) ==
+  (
+    numberDesigners := numberDesigners + 1;
+    designers := designers union { designerName };
+  );
+  
+  --remove designer do evento
+  public removeDesigner : Designer`DesignerName ==> ()
+  removeDesigner(designerName) == 
+  (
+  	designers := designers \ {designerName};
+  	numberDesigners := numberDesigners -1;
+	);
+	--retorna nr designers do evento
+  public pure getNumberDesigners : () ==> nat
+  getNumberDesigners() == return numberDesigners;
+  
+  --MODELOS DO EVENTO
+  --Adiciona model ao evento
+	public insertModel : Model`ModelName ==> ()
+  insertModel(modelName) ==
+  (
+    numberModels := numberModels + 1;
+    models := models union { modelName };
+  );
+  
+  --remove designer do evento
+  public removeModel : Model`ModelName ==> ()
+  removeModel(modelName) == 
+  (
+  	models := models \ {modelName};
+  	numberModels := numberModels -1;
+	);
+	--retorna nr designers do evento
+  public pure getNumberModels : () ==> nat
+  getNumberModels() == return numberModels;
+  
+  
+  -- Imprime baralho da piramide
+	public static printEvent: () ==> ()
+	printEvent() == (
+		for counter = 1 to 8 do (
+			IO`print(counter);
+			IO`print("AQUI ");
+			
+			IO`print("\n");
+		);
+		IO`print("   1  2  3  4  5  6  7\n\n");
+	);
+	
+	
+end Event
