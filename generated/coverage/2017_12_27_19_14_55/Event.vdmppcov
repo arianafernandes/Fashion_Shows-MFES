@@ -1,0 +1,210 @@
+class Event
+	
+types
+	public static EventName = seq of char;
+	public EventDate = seq of char;
+	public EventLocal = seq of char;
+	public EventTime = nat;
+	public EventDuration = nat;
+	public EventTheme = seq of char;
+	public EventGender = <Homem> | <Mulher> | <Unisexo>;
+  public EventCollection = <Outono_Inverno> | <Primavera_Verao>;
+	
+instance variables
+	public static name : EventName := "";
+	public static date : EventDate := "";
+	public static local : EventLocal := "";
+	public static time : EventTime := 0;
+	public static duration : EventDuration := 0;
+	public static theme : EventTheme := "";
+	public static gender: EventGender := <Homem>;
+	public static collection: EventCollection := <Outono_Inverno>;
+	--Lista de designers do evento
+	private static designers: seq of Designer := [];
+	private static numberDesigners: int := 0;
+	--Lista de modelos do evento
+	private static models: seq of Model := [];
+	private static numberModels: int := 0;
+	--designers
+	private designer1: Designer;
+	private designer2: Designer;
+	--modelos
+	private model1: Model;
+	private model2: Model;
+	private model3: Model;
+	
+operations
+	public Event : () ==> Event
+	  Event() ==
+	  (
+	  --adiciona designers ao evento
+	  designer1 := new Designer("Ralph Lauren",78,"Americano","America","Moderno");
+	  designer2 := new Designer("Donatella Versace",62,"Italiana","França","Moderno");
+	  insertDesigner(designer1);
+	  insertDesigner(designer2);
+	  --adiciona modelos ao evento
+ 		model1 := new Model("Claudia Schiffer",47,"Alemã","Alemanha");
+	  model2 := new Model("Naomi Campbell",47,"Inglesa","Inglaterra");
+	  model3 := new Model("Kate Moss",43,"Inglesa","Inglaterra");
+	  insertModel(model1);
+	  insertModel(model2);
+	  insertModel(model3);
+  	);
+  
+  public Event : 
+  							EventName * 
+  							EventDate *
+  							EventLocal *
+  							EventTime *
+  							EventDuration *
+  							EventTheme *
+  							EventGender *  
+  							EventCollection ==> Event
+	Event(nm, dt, lc, hr , dr, tm, gr, cl) == (
+		name := nm;
+		date := dt;
+		local := lc;
+		time := hr;
+		duration := dr;
+		theme := tm;
+		gender := gr;
+		collection := cl;
+		return self
+	);
+	
+	--retorna os parametros da class event
+	 public pure getName : () ==> seq of char
+	   getName() == return name;
+	   
+	  public pure getDate : () ==> seq of char
+		   getDate() == return date;
+		   
+		public pure getLocal : () ==> seq of char
+		   getLocal() == return local;
+		   
+		public pure getTime : () ==> nat
+		   getTime() == return time;  	   
+		   
+		public pure getDuration : () ==> nat
+		   getDuration() == return duration;
+		   
+		public pure getTheme : () ==> seq of char
+		   getTheme() == return theme;
+		   
+		public pure getGender : () ==> EventGender
+		   getGender() == return gender;
+		   
+		public pure getCollection : () ==> EventCollection
+		   getCollection() == return collection;
+	
+	--DESIGNERS DO EVENTO	
+	--Adiciona designer ao evento
+	public insertDesigner : Designer ==> ()
+  insertDesigner(dg) ==
+  (
+    numberDesigners := numberDesigners + 1;
+    designers := designers ^  [dg];
+  );
+  
+	--retorna nr designers do evento
+  public pure getNumberDesigners : () ==> int
+  getNumberDesigners() == return numberDesigners;
+  
+  --MODELOS DO EVENTO
+  --Adiciona model ao evento
+	public insertModel : Model ==> ()
+  insertModel(dg) ==
+  (
+    numberModels := numberModels + 1;
+    models := models ^  [dg];
+  );
+  
+ 	--retorna nr designers do evento
+  public pure getNumberModels : () ==> int
+  getNumberModels() == return numberModels;
+  
+  public static printEventInf: () ==> ()
+  	printEventInf() == (
+  	IO`print("Evento ");
+  	IO`print(name);
+  	IO`print("\n");
+  	IO`print("\n");
+  	IO`print("Date: ");
+  	IO`print(date);
+  	IO`print("\n");
+  	IO`print("Local: ");
+  	IO`print(local);
+  	IO`print("\n");
+  	IO`print("Time: ");
+  	IO`print(time);
+  	IO`print("\n");
+  	IO`print("Duration: ");
+  	IO`print(duration);
+  	IO`print("\n");
+  	IO`print("Theme: ");
+  	IO`print(theme);
+  	IO`print("\n");
+  	IO`print("Gender: ");
+  	IO`print(gender);
+  	IO`print("\n");
+  	IO`print("Collection: ");
+  	IO`print(collection);
+  	IO`print("\n");
+  	IO`print("\n");
+  	);
+  
+  public static printDesigners: () ==> ()
+  	printDesigners() == (
+  	IO`print("Designers list:");
+  	IO`print("\n");
+  	for counter = 1 to len designers do (
+  		IO`print("\n");
+  		IO`print("Designer Name: ");
+			IO`print((designers (counter)).getName());
+			IO`print("\n");
+			IO`print("Age: ");
+			IO`print((designers (counter)).getAge());
+			IO`print("\n");
+			IO`print("Nationality: ");
+			IO`print((designers (counter)).getNationality());
+			IO`print("\n");
+			IO`print("Address: ");
+			IO`print((designers (counter)).getAddress());
+			IO`print("\n");
+			IO`print("Style: ");
+			IO`print((designers (counter)).getStyle());
+			IO`print("\n");
+			);
+			
+			);
+			
+		public static printModels: () ==> ()
+  	printModels() == (
+  	IO`print("Models list:");
+  	IO`print("\n");
+  	for counter = 1 to len models do (
+  		IO`print("\n");
+  		IO`print("Model Name: ");
+			IO`print((models (counter)).getName());
+			IO`print("\n");
+			IO`print("Age: ");
+			IO`print((models (counter)).getAge());
+			IO`print("\n");
+			IO`print("Nationality: ");
+			IO`print((models (counter)).getNationality());
+			IO`print("\n");
+			IO`print("Address: ");
+			IO`print((models (counter)).getAddress());
+			IO`print("\n");
+			);
+		);
+		
+	 public static printEvent: () ==> ()
+  	printEvent() == (
+  	printEventInf();
+  	printDesigners();
+  	);
+ 
+	
+	
+end Event

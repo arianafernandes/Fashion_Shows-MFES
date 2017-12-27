@@ -1,0 +1,109 @@
+class FashionFestival
+	
+types
+	public FestivalName = seq of char;
+	public FestivalDateBegin = seq of char;
+	public FestivalDateEnd = seq of char;
+	public FestivalLocal = seq of char;
+
+instance variables
+	public static name : FestivalName := "";
+	public static dateBegin : FestivalDateBegin := "";
+	public static dateEnd : FestivalDateEnd := "";
+	public static local : FestivalLocal := "";
+	
+	private static events: seq of Event := [];
+	private static numberEvents: int := 0;	
+
+operations
+public FashionFestival : () ==> FashionFestival
+  FashionFestival() ==
+  (
+  	return self;
+  );
+  
+  public FashionFestival : 
+  												FestivalName *
+  												FestivalDateBegin * 
+  												FestivalDateEnd *
+  												FestivalLocal												
+  												==> FashionFestival
+  FashionFestival(nm, di, df , lc) ==
+  (
+    name := nm;
+    dateBegin := di;
+    dateEnd := df;
+    local := lc;    
+    return self;
+  );
+  
+  --retorna os parametros da class event
+	 public pure getName : () ==> seq of char
+	   getName() == return name;
+	   
+	  public pure getDateBegin : () ==> seq of char
+		   getDateBegin() == return dateBegin;
+		
+		public pure getDateEnd : () ==> seq of char
+		   getDateEnd() == return dateEnd;
+		   
+		public pure getLocal : () ==> seq of char
+		   getLocal() == return local;
+		
+	--Adiciona designer ao evento
+	public insertEvent : Event ==> ()
+  insertEvent(ev) ==
+  (
+    numberEvents := numberEvents + 1;
+    events := events ^  [ev];
+  );
+  
+	--retorna nr designers do evento
+  public pure getNumberEvents : () ==> int
+  getNumberEvents() == return numberEvents;
+  
+  
+  public static printFestivalInf: () ==> ()
+  	printFestivalInf() == (
+  	IO`print("Festival ");
+  	IO`print(name);
+  	IO`print("\n");
+  	IO`print("\n");
+  	IO`print("Date Begin: ");
+  	IO`print(dateBegin);
+  	IO`print("\n");
+  	IO`print("Date End: ");
+  	IO`print(dateEnd);
+  	IO`print("\n");
+  	IO`print("Local: ");
+  	IO`print(local);
+  	IO`print("\n");
+  	IO`print("\n");
+  	);
+  
+  public static printEvents: () ==> ()
+  	printEvents() == (
+  	IO`print("Events list:");
+  	IO`print("\n");
+  	IO`print(len events);
+  	IO`print((events (1)));
+  	IO`print("\n");
+  	IO`print((events (2)));
+  	IO`print("\n");
+  	IO`print((events (3)));
+  	for counter = 1 to len events do (
+  		IO`print("\n");
+  		IO`print(counter);
+  		IO`print(":");
+  		IO`print("Event Name: ");
+			IO`print((events (counter)).getName());
+			IO`print("\n");
+		);
+		);
+	 public static printFashionFestival: () ==> ()
+  	printFashionFestival() == (
+  	printFestivalInf();
+  	printEvents();
+  	);
+  	
+end FashionFestival

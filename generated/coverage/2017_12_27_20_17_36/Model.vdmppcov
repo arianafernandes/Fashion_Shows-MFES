@@ -1,0 +1,47 @@
+class Model
+
+types
+	public ModelName = seq of char;
+	public ModelAge = nat;
+	public ModelNationality = seq of char;
+	public ModelAddress = seq of char;
+	
+instance variables
+	public name : ModelName;
+	public age : ModelAge;
+	public nationality : ModelNationality;
+	public address : ModelAddress;
+	
+	operations
+	public Model : () ==> Model
+	  Model() == return self;
+  
+  public Model : 
+  								ModelName * 
+  								ModelAge *
+  								ModelNationality * 
+  								ModelAddress ==> Model
+  Model(nm, ag, nt , ad) ==
+  (
+    name := nm;
+    age := ag;
+    nationality := nt;
+    address := ad;
+    return self;
+  );
+  
+  --retorna os parametros da class Model
+	 public pure getName : () ==> seq of char
+	   getName() == return name;
+	   
+	  public pure getAge : () ==> nat
+		   getAge() == return age;
+		   
+		public pure getNationality : () ==> seq of char
+		   getNationality() == return nationality;
+		   
+		public pure getAddress : () ==> seq of char
+		   getAddress() == return address;  	   
+		   
+		   
+end Model
