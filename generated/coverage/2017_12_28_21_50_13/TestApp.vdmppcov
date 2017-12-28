@@ -243,35 +243,21 @@ public static printDesigners: () ==> ()
   	return designersTemp;
   );
 	
-	public static getDesignersNameByEvent : (int) * (int) ==> ()
-  getDesignersNameByEvent(optionFestival,optionEvent) == (
-      IO`print("\n");
-  		for counter = 1 to len (getEventsByFestival2(optionFestival) (optionEvent)).getDesigners() do (
-  		IO`print(counter);
-  		IO`print(": ");
-  		IO`print(((getEventsByFestival2(optionFestival) (optionEvent)).getDesigners() (counter)).getName());
-  		IO`print("\n");
-  );
-  );
-  
 	public static getDesignerInf: (int) * (int) * (int) ==> ()
 		getDesignerInf(optionFestival, optionEvent,optionDesigner) ==
 		(	
 		festivalTemp := (Tests`getFestivals() (optionFestival));
 		IO`print("Name: ");
-  	IO`print((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getName());
+  	IO`print((getModelsNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getName());
   	IO`print("\n");
   	IO`print("Age: ");
-  	IO`print((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getAge());
+  	IO`print((getModelsNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getAge());
   	IO`print("\n");
   	IO`print("Nationality: ");
-  	IO`print((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getNationality());
+  	IO`print((getModelsNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getNationality());
   	IO`print("\n");
   	IO`print("Address: ");
-  	IO`print((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getAddress());
-  	IO`print("\n");
-  	IO`print("Style: ");
-  	IO`print((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getStyle());
+  	IO`print((getModelsNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getAddress());
   	IO`print("\n");
   	IO`print("\n");
 				

@@ -12,6 +12,7 @@ public class TestApp {
   private static VDMSeq users = SeqUtil.seq();
   private static VDMSeq eventsTemp = SeqUtil.seq();
   private static VDMSeq modelsTemp = SeqUtil.seq();
+  private static VDMSeq designersTemp = SeqUtil.seq();
   private static FashionFestival festivalTemp = new FashionFestival();
 
   public static void printTests() {
@@ -257,28 +258,108 @@ public class TestApp {
   }
 
   public static void getModelInf(
-      final Number optionFestival, final Number optionEvent, final Number optionModal) {
+      final Number optionFestival, final Number optionEvent, final Number optionModel) {
 
     festivalTemp = ((FashionFestival) Utils.get(Tests.getFestivals(), optionFestival));
     IO.print("Name: ");
     IO.print(
-        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModal))
+        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModel))
             .getName());
     IO.print("\n");
     IO.print("Age: ");
     IO.print(
-        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModal))
+        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModel))
             .getAge());
     IO.print("\n");
     IO.print("Nationality: ");
     IO.print(
-        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModal))
+        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModel))
             .getNationality());
     IO.print("\n");
     IO.print("Address: ");
     IO.print(
-        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModal))
+        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModel))
             .getAddress());
+    IO.print("\n");
+    IO.print("\n");
+  }
+
+  public static VDMSeq getDesginersNameByEvent2(
+      final Number optionFestival, final Number optionEvent) {
+
+    festivalTemp = ((FashionFestival) Utils.get(Tests.getFestivals(), optionFestival));
+    long toVar_13 =
+        ((Event) Utils.get(festivalTemp.getEvents(), optionEvent)).getDesigners().size();
+
+    for (Long counter = 1L; counter <= toVar_13; counter++) {
+      designersTemp =
+          SeqUtil.conc(
+              Utils.copy(TestApp.designersTemp),
+              SeqUtil.seq(
+                  ((Designer)
+                      Utils.get(
+                          ((Event) Utils.get(festivalTemp.getEvents(), optionEvent)).getDesigners(),
+                          counter))));
+    }
+    return Utils.copy(TestApp.designersTemp);
+  }
+
+  public static void getDesignersNameByEvent(
+      final Number optionFestival, final Number optionEvent) {
+
+    IO.print("\n");
+    long toVar_14 =
+        ((Event) Utils.get(getEventsByFestival2(optionFestival), optionEvent))
+            .getDesigners()
+            .size();
+
+    for (Long counter = 1L; counter <= toVar_14; counter++) {
+      IO.print(counter);
+      IO.print(": ");
+      IO.print(
+          ((Designer)
+                  Utils.get(
+                      ((Event) Utils.get(getEventsByFestival2(optionFestival), optionEvent))
+                          .getDesigners(),
+                      counter))
+              .getName());
+      IO.print("\n");
+    }
+  }
+
+  public static void getDesignerInf(
+      final Number optionFestival, final Number optionEvent, final Number optionDesigner) {
+
+    festivalTemp = ((FashionFestival) Utils.get(Tests.getFestivals(), optionFestival));
+    IO.print("Name: ");
+    IO.print(
+        ((Designer)
+                Utils.get(getDesginersNameByEvent2(optionFestival, optionEvent), optionDesigner))
+            .getName());
+    IO.print("\n");
+    IO.print("Age: ");
+    IO.print(
+        ((Designer)
+                Utils.get(getDesginersNameByEvent2(optionFestival, optionEvent), optionDesigner))
+            .getAge());
+    IO.print("\n");
+    IO.print("Nationality: ");
+    IO.print(
+        ((Designer)
+                Utils.get(getDesginersNameByEvent2(optionFestival, optionEvent), optionDesigner))
+            .getNationality());
+    IO.print("\n");
+    IO.print("Address: ");
+    IO.print(
+        ((Designer)
+                Utils.get(getDesginersNameByEvent2(optionFestival, optionEvent), optionDesigner))
+            .getAddress());
+    IO.print("\n");
+    IO.print("Style: ");
+    IO.print(
+        ((Designer)
+                Utils.get(getDesginersNameByEvent2(optionFestival, optionEvent), optionDesigner))
+            .getStyle());
     IO.print("\n");
     IO.print("\n");
   }
@@ -286,9 +367,9 @@ public class TestApp {
   public static void printModels() {
 
     IO.print("Models List:\n");
-    long toVar_13 = Tests.getModels().size();
+    long toVar_15 = Tests.getModels().size();
 
-    for (Long counter = 1L; counter <= toVar_13; counter++) {
+    for (Long counter = 1L; counter <= toVar_15; counter++) {
       IO.print("\n");
       IO.print("Designer Name: ");
       IO.print(((Model) Utils.get(Tests.getModels(), counter)).getName());
@@ -308,9 +389,9 @@ public class TestApp {
   public static void printUsers() {
 
     IO.print("Users List\n");
-    long toVar_14 = Tests.getUsers().size();
+    long toVar_16 = Tests.getUsers().size();
 
-    for (Long counter = 1L; counter <= toVar_14; counter++) {
+    for (Long counter = 1L; counter <= toVar_16; counter++) {
       IO.print("\n");
       IO.print("User Name: ");
       IO.print(((FashionUser) Utils.get(Tests.getUsers(), counter)).getName());
@@ -349,6 +430,8 @@ public class TestApp {
         + Utils.toString(eventsTemp)
         + ", modelsTemp := "
         + Utils.toString(modelsTemp)
+        + ", designersTemp := "
+        + Utils.toString(designersTemp)
         + ", festivalTemp := "
         + Utils.toString(festivalTemp)
         + "}";

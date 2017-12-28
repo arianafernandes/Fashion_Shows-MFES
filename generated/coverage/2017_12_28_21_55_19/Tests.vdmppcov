@@ -124,7 +124,7 @@ operations
        
     -- PRINT SUCCESS MESSAGE
     IO`print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
-    --TestApp`getDesignerInf(2,1,1);
+    TestApp`getDesignerInf(2,1,1);
   );
   
   public  static getFestivals : () ==> seq of FashionFestival

@@ -107,6 +107,11 @@ public class Event {
     return Utils.copy(models);
   }
 
+  public VDMSeq getDesigners() {
+
+    return Utils.copy(designers);
+  }
+
   public void insertDesigner(final Designer dg) {
 
     numberDesigners = numberDesigners.longValue() + 1L;

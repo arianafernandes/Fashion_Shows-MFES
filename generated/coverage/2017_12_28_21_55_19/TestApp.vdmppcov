@@ -243,17 +243,6 @@ public static printDesigners: () ==> ()
   	return designersTemp;
   );
 	
-	public static getDesignersNameByEvent : (int) * (int) ==> ()
-  getDesignersNameByEvent(optionFestival,optionEvent) == (
-      IO`print("\n");
-  		for counter = 1 to len (getEventsByFestival2(optionFestival) (optionEvent)).getDesigners() do (
-  		IO`print(counter);
-  		IO`print(": ");
-  		IO`print(((getEventsByFestival2(optionFestival) (optionEvent)).getDesigners() (counter)).getName());
-  		IO`print("\n");
-  );
-  );
-  
 	public static getDesignerInf: (int) * (int) * (int) ==> ()
 		getDesignerInf(optionFestival, optionEvent,optionDesigner) ==
 		(	

@@ -9,6 +9,7 @@ public class App {
 	private static int optionFestival;
 	private static int optionEvent;
 	private static int optionModel;
+	private static int optionDesigner;
 	
 	private static void printMenuInitial()
 	{
@@ -43,19 +44,34 @@ public class App {
 			System.out.println("SAIR");
 	}
 	}
-	
+	static int option;
 	private static void printMenuEvent(int optionFestival, int optionEvent){
+		
 		System.out.println("\nList of models of the event:\n");
 		TestApp.getModelsNameByEvent(optionFestival, optionEvent);
-		System.out.println("\nPlease select a model for more informations:");
-		optionModel = inputScanner.nextInt();
-		if(optionModel != 0){
-			TestApp.getModelInf(optionFestival,optionEvent, optionModel);
-			//printMenuEvent(optionFestival,optionModel);
+		System.out.println("\nList of desginers of the event:\n");
+		TestApp.getDesignersNameByEvent(optionFestival, optionEvent);
+		System.out.println("\nSelece 1 for more information about models or 2 for more information about designers \n");
+		
+		option = inputScanner.nextInt();
+		if(option == 1){
+			System.out.println("\nPlease select a model for more informations:");
+			TestApp.getModelsNameByEvent(optionFestival, optionEvent);
+			optionModel = inputScanner.nextInt();
+			if(optionModel != 0){
+				TestApp.getModelInf(optionFestival,optionEvent, optionModel);
+				//printMenuEvent(optionFestival,optionModel);
+			}
 		}
-		else{
-			System.out.println("SAIR");
-	}
+		else if(option == 2){
+			System.out.println("\nPlease select a designer for more informations:");
+			TestApp.getDesignersNameByEvent(optionFestival, optionEvent);
+			optionDesigner = inputScanner.nextInt();
+			if(optionDesigner != 0){
+				TestApp.getDesignerInf(optionFestival,optionEvent, optionDesigner);
+				//printMenuEvent(optionFestival,optionModel);
+			}
+		}
 	}
 	
 	public static void main(String[] args) {

@@ -127,7 +127,6 @@ public class Tests extends MyTestCase {
     assertEqual(30L, u0.getAge());
     assertEqual(Fashion_Shows.quotes.HomemQuote.getInstance(), ((Object) u0.getGender()));
     IO.print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
-    TestApp.getModelInf(1L, 1L, 1L);
   }
 
   public static VDMSeq getFestivals() {
