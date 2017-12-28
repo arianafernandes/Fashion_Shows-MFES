@@ -8,7 +8,7 @@ public class App {
 	private static Scanner inputScanner = new Scanner(System.in);
 	private static int optionFestival;
 	private static int optionEvent;
-
+	private static int optionModel;
 	
 	private static void printMenuInitial()
 	{
@@ -48,7 +48,14 @@ public class App {
 		System.out.println("\nList of models of the event:\n");
 		TestApp.getModelsNameByEvent(optionFestival, optionEvent);
 		System.out.println("\nPlease select a model for more informations:");
-		System.out.println("SAIR");
+		optionModel = inputScanner.nextInt();
+		if(optionModel != 0){
+			TestApp.getModelInf(optionEvent, optionModel);
+			//printMenuEvent(optionFestival,optionModel);
+		}
+		else{
+			System.out.println("SAIR");
+	}
 	}
 	
 	public static void main(String[] args) {

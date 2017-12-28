@@ -211,20 +211,20 @@ public static printDesigners: () ==> ()
   );
   
   public static getModelInf: (int) * (int) ==> ()
-		getModelInf(optionEvent,optionModal) ==
+		getModelInf(optionFestiavl,optionEvent) ==
 		(	
 		IO`print("Name: ");
-  	IO`print((getModelsNameByEvent2(optionEvent) (optionModal)).getName());
+  	IO`print((getModelsNameByEvent2(optionFestiavl) (optionEvent)).getName());
   	IO`print("\n");
   	IO`print("Age: ");
-  	IO`print((getModelsNameByEvent2(optionEvent) (optionModal)).getAge());
+  	IO`print((getModelsNameByEvent2(optionFestiavl) (optionEvent)).getAge());
   	IO`print("\n");
   	IO`print("Nationality: ");
-  	IO`print((getModelsNameByEvent2(optionEvent) (optionModal)).getNationality());
+  	IO`print((getModelsNameByEvent2(optionFestiavl) (optionEvent)).getNationality());
   	IO`print("\n");
   	IO`print("Address: ");
-  	IO`print((getModelsNameByEvent2(optionEvent) (optionModal)).getAddress());
-  	IO`print("\n");
+  	IO`print((getModelsNameByEvent2(optionFestiavl) (optionEvent)).getAddress());
+  	IO`print("h\n");
   	IO`print("\n");
 				
 	 );
