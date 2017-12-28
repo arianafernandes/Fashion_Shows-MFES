@@ -172,4 +172,8 @@ public class Tests extends MyTestCase {
         + Utils.toString(users)
         + "}";
   }
+
+  String toString1 = toString().replaceAll("\"\"", "");
+
 }
+
