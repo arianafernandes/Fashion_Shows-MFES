@@ -1,0 +1,40 @@
+class MyTestCase
+
+operations
+
+  -- Simulates assertion checking by reducing it to pre-condition checking.
+  -- If 'arg' does not hold, a pre-condition violation will be signaled.
+  -- Verification of pre-conditions must be enabled in order for this to work
+  protected assertTrue : bool ==> ()
+  assertTrue(arg) == return
+  pre arg;
+
+  -- Simulates assertion checking by reducing it to pre-condition checking.
+  -- If 'arg' holds, a pre-condition violation will be signaled.
+  -- Verification of pre-conditions must be enabled in order for this to work
+  protected assertFalse : bool ==> ()
+  assertFalse(arg) == return
+  pre not arg;
+
+  -- Simulates assertion checking by reducing it to pre-condition checking.
+  -- If 'arg' is null or undefined, a pre-condition violation will be signaled.
+  -- Verification of pre-conditions must be enabled in order for this to work
+  protected assertNotNull : ? ==> ()
+  assertNotNull(arg) == return
+  pre arg <> nil and arg <> undefined;
+
+  -- Simulates assertion checking by reducing it to post-condition checking.
+  -- If values are not equal, prints a message and generates a post-conditions violation.
+  protected assertEqual : ? * ? ==> ()
+  assertEqual(expected, actual) ==
+    if expected <> actual then
+    (
+      IO`print("Actual value (");
+      IO`print(actual);
+      IO`print(") different from expected (");
+      IO`print(expected);
+      IO`println(")\n")
+    )
+  post expected = actual;
+
+end MyTestCase

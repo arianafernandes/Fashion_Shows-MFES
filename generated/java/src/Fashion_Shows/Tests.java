@@ -15,13 +15,15 @@ public class Tests extends MyTestCase {
 
     FashionFestival f0 =
         new FashionFestival("Porto Fashion Week", "04/05/2018", "10/05/2018", "Porto");
+    FashionFestival f1 =
+        new FashionFestival("Madrid Weekend", "26/08/2018", "30/08/2018", "Madrid");
     Event ev0 =
         new Event(
             "BaixaShow",
             "04/05/2018",
             "Baixa",
             12L,
-            60L,
+            3L,
             "flores",
             Fashion_Shows.quotes.HomemQuote.getInstance(),
             Fashion_Shows.quotes.Primavera_VeraoQuote.getInstance());
@@ -53,6 +55,7 @@ public class Tests extends MyTestCase {
     Model m3 = new Model("Kate Moss", 43L, "Inglesa", "Inglaterra");
     FashionUser u0 = new FashionUser("Joao", 30L, Fashion_Shows.quotes.HomemQuote.getInstance());
     festivals = SeqUtil.conc(Utils.copy(Tests.festivals), SeqUtil.seq(f0));
+    festivals = SeqUtil.conc(Utils.copy(Tests.festivals), SeqUtil.seq(f1));
     events = SeqUtil.conc(Utils.copy(Tests.events), SeqUtil.seq(ev0));
     events = SeqUtil.conc(Utils.copy(Tests.events), SeqUtil.seq(ev1));
     events = SeqUtil.conc(Utils.copy(Tests.events), SeqUtil.seq(ev2));
@@ -81,15 +84,15 @@ public class Tests extends MyTestCase {
     assertEqual("Porto", f0.getLocal());
     IO.print("TestFashionFestival.vdmpp (3/10): testInsertEventAtFestival() started...\n");
     f0.insertEvent(ev0);
-    f0.insertEvent(ev1);
     f0.insertEvent(ev2);
-    assertEqual(3L, f0.getNumberEvents());
+    f1.insertEvent(ev1);
+    assertEqual(2L, f0.getNumberEvents());
     IO.print("TestEvent.vdmpp (3/10): testEventParams() started...\n");
     assertEqual("BaixaShow", ev0.getName());
     assertEqual("04/05/2018", ev0.getDate());
     assertEqual("Baixa", ev0.getLocal());
     assertEqual(12L, ev0.getTime());
-    assertEqual(60L, ev0.getDuration());
+    assertEqual(3L, ev0.getDuration());
     assertEqual("flores", ev0.getTheme());
     assertEqual(Fashion_Shows.quotes.HomemQuote.getInstance(), ((Object) ev0.getGender()));
     assertEqual(
@@ -123,10 +126,7 @@ public class Tests extends MyTestCase {
     assertEqual(30L, u0.getAge());
     assertEqual(Fashion_Shows.quotes.HomemQuote.getInstance(), ((Object) u0.getGender()));
     IO.print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
-    f0.printFashionFestival();
-    ev0.printEvent();
-    ev1.printEvent();
-    ev2.printEvent();
+    TestApp.getEventInf(1L, 2L);
   }
 
   public static VDMSeq getFestivals() {

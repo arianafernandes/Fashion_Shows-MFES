@@ -57,6 +57,11 @@ public class FashionFestival {
     return local;
   }
 
+  public VDMSeq getEvents() {
+
+    return Utils.copy(events);
+  }
+
   public void insertEvent(final Event ev) {
 
     events = SeqUtil.conc(SeqUtil.seq(ev), Utils.copy(events));
