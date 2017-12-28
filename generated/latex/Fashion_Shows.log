@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.26)  28 DEC 2017 23:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.26)  28 DEC 2017 23:22
 entering extended mode
 **./Fashion_Shows.tex
 (Fashion_Shows.tex
@@ -203,11 +203,7 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count109
 \LT@p@ftn=\toks16
 )
-(Fashion_Shows.aux
-
-LaTeX Warning: Label `getName:40' multiply defined.
-
-)
+(Fashion_Shows.aux)
 \openout1 = `Fashion_Shows.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
@@ -296,58 +292,15 @@ Underfull \vbox (badness 10000) detected at line 93
  []
 
 ) (specification/Event.vdmpp.tex [2] [3]
-
-LaTeX Warning: Hyper reference `printDesigners:137' on page 4 undefined on inpu
-t line 196.
-
-
-LaTeX Warning: Hyper reference `printEvent:183' on page 4 undefined on input li
-ne 198.
-
-
-LaTeX Warning: Hyper reference `printModels:162' on page 4 undefined on input l
-ine 202.
-
-
-Underfull \vbox (badness 10000) detected at line 203
+Underfull \vbox (badness 10000) detected at line 196
  []
 
 [4]) (specification/FashionFestival.vdmpp.tex [5]
-
-LaTeX Warning: Hyper reference `printEvents:83' on page 6 undefined on input li
-ne 111.
-
-
-LaTeX Warning: Hyper reference `printFashionFestival:96' on page 6 undefined on
- input line 113.
-
-
-LaTeX Warning: Hyper reference `printFestivalInf:65' on page 6 undefined on inp
-ut line 115.
-
-
-Underfull \vbox (badness 10000) detected at line 120
+Underfull \vbox (badness 10000) detected at line 114
  []
 
-) (specification/FashionUser.vdmpp.tex [6]
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 79.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspcr.fd"
-File: omspcr.fd 
-)
-LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 79.
- [7]
-
-LaTeX Warning: Hyper reference `getNumberEvents:99' on page 8 undefined on inpu
-t line 142.
-
-
-LaTeX Warning: Hyper reference `removeEvent:92' on page 8 undefined on input li
-ne 152.
-
-
-Underfull \vbox (badness 10000) detected at line 157
+) (specification/FashionUser.vdmpp.tex [6] [7]
+Underfull \vbox (badness 10000) detected at line 138
  []
 
 ) (specification/Model.vdmpp.tex [8]
@@ -355,35 +308,30 @@ Underfull \vbox (badness 10000) detected at line 82
  []
 
 ) (specification/MyTestCase.vdmpp.tex [9]
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 49.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspcr.fd"
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 49.
+
 Underfull \vbox (badness 10000) detected at line 72
  []
 
 ) (specification/TestApp.vdmpp.tex [10] [11] [12] [13]
-
-LaTeX Warning: Hyper reference `getDesginersNameByEvent2:236' on page 14 undefi
-ned on input line 280.
-
-
-LaTeX Warning: Hyper reference `getDesignerInf:236' on page 14 undefined on inp
-ut line 282.
-
-
-LaTeX Warning: Hyper reference `getDesignersNameByEvent:246' on page 14 undefin
-ed on input line 284.
-
-
-Underfull \vbox (badness 10000) detected at line 317
+Underfull \vbox (badness 10000) detected at line 299
  []
 
-[14]) (specification/Tests.vdmpp.tex
+) (specification/Tests.vdmpp.tex [14]
 Missing character: There is no ã in font pcrr7t!
  [15] [16]
-Underfull \vbox (badness 10000) detected at line 204
+Underfull \vbox (badness 10000) detected at line 220
  []
 
-[17])
+)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 29.
- [18]
+ [17]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 29.
  (Fashion_Shows.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 29.
@@ -392,18 +340,15 @@ Package rerunfilecheck Info: File `Fashion_Shows.out' has not changed.
 (rerunfilecheck)             Checksum: 0CB1862FCBBC04C749F8CDC0F9FF2A5A;354.
 
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 29.
  ) 
 Here is how much of TeX's memory you used:
- 7501 strings out of 493312
- 111648 string characters out of 3138898
- 406396 words of memory out of 3000000
- 10092 multiletter control sequences out of 15000+200000
+ 7478 strings out of 493312
+ 111243 string characters out of 3138898
+ 470171 words of memory out of 3000000
+ 10070 multiletter control sequences out of 15000+200000
  17044 words of font info for 41 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  33i,6n,48p,301b,1934s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -414,9 +359,9 @@ fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
 /courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8
 a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Fashion_Shows.pdf (18 pages, 256693 bytes).
+Output written on Fashion_Shows.pdf (17 pages, 253022 bytes).
 PDF statistics:
- 1268 PDF objects out of 1440 (max. 8388607)
- 890 named destinations out of 1000 (max. 500000)
+ 1258 PDF objects out of 1440 (max. 8388607)
+ 889 named destinations out of 1000 (max. 500000)
  65 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -139,6 +139,18 @@ public class Tests extends MyTestCase {
     assertEqual("Joao", u0.getName());
     assertEqual(30L, u0.getAge());
     assertEqual(Fashion_Shows.quotes.HomemQuote.getInstance(), ((Object) u0.getGender()));
+    IO.print("TestFashionUser.vdmpp (2/10): InsertFavoriteDesginer() started...\n");
+    u0.insertDesigner(d0);
+    u0.insertDesigner(d1);
+    assertEqual(2L, u0.getNumberFavDesigners());
+    assertEqual(d0.getName(), ((Designer) Utils.get(u0.getDesigners(), 1L)).getName());
+    assertEqual(d1.getName(), ((Designer) Utils.get(u0.getDesigners(), 2L)).getName());
+    IO.print("TestFashionUser.vdmpp (2/10): UserEvents() started...\n");
+    u0.insertEvent(ev0);
+    u0.insertEvent(ev1);
+    assertEqual(2L, u0.getNumberEvents());
+    assertEqual(ev0.getName(), ((Event) Utils.get(u0.getEvents(), 1L)).getName());
+    assertEqual(ev1.getName(), ((Event) Utils.get(u0.getEvents(), 2L)).getName());
     IO.print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
   }
 

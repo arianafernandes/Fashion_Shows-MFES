@@ -10,9 +10,6 @@ private  static events: seq of Event := [];
 private  static designers: seq of Designer := [];
 private  static models: seq of Model := [];
 private  static users: seq of FashionUser := [];
-(*@
-\label{printTests:12}
-@*)
 private static eventsTemp: seq of Event := [];
 private static modelsTemp: seq of Model := [];
 private static designersTemp: seq of Designer := [];
@@ -21,7 +18,7 @@ private static festivalTemp: FashionFestival := new FashionFestival();
 operations
 
 (*@
-\label{printFestivals:19}
+\label{printTests:19}
 @*)
 public static printTests: () ==> ()
  printTests() == 
@@ -31,14 +28,14 @@ public static printTests: () ==> ()
    );
    
   
+(*@
+\label{printFestivalsName:27}
+@*)
   public static printFestivalsName: () ==> ()
  printFestivalsName() ==
  (*@\vdmnotcovered{(}@*) 
  (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash nPrint Festivals"}@*));
  (*@\vdmnotcovered{for}@*) counter = 1 to len Tests`getFestivals() do (*@\vdmnotcovered{(}@*)
-(*@
-\label{printEvents:32}
-@*)
     IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
     (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{counter}@*));
     IO`print(((*@\vdmnotcovered{Tests`getFestivals}@*)() ((*@\vdmnotcovered{counter}@*))).(*@\vdmnotcovered{getName}@*)());
@@ -49,16 +46,13 @@ public static printTests: () ==> ()
   
    
 (*@
-\label{printFestivalsName:41}
+\label{getFestivalInf:41}
 @*)
  public static getFestivalInf : (int) ==> ()
   getFestivalInf(num) == (*@\vdmnotcovered{(}@*)
       IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
     (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Festival Name: "}@*));
     (*@\vdmnotcovered{IO`print}@*)(((*@\vdmnotcovered{Tests`getFestivals}@*)() (num)).(*@\vdmnotcovered{getName}@*)());
-(*@
-\label{printDesigners:46}
-@*)
     (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
     IO`print((*@\vdmnotcovered{"Date Begin: "}@*));
     (*@\vdmnotcovered{IO`print}@*)(((*@\vdmnotcovered{Tests`getFestivals}@*)() ((*@\vdmnotcovered{num}@*))).(*@\vdmnotcovered{getDateBegin}@*)());
@@ -68,16 +62,13 @@ public static printTests: () ==> ()
     (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
     IO`print((*@\vdmnotcovered{"Local: "}@*));
     (*@\vdmnotcovered{IO`print}@*)((Tests`getFestivals() ((*@\vdmnotcovered{num}@*))).(*@\vdmnotcovered{getLocal}@*)());
-(*@
-\label{getFestivalInf:55}
-@*)
     IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
     IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
   );
   
 
 (*@
-\label{printModels:60}
+\label{printEventsName:60}
 @*)
   public static printEventsName: () ==> ()
   printEventsName() ==
@@ -93,7 +84,7 @@ public static printTests: () ==> ()
  );  
  
 (*@
-\label{printUsers:73}
+\label{getEventInf:73}
 @*)
  public static getEventInf: (int) * (int) ==> ()
   getEventInf(optionFestiavl,optionEvent) ==
@@ -110,9 +101,6 @@ public static printTests: () ==> ()
    IO`print((*@\vdmnotcovered{"Time: "}@*));
    IO`print((getEventsByFestival2(optionFestiavl) (optionEvent)).(*@\vdmnotcovered{getTime}@*)());
    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"h\textbackslash n"}@*));
-(*@
-\label{main:88}
-@*)
    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Duration: "}@*));
     (*@\vdmnotcovered{IO`print}@*)((getEventsByFestival2(optionFestiavl) (optionEvent)).(*@\vdmnotcovered{getDuration}@*)());
    IO`print((*@\vdmnotcovered{"h\textbackslash n"}@*));
@@ -129,10 +117,10 @@ public static printTests: () ==> ()
     
   );
  
- public static getEventsByFestival2 : (int) ==> seq of Event
 (*@
-\label{printEventsName:105}
+\label{getEventsByFestival2:104}
 @*)
+ public static getEventsByFestival2 : (int) ==> seq of Event
   getEventsByFestival2(num) == (*@\vdmnotcovered{(}@*)
     for counter = (*@\vdmnotcovered{1}@*) to (*@\vdmnotcovered{len}@*) ((*@\vdmnotcovered{Tests`getFestivals}@*)() (num)).(*@\vdmnotcovered{getEvents}@*)() do (*@\vdmnotcovered{(}@*)
     (*@\vdmnotcovered{eventsTemp}@*) := (*@\vdmnotcovered{eventsTemp}@*) ^[((Tests`getFestivals() (num)).getEvents()) ((*@\vdmnotcovered{counter}@*))];
@@ -140,18 +128,15 @@ public static printTests: () ==> ()
    (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{eventsTemp}@*);
   );
  
+(*@
+\label{getEventsByFestival:112}
+@*)
  public static getEventsByFestival : (int) ==> ()
   getEventsByFestival(num) == (*@\vdmnotcovered{(}@*)
       (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
     (*@\vdmnotcovered{for}@*) counter = 1 to len (Tests`getFestivals() (num)).getEvents() do (*@\vdmnotcovered{(}@*)
     IO`print((*@\vdmnotcovered{counter}@*));
-(*@
-\label{getEventInf:117}
-@*)
     IO`print((*@\vdmnotcovered{": "}@*));
-(*@
-\label{getEventsByFestival:118}
-@*)
     IO`print((((*@\vdmnotcovered{Tests`getFestivals}@*)() (num)).getEvents() (counter)).(*@\vdmnotcovered{getName}@*)());
     IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
   );
@@ -160,7 +145,7 @@ public static printTests: () ==> ()
 
     
 (*@
-\label{getEventsByFestival2:125}
+\label{getModelsNameByEvent:125}
 @*)
  public static getModelsNameByEvent : (int) * (int) ==> ()
   getModelsNameByEvent(optionFestival,optionEvent) == (*@\vdmnotcovered{(}@*)
@@ -173,6 +158,9 @@ public static printTests: () ==> ()
   );
   );
   
+(*@
+\label{getModelsNameByEvent2:136}
+@*)
   public static getModelsNameByEvent2 :(int) * (int) ==> seq of Model
   getModelsNameByEvent2(optionFestival, optionEvent) == (*@\vdmnotcovered{(}@*)
   (*@\vdmnotcovered{festivalTemp}@*) := ((*@\vdmnotcovered{Tests`getFestivals}@*)() ((*@\vdmnotcovered{optionFestival}@*)));
@@ -183,6 +171,9 @@ public static printTests: () ==> ()
   );
   
   
+(*@
+\label{getModelInf:146}
+@*)
   public static getModelInf: (int) * (int) * (int) ==> ()
   getModelInf(optionFestival, optionEvent,optionModel) ==
   (*@\vdmnotcovered{(}@*) 
@@ -203,6 +194,9 @@ public static printTests: () ==> ()
     
   );
  
+(*@
+\label{getDesginersNameByEvent2:166}
+@*)
  public static getDesginersNameByEvent2 :(int) * (int) ==> seq of Designer
   getDesginersNameByEvent2(optionFestival, optionEvent) == (*@\vdmnotcovered{(}@*)
   festivalTemp := ((*@\vdmnotcovered{Tests`getFestivals}@*)() ((*@\vdmnotcovered{optionFestival}@*)));
@@ -212,6 +206,9 @@ public static printTests: () ==> ()
    return (*@\vdmnotcovered{designersTemp}@*);
   );
  
+(*@
+\label{getDesignersNameByEvent:175}
+@*)
  public static getDesignersNameByEvent : (int) * (int) ==> ()
   getDesignersNameByEvent(optionFestival,optionEvent) == (*@\vdmnotcovered{(}@*)
       IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
@@ -223,48 +220,39 @@ public static printTests: () ==> ()
   );
   );
   
+(*@
+\label{getDesignerInf:186}
+@*)
  public static getDesignerInf: (int) * (int) * (int) ==> ()
   getDesignerInf(optionFestival, optionEvent,optionDesigner) ==
   (*@\vdmnotcovered{(}@*) 
   (*@\vdmnotcovered{festivalTemp}@*) := ((*@\vdmnotcovered{Tests`getFestivals}@*)() ((*@\vdmnotcovered{optionFestival}@*)));
   IO`print((*@\vdmnotcovered{"Name: "}@*));
    (*@\vdmnotcovered{IO`print}@*)((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).(*@\vdmnotcovered{getName}@*)());
-(*@
-\label{getEventByFestival:192}
-@*)
    IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
-(*@
-\label{getModelsByEvent:193}
-@*)
    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Age: "}@*));
    (*@\vdmnotcovered{IO`print}@*)(((*@\vdmnotcovered{getDesginersNameByEvent2}@*)(optionFestival,(*@\vdmnotcovered{optionEvent}@*)) ((*@\vdmnotcovered{optionDesigner}@*))).(*@\vdmnotcovered{getAge}@*)());
    IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
    IO`print((*@\vdmnotcovered{"Nationality: "}@*));
    (*@\vdmnotcovered{IO`print}@*)((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).(*@\vdmnotcovered{getNationality}@*)());
    IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
-(*@
-\label{getModelsNameByEvent:199}
-@*)
    IO`print((*@\vdmnotcovered{"Address: "}@*));
    IO`print((getDesginersNameByEvent2(optionFestival,optionEvent) ((*@\vdmnotcovered{optionDesigner}@*))).(*@\vdmnotcovered{getAddress}@*)());
    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Style: "}@*));
    IO`print((getDesginersNameByEvent2(optionFestival,(*@\vdmnotcovered{optionEvent}@*)) ((*@\vdmnotcovered{optionDesigner}@*))).(*@\vdmnotcovered{getStyle}@*)());
    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
-(*@
-\label{getModelsNameByEvent2:205}
-@*)
    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
     
   );
   
 
+(*@
+\label{main:210}
+@*)
 public static main : () ==> ()
   main() ==
   (
-(*@
-\label{getModelInf:213}
-@*)
    printTests();
   
   );
@@ -277,47 +265,33 @@ end TestApp
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[getDesginersNameByEvent2:236]{getDesginersNameByEvent2} & 236&0.0\% & 0 \\
+\hyperref[getDesginersNameByEvent2:166]{getDesginersNameByEvent2} & 166&0.0\% & 0 \\
 \hline
-\hyperref[getDesignerInf:236]{getDesignerInf} & 236&0.0\% & 0 \\
+\hyperref[getDesignerInf:186]{getDesignerInf} & 186&0.0\% & 0 \\
 \hline
-\hyperref[getDesignersNameByEvent:246]{getDesignersNameByEvent} & 246&0.0\% & 0 \\
+\hyperref[getDesignersNameByEvent:175]{getDesignersNameByEvent} & 175&0.0\% & 0 \\
 \hline
-\hyperref[getEventByFestival:192]{getEventByFestival} & 192&0.0\% & 0 \\
+\hyperref[getEventInf:73]{getEventInf} & 73&0.0\% & 0 \\
 \hline
-\hyperref[getEventInf:117]{getEventInf} & 117&0.0\% & 0 \\
+\hyperref[getEventsByFestival:112]{getEventsByFestival} & 112&0.0\% & 0 \\
 \hline
-\hyperref[getEventsByFestival:118]{getEventsByFestival} & 118&0.0\% & 0 \\
+\hyperref[getEventsByFestival2:104]{getEventsByFestival2} & 104&0.0\% & 0 \\
 \hline
-\hyperref[getEventsByFestival2:125]{getEventsByFestival2} & 125&0.0\% & 0 \\
+\hyperref[getFestivalInf:41]{getFestivalInf} & 41&0.0\% & 0 \\
 \hline
-\hyperref[getFestivalInf:55]{getFestivalInf} & 55&0.0\% & 0 \\
+\hyperref[getModelInf:146]{getModelInf} & 146&0.0\% & 0 \\
 \hline
-\hyperref[getModelInf:213]{getModelInf} & 213&0.0\% & 0 \\
+\hyperref[getModelsNameByEvent:125]{getModelsNameByEvent} & 125&0.0\% & 0 \\
 \hline
-\hyperref[getModelsByEvent:193]{getModelsByEvent} & 193&0.0\% & 0 \\
+\hyperref[getModelsNameByEvent2:136]{getModelsNameByEvent2} & 136&0.0\% & 0 \\
 \hline
-\hyperref[getModelsNameByEvent:199]{getModelsNameByEvent} & 199&0.0\% & 0 \\
+\hyperref[main:210]{main} & 210&100.0\% & 1 \\
 \hline
-\hyperref[getModelsNameByEvent2:205]{getModelsNameByEvent2} & 205&0.0\% & 0 \\
+\hyperref[printEventsName:60]{printEventsName} & 60&0.0\% & 0 \\
 \hline
-\hyperref[main:88]{main} & 88&100.0\% & 1 \\
+\hyperref[printFestivalsName:27]{printFestivalsName} & 27&0.0\% & 0 \\
 \hline
-\hyperref[printDesigners:46]{printDesigners} & 46&0.0\% & 0 \\
-\hline
-\hyperref[printEvents:32]{printEvents} & 32&0.0\% & 0 \\
-\hline
-\hyperref[printEventsName:105]{printEventsName} & 105&0.0\% & 0 \\
-\hline
-\hyperref[printFestivals:19]{printFestivals} & 19&0.0\% & 0 \\
-\hline
-\hyperref[printFestivalsName:41]{printFestivalsName} & 41&0.0\% & 0 \\
-\hline
-\hyperref[printModels:60]{printModels} & 60&0.0\% & 0 \\
-\hline
-\hyperref[printTests:12]{printTests} & 12&100.0\% & 1 \\
-\hline
-\hyperref[printUsers:73]{printUsers} & 73&0.0\% & 0 \\
+\hyperref[printTests:19]{printTests} & 19&100.0\% & 1 \\
 \hline
 \hline
 TestApp.vdmpp & & 3.9\% & 2 \\

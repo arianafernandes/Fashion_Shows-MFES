@@ -8,9 +8,9 @@ public class FashionUser {
   public String name;
   public Number age;
   public Object gender;
-  private VDMSet favDesigners = SetUtil.set();
-  private Number numberFavDesigners = 0L;
-  private VDMSet events = SetUtil.set();
+  private VDMSeq designers = SeqUtil.seq();
+  private Number numberDesigners = 0L;
+  private VDMSeq events = SeqUtil.seq();
   private Number numberEvents = 0L;
 
   public void cg_init_FashionUser_1(final String nm, final Number ag, final Object gr) {
@@ -41,38 +41,36 @@ public class FashionUser {
     return gender;
   }
 
-  public void insertDesigner(final String designerName) {
+  public void insertDesigner(final Designer d) {
 
-    numberFavDesigners = numberFavDesigners.longValue() + 1L;
-    favDesigners = SetUtil.union(Utils.copy(favDesigners), SetUtil.set(designerName));
-  }
-
-  public void removeDesigner(final String designerName) {
-
-    favDesigners = SetUtil.diff(Utils.copy(favDesigners), SetUtil.set(designerName));
-    numberFavDesigners = numberFavDesigners.longValue() - 1L;
+    numberDesigners = numberDesigners.longValue() + 1L;
+    designers = SeqUtil.conc(Utils.copy(designers), SeqUtil.seq(d));
   }
 
   public Number getNumberFavDesigners() {
 
-    return numberFavDesigners;
+    return numberDesigners;
   }
 
-  public void insertEvent(final String eventName) {
+  public VDMSeq getDesigners() {
+
+    return Utils.copy(designers);
+  }
+
+  public void insertEvent(final Event ev) {
 
     numberEvents = numberEvents.longValue() + 1L;
-    events = SetUtil.union(Utils.copy(events), SetUtil.set(eventName));
-  }
-
-  public void removeEvent(final String eventName) {
-
-    events = SetUtil.diff(Utils.copy(events), SetUtil.set(eventName));
-    numberEvents = numberEvents.longValue() - 1L;
+    events = SeqUtil.conc(Utils.copy(events), SeqUtil.seq(ev));
   }
 
   public Number getNumberEvents() {
 
     return numberEvents;
+  }
+
+  public VDMSeq getEvents() {
+
+    return Utils.copy(events);
   }
 
   public FashionUser() {}
@@ -86,10 +84,10 @@ public class FashionUser {
         + Utils.toString(age)
         + ", gender := "
         + Utils.toString(gender)
-        + ", favDesigners := "
-        + Utils.toString(favDesigners)
-        + ", numberFavDesigners := "
-        + Utils.toString(numberFavDesigners)
+        + ", designers := "
+        + Utils.toString(designers)
+        + ", numberDesigners := "
+        + Utils.toString(numberDesigners)
         + ", events := "
         + Utils.toString(events)
         + ", numberEvents := "

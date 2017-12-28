@@ -12,11 +12,11 @@ instance variables
  public age: UserAge;
  public gender: UserGender;
  --designers favoritos
- private favDesigners: set of Designer`DesignerName := {};
- private numberFavDesigners: nat := 0;
+ private  designers: seq of Designer := [];
+ private  numberDesigners: int := 0;
  --eventos que utilizador vai
- private events: set of Event`EventName := {};
- private numberEvents: nat := 0;
+  private events: seq of Event := [];
+ private  numberEvents: int := 0;
 
 operations  
 (*@
@@ -35,87 +35,74 @@ operations
   );
   
   --retorna os parametros da class fashionUSer
+(*@
+\label{getName:34}
+@*)
   public pure getName : () ==> String
     getName() == return name;
     
+(*@
+\label{getAge:37}
+@*)
    public pure getAge : () ==> nat
      getAge() == return age;
      
 (*@
-\label{getName:40}
+\label{getGender:40}
 @*)
   public pure getGender : () ==> UserGender
      getGender() == return gender;
   
-(*@
-\label{getAge:43}
-@*)
    
     --DESIGNERES FAVORITOS  
    --Adiciona designer favorito ao utilizador
 (*@
-\label{getGender:46}
+\label{insertDesigner:46}
 @*)
-  public insertDesigner : Designer`DesignerName ==> ()
-   insertDesigner(designerName) ==
-   (*@\vdmnotcovered{(}@*)
-(*@
-\label{Login:49}
-@*)
-     numberFavDesigners := (*@\vdmnotcovered{numberFavDesigners}@*) + (*@\vdmnotcovered{1}@*);
-     favDesigners := (*@\vdmnotcovered{favDesigners}@*) (*@\vdmnotcovered{union}@*) { (*@\vdmnotcovered{designerName}@*) };
+  public insertDesigner : Designer ==> ()
+   insertDesigner(d) ==
+   (
+     numberDesigners := numberDesigners + 1;
+     designers := designers ^ [d];
    );
    
-(*@
-\label{Logout:53}
-@*)
-   --remove designer  favorito do utilizador
-   public removeDesigner : Designer`DesignerName ==> ()
-   removeDesigner(designerName) == 
-   (*@\vdmnotcovered{(}@*)
-(*@
-\label{Register:57}
-@*)
-    (*@\vdmnotcovered{favDesigners}@*) := (*@\vdmnotcovered{favDesigners}@*) \ (*@\vdmnotcovered{\{}@*)(*@\vdmnotcovered{designerName}@*)};
-    numberFavDesigners := (*@\vdmnotcovered{numberFavDesigners}@*) (*@\vdmnotcovered{-}@*)(*@\vdmnotcovered{1}@*);
-  );
   --retorna nr designers favoritos
-   public pure getNumberFavDesigners : () ==> nat
-   getNumberFavDesigners() == return (*@\vdmnotcovered{numberFavDesigners}@*);
 (*@
-\label{insertDesigner:63}
+\label{getNumberFavDesigners:54}
 @*)
+   public pure getNumberFavDesigners : () ==> nat
+   getNumberFavDesigners() == return numberDesigners;
    
+(*@
+\label{getDesigners:57}
+@*)
+   public getDesigners: () ==> seq of Designer
+   getDesigners() == return designers;
    
     --EVENTOS DO UTILIZADOR
     --Adiciona evento
-  public insertEvent : Event`EventName ==> ()
-   insertEvent(eventName) ==
-   (*@\vdmnotcovered{(}@*)
-     numberEvents := numberEvents + (*@\vdmnotcovered{1}@*);
 (*@
-\label{removeDesigner:71}
+\label{insertEvent:62}
 @*)
-     events := events union (*@\vdmnotcovered{\{}@*) (*@\vdmnotcovered{eventName}@*) };
+  public insertEvent : Event ==> ()
+   insertEvent(ev) ==
+   (
+     numberEvents := numberEvents + 1;
+     events := events ^ [ev];
    );
    
-   --Remove designer  favorito do utilizador
-   public removeEvent : Event`EventName ==> ()
-   removeEvent(eventName) == 
-   (*@\vdmnotcovered{(}@*)
-(*@
-\label{getNumberFavDesigners:78}
-@*)
-    events := (*@\vdmnotcovered{events}@*) \ (*@\vdmnotcovered{\{}@*)(*@\vdmnotcovered{eventName}@*)};
-    numberEvents := (*@\vdmnotcovered{numberEvents}@*) -(*@\vdmnotcovered{1}@*);
-  );
   --Retorna nr designers favoritos
-   public pure getNumberEvents : () ==> nat
-   getNumberEvents() == return (*@\vdmnotcovered{numberEvents}@*);
 (*@
-\label{insertEvent:84}
+\label{getNumberEvents:70}
 @*)
+   public pure getNumberEvents : () ==> nat
+   getNumberEvents() == return numberEvents;
 
+(*@
+\label{getEvents:73}
+@*)
+  public getEvents: () ==> seq of Event
+   getEvents() == return events;
 
 end FashionUser
 \end{vdmpp}
@@ -127,32 +114,26 @@ Function or operation & Line & Coverage & Calls \\
 \hline
 \hyperref[FashionUser:21]{FashionUser} & 21&100.0\% & 1 \\
 \hline
-\hyperref[Login:49]{Login} & 49&0.0\% & 0 \\
+\hyperref[getAge:37]{getAge} & 37&100.0\% & 1 \\
 \hline
-\hyperref[Logout:53]{Logout} & 53&0.0\% & 0 \\
+\hyperref[getDesigners:57]{getDesigners} & 57&100.0\% & 2 \\
 \hline
-\hyperref[Register:57]{Register} & 57&0.0\% & 0 \\
+\hyperref[getEvents:73]{getEvents} & 73&100.0\% & 2 \\
 \hline
-\hyperref[getAge:43]{getAge} & 43&100.0\% & 1 \\
+\hyperref[getGender:40]{getGender} & 40&100.0\% & 1 \\
 \hline
-\hyperref[getGender:46]{getGender} & 46&100.0\% & 1 \\
+\hyperref[getName:34]{getName} & 34&100.0\% & 1 \\
 \hline
-\hyperref[getName:40]{getName} & 40&100.0\% & 1 \\
+\hyperref[getNumberEvents:70]{getNumberEvents} & 70&100.0\% & 1 \\
 \hline
-\hyperref[getNumberEvents:99]{getNumberEvents} & 99&0.0\% & 0 \\
+\hyperref[getNumberFavDesigners:54]{getNumberFavDesigners} & 54&100.0\% & 1 \\
 \hline
-\hyperref[getNumberFavDesigners:78]{getNumberFavDesigners} & 78&0.0\% & 0 \\
+\hyperref[insertDesigner:46]{insertDesigner} & 46&100.0\% & 2 \\
 \hline
-\hyperref[insertDesigner:63]{insertDesigner} & 63&0.0\% & 0 \\
-\hline
-\hyperref[insertEvent:84]{insertEvent} & 84&0.0\% & 0 \\
-\hline
-\hyperref[removeDesigner:71]{removeDesigner} & 71&0.0\% & 0 \\
-\hline
-\hyperref[removeEvent:92]{removeEvent} & 92&0.0\% & 0 \\
+\hyperref[insertEvent:62]{insertEvent} & 62&100.0\% & 2 \\
 \hline
 \hline
-FashionUser.vdmpp & & 30.1\% & 4 \\
+FashionUser.vdmpp & & 100.0\% & 14 \\
 \hline
 \end{longtable}
 

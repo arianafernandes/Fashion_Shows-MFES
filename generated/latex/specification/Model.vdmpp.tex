@@ -14,10 +14,10 @@ instance variables
  public nationality : ModelNationality;
  public address : ModelAddress;
  
-(*@
-\label{Model:16}
-@*)
  operations
+(*@
+\label{Model:17}
+@*)
   public Model : 
           ModelName * 
           ModelAge *
@@ -33,29 +33,29 @@ instance variables
   );
   
   --retorna os parametros da class Model
+(*@
+\label{getName:32}
+@*)
   public pure getName : () ==> String
     getName() == return name;
-(*@
-\label{getName:34}
-@*)
     
+(*@
+\label{getAge:35}
+@*)
    public pure getAge : () ==> nat
      getAge() == return age;
-(*@
-\label{getAge:37}
-@*)
      
+(*@
+\label{getNationality:38}
+@*)
   public pure getNationality : () ==> String
      getNationality() == return nationality;
-(*@
-\label{getNationality:40}
-@*)
      
+(*@
+\label{getAddress:41}
+@*)
   public pure getAddress : () ==> String
      getAddress() == return address;      
-(*@
-\label{getAddress:43}
-@*)
      
      
 end Model
@@ -66,15 +66,15 @@ end Model
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[Model:16]{Model} & 16&100.0\% & 4 \\
+\hyperref[Model:17]{Model} & 17&100.0\% & 4 \\
 \hline
-\hyperref[getAddress:43]{getAddress} & 43&100.0\% & 1 \\
+\hyperref[getAddress:41]{getAddress} & 41&100.0\% & 1 \\
 \hline
-\hyperref[getAge:37]{getAge} & 37&100.0\% & 1 \\
+\hyperref[getAge:35]{getAge} & 35&100.0\% & 1 \\
 \hline
-\hyperref[getName:34]{getName} & 34&100.0\% & 11 \\
+\hyperref[getName:32]{getName} & 32&100.0\% & 11 \\
 \hline
-\hyperref[getNationality:40]{getNationality} & 40&100.0\% & 1 \\
+\hyperref[getNationality:38]{getNationality} & 38&100.0\% & 1 \\
 \hline
 \hline
 Model.vdmpp & & 100.0\% & 18 \\

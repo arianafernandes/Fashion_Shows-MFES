@@ -16,10 +16,10 @@ instance variables
  private  events: seq of Event := [];
  private  numberEvents: int := 0; 
  
-(*@
-\label{FashionFestival:18}
-@*)
 operations
+(*@
+\label{FashionFestival:19}
+@*)
  public FashionFestival : 
               FestivalName *
               FestivalDateBegin * 
@@ -36,53 +36,53 @@ operations
   );
   
   --retorna os parametros da class event
+(*@
+\label{getName:35}
+@*)
   public pure getName : () ==> String
     getName() == return name;
     
+(*@
+\label{getDateBegin:38}
+@*)
    public pure getDateBegin : () ==> String
      getDateBegin() == return dateBegin;
-(*@
-\label{getName:40}
-@*)
   
+(*@
+\label{getDateEnd:41}
+@*)
   public pure getDateEnd : () ==> String
      getDateEnd() == return dateEnd;
-(*@
-\label{getDateBegin:43}
-@*)
      
+(*@
+\label{getLocal:44}
+@*)
   public pure getLocal : () ==> String
      getLocal() == return local;
-(*@
-\label{getDateEnd:46}
-@*)
   
+(*@
+\label{getEvents:47}
+@*)
   public pure getEvents : () ==> seq of Event
      getEvents() == return events;
-(*@
-\label{getLocal:49}
-@*)
      
  --Adiciona designer ao evento
+(*@
+\label{insertEvent:51}
+@*)
  public insertEvent : Event ==> ()
-(*@
-\label{getEvents:52}
-@*)
   insertEvent(ev) ==
-(*@
-\label{insertEvent:53}
-@*)
   (
     events := [ev] ^ events;
     numberEvents := numberEvents + 1;
   );
   
  --retorna nr designers do evento
+(*@
+\label{getNumberEvents:59}
+@*)
   public pure getNumberEvents : () ==> int
   getNumberEvents() == return numberEvents;
-(*@
-\label{getNumberEvents:61}
-@*)
   
 end FashionFestival
 \end{vdmpp}
@@ -92,27 +92,21 @@ end FashionFestival
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[FashionFestival:18]{FashionFestival} & 18&100.0\% & 2 \\
+\hyperref[FashionFestival:19]{FashionFestival} & 19&100.0\% & 2 \\
 \hline
-\hyperref[getDateBegin:43]{getDateBegin} & 43&100.0\% & 1 \\
+\hyperref[getDateBegin:38]{getDateBegin} & 38&100.0\% & 1 \\
 \hline
-\hyperref[getDateEnd:46]{getDateEnd} & 46&100.0\% & 1 \\
+\hyperref[getDateEnd:41]{getDateEnd} & 41&100.0\% & 1 \\
 \hline
-\hyperref[getEvents:52]{getEvents} & 52&100.0\% & 2 \\
+\hyperref[getEvents:47]{getEvents} & 47&100.0\% & 2 \\
 \hline
-\hyperref[getLocal:49]{getLocal} & 49&100.0\% & 1 \\
+\hyperref[getLocal:44]{getLocal} & 44&100.0\% & 1 \\
 \hline
-\hyperref[getName:40]{getName} & 40&100.0\% & 1 \\
+\hyperref[getName:35]{getName} & 35&100.0\% & 1 \\
 \hline
-\hyperref[getNumberEvents:61]{getNumberEvents} & 61&100.0\% & 2 \\
+\hyperref[getNumberEvents:59]{getNumberEvents} & 59&100.0\% & 2 \\
 \hline
-\hyperref[insertEvent:53]{insertEvent} & 53&100.0\% & 3 \\
-\hline
-\hyperref[printEvents:83]{printEvents} & 83&0.0\% & 0 \\
-\hline
-\hyperref[printFashionFestival:96]{printFashionFestival} & 96&0.0\% & 0 \\
-\hline
-\hyperref[printFestivalInf:65]{printFestivalInf} & 65&0.0\% & 0 \\
+\hyperref[insertEvent:51]{insertEvent} & 51&100.0\% & 3 \\
 \hline
 \hline
 FashionFestival.vdmpp & & 100.0\% & 13 \\

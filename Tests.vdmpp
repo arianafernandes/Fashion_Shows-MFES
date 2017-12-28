@@ -139,7 +139,23 @@ operations
     assertEqual("Joao", u0.getName());
     assertEqual(30, u0.getAge());    
     assertEqual(<Homem>, u0.getGender());
-       
+    
+      -- EXECUTE InsertFavoriteDesginer()
+     IO`print("TestFashionUser.vdmpp (2/10): InsertFavoriteDesginer() started...\n");
+     u0.insertDesigner(d0);
+     u0.insertDesigner(d1);
+     assertEqual(2,u0.getNumberFavDesigners());
+     assertEqual(d0.getName(), (u0.getDesigners() (1)).getName());    
+     assertEqual(d1.getName(), (u0.getDesigners() (2)).getName());    
+     
+      -- EXECUTE UserEvents()
+     IO`print("TestFashionUser.vdmpp (2/10): UserEvents() started...\n");
+     u0.insertEvent(ev0);
+     u0.insertEvent(ev1);
+     assertEqual(2,u0.getNumberEvents());
+     assertEqual(ev0.getName(), (u0.getEvents() (1)).getName());    
+     assertEqual(ev1.getName(), (u0.getEvents() (2)).getName());    
+     
     -- PRINT SUCCESS MESSAGE
     IO`print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
   );

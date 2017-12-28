@@ -16,10 +16,10 @@ instance variables
  public address : DesignerAddress;
  public style : DesignerStyle;
  
-(*@
-\label{Designer:18}
-@*)
  operations
+(*@
+\label{Designer:19}
+@*)
   public Designer : 
           DesignerName * 
           DesignerAge *
@@ -37,35 +37,35 @@ instance variables
   );
   
   --retorna os parametros da class event
+(*@
+\label{getName:36}
+@*)
   public pure getName : () ==> String
     getName() == return name;
-(*@
-\label{getName:38}
-@*)
     
+(*@
+\label{getAge:39}
+@*)
    public pure getAge : () ==> nat
      getAge() == return age;
-(*@
-\label{getAge:41}
-@*)
      
+(*@
+\label{getNationality:42}
+@*)
   public pure getNationality : () ==> String
      getNationality() == return nationality;
-(*@
-\label{getNationality:44}
-@*)
      
+(*@
+\label{getAddress:45}
+@*)
   public pure getAddress : () ==> String
      getAddress() == return address;      
-(*@
-\label{getAddress:47}
-@*)
      
+(*@
+\label{getStyle:48}
+@*)
   public pure getStyle : () ==> String
      getStyle() == return style;
-(*@
-\label{getStyle:50}
-@*)
      
 end Designer
 \end{vdmpp}
@@ -75,20 +75,20 @@ end Designer
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[Designer:18]{Designer} & 18&100.0\% & 2 \\
+\hyperref[Designer:19]{Designer} & 19&100.0\% & 2 \\
 \hline
-\hyperref[getAddress:47]{getAddress} & 47&100.0\% & 1 \\
+\hyperref[getAddress:45]{getAddress} & 45&100.0\% & 1 \\
 \hline
-\hyperref[getAge:41]{getAge} & 41&100.0\% & 1 \\
+\hyperref[getAge:39]{getAge} & 39&100.0\% & 1 \\
 \hline
-\hyperref[getName:38]{getName} & 38&100.0\% & 5 \\
+\hyperref[getName:36]{getName} & 36&100.0\% & 9 \\
 \hline
-\hyperref[getNationality:44]{getNationality} & 44&100.0\% & 1 \\
+\hyperref[getNationality:42]{getNationality} & 42&100.0\% & 1 \\
 \hline
-\hyperref[getStyle:50]{getStyle} & 50&100.0\% & 1 \\
+\hyperref[getStyle:48]{getStyle} & 48&100.0\% & 1 \\
 \hline
 \hline
-Designer.vdmpp & & 100.0\% & 11 \\
+Designer.vdmpp & & 100.0\% & 15 \\
 \hline
 \end{longtable}
 

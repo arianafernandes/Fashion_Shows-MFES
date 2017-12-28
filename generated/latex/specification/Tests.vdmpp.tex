@@ -10,13 +10,13 @@ instance variables
  private static designers: seq of Designer := [];
  private static models: seq of Model := [];
  private static users: seq of FashionUser := [];
-(*@
-\label{run:12}
-@*)
  
  
 operations
 
+(*@
+\label{run:16}
+@*)
   public run : () ==> ()
   run() ==
   (
@@ -132,51 +132,67 @@ operations
     --MODEL
     -- EXECUTE testParams()
     IO`print("TestModel.vdmpp (2/10): ModelParams() started...\n");
-(*@
-\label{getFestivals:131}
-@*)
     assertEqual("Sara Sampaio", m0.getName());
     assertEqual(24, m0.getAge());    
     assertEqual("Portuguesa", m0.getNationality()); 
-(*@
-\label{getEvents:134}
-@*)
     assertEqual("New York", m0.getAddress()); 
     
     --USER
-(*@
-\label{getDesigners:137}
-@*)
     -- EXECUTE testParams()
     IO`print("TestFashionUser.vdmpp (2/10): UserParams() started...\n");
     assertEqual("Joao", u0.getName());
-(*@
-\label{getModels:140}
-@*)
     assertEqual(30, u0.getAge());    
     assertEqual(<Homem>, u0.getGender());
-       
-(*@
-\label{getUsers:143}
-@*)
+    
+      -- EXECUTE InsertFavoriteDesginer()
+     IO`print("TestFashionUser.vdmpp (2/10): InsertFavoriteDesginer() started...\n");
+     u0.insertDesigner(d0);
+     u0.insertDesigner(d1);
+     assertEqual(2,u0.getNumberFavDesigners());
+     assertEqual(d0.getName(), (u0.getDesigners() (1)).getName());    
+     assertEqual(d1.getName(), (u0.getDesigners() (2)).getName());    
+     
+      -- EXECUTE UserEvents()
+     IO`print("TestFashionUser.vdmpp (2/10): UserEvents() started...\n");
+     u0.insertEvent(ev0);
+     u0.insertEvent(ev1);
+     assertEqual(2,u0.getNumberEvents());
+     assertEqual(ev0.getName(), (u0.getEvents() (1)).getName());    
+     assertEqual(ev1.getName(), (u0.getEvents() (2)).getName());    
+     
     -- PRINT SUCCESS MESSAGE
     IO`print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
   );
   
+(*@
+\label{getFestivals:163}
+@*)
   public  static getFestivals : () ==> seq of FashionFestival
   getFestivals() == return (*@\vdmnotcovered{festivals}@*);
   
+(*@
+\label{getEvents:166}
+@*)
   public  static getEvents : () ==> seq of Event
-  getEvents() == return (*@\vdmnotcovered{events}@*);
+  getEvents() == (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{events}@*);
   
+(*@
+\label{getDesigners:169}
+@*)
   public  static getDesigners : () ==> seq of Designer
   getDesigners() == (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{designers}@*);
    
+(*@
+\label{getModels:172}
+@*)
  public  static getModels : () ==> seq of Model
   getModels() == (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{models}@*);
   
+(*@
+\label{getUsers:175}
+@*)
   public  static getUsers : () ==> seq of FashionUser
-  getUsers() == (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{users}@*);
+  getUsers() == return (*@\vdmnotcovered{users}@*);
   
 end Tests
 \end{vdmpp}
@@ -186,20 +202,20 @@ end Tests
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[getDesigners:137]{getDesigners} & 137&0.0\% & 0 \\
+\hyperref[getDesigners:169]{getDesigners} & 169&0.0\% & 0 \\
 \hline
-\hyperref[getEvents:134]{getEvents} & 134&0.0\% & 0 \\
+\hyperref[getEvents:166]{getEvents} & 166&0.0\% & 0 \\
 \hline
-\hyperref[getFestivals:131]{getFestivals} & 131&0.0\% & 0 \\
+\hyperref[getFestivals:163]{getFestivals} & 163&0.0\% & 0 \\
 \hline
-\hyperref[getModels:140]{getModels} & 140&0.0\% & 0 \\
+\hyperref[getModels:172]{getModels} & 172&0.0\% & 0 \\
 \hline
-\hyperref[getUsers:143]{getUsers} & 143&0.0\% & 0 \\
+\hyperref[getUsers:175]{getUsers} & 175&0.0\% & 0 \\
 \hline
-\hyperref[run:12]{run} & 12&100.0\% & 1 \\
+\hyperref[run:16]{run} & 16&100.0\% & 1 \\
 \hline
 \hline
-Tests.vdmpp & & 97.5\% & 1 \\
+Tests.vdmpp & & 97.8\% & 1 \\
 \hline
 \end{longtable}
 
