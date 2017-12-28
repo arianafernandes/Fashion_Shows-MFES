@@ -8,6 +8,7 @@ public class App {
 	private static Scanner inputScanner = new Scanner(System.in);
 	private static int optionFestival;
 	private static int optionEvent;
+
 	
 	private static void printMenuInitial()
 	{
@@ -24,6 +25,7 @@ public class App {
 		}
 		else{
 			System.out.println("SAIR");
+			System.exit(0);
 	}
 	}
 	private static void printMenuFestival(int optionFestival){
@@ -34,7 +36,7 @@ public class App {
 		System.out.println("\nPlease select a event for more informations:");
 		optionEvent = inputScanner.nextInt();
 		if(optionEvent != 0){
-			//TestApp.getEventInf(optionEvent);
+			TestApp.getEventInf(optionFestival, optionEvent);
 			//printMenuEvent(optionEvent);
 		}
 		else{

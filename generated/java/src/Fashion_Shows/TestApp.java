@@ -215,12 +215,37 @@ public class TestApp {
     }
   }
 
+  public static VDMSeq getModelsByEvent(final Number optionFestival, final Number optionEvent) {
+
+    return ((Event) Utils.get(getEventsByFestival2(optionFestival), optionEvent)).getModels();
+  }
+
+  public static void getModelsNameByEvent(final Number optionFestival, final Number optionEvent) {
+
+    IO.print("\n");
+    long toVar_11 =
+        ((Event) Utils.get(getEventsByFestival2(optionFestival), optionEvent)).getModels().size();
+
+    for (Long counter = 1L; counter <= toVar_11; counter++) {
+      IO.print(counter);
+      IO.print(": ");
+      IO.print(
+          ((Model)
+                  Utils.get(
+                      ((Event) Utils.get(getEventsByFestival2(optionFestival), optionEvent))
+                          .getModels(),
+                      counter))
+              .getName());
+      IO.print("\n");
+    }
+  }
+
   public static void printModels() {
 
     IO.print("Models List:\n");
-    long toVar_11 = Tests.getModels().size();
+    long toVar_12 = Tests.getModels().size();
 
-    for (Long counter = 1L; counter <= toVar_11; counter++) {
+    for (Long counter = 1L; counter <= toVar_12; counter++) {
       IO.print("\n");
       IO.print("Designer Name: ");
       IO.print(((Model) Utils.get(Tests.getModels(), counter)).getName());
@@ -240,9 +265,9 @@ public class TestApp {
   public static void printUsers() {
 
     IO.print("Users List\n");
-    long toVar_12 = Tests.getUsers().size();
+    long toVar_13 = Tests.getUsers().size();
 
-    for (Long counter = 1L; counter <= toVar_12; counter++) {
+    for (Long counter = 1L; counter <= toVar_13; counter++) {
       IO.print("\n");
       IO.print("User Name: ");
       IO.print(((FashionUser) Utils.get(Tests.getUsers(), counter)).getName());

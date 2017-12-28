@@ -104,10 +104,11 @@ public class Tests extends MyTestCase {
     assertEqual(1L, ev1.getNumberDesigners());
     IO.print("TestEvent.vdmpp (3/10): testInsertModelAtEvent() started...\n");
     ev0.insertModel(m0);
+    ev0.insertModel(m1);
     ev1.insertModel(m1);
     ev1.insertModel(m2);
     ev2.insertModel(m3);
-    assertEqual(1L, ev0.getNumberModels());
+    assertEqual(2L, ev0.getNumberModels());
     assertEqual(2L, ev1.getNumberModels());
     assertEqual(1L, ev2.getNumberModels());
     IO.print("TestDesigner.vdmpp (2/10): DesignerParams() started...\n");
@@ -126,7 +127,7 @@ public class Tests extends MyTestCase {
     assertEqual(30L, u0.getAge());
     assertEqual(Fashion_Shows.quotes.HomemQuote.getInstance(), ((Object) u0.getGender()));
     IO.print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
-    TestApp.getEventInf(1L, 2L);
+    TestApp.getModelsNameByEvent(1L, 2L);
   }
 
   public static VDMSeq getFestivals() {

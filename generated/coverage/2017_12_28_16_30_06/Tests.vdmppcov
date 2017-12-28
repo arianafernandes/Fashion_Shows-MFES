@@ -90,11 +90,10 @@ operations
      -- EXECUTE testInsertModelAtEvent()
     IO`print("TestEvent.vdmpp (3/10): testInsertModelAtEvent() started...\n");
     ev0.insertModel(m0);
-    ev0.insertModel(m1);
     ev1.insertModel(m1);
     ev1.insertModel(m2);
     ev2.insertModel(m3);
-    assertEqual(2,ev0.getNumberModels());
+    assertEqual(1,ev0.getNumberModels());
     assertEqual(2,ev1.getNumberModels());
     assertEqual(1,ev2.getNumberModels());
     
