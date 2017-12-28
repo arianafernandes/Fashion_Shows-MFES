@@ -5,6 +5,12 @@ import org.overture.codegen.runtime.*;
 
 @SuppressWarnings("all")
 public class Tests extends MyTestCase {
+  private static VDMSeq festivals = SeqUtil.seq();
+  private static VDMSeq events = SeqUtil.seq();
+  private static VDMSeq designers = SeqUtil.seq();
+  private static VDMSeq models = SeqUtil.seq();
+  private static VDMSeq users = SeqUtil.seq();
+
   public void run() {
 
     FashionFestival f0 =
@@ -46,6 +52,17 @@ public class Tests extends MyTestCase {
     Model m2 = new Model("Naomi Campbell", 47L, "Inglesa", "Inglaterra");
     Model m3 = new Model("Kate Moss", 43L, "Inglesa", "Inglaterra");
     FashionUser u0 = new FashionUser("Joao", 30L, Fashion_Shows.quotes.HomemQuote.getInstance());
+    festivals = SeqUtil.conc(Utils.copy(Tests.festivals), SeqUtil.seq(f0));
+    events = SeqUtil.conc(Utils.copy(Tests.events), SeqUtil.seq(ev0));
+    events = SeqUtil.conc(Utils.copy(Tests.events), SeqUtil.seq(ev1));
+    events = SeqUtil.conc(Utils.copy(Tests.events), SeqUtil.seq(ev2));
+    designers = SeqUtil.conc(Utils.copy(Tests.designers), SeqUtil.seq(d0));
+    designers = SeqUtil.conc(Utils.copy(Tests.designers), SeqUtil.seq(d1));
+    models = SeqUtil.conc(Utils.copy(Tests.models), SeqUtil.seq(m0));
+    models = SeqUtil.conc(Utils.copy(Tests.models), SeqUtil.seq(m1));
+    models = SeqUtil.conc(Utils.copy(Tests.models), SeqUtil.seq(m2));
+    models = SeqUtil.conc(Utils.copy(Tests.models), SeqUtil.seq(m3));
+    users = SeqUtil.conc(Utils.copy(Tests.users), SeqUtil.seq(u0));
     IO.print("TestEvent.vdmpp (1/10): testInit() started...\n");
     assertNotNull(f0);
     assertNotNull(ev0);
@@ -112,10 +129,46 @@ public class Tests extends MyTestCase {
     ev2.printEvent();
   }
 
+  public static VDMSeq getFestivals() {
+
+    return Utils.copy(Tests.festivals);
+  }
+
+  public static VDMSeq getEvents() {
+
+    return Utils.copy(Tests.events);
+  }
+
+  public static VDMSeq getDesigners() {
+
+    return Utils.copy(Tests.designers);
+  }
+
+  public static VDMSeq getModels() {
+
+    return Utils.copy(Tests.models);
+  }
+
+  public static VDMSeq getUsers() {
+
+    return Utils.copy(Tests.users);
+  }
+
   public Tests() {}
 
   public String toString() {
 
-    return "Tests{}";
+    return "Tests{"
+        + "festivals := "
+        + Utils.toString(festivals)
+        + ", events := "
+        + Utils.toString(events)
+        + ", designers := "
+        + Utils.toString(designers)
+        + ", models := "
+        + Utils.toString(models)
+        + ", users := "
+        + Utils.toString(users)
+        + "}";
   }
 }

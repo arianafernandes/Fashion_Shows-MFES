@@ -1,7 +1,6 @@
 class Tests is subclass of MyTestCase
 
 instance variables
-	private static festivals: seq of FashionFestival := [];
 	private static events: seq of Event := [];
 	private static designers: seq of Designer := [];
 	private static models: seq of Model := [];
@@ -26,7 +25,6 @@ operations
  		dcl m3: Model:= new Model("Kate Moss",43,"Inglesa","Inglaterra");
  		dcl u0: FashionUser:= new FashionUser("Joao", 30, <Homem>);
  		
- 		festivals := festivals ^ [f0];
  		events := events ^ [ev0];
  		events := events ^ [ev1];
  		events := events ^ [ev2];
@@ -127,9 +125,6 @@ operations
     ev1.printEvent();
     ev2.printEvent();
   );
-  
-  public  static getFestivals : () ==> seq of FashionFestival
-  getFestivals() == return festivals;
   
   public  static getEvents : () ==> seq of Event
   getEvents() == return events;
