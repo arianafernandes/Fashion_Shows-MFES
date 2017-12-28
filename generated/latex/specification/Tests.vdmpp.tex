@@ -1,50 +1,54 @@
+\begin{vdmpp}[breaklines=true]
 class Tests is subclass of MyTestCase
 
 types
 public String = seq of char;
 
 instance variables
-	private static festivals: seq of FashionFestival := [];
-	private static events: seq of Event := [];
-	private static designers: seq of Designer := [];
-	private static models: seq of Model := [];
-	private static users: seq of FashionUser := [];
-	
-	
+ private static festivals: seq of FashionFestival := [];
+ private static events: seq of Event := [];
+ private static designers: seq of Designer := [];
+ private static models: seq of Model := [];
+ private static users: seq of FashionUser := [];
+(*@
+\label{run:12}
+@*)
+ 
+ 
 operations
 
   public run : () ==> ()
   run() ==
   (
-  	
+   
     -- VARIABLE DECLARATIONS
-  	dcl f0: FashionFestival := new FashionFestival("Porto Fashion Week", "04/05/2018", "10/05/2018", "Porto");
-  	dcl f1: FashionFestival := new FashionFestival("Madrid Weekend", "26/08/2018", "30/08/2018", "Madrid");
-  	dcl ev0: Event := new Event("BaixaShow", "04/05/2018", "Baixa", 12, 3,"flores", <Homem>, <Primavera_Verao>);		
- 	  dcl ev1: Event := new Event("Fashion Night Out Porto", "10/06/2018","Baixa",20,2,"GeometricForms",<Unisexo>,<Primavera_Verao>);
-	  dcl ev2: Event := new Event("Black Friday","12/06/2018","Vila do Conde",10,4,"Fashion Sales",<Unisexo>,<Outono_Inverno>);									
+   dcl f0: FashionFestival := new FashionFestival("Porto Fashion Week", "04/05/2018", "10/05/2018", "Porto");
+   dcl f1: FashionFestival := new FashionFestival("Madrid Weekend", "26/08/2018", "30/08/2018", "Madrid");
+   dcl ev0: Event := new Event("BaixaShow", "04/05/2018", "Baixa", 12, 3,"flores", <Homem>, <Primavera_Verao>);  
+    dcl ev1: Event := new Event("Fashion Night Out Porto", "10/06/2018","Baixa",20,2,"GeometricForms",<Unisexo>,<Primavera_Verao>);
+   dcl ev2: Event := new Event("Black Friday","12/06/2018","Vila do Conde",10,4,"Fashion Sales",<Unisexo>,<Outono_Inverno>);         
     dcl d0: Designer:= new Designer("Yves S. L.", 72, "Frances", "Paris", "Classico");
     dcl d1: Designer:= new Designer("Ralph Lauren", 69, "Frances", "Paris", "Classico");
-    dcl m0: Model:= new Model("Sara Sampaio", 24, "Portuguesa", "New York");												 
+    dcl m0: Model:= new Model("Sara Sampaio", 24, "Portuguesa", "New York");             
     dcl m1: Model:= new Model("Claudia Schiffer",47,"Alemã","Alemanha");
- 		dcl m2: Model:= new Model("Naomi Campbell",47,"Inglesa","Inglaterra");
- 		dcl m3: Model:= new Model("Kate Moss",43,"Inglesa","Inglaterra");
- 		dcl u0: FashionUser:= new FashionUser("Joao", 30, <Homem>);
- 		
- 		festivals := festivals ^ [f0];
- 		festivals := festivals ^ [f1];
- 		events := events ^ [ev0];
- 		events := events ^ [ev1];
- 		events := events ^ [ev2];
- 		designers := designers ^ [d0];
- 		designers := designers ^ [d1];
- 		models := models ^ [m0];
- 		models := models ^ [m1];
- 		models := models ^ [m2];
- 		models := models ^ [m3];
- 		users := users ^ [u0];
- 		
- 		
+   dcl m2: Model:= new Model("Naomi Campbell",47,"Inglesa","Inglaterra");
+   dcl m3: Model:= new Model("Kate Moss",43,"Inglesa","Inglaterra");
+   dcl u0: FashionUser:= new FashionUser("Joao", 30, <Homem>);
+   
+   festivals := festivals ^ [f0];
+   festivals := festivals ^ [f1];
+   events := events ^ [ev0];
+   events := events ^ [ev1];
+   events := events ^ [ev2];
+   designers := designers ^ [d0];
+   designers := designers ^ [d1];
+   models := models ^ [m0];
+   models := models ^ [m1];
+   models := models ^ [m2];
+   models := models ^ [m3];
+   users := users ^ [u0];
+   
+   
     -- EXECUTE testInit()
     IO`print("TestEvent.vdmpp (1/10): testInit() started...\n");
     assertNotNull(f0);
@@ -68,17 +72,17 @@ operations
     assertEqual("04/05/2018", f0.getDateBegin());
     assertEqual("10/05/2018", f0.getDateEnd());
     assertEqual("Porto", f0.getLocal());
-	  
-	  -- EXECUTE testInsertEventAtFestival()
+   
+   -- EXECUTE testInsertEventAtFestival()
     IO`print("TestFashionFestival.vdmpp (3/10): testInsertEventAtFestival() started...\n");
     f0.insertEvent(ev0);
     f0.insertEvent(ev2);
     f1.insertEvent(ev1);
     
-		assertEqual(2,f0.getNumberEvents());
-		assertEqual(ev0.getName(),((f0.getEvents() (2)).getName()));
-		assertEqual(1,f1.getNumberEvents());
-		assertEqual(ev1.getName(),((f1.getEvents() (1)).getName()));
+  assertEqual(2,f0.getNumberEvents());
+  assertEqual(ev0.getName(),((f0.getEvents() (2)).getName()));
+  assertEqual(1,f1.getNumberEvents());
+  assertEqual(ev1.getName(),((f1.getEvents() (1)).getName()));
     
     -- EXECUTE testEventParams()
     IO`print("TestEvent.vdmpp (3/10): testEventParams() started...\n");
@@ -128,35 +132,74 @@ operations
     --MODEL
     -- EXECUTE testParams()
     IO`print("TestModel.vdmpp (2/10): ModelParams() started...\n");
+(*@
+\label{getFestivals:131}
+@*)
     assertEqual("Sara Sampaio", m0.getName());
     assertEqual(24, m0.getAge());    
     assertEqual("Portuguesa", m0.getNationality()); 
+(*@
+\label{getEvents:134}
+@*)
     assertEqual("New York", m0.getAddress()); 
     
     --USER
+(*@
+\label{getDesigners:137}
+@*)
     -- EXECUTE testParams()
     IO`print("TestFashionUser.vdmpp (2/10): UserParams() started...\n");
     assertEqual("Joao", u0.getName());
+(*@
+\label{getModels:140}
+@*)
     assertEqual(30, u0.getAge());    
     assertEqual(<Homem>, u0.getGender());
        
+(*@
+\label{getUsers:143}
+@*)
     -- PRINT SUCCESS MESSAGE
     IO`print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
   );
   
   public  static getFestivals : () ==> seq of FashionFestival
-  getFestivals() == return festivals;
+  getFestivals() == return (*@\vdmnotcovered{festivals}@*);
   
   public  static getEvents : () ==> seq of Event
-  getEvents() == return events;
+  getEvents() == return (*@\vdmnotcovered{events}@*);
   
   public  static getDesigners : () ==> seq of Designer
-  getDesigners() == return designers;
+  getDesigners() == (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{designers}@*);
    
-	public  static getModels : () ==> seq of Model
-  getModels() == return models;
+ public  static getModels : () ==> seq of Model
+  getModels() == (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{models}@*);
   
   public  static getUsers : () ==> seq of FashionUser
-  getUsers() == return users;
+  getUsers() == (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{users}@*);
   
 end Tests
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[getDesigners:137]{getDesigners} & 137&0.0\% & 0 \\
+\hline
+\hyperref[getEvents:134]{getEvents} & 134&0.0\% & 0 \\
+\hline
+\hyperref[getFestivals:131]{getFestivals} & 131&0.0\% & 0 \\
+\hline
+\hyperref[getModels:140]{getModels} & 140&0.0\% & 0 \\
+\hline
+\hyperref[getUsers:143]{getUsers} & 143&0.0\% & 0 \\
+\hline
+\hyperref[run:12]{run} & 12&100.0\% & 1 \\
+\hline
+\hline
+Tests.vdmpp & & 97.5\% & 1 \\
+\hline
+\end{longtable}
+

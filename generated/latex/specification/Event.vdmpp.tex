@@ -1,0 +1,208 @@
+\begin{vdmpp}[breaklines=true]
+class Event
+ 
+types
+ public String = seq of char; 
+ public EventName = String;
+ public EventDate = String;
+ public EventLocal = String;
+ public EventTime = nat;
+ public EventDuration = nat;
+ public EventTheme = String;
+ public EventGender = <Homem> | <Mulher> | <Unisexo>;
+  public EventCollection = <Outono_Inverno> | <Primavera_Verao>;
+
+instance variables
+ public  name : EventName := "";
+ public  date : EventDate := "";
+ public  local : EventLocal := "";
+ public  time : EventTime := 0;
+ public  duration : EventDuration := 0;
+ public  theme : EventTheme := "";
+ public  gender: EventGender := <Homem>;
+ public  collection: EventCollection := <Outono_Inverno>;
+ --Lista de designers do evento
+ private  designers: seq of Designer := [];
+ private  numberDesigners: int := 0;
+ --Lista de modelos do evento
+ private  models: seq of Model := [];
+ private  numberModels: int := 0;
+ 
+(*@
+\label{Event:30}
+@*)
+operations
+ public Event : 
+         EventName * 
+         EventDate *
+         EventLocal *
+         EventTime *
+         EventDuration *
+         EventTheme *
+         EventGender *  
+         EventCollection ==> Event
+ Event(nm, dt, lc, hr , dr, tm, gr, cl) == (
+  name := nm;
+  date := dt;
+  local := lc;
+  time := hr;
+  duration := dr;
+  theme := tm;
+  gender := gr;
+  collection := cl;
+  return self
+ );
+ 
+ --retorna os parametros da class event
+  public pure getName : () ==> String
+    getName() == return name;
+    
+   public pure getDate : () ==> String
+     getDate() == return date;
+(*@
+\label{getName:58}
+@*)
+     
+  public pure getLocal : () ==> String
+     getLocal() == return local;
+(*@
+\label{getDate:61}
+@*)
+     
+  public pure getTime : () ==> nat
+     getTime() == return time;      
+(*@
+\label{getLocal:64}
+@*)
+     
+  public pure getDuration : () ==> nat
+     getDuration() == return duration;
+(*@
+\label{getTime:67}
+@*)
+     
+  public pure getTheme : () ==> String
+     getTheme() == return theme;
+(*@
+\label{getDuration:70}
+@*)
+     
+  public pure getGender : () ==> EventGender
+     getGender() == return gender;
+(*@
+\label{getTheme:73}
+@*)
+     
+  public pure getCollection : () ==> EventCollection
+     getCollection() == return collection;
+(*@
+\label{getGender:76}
+@*)
+  
+  public pure getModels : () ==> seq of Model
+     getModels() == return models;
+(*@
+\label{getCollection:79}
+@*)
+     
+  public pure getDesigners : () ==> seq of Designer
+     getDesigners() == return designers;
+(*@
+\label{getModels:82}
+@*)
+ 
+ --DESIGNERS DO EVENTO 
+(*@
+\label{insertDesigner:84}
+@*)
+ --Adiciona designer ao evento
+(*@
+\label{getDesigners:85}
+@*)
+ public insertDesigner : Designer ==> ()
+  insertDesigner(dg) ==
+  (
+    numberDesigners := numberDesigners + 1;
+    designers := designers ^  [dg];
+  );
+  
+(*@
+\label{getNumberDesigners:92}
+@*)
+ --retorna nr designers do evento
+  public pure getNumberDesigners : () ==> int
+  getNumberDesigners() == return numberDesigners;
+  
+  --MODELOS DO EVENTO
+(*@
+\label{insertModel:97}
+@*)
+  --Adiciona model ao evento
+ public insertModel : Model ==> ()
+  insertModel(md) ==
+  (
+    numberModels := numberModels + 1;
+    models := models ^  [md];
+  );
+  
+(*@
+\label{getNumberModels:105}
+@*)
+  --retorna nr designers do evento
+  public pure getNumberModels : () ==> int
+  getNumberModels() == return numberModels;
+(*@
+\label{printEventInf:108}
+@*)
+ 
+end Event
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[Event:30]{Event} & 30&100.0\% & 3 \\
+\hline
+\hyperref[getCollection:79]{getCollection} & 79&100.0\% & 1 \\
+\hline
+\hyperref[getDate:61]{getDate} & 61&100.0\% & 1 \\
+\hline
+\hyperref[getDesigners:85]{getDesigners} & 85&100.0\% & 2 \\
+\hline
+\hyperref[getDuration:70]{getDuration} & 70&100.0\% & 1 \\
+\hline
+\hyperref[getGender:76]{getGender} & 76&100.0\% & 1 \\
+\hline
+\hyperref[getLocal:64]{getLocal} & 64&100.0\% & 1 \\
+\hline
+\hyperref[getModels:82]{getModels} & 82&100.0\% & 5 \\
+\hline
+\hyperref[getName:58]{getName} & 58&100.0\% & 5 \\
+\hline
+\hyperref[getNumberDesigners:92]{getNumberDesigners} & 92&100.0\% & 2 \\
+\hline
+\hyperref[getNumberModels:105]{getNumberModels} & 105&100.0\% & 3 \\
+\hline
+\hyperref[getTheme:73]{getTheme} & 73&100.0\% & 1 \\
+\hline
+\hyperref[getTime:67]{getTime} & 67&100.0\% & 1 \\
+\hline
+\hyperref[insertDesigner:84]{insertDesigner} & 84&100.0\% & 2 \\
+\hline
+\hyperref[insertModel:97]{insertModel} & 97&100.0\% & 5 \\
+\hline
+\hyperref[printDesigners:137]{printDesigners} & 137&0.0\% & 0 \\
+\hline
+\hyperref[printEvent:183]{printEvent} & 183&0.0\% & 0 \\
+\hline
+\hyperref[printEventInf:108]{printEventInf} & 108&0.0\% & 0 \\
+\hline
+\hyperref[printModels:162]{printModels} & 162&0.0\% & 0 \\
+\hline
+\hline
+Event.vdmpp & & 100.0\% & 34 \\
+\hline
+\end{longtable}
+

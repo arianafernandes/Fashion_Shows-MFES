@@ -21,35 +21,12 @@ public class TestApp {
     new Tests().run();
   }
 
-  public static void printFestivals() {
-
-    IO.print("\nPrint Festivals");
-    long toVar_4 = Tests.getFestivals().size();
-
-    for (Long counter = 1L; counter <= toVar_4; counter++) {
-      IO.print("\n");
-      IO.print("Festival Name: ");
-      IO.print(((FashionFestival) Utils.get(Tests.getFestivals(), counter)).getName());
-      IO.print("\n");
-      IO.print("Date Begin: ");
-      IO.print(((FashionFestival) Utils.get(Tests.getFestivals(), counter)).getDateBegin());
-      IO.print("\n");
-      IO.print("Date End: ");
-      IO.print(((FashionFestival) Utils.get(Tests.getFestivals(), counter)).getDateEnd());
-      IO.print("\n");
-      IO.print("Local: ");
-      IO.print(((FashionFestival) Utils.get(Tests.getFestivals(), counter)).getLocal());
-      IO.print("\n");
-      IO.print("\n");
-    }
-  }
-
   public static void printFestivalsName() {
 
     IO.print("\nPrint Festivals");
-    long toVar_5 = Tests.getFestivals().size();
+    long toVar_1 = Tests.getFestivals().size();
 
-    for (Long counter = 1L; counter <= toVar_5; counter++) {
+    for (Long counter = 1L; counter <= toVar_1; counter++) {
       IO.print("\n");
       IO.print(counter);
       IO.print(((FashionFestival) Utils.get(Tests.getFestivals(), counter)).getName());
@@ -76,46 +53,12 @@ public class TestApp {
     IO.print("\n");
   }
 
-  public static void printEvents() {
-
-    IO.print("Events List: \n");
-    long toVar_6 = Tests.getEvents().size();
-
-    for (Long counter = 1L; counter <= toVar_6; counter++) {
-      IO.print("Event ");
-      IO.print(((Event) Utils.get(Tests.getEvents(), counter)).getName());
-      IO.print("\n");
-      IO.print("Date: ");
-      IO.print(((Event) Utils.get(Tests.getEvents(), counter)).getDate());
-      IO.print("\n");
-      IO.print("Local: ");
-      IO.print(((Event) Utils.get(Tests.getEvents(), counter)).getLocal());
-      IO.print("\n");
-      IO.print("Time: ");
-      IO.print(((Event) Utils.get(Tests.getEvents(), counter)).getTime());
-      IO.print("\n");
-      IO.print("Duration: ");
-      IO.print(((Event) Utils.get(Tests.getEvents(), counter)).getDuration());
-      IO.print("\n");
-      IO.print("Theme: ");
-      IO.print(((Event) Utils.get(Tests.getEvents(), counter)).getTheme());
-      IO.print("\n");
-      IO.print("Gender: ");
-      IO.print(((Object) ((Event) Utils.get(Tests.getEvents(), counter)).getGender()));
-      IO.print("\n");
-      IO.print("Collection: ");
-      IO.print(((Object) ((Event) Utils.get(Tests.getEvents(), counter)).getCollection()));
-      IO.print("\n");
-      IO.print("\n");
-    }
-  }
-
   public static void printEventsName() {
 
     IO.print("\nPrint Events");
-    long toVar_7 = Tests.getEvents().size();
+    long toVar_2 = Tests.getEvents().size();
 
-    for (Long counter = 1L; counter <= toVar_7; counter++) {
+    for (Long counter = 1L; counter <= toVar_2; counter++) {
       IO.print("\n");
       IO.print(counter);
       IO.print(((Event) Utils.get(Tests.getEvents(), counter)).getName());
@@ -160,9 +103,9 @@ public class TestApp {
 
   public static VDMSeq getEventsByFestival2(final Number num) {
 
-    long toVar_8 = ((FashionFestival) Utils.get(Tests.getFestivals(), num)).getEvents().size();
+    long toVar_3 = ((FashionFestival) Utils.get(Tests.getFestivals(), num)).getEvents().size();
 
-    for (Long counter = 1L; counter <= toVar_8; counter++) {
+    for (Long counter = 1L; counter <= toVar_3; counter++) {
       eventsTemp =
           SeqUtil.conc(
               Utils.copy(TestApp.eventsTemp),
@@ -178,9 +121,9 @@ public class TestApp {
   public static void getEventsByFestival(final Number num) {
 
     IO.print("\n");
-    long toVar_9 = ((FashionFestival) Utils.get(Tests.getFestivals(), num)).getEvents().size();
+    long toVar_4 = ((FashionFestival) Utils.get(Tests.getFestivals(), num)).getEvents().size();
 
-    for (Long counter = 1L; counter <= toVar_9; counter++) {
+    for (Long counter = 1L; counter <= toVar_4; counter++) {
       IO.print(counter);
       IO.print(": ");
       IO.print(
@@ -193,38 +136,13 @@ public class TestApp {
     }
   }
 
-  public static void printDesigners() {
-
-    IO.print("Designers List:");
-    long toVar_10 = Tests.getDesigners().size();
-
-    for (Long counter = 1L; counter <= toVar_10; counter++) {
-      IO.print("\n");
-      IO.print("Designer Name: ");
-      IO.print(((Designer) Utils.get(Tests.getDesigners(), counter)).getName());
-      IO.print("\n");
-      IO.print("Age: ");
-      IO.print(((Designer) Utils.get(Tests.getDesigners(), counter)).getAge());
-      IO.print("\n");
-      IO.print("Nationality: ");
-      IO.print(((Designer) Utils.get(Tests.getDesigners(), counter)).getNationality());
-      IO.print("\n");
-      IO.print("Address: ");
-      IO.print(((Designer) Utils.get(Tests.getDesigners(), counter)).getAddress());
-      IO.print("\n");
-      IO.print("Style: ");
-      IO.print(((Designer) Utils.get(Tests.getDesigners(), counter)).getStyle());
-      IO.print("\n");
-    }
-  }
-
   public static void getModelsNameByEvent(final Number optionFestival, final Number optionEvent) {
 
     IO.print("\n");
-    long toVar_11 =
+    long toVar_5 =
         ((Event) Utils.get(getEventsByFestival2(optionFestival), optionEvent)).getModels().size();
 
-    for (Long counter = 1L; counter <= toVar_11; counter++) {
+    for (Long counter = 1L; counter <= toVar_5; counter++) {
       IO.print(counter);
       IO.print(": ");
       IO.print(
@@ -242,9 +160,9 @@ public class TestApp {
       final Number optionFestival, final Number optionEvent) {
 
     festivalTemp = ((FashionFestival) Utils.get(Tests.getFestivals(), optionFestival));
-    long toVar_12 = ((Event) Utils.get(festivalTemp.getEvents(), optionEvent)).getModels().size();
+    long toVar_6 = ((Event) Utils.get(festivalTemp.getEvents(), optionEvent)).getModels().size();
 
-    for (Long counter = 1L; counter <= toVar_12; counter++) {
+    for (Long counter = 1L; counter <= toVar_6; counter++) {
       modelsTemp =
           SeqUtil.conc(
               Utils.copy(TestApp.modelsTemp),
@@ -288,10 +206,9 @@ public class TestApp {
       final Number optionFestival, final Number optionEvent) {
 
     festivalTemp = ((FashionFestival) Utils.get(Tests.getFestivals(), optionFestival));
-    long toVar_13 =
-        ((Event) Utils.get(festivalTemp.getEvents(), optionEvent)).getDesigners().size();
+    long toVar_7 = ((Event) Utils.get(festivalTemp.getEvents(), optionEvent)).getDesigners().size();
 
-    for (Long counter = 1L; counter <= toVar_13; counter++) {
+    for (Long counter = 1L; counter <= toVar_7; counter++) {
       designersTemp =
           SeqUtil.conc(
               Utils.copy(TestApp.designersTemp),
@@ -308,12 +225,12 @@ public class TestApp {
       final Number optionFestival, final Number optionEvent) {
 
     IO.print("\n");
-    long toVar_14 =
+    long toVar_8 =
         ((Event) Utils.get(getEventsByFestival2(optionFestival), optionEvent))
             .getDesigners()
             .size();
 
-    for (Long counter = 1L; counter <= toVar_14; counter++) {
+    for (Long counter = 1L; counter <= toVar_8; counter++) {
       IO.print(counter);
       IO.print(": ");
       IO.print(
@@ -364,51 +281,9 @@ public class TestApp {
     IO.print("\n");
   }
 
-  public static void printModels() {
-
-    IO.print("Models List:\n");
-    long toVar_15 = Tests.getModels().size();
-
-    for (Long counter = 1L; counter <= toVar_15; counter++) {
-      IO.print("\n");
-      IO.print("Designer Name: ");
-      IO.print(((Model) Utils.get(Tests.getModels(), counter)).getName());
-      IO.print("\n");
-      IO.print("Age: ");
-      IO.print(((Model) Utils.get(Tests.getModels(), counter)).getAge());
-      IO.print("\n");
-      IO.print("Nationality: ");
-      IO.print(((Model) Utils.get(Tests.getModels(), counter)).getNationality());
-      IO.print("\n");
-      IO.print("Address: ");
-      IO.print(((Model) Utils.get(Tests.getModels(), counter)).getAddress());
-      IO.print("\n");
-    }
-  }
-
-  public static void printUsers() {
-
-    IO.print("Users List\n");
-    long toVar_16 = Tests.getUsers().size();
-
-    for (Long counter = 1L; counter <= toVar_16; counter++) {
-      IO.print("\n");
-      IO.print("User Name: ");
-      IO.print(((FashionUser) Utils.get(Tests.getUsers(), counter)).getName());
-      IO.print("\n");
-      IO.print("Age: ");
-      IO.print(((FashionUser) Utils.get(Tests.getUsers(), counter)).getAge());
-    }
-  }
-
   public static void main() {
 
     printTests();
-    printFestivals();
-    printEvents();
-    printModels();
-    printDesigners();
-    printUsers();
   }
 
   public TestApp() {}

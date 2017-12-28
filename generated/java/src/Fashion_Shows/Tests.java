@@ -68,8 +68,10 @@ public class Tests extends MyTestCase {
     users = SeqUtil.conc(Utils.copy(Tests.users), SeqUtil.seq(u0));
     IO.print("TestEvent.vdmpp (1/10): testInit() started...\n");
     assertNotNull(f0);
+    assertNotNull(f1);
     assertNotNull(ev0);
     assertNotNull(ev1);
+    assertNotNull(ev2);
     assertNotNull(d0);
     assertNotNull(d1);
     assertNotNull(ev2);
@@ -77,6 +79,7 @@ public class Tests extends MyTestCase {
     assertNotNull(m1);
     assertNotNull(m2);
     assertNotNull(m3);
+    assertNotNull(u0);
     IO.print("TestFashionFestival.vdmpp (2/10): testParamsFestival() started...\n");
     assertEqual("Porto Fashion Week", f0.getName());
     assertEqual("04/05/2018", f0.getDateBegin());
@@ -87,6 +90,9 @@ public class Tests extends MyTestCase {
     f0.insertEvent(ev2);
     f1.insertEvent(ev1);
     assertEqual(2L, f0.getNumberEvents());
+    assertEqual(ev0.getName(), ((Event) Utils.get(f0.getEvents(), 2L)).getName());
+    assertEqual(1L, f1.getNumberEvents());
+    assertEqual(ev1.getName(), ((Event) Utils.get(f1.getEvents(), 1L)).getName());
     IO.print("TestEvent.vdmpp (3/10): testEventParams() started...\n");
     assertEqual("BaixaShow", ev0.getName());
     assertEqual("04/05/2018", ev0.getDate());
@@ -101,7 +107,9 @@ public class Tests extends MyTestCase {
     ev0.insertDesigner(d0);
     ev1.insertDesigner(d1);
     assertEqual(1L, ev0.getNumberDesigners());
+    assertEqual(d0.getName(), ((Designer) Utils.get(ev0.getDesigners(), 1L)).getName());
     assertEqual(1L, ev1.getNumberDesigners());
+    assertEqual(d1.getName(), ((Designer) Utils.get(ev1.getDesigners(), 1L)).getName());
     IO.print("TestEvent.vdmpp (3/10): testInsertModelAtEvent() started...\n");
     ev0.insertModel(m0);
     ev0.insertModel(m1);
@@ -109,8 +117,13 @@ public class Tests extends MyTestCase {
     ev1.insertModel(m2);
     ev2.insertModel(m3);
     assertEqual(2L, ev0.getNumberModels());
+    assertEqual(m0.getName(), ((Model) Utils.get(ev0.getModels(), 1L)).getName());
+    assertEqual(m1.getName(), ((Model) Utils.get(ev0.getModels(), 2L)).getName());
     assertEqual(2L, ev1.getNumberModels());
+    assertEqual(m1.getName(), ((Model) Utils.get(ev1.getModels(), 1L)).getName());
+    assertEqual(m2.getName(), ((Model) Utils.get(ev1.getModels(), 2L)).getName());
     assertEqual(1L, ev2.getNumberModels());
+    assertEqual(m3.getName(), ((Model) Utils.get(ev2.getModels(), 1L)).getName());
     IO.print("TestDesigner.vdmpp (2/10): DesignerParams() started...\n");
     assertEqual("Yves S. L.", d0.getName());
     assertEqual(72L, d0.getAge());

@@ -13,7 +13,7 @@ public class FashionUser {
   private VDMSet events = SetUtil.set();
   private Number numberEvents = 0L;
 
-  public void cg_init_FashionUser_2(final String nm, final Number ag, final Object gr) {
+  public void cg_init_FashionUser_1(final String nm, final Number ag, final Object gr) {
 
     name = nm;
     age = ag;
@@ -21,19 +21,9 @@ public class FashionUser {
     return;
   }
 
-  public void cg_init_FashionUser_1() {
-
-    return;
-  }
-
-  public FashionUser() {
-
-    cg_init_FashionUser_1();
-  }
-
   public FashionUser(final String nm, final Number ag, final Object gr) {
 
-    cg_init_FashionUser_2(nm, ag, gr);
+    cg_init_FashionUser_1(nm, ag, gr);
   }
 
   public String getName() {
@@ -49,21 +39,6 @@ public class FashionUser {
   public Object getGender() {
 
     return gender;
-  }
-
-  public void Login() {
-
-    throw new UnsupportedOperationException();
-  }
-
-  public void Logout() {
-
-    throw new UnsupportedOperationException();
-  }
-
-  public void Register() {
-
-    throw new UnsupportedOperationException();
   }
 
   public void insertDesigner(final String designerName) {
@@ -99,6 +74,8 @@ public class FashionUser {
 
     return numberEvents;
   }
+
+  public FashionUser() {}
 
   public String toString() {
 

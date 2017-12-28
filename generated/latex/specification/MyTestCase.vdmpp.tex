@@ -1,0 +1,73 @@
+\begin{vdmpp}[breaklines=true]
+class MyTestCase
+
+operations
+
+  -- Simulates assertion checking by reducing it to pre-condition checking.
+  -- If 'arg' does not hold, a pre-condition violation will be signaled.
+  -- Verification of pre-conditions must be enabled in order for this to work
+(*@
+\label{assertTrue:8}
+@*)
+  protected assertTrue : bool ==> ()
+  assertTrue(arg) == (*@\vdmnotcovered{return}@*)
+  pre (*@\vdmnotcovered{arg}@*);
+
+  -- Simulates assertion checking by reducing it to pre-condition checking.
+  -- If 'arg' holds, a pre-condition violation will be signaled.
+  -- Verification of pre-conditions must be enabled in order for this to work
+(*@
+\label{assertFalse:15}
+@*)
+  protected assertFalse : bool ==> ()
+  assertFalse(arg) == (*@\vdmnotcovered{return}@*)
+  pre not (*@\vdmnotcovered{arg}@*);
+
+  -- Simulates assertion checking by reducing it to pre-condition checking.
+  -- If 'arg' is null or undefined, a pre-condition violation will be signaled.
+  -- Verification of pre-conditions must be enabled in order for this to work
+(*@
+\label{assertNotNull:22}
+@*)
+  protected assertNotNull : ? ==> ()
+  assertNotNull(arg) == return
+  pre arg <> nil and arg <> undefined;
+
+  -- Simulates assertion checking by reducing it to post-condition checking.
+  -- If values are not equal, prints a message and generates a post-conditions violation.
+(*@
+\label{assertEqual:28}
+@*)
+  protected assertEqual : ? * ? ==> ()
+  assertEqual(expected, actual) ==
+    if expected <> actual then
+    (*@\vdmnotcovered{(}@*)
+      (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Actual value ("}@*));
+      IO`print((*@\vdmnotcovered{actual}@*));
+      IO`print((*@\vdmnotcovered{") different from expected ("}@*));
+      (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{expected}@*));
+      IO`println((*@\vdmnotcovered{")\textbackslash n"}@*))
+    )
+  post expected = actual;
+
+end MyTestCase
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[assertEqual:28]{assertEqual} & 28&38.8\% & 0 \\
+\hline
+\hyperref[assertFalse:15]{assertFalse} & 15&0.0\% & 0 \\
+\hline
+\hyperref[assertNotNull:22]{assertNotNull} & 22&100.0\% & 13 \\
+\hline
+\hyperref[assertTrue:8]{assertTrue} & 8&0.0\% & 0 \\
+\hline
+\hline
+MyTestCase.vdmpp & & 48.3\% & 13 \\
+\hline
+\end{longtable}
+

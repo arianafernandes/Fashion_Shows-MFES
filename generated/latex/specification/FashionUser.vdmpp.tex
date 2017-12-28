@@ -1,0 +1,158 @@
+\begin{vdmpp}[breaklines=true]
+class FashionUser
+
+types
+ public String = seq of char;
+ public UserName = String;
+ public UserAge = nat;
+ public UserGender = <Homem> | <Mulher>;
+ 
+instance variables
+ public name: UserName;
+ public age: UserAge;
+ public gender: UserGender;
+ --designers favoritos
+ private favDesigners: set of Designer`DesignerName := {};
+ private numberFavDesigners: nat := 0;
+ --eventos que utilizador vai
+ private events: set of Event`EventName := {};
+ private numberEvents: nat := 0;
+
+operations  
+(*@
+\label{FashionUser:21}
+@*)
+  public FashionUser : 
+            UserName *
+            UserAge *
+            UserGender ==> FashionUser
+  FashionUser(nm, ag, gr) ==
+  (
+    name := nm;
+    age := ag;
+    gender := gr;
+    return self;
+  );
+  
+  --retorna os parametros da class fashionUSer
+  public pure getName : () ==> String
+    getName() == return name;
+    
+   public pure getAge : () ==> nat
+     getAge() == return age;
+     
+(*@
+\label{getName:40}
+@*)
+  public pure getGender : () ==> UserGender
+     getGender() == return gender;
+  
+(*@
+\label{getAge:43}
+@*)
+   
+    --DESIGNERES FAVORITOS  
+   --Adiciona designer favorito ao utilizador
+(*@
+\label{getGender:46}
+@*)
+  public insertDesigner : Designer`DesignerName ==> ()
+   insertDesigner(designerName) ==
+   (*@\vdmnotcovered{(}@*)
+(*@
+\label{Login:49}
+@*)
+     numberFavDesigners := (*@\vdmnotcovered{numberFavDesigners}@*) + (*@\vdmnotcovered{1}@*);
+     favDesigners := (*@\vdmnotcovered{favDesigners}@*) (*@\vdmnotcovered{union}@*) { (*@\vdmnotcovered{designerName}@*) };
+   );
+   
+(*@
+\label{Logout:53}
+@*)
+   --remove designer  favorito do utilizador
+   public removeDesigner : Designer`DesignerName ==> ()
+   removeDesigner(designerName) == 
+   (*@\vdmnotcovered{(}@*)
+(*@
+\label{Register:57}
+@*)
+    (*@\vdmnotcovered{favDesigners}@*) := (*@\vdmnotcovered{favDesigners}@*) \ (*@\vdmnotcovered{\{}@*)(*@\vdmnotcovered{designerName}@*)};
+    numberFavDesigners := (*@\vdmnotcovered{numberFavDesigners}@*) (*@\vdmnotcovered{-}@*)(*@\vdmnotcovered{1}@*);
+  );
+  --retorna nr designers favoritos
+   public pure getNumberFavDesigners : () ==> nat
+   getNumberFavDesigners() == return (*@\vdmnotcovered{numberFavDesigners}@*);
+(*@
+\label{insertDesigner:63}
+@*)
+   
+   
+    --EVENTOS DO UTILIZADOR
+    --Adiciona evento
+  public insertEvent : Event`EventName ==> ()
+   insertEvent(eventName) ==
+   (*@\vdmnotcovered{(}@*)
+     numberEvents := numberEvents + (*@\vdmnotcovered{1}@*);
+(*@
+\label{removeDesigner:71}
+@*)
+     events := events union (*@\vdmnotcovered{\{}@*) (*@\vdmnotcovered{eventName}@*) };
+   );
+   
+   --Remove designer  favorito do utilizador
+   public removeEvent : Event`EventName ==> ()
+   removeEvent(eventName) == 
+   (*@\vdmnotcovered{(}@*)
+(*@
+\label{getNumberFavDesigners:78}
+@*)
+    events := (*@\vdmnotcovered{events}@*) \ (*@\vdmnotcovered{\{}@*)(*@\vdmnotcovered{eventName}@*)};
+    numberEvents := (*@\vdmnotcovered{numberEvents}@*) -(*@\vdmnotcovered{1}@*);
+  );
+  --Retorna nr designers favoritos
+   public pure getNumberEvents : () ==> nat
+   getNumberEvents() == return (*@\vdmnotcovered{numberEvents}@*);
+(*@
+\label{insertEvent:84}
+@*)
+
+
+end FashionUser
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[FashionUser:21]{FashionUser} & 21&100.0\% & 1 \\
+\hline
+\hyperref[Login:49]{Login} & 49&0.0\% & 0 \\
+\hline
+\hyperref[Logout:53]{Logout} & 53&0.0\% & 0 \\
+\hline
+\hyperref[Register:57]{Register} & 57&0.0\% & 0 \\
+\hline
+\hyperref[getAge:43]{getAge} & 43&100.0\% & 1 \\
+\hline
+\hyperref[getGender:46]{getGender} & 46&100.0\% & 1 \\
+\hline
+\hyperref[getName:40]{getName} & 40&100.0\% & 1 \\
+\hline
+\hyperref[getNumberEvents:99]{getNumberEvents} & 99&0.0\% & 0 \\
+\hline
+\hyperref[getNumberFavDesigners:78]{getNumberFavDesigners} & 78&0.0\% & 0 \\
+\hline
+\hyperref[insertDesigner:63]{insertDesigner} & 63&0.0\% & 0 \\
+\hline
+\hyperref[insertEvent:84]{insertEvent} & 84&0.0\% & 0 \\
+\hline
+\hyperref[removeDesigner:71]{removeDesigner} & 71&0.0\% & 0 \\
+\hline
+\hyperref[removeEvent:92]{removeEvent} & 92&0.0\% & 0 \\
+\hline
+\hline
+FashionUser.vdmpp & & 30.1\% & 4 \\
+\hline
+\end{longtable}
+

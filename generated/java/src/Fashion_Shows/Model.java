@@ -10,7 +10,7 @@ public class Model {
   public String nationality;
   public String address;
 
-  public void cg_init_Model_2(final String nm, final Number ag, final String nt, final String ad) {
+  public void cg_init_Model_1(final String nm, final Number ag, final String nt, final String ad) {
 
     name = nm;
     age = ag;
@@ -19,19 +19,9 @@ public class Model {
     return;
   }
 
-  public void cg_init_Model_1() {
-
-    return;
-  }
-
-  public Model() {
-
-    cg_init_Model_1();
-  }
-
   public Model(final String nm, final Number ag, final String nt, final String ad) {
 
-    cg_init_Model_2(nm, ag, nt, ad);
+    cg_init_Model_1(nm, ag, nt, ad);
   }
 
   public String getName() {
@@ -53,6 +43,8 @@ public class Model {
 
     return address;
   }
+
+  public Model() {}
 
   public String toString() {
 

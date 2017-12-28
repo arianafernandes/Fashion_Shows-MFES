@@ -11,7 +11,7 @@ public class Designer {
   public String address;
   public String style;
 
-  public void cg_init_Designer_2(
+  public void cg_init_Designer_1(
       final String nm, final Number ag, final String nt, final String ad, final String sty) {
 
     name = nm;
@@ -22,20 +22,10 @@ public class Designer {
     return;
   }
 
-  public void cg_init_Designer_1() {
-
-    return;
-  }
-
-  public Designer() {
-
-    cg_init_Designer_1();
-  }
-
   public Designer(
       final String nm, final Number ag, final String nt, final String ad, final String sty) {
 
-    cg_init_Designer_2(nm, ag, nt, ad, sty);
+    cg_init_Designer_1(nm, ag, nt, ad, sty);
   }
 
   public String getName() {
@@ -62,6 +52,8 @@ public class Designer {
 
     return style;
   }
+
+  public Designer() {}
 
   public String toString() {
 

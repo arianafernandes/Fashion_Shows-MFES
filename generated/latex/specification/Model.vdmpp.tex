@@ -1,0 +1,83 @@
+\begin{vdmpp}[breaklines=true]
+class Model
+
+types
+ public String = seq of char;
+ public ModelName = String;
+ public ModelAge = nat;
+ public ModelNationality = String;
+ public ModelAddress = String;
+ 
+instance variables
+ public name : ModelName;
+ public age : ModelAge;
+ public nationality : ModelNationality;
+ public address : ModelAddress;
+ 
+(*@
+\label{Model:16}
+@*)
+ operations
+  public Model : 
+          ModelName * 
+          ModelAge *
+          ModelNationality * 
+          ModelAddress ==> Model
+  Model(nm, ag, nt , ad) ==
+  (
+    name := nm;
+    age := ag;
+    nationality := nt;
+    address := ad;
+    return self;
+  );
+  
+  --retorna os parametros da class Model
+  public pure getName : () ==> String
+    getName() == return name;
+(*@
+\label{getName:34}
+@*)
+    
+   public pure getAge : () ==> nat
+     getAge() == return age;
+(*@
+\label{getAge:37}
+@*)
+     
+  public pure getNationality : () ==> String
+     getNationality() == return nationality;
+(*@
+\label{getNationality:40}
+@*)
+     
+  public pure getAddress : () ==> String
+     getAddress() == return address;      
+(*@
+\label{getAddress:43}
+@*)
+     
+     
+end Model
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[Model:16]{Model} & 16&100.0\% & 4 \\
+\hline
+\hyperref[getAddress:43]{getAddress} & 43&100.0\% & 1 \\
+\hline
+\hyperref[getAge:37]{getAge} & 37&100.0\% & 1 \\
+\hline
+\hyperref[getName:34]{getName} & 34&100.0\% & 11 \\
+\hline
+\hyperref[getNationality:40]{getNationality} & 40&100.0\% & 1 \\
+\hline
+\hline
+Model.vdmpp & & 100.0\% & 18 \\
+\hline
+\end{longtable}
+

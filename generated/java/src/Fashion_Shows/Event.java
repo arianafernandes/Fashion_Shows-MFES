@@ -18,7 +18,7 @@ public class Event {
   private VDMSeq models = SeqUtil.seq();
   private Number numberModels = 0L;
 
-  public void cg_init_Event_2(
+  public void cg_init_Event_1(
       final String nm,
       final String dt,
       final String lc,
@@ -39,16 +39,6 @@ public class Event {
     return;
   }
 
-  public void cg_init_Event_1() {
-
-    return;
-  }
-
-  public Event() {
-
-    cg_init_Event_1();
-  }
-
   public Event(
       final String nm,
       final String dt,
@@ -59,7 +49,7 @@ public class Event {
       final Object gr,
       final Object cl) {
 
-    cg_init_Event_2(nm, dt, lc, hr, dr, tm, gr, cl);
+    cg_init_Event_1(nm, dt, lc, hr, dr, tm, gr, cl);
   }
 
   public String getName() {
@@ -134,90 +124,7 @@ public class Event {
     return numberModels;
   }
 
-  public void printEventInf() {
-
-    IO.print("Event ");
-    IO.print(name);
-    IO.print("\n");
-    IO.print("Date: ");
-    IO.print(date);
-    IO.print("\n");
-    IO.print("Local: ");
-    IO.print(local);
-    IO.print("\n");
-    IO.print("Time: ");
-    IO.print(time);
-    IO.print("\n");
-    IO.print("Duration: ");
-    IO.print(duration);
-    IO.print("\n");
-    IO.print("Theme: ");
-    IO.print(theme);
-    IO.print("\n");
-    IO.print("Gender: ");
-    IO.print(((Object) gender));
-    IO.print("\n");
-    IO.print("Collection: ");
-    IO.print(((Object) collection));
-    IO.print("\n");
-    IO.print("\n");
-  }
-
-  public void printDesigners() {
-
-    IO.print("Designers list:");
-    IO.print("\n");
-    long toVar_1 = designers.size();
-
-    for (Long counter = 1L; counter <= toVar_1; counter++) {
-      IO.print("\n");
-      IO.print("Designer Name: ");
-      IO.print(((Designer) Utils.get(designers, counter)).getName());
-      IO.print("\n");
-      IO.print("Age: ");
-      IO.print(((Designer) Utils.get(designers, counter)).getAge());
-      IO.print("\n");
-      IO.print("Nationality: ");
-      IO.print(((Designer) Utils.get(designers, counter)).getNationality());
-      IO.print("\n");
-      IO.print("Address: ");
-      IO.print(((Designer) Utils.get(designers, counter)).getAddress());
-      IO.print("\n");
-      IO.print("Style: ");
-      IO.print(((Designer) Utils.get(designers, counter)).getStyle());
-      IO.print("\n");
-    }
-  }
-
-  public void printModels() {
-
-    IO.print("Models list:");
-    IO.print("\n");
-    long toVar_2 = models.size();
-
-    for (Long counter = 1L; counter <= toVar_2; counter++) {
-      IO.print("\n");
-      IO.print("Model Name: ");
-      IO.print(((Model) Utils.get(models, counter)).getName());
-      IO.print("\n");
-      IO.print("Age: ");
-      IO.print(((Model) Utils.get(models, counter)).getAge());
-      IO.print("\n");
-      IO.print("Nationality: ");
-      IO.print(((Model) Utils.get(models, counter)).getNationality());
-      IO.print("\n");
-      IO.print("Address: ");
-      IO.print(((Model) Utils.get(models, counter)).getAddress());
-      IO.print("\n");
-    }
-  }
-
-  public void printEvent() {
-
-    printEventInf();
-    printDesigners();
-    printModels();
-  }
+  public Event() {}
 
   public String toString() {
 
