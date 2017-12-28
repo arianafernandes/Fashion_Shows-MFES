@@ -12,6 +12,7 @@ public class TestApp {
   private static VDMSeq users = SeqUtil.seq();
   private static VDMSeq eventsTemp = SeqUtil.seq();
   private static VDMSeq modelsTemp = SeqUtil.seq();
+  private static FashionFestival festivalTemp = new FashionFestival();
 
   public static void printTests() {
 
@@ -236,9 +237,11 @@ public class TestApp {
     }
   }
 
-  public static VDMSeq getModelsNameByEvent2(final Number num) {
+  public static VDMSeq getModelsNameByEvent2(
+      final Number optionFestival, final Number optionEvent) {
 
-    long toVar_12 = ((Event) Utils.get(Tests.getEvents(), num)).getModels().size();
+    festivalTemp = ((FashionFestival) Utils.get(Tests.getFestivals(), optionFestival));
+    long toVar_12 = ((Event) Utils.get(festivalTemp.getEvents(), optionEvent)).getModels().size();
 
     for (Long counter = 1L; counter <= toVar_12; counter++) {
       modelsTemp =
@@ -247,24 +250,35 @@ public class TestApp {
               SeqUtil.seq(
                   ((Model)
                       Utils.get(
-                          ((Event) Utils.get(Tests.getEvents(), num)).getModels(), counter))));
+                          ((Event) Utils.get(festivalTemp.getEvents(), optionEvent)).getModels(),
+                          counter))));
     }
     return Utils.copy(TestApp.modelsTemp);
   }
 
-  public static void getModelInf(final Number optionEvent, final Number optionModal) {
+  public static void getModelInf(
+      final Number optionFestival, final Number optionEvent, final Number optionModal) {
 
+    festivalTemp = ((FashionFestival) Utils.get(Tests.getFestivals(), optionFestival));
     IO.print("Name: ");
-    IO.print(((Model) Utils.get(getModelsNameByEvent2(optionEvent), optionModal)).getName());
+    IO.print(
+        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModal))
+            .getName());
     IO.print("\n");
     IO.print("Age: ");
-    IO.print(((Model) Utils.get(getModelsNameByEvent2(optionEvent), optionModal)).getAge());
+    IO.print(
+        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModal))
+            .getAge());
     IO.print("\n");
     IO.print("Nationality: ");
-    IO.print(((Model) Utils.get(getModelsNameByEvent2(optionEvent), optionModal)).getNationality());
+    IO.print(
+        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModal))
+            .getNationality());
     IO.print("\n");
     IO.print("Address: ");
-    IO.print(((Model) Utils.get(getModelsNameByEvent2(optionEvent), optionModal)).getAddress());
+    IO.print(
+        ((Model) Utils.get(getModelsNameByEvent2(optionFestival, optionEvent), optionModal))
+            .getAddress());
     IO.print("\n");
     IO.print("\n");
   }
@@ -335,6 +349,8 @@ public class TestApp {
         + Utils.toString(eventsTemp)
         + ", modelsTemp := "
         + Utils.toString(modelsTemp)
+        + ", festivalTemp := "
+        + Utils.toString(festivalTemp)
         + "}";
   }
 }

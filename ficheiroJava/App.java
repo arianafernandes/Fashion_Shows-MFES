@@ -50,7 +50,7 @@ public class App {
 		System.out.println("\nPlease select a model for more informations:");
 		optionModel = inputScanner.nextInt();
 		if(optionModel != 0){
-			//TestApp.getModelInf(optionEvent, optionModel);
+			TestApp.getModelInf(optionFestival,optionEvent, optionModel);
 			//printMenuEvent(optionFestival,optionModel);
 		}
 		else{
