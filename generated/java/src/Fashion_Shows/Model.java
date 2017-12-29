@@ -44,6 +44,22 @@ public class Model {
     return address;
   }
 
+  public void printModel() {
+
+    IO.print("Model Name: ");
+    IO.print(name);
+    IO.print("\n");
+    IO.print("Age: ");
+    IO.print(age);
+    IO.print("\n");
+    IO.print("Nationality: ");
+    IO.print(nationality);
+    IO.print("\n");
+    IO.print("Address: ");
+    IO.print(address);
+    IO.print("\n");
+  }
+
   public Model() {}
 
   public String toString() {

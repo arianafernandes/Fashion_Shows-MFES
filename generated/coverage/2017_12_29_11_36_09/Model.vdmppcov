@@ -41,19 +41,5 @@ instance variables
 		public pure getAddress : () ==> String
 		   getAddress() == return address;  	   
 		   
-		public printModel: () ==> ()
-		printModel() == (
-		IO`print("Model Name: ");
-			IO`print(name);
-			IO`print("\n");
-			IO`print("Age: ");
-			IO`print(age);
-			IO`print("\n");
-			IO`print("Nationality: ");
-			IO`print(nationality);
-			IO`print("\n");
-			IO`print("Address: ");
-		  IO`print(address);
-			IO`print("\n");
-		);   
+		   
 end Model

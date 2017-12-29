@@ -10,6 +10,7 @@ public class Tests extends MyTestCase {
   private static VDMSeq designers = SeqUtil.seq();
   private static VDMSeq models = SeqUtil.seq();
   private static VDMSeq users = SeqUtil.seq();
+  private static VDMSeq runways = SeqUtil.seq();
 
   public void run() {
 
@@ -54,6 +55,18 @@ public class Tests extends MyTestCase {
     Model m2 = new Model("Naomi Campbell", 47L, "Inglesa", "Inglaterra");
     Model m3 = new Model("Kate Moss", 43L, "Inglesa", "Inglaterra");
     FashionUser u0 = new FashionUser("Joao", 30L, Fashion_Shows.quotes.HomemQuote.getInstance());
+    Runway r0 = new Runway("Meet winter collecion");
+    Runway r1 = new Runway("African Powe");
+    Runway r2 = new Runway("Nautical Vibes");
+    r0.insertDesigner(d0);
+    r0.insertDesigner(d1);
+    r0.insertModel(m0);
+    r1.insertDesigner(d1);
+    r1.insertModel(m1);
+    r1.insertModel(m2);
+    r1.insertModel(m3);
+    r2.insertDesigner(d0);
+    r2.insertModel(m2);
     festivals = SeqUtil.conc(Utils.copy(Tests.festivals), SeqUtil.seq(f0));
     festivals = SeqUtil.conc(Utils.copy(Tests.festivals), SeqUtil.seq(f1));
     events = SeqUtil.conc(Utils.copy(Tests.events), SeqUtil.seq(ev0));
@@ -66,6 +79,11 @@ public class Tests extends MyTestCase {
     models = SeqUtil.conc(Utils.copy(Tests.models), SeqUtil.seq(m2));
     models = SeqUtil.conc(Utils.copy(Tests.models), SeqUtil.seq(m3));
     users = SeqUtil.conc(Utils.copy(Tests.users), SeqUtil.seq(u0));
+    runways = SeqUtil.conc(Utils.copy(Tests.runways), SeqUtil.seq(r0));
+    ev0.insertRunway(r0);
+    ev1.insertRunway(r1);
+    ev1.insertRunway(r2);
+    ev1.insertRunway(r2);
     IO.print("TestEvent.vdmpp (1/10): testInit() started...\n");
     assertNotNull(f0);
     assertNotNull(f1);
@@ -104,26 +122,7 @@ public class Tests extends MyTestCase {
     assertEqual(
         Fashion_Shows.quotes.Primavera_VeraoQuote.getInstance(), ((Object) ev0.getCollection()));
     IO.print("TestEvent.vdmpp (4/10): testInsertDesignerAtEvent() started...\n");
-    ev0.insertDesigner(d0);
-    ev1.insertDesigner(d1);
-    assertEqual(1L, ev0.getNumberDesigners());
-    assertEqual(d0.getName(), ((Designer) Utils.get(ev0.getDesigners(), 1L)).getName());
-    assertEqual(1L, ev1.getNumberDesigners());
-    assertEqual(d1.getName(), ((Designer) Utils.get(ev1.getDesigners(), 1L)).getName());
     IO.print("TestEvent.vdmpp (3/10): testInsertModelAtEvent() started...\n");
-    ev0.insertModel(m0);
-    ev0.insertModel(m1);
-    ev1.insertModel(m1);
-    ev1.insertModel(m2);
-    ev2.insertModel(m3);
-    assertEqual(2L, ev0.getNumberModels());
-    assertEqual(m0.getName(), ((Model) Utils.get(ev0.getModels(), 1L)).getName());
-    assertEqual(m1.getName(), ((Model) Utils.get(ev0.getModels(), 2L)).getName());
-    assertEqual(2L, ev1.getNumberModels());
-    assertEqual(m1.getName(), ((Model) Utils.get(ev1.getModels(), 1L)).getName());
-    assertEqual(m2.getName(), ((Model) Utils.get(ev1.getModels(), 2L)).getName());
-    assertEqual(1L, ev2.getNumberModels());
-    assertEqual(m3.getName(), ((Model) Utils.get(ev2.getModels(), 1L)).getName());
     IO.print("TestDesigner.vdmpp (2/10): DesignerParams() started...\n");
     assertEqual("Yves S. L.", d0.getName());
     assertEqual(72L, d0.getAge());
@@ -179,6 +178,11 @@ public class Tests extends MyTestCase {
     return Utils.copy(Tests.users);
   }
 
+  public static VDMSeq getRunways() {
+
+    return Utils.copy(Tests.runways);
+  }
+
   public Tests() {}
 
   public String toString() {
@@ -194,6 +198,8 @@ public class Tests extends MyTestCase {
         + Utils.toString(models)
         + ", users := "
         + Utils.toString(users)
+        + ", runways := "
+        + Utils.toString(runways)
         + "}";
   }
 }

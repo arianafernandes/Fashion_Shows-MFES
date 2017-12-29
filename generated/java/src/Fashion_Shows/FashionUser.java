@@ -73,6 +73,19 @@ public class FashionUser {
     return Utils.copy(events);
   }
 
+  public void printUser() {
+
+    IO.print(" Name: ");
+    IO.print(name);
+    IO.print("\n");
+    IO.print("Age: ");
+    IO.print(age);
+    IO.print("\n");
+    IO.print("Gender: ");
+    IO.print(((Object) gender));
+    IO.print("\n");
+  }
+
   public FashionUser() {}
 
   public String toString() {

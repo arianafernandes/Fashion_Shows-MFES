@@ -53,6 +53,25 @@ public class Designer {
     return style;
   }
 
+  public void printDesigner() {
+
+    IO.print("Designer Name: ");
+    IO.print(name);
+    IO.print("\n");
+    IO.print("Age: ");
+    IO.print(age);
+    IO.print("\n");
+    IO.print("Nationality: ");
+    IO.print(nationality);
+    IO.print("\n");
+    IO.print("Address: ");
+    IO.print(address);
+    IO.print("\n");
+    IO.print("Style: ");
+    IO.print(style);
+    IO.print("\n");
+  }
+
   public Designer() {}
 
   public String toString() {

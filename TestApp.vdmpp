@@ -13,7 +13,7 @@ private static eventsTemp: seq of Event := [];
 private static modelsTemp: seq of Model := [];
 private static designersTemp: seq of Designer := [];
 private static festivalTemp: FashionFestival := new FashionFestival();
-
+private static runwaysTemp: seq of Runway := [];
 operations
 
 public static printTests: () ==> ()
@@ -23,9 +23,9 @@ public static printTests: () ==> ()
     new Tests().run();   
    );
    
-  
-  public static printFestivalsName: () ==> ()
-	printFestivalsName() ==
+  --Nomes dos festivais disponiveis
+  public static getFestivalsNames: () ==> ()
+	getFestivalsNames() ==
 	(	
 	IO`print("\nPrint Festivals");
 	for counter = 1 to len Tests`getFestivals() do (
@@ -37,174 +37,89 @@ public static printTests: () ==> ()
    );
   );  	
   
-  	
-	public static getFestivalInf : (int) ==> ()
-  getFestivalInf(num) == (
-      IO`print("\n");
-  		IO`print("Festival Name: ");
-  		IO`print((Tests`getFestivals() (num)).getName());
-  		IO`print("\n");
-	  	IO`print("Date Begin: ");
-	  	IO`print((Tests`getFestivals() (num)).getDateBegin());
-	  	IO`print("\n");
-	  	IO`print("Date End: ");
-	  	IO`print((Tests`getFestivals() (num)).getDateEnd());
-	  	IO`print("\n");
-	  	IO`print("Local: ");
-	  	IO`print((Tests`getFestivals() (num)).getLocal());
-	  	IO`print("\n");
-	  	IO`print("\n");
-  );
-  
-
-	 public static printEventsName: () ==> ()
-		printEventsName() ==
+  --Festival seleccionado apos isto imprimirs
+  public static getFestival: (int) ==> FashionFestival
+		getFestival(optionFestival) ==
 		(	
-		IO`print("\nPrint Events");
-			for counter = 1 to len Tests`getEvents() do (
-			IO`print("\n");
-			IO`print(counter);
-			IO`print((Tests`getEvents() (counter)).getName());
-			IO`print("\n");
-			IO`print("\n");
+		return (Tests`getFestivals() (optionFestival));
 	 );
-	);  
-	
-	public static getEventInf: (int) * (int) ==> ()
-		getEventInf(optionFestiavl,optionEvent) ==
+	 
+	 --eventos do festival selecionado
+	 public static getFestivalEvents: (int) ==> seq of Event
+		getFestivalEvents(optionFestival) ==
 		(	
-		IO`print("Event ");
-  	IO`print((getEventsByFestival2(optionFestiavl) (optionEvent)).getName());
-  	IO`print("\n");
-  	IO`print("Date: ");
-  	IO`print((getEventsByFestival2(optionFestiavl) (optionEvent)).getDate());
-  	IO`print("\n");
-  	IO`print("Local: ");
-  	IO`print((getEventsByFestival2(optionFestiavl) (optionEvent)).getLocal());
-  	IO`print("\n");
-  	IO`print("Time: ");
-  	IO`print((getEventsByFestival2(optionFestiavl) (optionEvent)).getTime());
-  	IO`print("h\n");
-  	IO`print("Duration: ");
-    IO`print((getEventsByFestival2(optionFestiavl) (optionEvent)).getDuration());
-  	IO`print("h\n");
-  	IO`print("Theme: ");
-  	IO`print((getEventsByFestival2(optionFestiavl) (optionEvent)).getTheme());
-  	IO`print("\n");
-  	IO`print("Gender: ");
-  	IO`print((getEventsByFestival2(optionFestiavl) (optionEvent)).getGender());
-  	IO`print("\n");
-  	IO`print("Collection: ");
-  	IO`print((getEventsByFestival2(optionFestiavl) (optionEvent)).getCollection());
-  	IO`print("\n");
-  	IO`print("\n");
-				
+		return (Tests`getFestivals() (optionFestival)).getEvents();
 	 );
-	
-	public static getEventsByFestival2 : (int) ==> seq of Event
-  getEventsByFestival2(num) == (
-  		for counter = 1 to len (Tests`getFestivals() (num)).getEvents() do (
-  		eventsTemp := eventsTemp ^[((Tests`getFestivals() (num)).getEvents()) (counter)];
-  	);
-  	return eventsTemp;
-  );
-	
-	public static getEventsByFestival : (int) ==> ()
-  getEventsByFestival(num) == (
-      IO`print("\n");
-  		for counter = 1 to len (Tests`getFestivals() (num)).getEvents() do (
+	 
+	 --nomes dos eventos do festival selecionado
+	 public static getFestivalEventsNames: (int) ==> ()
+		getFestivalEventsNames(optionFestival) ==
+		(	
+		 	IO`print("\n");
+  		for counter = 1 to len (Tests`getFestivals() (optionFestival)).getEvents() do (
   		IO`print(counter);
   		IO`print(": ");
-  		IO`print(((Tests`getFestivals() (num)).getEvents() (counter)).getName());
+  		IO`print(((Tests`getFestivals() (optionFestival)).getEvents() (counter)).getName());
   		IO`print("\n");
-  );
-  );
-  
+	 		);
+	 );
 
+	--Evento selecionado do festival selecionado
+	public static getEvent: (int) * (int) ==> Event
+		getEvent(optionFestival,optionEvent) ==
+		(	
+		return (getFestivalEvents(optionFestival) (optionEvent));
+	 );
+	 
+	--Retorna desfiles do evento selecionado do festival selecionado
+  public static getRunwaysByEvent : (int) * (int) ==> seq of Runway
+	getRunwaysByEvent(optionFestival, optionEvent) ==
+	(
+		return ((getFestivalEvents(optionFestival) (optionEvent)).getRunways());
+	);
+	
+	public static getRunwaysNames: (int) * (int) ==> ()
+		getRunwaysNames(optionFestival,optionEvent) ==
+		(	
+		 	IO`print("\n");
+  		for counter = 1 to len getRunwaysByEvent(optionFestival,optionEvent) do (
+  		IO`print(counter);
+  		IO`print(": ");
+  		IO`print((getRunwaysByEvent(optionFestival,optionEvent) (counter)).getName());
+  		IO`print("\n");
+	 		);
+	 );
+	 
+	--Retorna desfile seleciondo do evento selecionado do festival selecionado
+  public static getOneRunwayByEvent : (int) * (int) * (int) ==> Runway
+	getOneRunwayByEvent(optionFestival, optionEvent, optionRunWay) ==
+	(
+		return (getRunwaysByEvent(optionFestival,optionEvent)) (optionRunWay);
+	);
+	
+	--Retorna modelos do desfile seleciondo do evento selecionado do festival selecionado
+	public static getModelsByRunway : (int) * (int) * (int) ==> seq of Model
+	getModelsByRunway(optionFestival, optionEvent, optionRunWay) ==
+	(
+	return getOneRunwayByEvent(optionFestival,optionEvent,optionRunWay).getModels();
+	);
     
-	public static getModelsNameByEvent : (int) * (int) ==> ()
-  getModelsNameByEvent(optionFestival,optionEvent) == (
-      IO`print("\n");
-  		for counter = 1 to len (getEventsByFestival2(optionFestival) (optionEvent)).getModels() do (
-  		IO`print(counter);
-  		IO`print(": ");
-  		IO`print(((getEventsByFestival2(optionFestival) (optionEvent)).getModels() (counter)).getName());
-  		IO`print("\n");
-  );
-  );
-  
-  public static getModelsNameByEvent2 :(int) * (int) ==> seq of Model
-  getModelsNameByEvent2(optionFestival, optionEvent) == (
-  festivalTemp := (Tests`getFestivals() (optionFestival));
-  		for counter = 1 to len (festivalTemp.getEvents() (optionEvent)).getModels() do (
-  		modelsTemp := modelsTemp ^[((festivalTemp.getEvents() (optionEvent)).getModels()) (counter)];
-  	);
-  	return modelsTemp;
-  );
-  
-  
-  public static getModelInf: (int) * (int) * (int) ==> ()
-		getModelInf(optionFestival, optionEvent,optionModel) ==
-		(	
-		festivalTemp := (Tests`getFestivals() (optionFestival));
-		IO`print("Name: ");
-  	IO`print((getModelsNameByEvent2(optionFestival,optionEvent) (optionModel)).getName());
-  	IO`print("\n");
-  	IO`print("Age: ");
-  	IO`print((getModelsNameByEvent2(optionFestival,optionEvent) (optionModel)).getAge());
-  	IO`print("\n");
-  	IO`print("Nationality: ");
-  	IO`print((getModelsNameByEvent2(optionFestival,optionEvent) (optionModel)).getNationality());
-  	IO`print("\n");
-  	IO`print("Address: ");
-  	IO`print((getModelsNameByEvent2(optionFestival,optionEvent) (optionModel)).getAddress());
-  	IO`print("\n");
-  	IO`print("\n");
-				
-	 );
+  public static getModelsInfsByRunway : (int) * (int) * (int) ==> ()
+	getModelsInfsByRunway(optionFestival, optionEvent, optionRunWay) ==
+	(
+			for counter = 1 to len getModelsByRunway(optionFestival, optionEvent, optionRunWay) do (
+				getModelsByRunway(optionFestival, optionEvent, optionRunWay) (counter).printModel();
+			);
+	);
 	
-	public static getDesginersNameByEvent2 :(int) * (int) ==> seq of Designer
-  getDesginersNameByEvent2(optionFestival, optionEvent) == (
-  festivalTemp := (Tests`getFestivals() (optionFestival));
-  		for counter = 1 to len (festivalTemp.getEvents() (optionEvent)).getDesigners() do (
-  		designersTemp := designersTemp ^[((festivalTemp.getEvents() (optionEvent)).getDesigners()) (counter)];
-  	);
-  	return designersTemp;
-  );
+  --Retorna designers do desfile seleciondo do evento selecionado do festival selecionado  
+  public static getDesignersByRunway : (int) * (int) * (int) ==> set of Designer
+	getDesignersByRunway(optionFestival, optionEvent, optionRunWay) ==
+	(
+	return getOneRunwayByEvent(optionFestival,optionEvent,optionRunWay).getDesigners();
+	);
 	
-	public static getDesignersNameByEvent : (int) * (int) ==> ()
-  getDesignersNameByEvent(optionFestival,optionEvent) == (
-      IO`print("\n");
-  		for counter = 1 to len (getEventsByFestival2(optionFestival) (optionEvent)).getDesigners() do (
-  		IO`print(counter);
-  		IO`print(": ");
-  		IO`print(((getEventsByFestival2(optionFestival) (optionEvent)).getDesigners() (counter)).getName());
-  		IO`print("\n");
-  );
-  );
   
-	public static getDesignerInf: (int) * (int) * (int) ==> ()
-		getDesignerInf(optionFestival, optionEvent,optionDesigner) ==
-		(	
-		festivalTemp := (Tests`getFestivals() (optionFestival));
-		IO`print("Name: ");
-  	IO`print((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getName());
-  	IO`print("\n");
-  	IO`print("Age: ");
-  	IO`print((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getAge());
-  	IO`print("\n");
-  	IO`print("Nationality: ");
-  	IO`print((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getNationality());
-  	IO`print("\n");
-  	IO`print("Address: ");
-  	IO`print((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getAddress());
-  	IO`print("\n");
-  	IO`print("Style: ");
-  	IO`print((getDesginersNameByEvent2(optionFestival,optionEvent) (optionDesigner)).getStyle());
-  	IO`print("\n");
-  	IO`print("\n");
-				
-	 );
   
 
 public static main : () ==> ()

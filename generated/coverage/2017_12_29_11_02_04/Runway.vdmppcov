@@ -1,0 +1,30 @@
+class Runway
+
+types
+	public String = seq of char;
+	
+instance variables
+	private designers: set of Designer := {};
+	private models: seq of Model := [];
+	private numberModels: int := 0;
+	
+	operations
+  public Runway : () ==> Runway
+  Runway() ==
+  (
+    return self;
+  );
+  
+ public pure getModels : () ==> seq of Model
+		   getModels() == return models;
+		   
+	public pure getDesigners : () ==> set of Designer
+		   getDesigners() == return designers;  
+		   
+	public insertDesigner : Designer ==> ()
+  insertDesigner(dg) ==
+  (
+   
+    designers := designers union  {dg};
+  );
+end Runway

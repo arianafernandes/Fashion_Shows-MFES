@@ -70,20 +70,7 @@ operations
 	  public pure getNumberEvents : () ==> nat
 	  getNumberEvents() == return numberEvents;
 
- 		public getEvents: () ==> seq of Event
+ 	public getEvents: () ==> seq of Event
 	  getEvents() == return events;
-	  
-	  public printUser: () ==> ()
-		printUser() == (
-		IO`print(" Name: ");
-			IO`print(name);
-			IO`print("\n");
-			IO`print("Age: ");
-			IO`print(age);
-			IO`print("\n");
-			IO`print("Gender: ");
-			IO`print(gender);
-			IO`print("\n");
-		);
 
 end FashionUser

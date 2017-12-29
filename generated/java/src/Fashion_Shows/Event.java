@@ -13,10 +13,7 @@ public class Event {
   public String theme = "";
   public Object gender = Fashion_Shows.quotes.HomemQuote.getInstance();
   public Object collection = Fashion_Shows.quotes.Outono_InvernoQuote.getInstance();
-  private VDMSeq designers = SeqUtil.seq();
-  private Number numberDesigners = 0L;
-  private VDMSeq models = SeqUtil.seq();
-  private Number numberModels = 0L;
+  private VDMSeq runways = SeqUtil.seq();
 
   public void cg_init_Event_1(
       final String nm,
@@ -92,36 +89,36 @@ public class Event {
     return collection;
   }
 
-  public VDMSeq getModels() {
+  public VDMSeq getRunways() {
 
-    return Utils.copy(models);
+    return Utils.copy(runways);
   }
 
-  public VDMSeq getDesigners() {
+  public void insertRunway(final Runway r) {
 
-    return Utils.copy(designers);
+    runways = SeqUtil.conc(Utils.copy(runways), SeqUtil.seq(r));
   }
 
-  public void insertDesigner(final Designer dg) {
+  public void printEvent() {
 
-    numberDesigners = numberDesigners.longValue() + 1L;
-    designers = SeqUtil.conc(Utils.copy(designers), SeqUtil.seq(dg));
-  }
-
-  public Number getNumberDesigners() {
-
-    return numberDesigners;
-  }
-
-  public void insertModel(final Model md) {
-
-    numberModels = numberModels.longValue() + 1L;
-    models = SeqUtil.conc(Utils.copy(models), SeqUtil.seq(md));
-  }
-
-  public Number getNumberModels() {
-
-    return numberModels;
+    IO.print("Event Name: ");
+    IO.print(name);
+    IO.print("\n");
+    IO.print("Date: ");
+    IO.print(date);
+    IO.print("\n");
+    IO.print("Time: ");
+    IO.print(time);
+    IO.print("\n");
+    IO.print("Theme: ");
+    IO.print(theme);
+    IO.print("\n");
+    IO.print("Gender: ");
+    IO.print(((Object) gender));
+    IO.print("\n");
+    IO.print("Collection: ");
+    IO.print(((Object) collection));
+    IO.print("\n");
   }
 
   public Event() {}
@@ -145,14 +142,8 @@ public class Event {
         + Utils.toString(gender)
         + ", collection := "
         + Utils.toString(collection)
-        + ", designers := "
-        + Utils.toString(designers)
-        + ", numberDesigners := "
-        + Utils.toString(numberDesigners)
-        + ", models := "
-        + Utils.toString(models)
-        + ", numberModels := "
-        + Utils.toString(numberModels)
+        + ", runways := "
+        + Utils.toString(runways)
         + "}";
   }
 }

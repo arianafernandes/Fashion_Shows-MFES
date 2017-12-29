@@ -71,34 +71,7 @@ operations
 		public pure getCollection : () ==> EventCollection
 		   getCollection() == return collection;
 		
-		public pure getRunways : () ==> seq of Runway
-		   getRunways() == return runways;
+		public pure getRunway : () ==> seq of Runway
+		   getRunway() == return runways;
 	
-		public insertRunway : Runway ==> ()
-	  insertRunway(r) ==
-	  (
-	    runways := runways ^  [r];
-	  );
-  
-		public printEvent: () ==> ()
-		printEvent() == (
-		IO`print("Event Name: ");
-			IO`print(name);
-			IO`print("\n");
-			IO`print("Date: ");
-			IO`print(date);
-			IO`print("\n");
-			IO`print("Time: ");
-			IO`print(time);
-			IO`print("\n");
-			IO`print("Theme: ");
-		  IO`print(theme);
-			IO`print("\n");
-			IO`print("Gender: ");
-			IO`print(gender);
-			IO`print("\n");
-			IO`print("Collection: ");
-			IO`print(collection);
-			IO`print("\n");
-		);
 end Event

@@ -9,7 +9,6 @@ instance variables
 	private static designers: seq of Designer := [];
 	private static models: seq of Model := [];
 	private static users: seq of FashionUser := [];
-  private static runways: seq of Runway := [];
 	
 	
 operations
@@ -31,22 +30,9 @@ operations
  		dcl m2: Model:= new Model("Naomi Campbell",47,"Inglesa","Inglaterra");
  		dcl m3: Model:= new Model("Kate Moss",43,"Inglesa","Inglaterra");
  		dcl u0: FashionUser:= new FashionUser("Joao", 30, <Homem>);
- 		dcl r0: Runway := new Runway("Meet winter collecion");
- 		dcl r1: Runway := new Runway("African Powe");
- 		dcl r2: Runway := new Runway("Nautical Vibes");
- 		
+ 		dcl r0: Runway := new Runway();
  		r0.insertDesigner(d0);
  		r0.insertDesigner(d1);
- 		r0.insertModel(m0);
- 		
- 		r1.insertDesigner(d1);
- 		r1.insertModel(m1);
- 		r1.insertModel(m2);
- 		r1.insertModel(m3);
- 		
- 		r2.insertDesigner(d0);
- 		r2.insertModel(m2);
- 		
  		
  		festivals := festivals ^ [f0];
  		festivals := festivals ^ [f1];
@@ -60,12 +46,6 @@ operations
  		models := models ^ [m2];
  		models := models ^ [m3];
  		users := users ^ [u0];
- 		runways := runways ^ [r0];
- 		
- 		ev0.insertRunway(r0);
- 		ev1.insertRunway(r1);
- 		ev1.insertRunway(r2);
- 		ev1.insertRunway(r2);
  		
  		
     -- EXECUTE testInit()
@@ -116,28 +96,28 @@ operations
     
     -- EXECUTE testInsertDesignerAtEvent()
     IO`print("TestEvent.vdmpp (4/10): testInsertDesignerAtEvent() started...\n");
-   -- ev0.insertDesigner(d0);
-    --ev1.insertDesigner(d1);
-   -- assertEqual(1,ev0.getNumberDesigners());
-   -- assertEqual(d0.getName(),(ev0.getDesigners() (1)).getName());
-   -- assertEqual(1,ev1.getNumberDesigners());
-   -- assertEqual(d1.getName(),(ev1.getDesigners() (1)).getName());
+    ev0.insertDesigner(d0);
+    ev1.insertDesigner(d1);
+    assertEqual(1,ev0.getNumberDesigners());
+    assertEqual(d0.getName(),(ev0.getDesigners() (1)).getName());
+    assertEqual(1,ev1.getNumberDesigners());
+    assertEqual(d1.getName(),(ev1.getDesigners() (1)).getName());
     
      -- EXECUTE testInsertModelAtEvent()
     IO`print("TestEvent.vdmpp (3/10): testInsertModelAtEvent() started...\n");
-   -- ev0.insertModel(m0);
-   -- ev0.insertModel(m1);
-   -- ev1.insertModel(m1);
-  --  ev1.insertModel(m2);
-   -- ev2.insertModel(m3);
-    --assertEqual(2,ev0.getNumberModels());
-   -- assertEqual(m0.getName(),(ev0.getModels() (1)).getName());
-    --assertEqual(m1.getName(),(ev0.getModels() (2)).getName());
-    --assertEqual(2,ev1.getNumberModels());
-   -- assertEqual(m1.getName(),(ev1.getModels() (1)).getName());
-    --assertEqual(m2.getName(),(ev1.getModels() (2)).getName());
-    --assertEqual(1,ev2.getNumberModels());
-   -- assertEqual(m3.getName(),(ev2.getModels() (1)).getName());
+    ev0.insertModel(m0);
+    ev0.insertModel(m1);
+    ev1.insertModel(m1);
+    ev1.insertModel(m2);
+    ev2.insertModel(m3);
+    assertEqual(2,ev0.getNumberModels());
+    assertEqual(m0.getName(),(ev0.getModels() (1)).getName());
+    assertEqual(m1.getName(),(ev0.getModels() (2)).getName());
+    assertEqual(2,ev1.getNumberModels());
+    assertEqual(m1.getName(),(ev1.getModels() (1)).getName());
+    assertEqual(m2.getName(),(ev1.getModels() (2)).getName());
+    assertEqual(1,ev2.getNumberModels());
+    assertEqual(m3.getName(),(ev2.getModels() (1)).getName());
     
     --DESIGNER
     -- EXECUTE testParams()
@@ -197,8 +177,5 @@ operations
   
   public  static getUsers : () ==> seq of FashionUser
   getUsers() == return users;
-  
-  public  static getRunways : () ==> seq of Runway
-  getRunways() == return runways;
   
 end Tests

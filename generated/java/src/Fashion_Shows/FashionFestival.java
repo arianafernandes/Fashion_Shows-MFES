@@ -63,6 +63,22 @@ public class FashionFestival {
     return numberEvents;
   }
 
+  public void printFashionFestival() {
+
+    IO.print("Name: ");
+    IO.print(name);
+    IO.print("\n");
+    IO.print("Date Begin: ");
+    IO.print(dateBegin);
+    IO.print("\n");
+    IO.print("Date End: ");
+    IO.print(dateEnd);
+    IO.print("\n");
+    IO.print("Local: ");
+    IO.print(local);
+    IO.print("\n");
+  }
+
   public FashionFestival() {}
 
   public String toString() {
