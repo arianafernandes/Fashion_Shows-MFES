@@ -9,27 +9,26 @@ public class FashionUser {
   private String password;
   public String name;
   public Number age;
-  public Object gender;
   private VDMSeq designers = SeqUtil.seq();
   private Number numberDesigners = 0L;
+  private VDMSeq models = SeqUtil.seq();
+  private Number numberModels = 0L;
   private VDMSeq events = SeqUtil.seq();
   private Number numberEvents = 0L;
 
   public void cg_init_FashionUser_1(
-      final String u, final String p, final String nm, final Number ag, final Object gr) {
+      final String u, final String p, final String nm, final Number ag) {
 
     username = u;
     password = p;
     name = nm;
     age = ag;
-    gender = gr;
     return;
   }
 
-  public FashionUser(
-      final String u, final String p, final String nm, final Number ag, final Object gr) {
+  public FashionUser(final String u, final String p, final String nm, final Number ag) {
 
-    cg_init_FashionUser_1(u, p, nm, ag, gr);
+    cg_init_FashionUser_1(u, p, nm, ag);
   }
 
   public String getUsername() {
@@ -52,11 +51,6 @@ public class FashionUser {
     return age;
   }
 
-  public Object getGender() {
-
-    return gender;
-  }
-
   public void insertDesigner(final Designer d) {
 
     numberDesigners = numberDesigners.longValue() + 1L;
@@ -71,6 +65,22 @@ public class FashionUser {
   public VDMSeq getDesigners() {
 
     return Utils.copy(designers);
+  }
+
+  public void insertModel(final Model d) {
+
+    numberModels = numberModels.longValue() + 1L;
+    models = SeqUtil.conc(Utils.copy(models), SeqUtil.seq(d));
+  }
+
+  public Number getNumberFavModels() {
+
+    return numberModels;
+  }
+
+  public VDMSeq getModels() {
+
+    return Utils.copy(models);
   }
 
   public void insertEvent(final Event ev) {
@@ -91,14 +101,16 @@ public class FashionUser {
 
   public void printUser() {
 
+    IO.print("Username: ");
+    IO.print(username);
+    IO.print("\n");
+    IO.print("Password: ");
+    IO.print(password);
     IO.print(" Name: ");
     IO.print(name);
     IO.print("\n");
     IO.print("Age: ");
     IO.print(age);
-    IO.print("\n");
-    IO.print("Gender: ");
-    IO.print(((Object) gender));
     IO.print("\n");
   }
 
@@ -115,12 +127,14 @@ public class FashionUser {
         + Utils.toString(name)
         + ", age := "
         + Utils.toString(age)
-        + ", gender := "
-        + Utils.toString(gender)
         + ", designers := "
         + Utils.toString(designers)
         + ", numberDesigners := "
         + Utils.toString(numberDesigners)
+        + ", models := "
+        + Utils.toString(models)
+        + ", numberModels := "
+        + Utils.toString(numberModels)
         + ", events := "
         + Utils.toString(events)
         + ", numberEvents := "

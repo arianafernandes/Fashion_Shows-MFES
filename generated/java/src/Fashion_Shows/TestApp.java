@@ -27,6 +27,17 @@ public class TestApp {
     return Tests.getAppUsers();
   }
 
+  public static void registerUser(
+      final String username, final String password, final String name, final Number age) {
+
+    Tests.setAppUser(username, password, name, age);
+  }
+
+  public static VDMSeq getFestivals() {
+
+    return Tests.getFestivals();
+  }
+
   public static void getFestivalsNames() {
 
     long toVar_1 = Tests.getFestivals().size();

@@ -54,11 +54,8 @@ public class Tests extends MyTestCase {
     Model m1 = new Model("Claudia Schiffer", 47L, "Alemã", "Alemanha");
     Model m2 = new Model("Naomi Campbell", 47L, "Inglesa", "Inglaterra");
     Model m3 = new Model("Kate Moss", 43L, "Inglesa", "Inglaterra");
-    FashionUser u0 =
-        new FashionUser("Joao", "1234", "Joao", 30L, Fashion_Shows.quotes.HomemQuote.getInstance());
-    FashionUser u1 =
-        new FashionUser(
-            "Maria", "1234", "Maria", 34L, Fashion_Shows.quotes.MulherQuote.getInstance());
+    FashionUser u0 = new FashionUser("Joao", "1234", "Joao", 30L);
+    FashionUser u1 = new FashionUser("Maria", "1234", "Maria", 34L);
     Runway r0 = new Runway("Meet winter collecion");
     Runway r1 = new Runway("African Power");
     Runway r2 = new Runway("Nautical Vibes");
@@ -145,7 +142,6 @@ public class Tests extends MyTestCase {
     IO.print("TestFashionUser.vdmpp (2/10): UserParams() started...\n");
     assertEqual("Joao", u0.getName());
     assertEqual(30L, u0.getAge());
-    assertEqual(Fashion_Shows.quotes.HomemQuote.getInstance(), ((Object) u0.getGender()));
     IO.print("TestFashionUser.vdmpp (2/10): InsertFavoriteDesginer() started...\n");
     u0.insertDesigner(d0);
     u0.insertDesigner(d1);
@@ -155,6 +151,8 @@ public class Tests extends MyTestCase {
     IO.print("TestFashionUser.vdmpp (2/10): UserEvents() started...\n");
     u0.insertEvent(ev0);
     u0.insertEvent(ev1);
+    u0.insertModel(m0);
+    u0.insertModel(m1);
     assertEqual(2L, u0.getNumberEvents());
     assertEqual(ev0.getName(), ((Event) Utils.get(u0.getEvents(), 1L)).getName());
     assertEqual(ev1.getName(), ((Event) Utils.get(u0.getEvents(), 2L)).getName());
@@ -189,6 +187,13 @@ public class Tests extends MyTestCase {
   public static VDMSeq getRunways() {
 
     return Utils.copy(Tests.runways);
+  }
+
+  public static void setAppUser(
+      final String username, final String password, final String name, final Number age) {
+
+    FashionUser u5 = new FashionUser(username, password, name, age);
+    appUsers = SetUtil.union(Utils.copy(Tests.appUsers), SetUtil.set(u5));
   }
 
   public Tests() {}
