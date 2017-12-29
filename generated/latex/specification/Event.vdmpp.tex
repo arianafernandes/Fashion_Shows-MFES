@@ -21,16 +21,13 @@ instance variables
  public  theme : EventTheme := "";
  public  gender: EventGender := <Homem>;
  public  collection: EventCollection := <Outono_Inverno>;
- --Lista de designers do evento
- private  designers: seq of Designer := [];
- private  numberDesigners: int := 0;
- --Lista de modelos do evento
- private  models: seq of Model := [];
- private  numberModels: int := 0;
+ 
+ --Lista de desfiles
+ private runways: seq of Runway := [];
  
 operations
 (*@
-\label{Event:31}
+\label{Event:28}
 @*)
  public Event : 
          EventName * 
@@ -55,103 +52,98 @@ operations
  
  --retorna os parametros da class event
 (*@
-\label{getName:53}
+\label{getName:50}
 @*)
   public pure getName : () ==> String
     getName() == return name;
     
 (*@
-\label{getDate:56}
+\label{getDate:53}
 @*)
    public pure getDate : () ==> String
      getDate() == return date;
      
 (*@
-\label{getLocal:59}
+\label{getLocal:56}
 @*)
   public pure getLocal : () ==> String
      getLocal() == return local;
      
 (*@
-\label{getTime:62}
+\label{getTime:59}
 @*)
   public pure getTime : () ==> nat
      getTime() == return time;      
      
 (*@
-\label{getDuration:65}
+\label{getDuration:62}
 @*)
   public pure getDuration : () ==> nat
      getDuration() == return duration;
      
 (*@
-\label{getTheme:68}
+\label{getTheme:65}
 @*)
   public pure getTheme : () ==> String
      getTheme() == return theme;
      
 (*@
-\label{getGender:71}
+\label{getGender:68}
 @*)
   public pure getGender : () ==> EventGender
      getGender() == return gender;
      
 (*@
-\label{getCollection:74}
+\label{getCollection:71}
 @*)
   public pure getCollection : () ==> EventCollection
      getCollection() == return collection;
   
 (*@
-\label{getModels:77}
+\label{getRunways:74}
 @*)
-  public pure getModels : () ==> seq of Model
-     getModels() == return models;
+  public pure getRunways : () ==> seq of Runway
+     getRunways() == return runways;
+ 
+(*@
+\label{insertRunway:77}
+@*)
+(*@
+\label{getNumberRunways:77}
+@*)
+  public pure getNumberRunways : () ==> nat
+     getNumberRunways() == return len runways;
      
+  public insertRunway : Runway ==> ()
+   insertRunway(r) ==
+   (
 (*@
-\label{getDesigners:80}
+\label{printEvent:83}
 @*)
-  public pure getDesigners : () ==> seq of Designer
-     getDesigners() == return designers;
- 
- --DESIGNERS DO EVENTO 
- --Adiciona designer ao evento
-(*@
-\label{insertDesigner:85}
-@*)
- public insertDesigner : Designer ==> ()
-  insertDesigner(dg) ==
-  (
-    numberDesigners := numberDesigners + 1;
-    designers := designers ^  [dg];
+     runways := runways ^  [r];
+   );
+  
+  public printEvent: () ==> ()
+  printEvent() == (*@\vdmnotcovered{(}@*)
+  IO`print((*@\vdmnotcovered{"Event Name: "}@*));
+   IO`print((*@\vdmnotcovered{name}@*));
+   IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Date: "}@*));
+   IO`print((*@\vdmnotcovered{date}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+   IO`print((*@\vdmnotcovered{"Time: "}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{time}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Theme: "}@*));
+    IO`print((*@\vdmnotcovered{theme}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+   IO`print((*@\vdmnotcovered{"Gender: "}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{gender}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+   IO`print((*@\vdmnotcovered{"Collection: "}@*));
+   IO`print((*@\vdmnotcovered{collection}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
   );
-  
- --retorna nr designers do evento
-(*@
-\label{getNumberDesigners:93}
-@*)
-  public pure getNumberDesigners : () ==> int
-  getNumberDesigners() == return numberDesigners;
-  
-  --MODELOS DO EVENTO
-  --Adiciona model ao evento
-(*@
-\label{insertModel:98}
-@*)
- public insertModel : Model ==> ()
-  insertModel(md) ==
-  (
-    numberModels := numberModels + 1;
-    models := models ^  [md];
-  );
-  
-  --retorna nr designers do evento
-(*@
-\label{getNumberModels:106}
-@*)
-  public pure getNumberModels : () ==> int
-  getNumberModels() == return numberModels;
- 
 end Event
 \end{vdmpp}
 \bigskip
@@ -160,38 +152,34 @@ end Event
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[Event:31]{Event} & 31&100.0\% & 3 \\
+\hyperref[Event:28]{Event} & 28&100.0\% & 3 \\
 \hline
-\hyperref[getCollection:74]{getCollection} & 74&100.0\% & 1 \\
+\hyperref[getCollection:71]{getCollection} & 71&100.0\% & 1 \\
 \hline
-\hyperref[getDate:56]{getDate} & 56&100.0\% & 1 \\
+\hyperref[getDate:53]{getDate} & 53&100.0\% & 1 \\
 \hline
-\hyperref[getDesigners:80]{getDesigners} & 80&100.0\% & 2 \\
+\hyperref[getDuration:62]{getDuration} & 62&100.0\% & 1 \\
 \hline
-\hyperref[getDuration:65]{getDuration} & 65&100.0\% & 1 \\
+\hyperref[getGender:68]{getGender} & 68&100.0\% & 1 \\
 \hline
-\hyperref[getGender:71]{getGender} & 71&100.0\% & 1 \\
+\hyperref[getLocal:56]{getLocal} & 56&100.0\% & 1 \\
 \hline
-\hyperref[getLocal:59]{getLocal} & 59&100.0\% & 1 \\
+\hyperref[getName:50]{getName} & 50&100.0\% & 13 \\
 \hline
-\hyperref[getModels:77]{getModels} & 77&100.0\% & 5 \\
+\hyperref[getNumberRunways:77]{getNumberRunways} & 77&100.0\% & 3 \\
 \hline
-\hyperref[getName:53]{getName} & 53&100.0\% & 9 \\
+\hyperref[getRunways:74]{getRunways} & 74&100.0\% & 5 \\
 \hline
-\hyperref[getNumberDesigners:93]{getNumberDesigners} & 93&100.0\% & 2 \\
+\hyperref[getTheme:65]{getTheme} & 65&100.0\% & 1 \\
 \hline
-\hyperref[getNumberModels:106]{getNumberModels} & 106&100.0\% & 3 \\
+\hyperref[getTime:59]{getTime} & 59&100.0\% & 1 \\
 \hline
-\hyperref[getTheme:68]{getTheme} & 68&100.0\% & 1 \\
+\hyperref[insertRunway:77]{insertRunway} & 77&100.0\% & 4 \\
 \hline
-\hyperref[getTime:62]{getTime} & 62&100.0\% & 1 \\
-\hline
-\hyperref[insertDesigner:85]{insertDesigner} & 85&100.0\% & 2 \\
-\hline
-\hyperref[insertModel:98]{insertModel} & 98&100.0\% & 5 \\
+\hyperref[printEvent:83]{printEvent} & 83&0.0\% & 0 \\
 \hline
 \hline
-Event.vdmpp & & 100.0\% & 38 \\
+Event.vdmpp & & 56.4\% & 35 \\
 \hline
 \end{longtable}
 

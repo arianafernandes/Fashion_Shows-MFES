@@ -3,61 +3,74 @@ class FashionUser
 
 types
  public String = seq of char;
+ public Username = String;
+ public Password = String;
  public UserName = String;
  public UserAge = nat;
- public UserGender = <Homem> | <Mulher>;
  
 instance variables
+ private username: Username;
+ private password: Password;
  public name: UserName;
  public age: UserAge;
- public gender: UserGender;
  --designers favoritos
  private  designers: seq of Designer := [];
  private  numberDesigners: int := 0;
+  --modelos favoritos
+ private  models: seq of Model := [];
+ private  numberModels: int := 0;
  --eventos que utilizador vai
-  private events: seq of Event := [];
+ private events: seq of Event := [];
  private  numberEvents: int := 0;
 
 operations  
 (*@
-\label{FashionUser:21}
+\label{FashionUser:26}
 @*)
-  public FashionUser : 
+  public FashionUser : Username *
+            Password *
             UserName *
-            UserAge *
-            UserGender ==> FashionUser
-  FashionUser(nm, ag, gr) ==
+            UserAge  ==> FashionUser
+  FashionUser(u, p, nm, ag) ==
   (
+   username := u;
+   password := p;
     name := nm;
     age := ag;
-    gender := gr;
     return self;
   );
   
   --retorna os parametros da class fashionUSer
 (*@
-\label{getName:34}
+\label{getUsername:40}
+@*)
+  public pure getUsername : () ==> String
+    getUsername() == return username;
+    
+(*@
+\label{getPassword:43}
+@*)
+  public pure getPassword : () ==> String
+    getPassword() == return password;
+  
+(*@
+\label{getName:46}
 @*)
   public pure getName : () ==> String
     getName() == return name;
     
 (*@
-\label{getAge:37}
+\label{getAge:49}
 @*)
    public pure getAge : () ==> nat
      getAge() == return age;
      
-(*@
-\label{getGender:40}
-@*)
-  public pure getGender : () ==> UserGender
-     getGender() == return gender;
   
    
     --DESIGNERES FAVORITOS  
    --Adiciona designer favorito ao utilizador
 (*@
-\label{insertDesigner:46}
+\label{insertDesigner:56}
 @*)
   public insertDesigner : Designer ==> ()
    insertDesigner(d) ==
@@ -68,21 +81,46 @@ operations
    
   --retorna nr designers favoritos
 (*@
-\label{getNumberFavDesigners:54}
+\label{getNumberFavDesigners:64}
 @*)
    public pure getNumberFavDesigners : () ==> nat
    getNumberFavDesigners() == return numberDesigners;
    
 (*@
-\label{getDesigners:57}
+\label{getDesigners:67}
 @*)
    public getDesigners: () ==> seq of Designer
    getDesigners() == return designers;
    
+   
+(*@
+\label{insertModel:71}
+@*)
+   public insertModel : Model ==> ()
+   insertModel(d) ==
+   (
+     numberModels := numberModels + 1;
+     models := models ^ [d];
+   );
+   
+  --retorna nr designers favoritos
+(*@
+\label{getNumberFavModels:79}
+@*)
+   public pure getNumberFavModels : () ==> nat
+   getNumberFavModels() == return numberModels;
+   
+(*@
+\label{getModels:82}
+@*)
+   public getModels: () ==> seq of Model
+   getModels() == return models;
+   
+   
     --EVENTOS DO UTILIZADOR
     --Adiciona evento
 (*@
-\label{insertEvent:62}
+\label{insertEvent:88}
 @*)
   public insertEvent : Event ==> ()
    insertEvent(ev) ==
@@ -93,16 +131,34 @@ operations
    
   --Retorna nr designers favoritos
 (*@
-\label{getNumberEvents:70}
+\label{getNumberEvents:96}
 @*)
    public pure getNumberEvents : () ==> nat
    getNumberEvents() == return numberEvents;
 
 (*@
-\label{getEvents:73}
+\label{getEvents:99}
 @*)
-  public getEvents: () ==> seq of Event
+   public getEvents: () ==> seq of Event
    getEvents() == return events;
+   
+(*@
+\label{printUser:102}
+@*)
+   public printUser: () ==> ()
+  printUser() == (*@\vdmnotcovered{(}@*)
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Username: "}@*));
+   IO`print((*@\vdmnotcovered{username}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+   IO`print((*@\vdmnotcovered{"Password: "}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{password}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{" Name: "}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{name}@*));
+   IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Age: "}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{age}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+  );
 
 end FashionUser
 \end{vdmpp}
@@ -112,28 +168,38 @@ end FashionUser
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[FashionUser:21]{FashionUser} & 21&100.0\% & 1 \\
+\hyperref[FashionUser:26]{FashionUser} & 26&100.0\% & 2 \\
 \hline
-\hyperref[getAge:37]{getAge} & 37&100.0\% & 1 \\
+\hyperref[getAge:49]{getAge} & 49&100.0\% & 1 \\
 \hline
-\hyperref[getDesigners:57]{getDesigners} & 57&100.0\% & 2 \\
+\hyperref[getDesigners:67]{getDesigners} & 67&100.0\% & 2 \\
 \hline
-\hyperref[getEvents:73]{getEvents} & 73&100.0\% & 2 \\
+\hyperref[getEvents:99]{getEvents} & 99&100.0\% & 2 \\
 \hline
-\hyperref[getGender:40]{getGender} & 40&100.0\% & 1 \\
+\hyperref[getModels:82]{getModels} & 82&100.0\% & 2 \\
 \hline
-\hyperref[getName:34]{getName} & 34&100.0\% & 1 \\
+\hyperref[getName:46]{getName} & 46&100.0\% & 1 \\
 \hline
-\hyperref[getNumberEvents:70]{getNumberEvents} & 70&100.0\% & 1 \\
+\hyperref[getNumberEvents:96]{getNumberEvents} & 96&100.0\% & 1 \\
 \hline
-\hyperref[getNumberFavDesigners:54]{getNumberFavDesigners} & 54&100.0\% & 1 \\
+\hyperref[getNumberFavDesigners:64]{getNumberFavDesigners} & 64&100.0\% & 1 \\
 \hline
-\hyperref[insertDesigner:46]{insertDesigner} & 46&100.0\% & 2 \\
+\hyperref[getNumberFavModels:79]{getNumberFavModels} & 79&100.0\% & 1 \\
 \hline
-\hyperref[insertEvent:62]{insertEvent} & 62&100.0\% & 2 \\
+\hyperref[getPassword:43]{getPassword} & 43&100.0\% & 1 \\
+\hline
+\hyperref[getUsername:40]{getUsername} & 40&100.0\% & 1 \\
+\hline
+\hyperref[insertDesigner:56]{insertDesigner} & 56&100.0\% & 2 \\
+\hline
+\hyperref[insertEvent:88]{insertEvent} & 88&100.0\% & 2 \\
+\hline
+\hyperref[insertModel:71]{insertModel} & 71&100.0\% & 2 \\
+\hline
+\hyperref[printUser:102]{printUser} & 102&0.0\% & 0 \\
 \hline
 \hline
-FashionUser.vdmpp & & 100.0\% & 14 \\
+FashionUser.vdmpp & & 74.4\% & 21 \\
 \hline
 \end{longtable}
 

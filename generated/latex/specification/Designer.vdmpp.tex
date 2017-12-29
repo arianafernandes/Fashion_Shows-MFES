@@ -67,6 +67,28 @@ instance variables
   public pure getStyle : () ==> String
      getStyle() == return style;
      
+(*@
+\label{printDesigner:51}
+@*)
+  public printDesigner: () ==> ()
+  printDesigner() == (*@\vdmnotcovered{(}@*)
+  IO`print((*@\vdmnotcovered{"Designer Name: "}@*));
+   IO`print((*@\vdmnotcovered{name}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+   IO`print((*@\vdmnotcovered{"Age: "}@*));
+   IO`print((*@\vdmnotcovered{age}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Nationality: "}@*));
+   IO`print((*@\vdmnotcovered{nationality}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Address: "}@*));
+    IO`print((*@\vdmnotcovered{address}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Style: "}@*));
+   IO`print((*@\vdmnotcovered{style}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+  );
+     
 end Designer
 \end{vdmpp}
 \bigskip
@@ -81,14 +103,16 @@ Function or operation & Line & Coverage & Calls \\
 \hline
 \hyperref[getAge:39]{getAge} & 39&100.0\% & 1 \\
 \hline
-\hyperref[getName:36]{getName} & 36&100.0\% & 9 \\
+\hyperref[getName:36]{getName} & 36&100.0\% & 5 \\
 \hline
 \hyperref[getNationality:42]{getNationality} & 42&100.0\% & 1 \\
 \hline
 \hyperref[getStyle:48]{getStyle} & 48&100.0\% & 1 \\
 \hline
+\hyperref[printDesigner:51]{printDesigner} & 51&0.0\% & 0 \\
 \hline
-Designer.vdmpp & & 100.0\% & 15 \\
+\hline
+Designer.vdmpp & & 42.5\% & 11 \\
 \hline
 \end{longtable}
 

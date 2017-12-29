@@ -57,7 +57,24 @@ instance variables
   public pure getAddress : () ==> String
      getAddress() == return address;      
      
-     
+(*@
+\label{printModel:44}
+@*)
+  public printModel: () ==> ()
+  printModel() == (*@\vdmnotcovered{(}@*)
+  IO`print((*@\vdmnotcovered{"Model Name: "}@*));
+   IO`print((*@\vdmnotcovered{name}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+   IO`print((*@\vdmnotcovered{"Age: "}@*));
+   IO`print((*@\vdmnotcovered{age}@*));
+   IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
+   IO`print((*@\vdmnotcovered{"Nationality: "}@*));
+   IO`print((*@\vdmnotcovered{nationality}@*));
+   IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Address: "}@*));
+    IO`print((*@\vdmnotcovered{address}@*));
+   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+  );   
 end Model
 \end{vdmpp}
 \bigskip
@@ -72,12 +89,14 @@ Function or operation & Line & Coverage & Calls \\
 \hline
 \hyperref[getAge:35]{getAge} & 35&100.0\% & 1 \\
 \hline
-\hyperref[getName:32]{getName} & 32&100.0\% & 11 \\
+\hyperref[getName:32]{getName} & 32&100.0\% & 9 \\
 \hline
 \hyperref[getNationality:38]{getNationality} & 38&100.0\% & 1 \\
 \hline
+\hyperref[printModel:44]{printModel} & 44&0.0\% & 0 \\
 \hline
-Model.vdmpp & & 100.0\% & 18 \\
+\hline
+Model.vdmpp & & 43.1\% & 16 \\
 \hline
 \end{longtable}
 

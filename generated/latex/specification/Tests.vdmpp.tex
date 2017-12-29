@@ -9,13 +9,14 @@ instance variables
  private static events: seq of Event := [];
  private static designers: seq of Designer := [];
  private static models: seq of Model := [];
- private static users: seq of FashionUser := [];
+ private static appUsers: set of FashionUser := {};
+  private static runways: seq of Runway := [];
  
  
 operations
 
 (*@
-\label{run:16}
+\label{run:17}
 @*)
   public run : () ==> ()
   run() ==
@@ -33,7 +34,24 @@ operations
     dcl m1: Model:= new Model("Claudia Schiffer",47,"Alemã","Alemanha");
    dcl m2: Model:= new Model("Naomi Campbell",47,"Inglesa","Inglaterra");
    dcl m3: Model:= new Model("Kate Moss",43,"Inglesa","Inglaterra");
-   dcl u0: FashionUser:= new FashionUser("Joao", 30, <Homem>);
+   dcl u0: FashionUser:= new FashionUser("Joao","1234","Joao", 30);
+   dcl u1: FashionUser:= new FashionUser("Maria","1234","Maria", 34);
+   dcl r0: Runway := new Runway("Meet winter collecion");
+   dcl r1: Runway := new Runway("African Power");
+   dcl r2: Runway := new Runway("Nautical Vibes");
+
+   r0.insertDesigner(d0);
+   r0.insertDesigner(d1);
+   r0.insertModel(m0);
+   
+   r1.insertDesigner(d1);
+   r1.insertModel(m1);
+   r1.insertModel(m2);
+   r1.insertModel(m3);
+   
+   r2.insertDesigner(d0);
+   r2.insertModel(m2);
+   
    
    festivals := festivals ^ [f0];
    festivals := festivals ^ [f1];
@@ -46,46 +64,68 @@ operations
    models := models ^ [m1];
    models := models ^ [m2];
    models := models ^ [m3];
-   users := users ^ [u0];
+   appUsers := appUsers union {u0};
+   appUsers := appUsers union {u1};
+   runways := runways ^ [r0];
+   runways := runways ^ [r1];
+   runways := runways ^ [r2];
    
+   ev0.insertRunway(r0);
+   ev1.insertRunway(r1);
+   ev1.insertRunway(r2);
+   ev2.insertRunway(r2);
    
-    -- EXECUTE testInit()
-    IO`print("TestEvent.vdmpp (1/10): testInit() started...\n");
     assertNotNull(f0);
-     assertNotNull(f1);
+    assertNotNull(f1);
+    
     assertNotNull(ev0);
     assertNotNull(ev1);
     assertNotNull(ev2);
+
     assertNotNull(d0);
     assertNotNull(d1);
-    assertNotNull(ev2);
+    
     assertNotNull(m0);
     assertNotNull(m1);
     assertNotNull(m2);
     assertNotNull(m3);
+    
     assertNotNull(u0);
-     
+    assertNotNull(u1);
+    
     -- EXECUTE Fashion Festival 
-    -- EXECUTE testParams()
-    IO`print("TestFashionFestival.vdmpp (2/10): testParamsFestival() started...\n");
     assertEqual("Porto Fashion Week", f0.getName());
     assertEqual("04/05/2018", f0.getDateBegin());
     assertEqual("10/05/2018", f0.getDateEnd());
     assertEqual("Porto", f0.getLocal());
-   
-   -- EXECUTE testInsertEventAtFestival()
-    IO`print("TestFashionFestival.vdmpp (3/10): testInsertEventAtFestival() started...\n");
+    
     f0.insertEvent(ev0);
     f0.insertEvent(ev2);
+    f1.insertEvent(ev0);
     f1.insertEvent(ev1);
+    f0.insertFashionUser(u0);
+    f0.insertFashionUser(u1);
     
   assertEqual(2,f0.getNumberEvents());
+  
   assertEqual(ev0.getName(),((f0.getEvents() (2)).getName()));
-  assertEqual(1,f1.getNumberEvents());
+  assertEqual(2,f1.getNumberEvents());
   assertEqual(ev1.getName(),((f1.getEvents() (1)).getName()));
+    assertEqual(ev1.getName(),((f1.getEvents() (1)).getName()));
+    assertEqual(2, card f0.getFashionUsers());
+    assertEqual(2,f0.getNumberFashionUsers());
     
-    -- EXECUTE testEventParams()
-    IO`print("TestEvent.vdmpp (3/10): testEventParams() started...\n");
+    /*
+    assertEqual("Name: "+f0.getName()+"\n"
+           +"Date Begin: "+f0.getDateBegin()+"\n"
+           +"Date Begin: "+f0.getDateBegin()+"\n"
+           +"Date End: "+f0.getDateEnd()+"\n"
+           +"Local: "+f0.getLocal()+"\n"
+           ),f0.printFashionFestival());
+    */
+    
+    
+    -- EXECUTE EVENT
     assertEqual("BaixaShow", ev0.getName());
     assertEqual("04/05/2018", ev0.getDate());
     assertEqual("Baixa", ev0.getLocal());
@@ -95,105 +135,162 @@ operations
     assertEqual(<Homem>, ev0.getGender());
     assertEqual(<Primavera_Verao>, ev0.getCollection());  
     
-    -- EXECUTE testInsertDesignerAtEvent()
-    IO`print("TestEvent.vdmpp (4/10): testInsertDesignerAtEvent() started...\n");
-    ev0.insertDesigner(d0);
-    ev1.insertDesigner(d1);
-    assertEqual(1,ev0.getNumberDesigners());
-    assertEqual(d0.getName(),(ev0.getDesigners() (1)).getName());
-    assertEqual(1,ev1.getNumberDesigners());
-    assertEqual(d1.getName(),(ev1.getDesigners() (1)).getName());
-    
-     -- EXECUTE testInsertModelAtEvent()
-    IO`print("TestEvent.vdmpp (3/10): testInsertModelAtEvent() started...\n");
-    ev0.insertModel(m0);
-    ev0.insertModel(m1);
-    ev1.insertModel(m1);
-    ev1.insertModel(m2);
-    ev2.insertModel(m3);
-    assertEqual(2,ev0.getNumberModels());
-    assertEqual(m0.getName(),(ev0.getModels() (1)).getName());
-    assertEqual(m1.getName(),(ev0.getModels() (2)).getName());
-    assertEqual(2,ev1.getNumberModels());
-    assertEqual(m1.getName(),(ev1.getModels() (1)).getName());
-    assertEqual(m2.getName(),(ev1.getModels() (2)).getName());
-    assertEqual(1,ev2.getNumberModels());
-    assertEqual(m3.getName(),(ev2.getModels() (1)).getName());
-    
-    --DESIGNER
-    -- EXECUTE testParams()
-    IO`print("TestDesigner.vdmpp (2/10): DesignerParams() started...\n");
+    /*
+    ev0.insertRunway(r0);
+   ev1.insertRunway(r1);
+   ev1.insertRunway(r2);
+   ev2.insertRunway(r2);
+   */
+   
+   assertEqual(1,ev0.getNumberRunways());
+   assertEqual(2,ev1.getNumberRunways());
+   assertEqual(1,ev2.getNumberRunways());
+   assertEqual(r0.getName(),(ev0.getRunways() (1)).getName());
+   
+    -- EXECUTE Runway
+    /*
+    r0.insertDesigner(d0);
+   r0.insertDesigner(d1);
+   r0.insertModel(m0);
+   r1.insertDesigner(d1);
+   r1.insertModel(m1);
+   r1.insertModel(m2);
+   r1.insertModel(m3);
+   r2.insertDesigner(d0);
+   r2.insertModel(m2);
+   */
+   
+   assertEqual(r0.getDesignersNumber(),card r0.getDesigners());
+  assertEqual(1,r0.getNumberModels());
+  assertEqual(m0.getName(),(r0.getModels() (1)).getName());
+   
+    -- EXECUTE DESIGNER
     assertEqual("Yves S. L.", d0.getName());
     assertEqual(72, d0.getAge());    
     assertEqual("Frances", d0.getNationality()); 
     assertEqual("Paris", d0.getAddress()); 
     assertEqual("Classico", d0.getStyle()); 
     
-    --MODEL
-    -- EXECUTE testParams()
-    IO`print("TestModel.vdmpp (2/10): ModelParams() started...\n");
+    -- EXECUTE MODEL
     assertEqual("Sara Sampaio", m0.getName());
     assertEqual(24, m0.getAge());    
     assertEqual("Portuguesa", m0.getNationality()); 
     assertEqual("New York", m0.getAddress()); 
     
-    --USER
-    -- EXECUTE testParams()
-    IO`print("TestFashionUser.vdmpp (2/10): UserParams() started...\n");
+    
+    -- FASHION USER
     assertEqual("Joao", u0.getName());
     assertEqual(30, u0.getAge());    
-    assertEqual(<Homem>, u0.getGender());
+    assertEqual("Joao", u0.getUsername());
+    assertEqual("1234", u0.getPassword());    
     
-      -- EXECUTE InsertFavoriteDesginer()
-     IO`print("TestFashionUser.vdmpp (2/10): InsertFavoriteDesginer() started...\n");
+    u0.insertEvent(ev0);
+    u0.insertEvent(ev1);
+    assertEqual(2,u0.getNumberEvents());
+    assertEqual(ev0.getName(), (u0.getEvents() (1)).getName());    
+    assertEqual(ev1.getName(), (u0.getEvents() (2)).getName()); 
+    
      u0.insertDesigner(d0);
      u0.insertDesigner(d1);
      assertEqual(2,u0.getNumberFavDesigners());
      assertEqual(d0.getName(), (u0.getDesigners() (1)).getName());    
+(*@
+\label{getFestivals:193}
+@*)
      assertEqual(d1.getName(), (u0.getDesigners() (2)).getName());    
      
-      -- EXECUTE UserEvents()
-     IO`print("TestFashionUser.vdmpp (2/10): UserEvents() started...\n");
-     u0.insertEvent(ev0);
-     u0.insertEvent(ev1);
-     assertEqual(2,u0.getNumberEvents());
-     assertEqual(ev0.getName(), (u0.getEvents() (1)).getName());    
-     assertEqual(ev1.getName(), (u0.getEvents() (2)).getName());    
+    u0.insertModel(m0);
+(*@
+\label{getEvents:196}
+@*)
+    u0.insertModel(m1);
+     assertEqual(2,u0.getNumberFavModels());
+     assertEqual(m0.getName(), (u0.getModels() (1)).getName());    
+(*@
+\label{getDesigners:199}
+@*)
+     assertEqual(m1.getName(), (u0.getModels() (2)).getName());    
      
-    -- PRINT SUCCESS MESSAGE
-    IO`print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
+    /*
+(*@
+\label{getModels:202}
+@*)
+    f0.insertEvent(ev0);
+    f0.insertEvent(ev2);
+    f1.insertEvent(ev0);
+(*@
+\label{getAppUsers:205}
+@*)
+    f1.insertEvent(ev1);
+    f0.insertFashionUser(u0);
+    f0.insertFashionUser(u1);
+(*@
+\label{getRunways:208}
+@*)
+    
+    ev0.insertRunway(r0);
+   ev1.insertRunway(r1);
+(*@
+\label{setAppUser:211}
+@*)
+   ev1.insertRunway(r2);
+   ev2.insertRunway(r2);
+
+    r0.insertDesigner(d0);
+   r0.insertDesigner(d1);
+   r0.insertModel(m0);
+   r1.insertDesigner(d1);
+   r1.insertModel(m1);
+   r1.insertModel(m2);
+   r1.insertModel(m3);
+   r2.insertDesigner(d0);
+   r2.insertModel(m2);
+   */
+   
+     --TestApp
+      assertEqual(2, card TestApp`getUsers());
+      assertEqual(2, len TestApp`getFestivals());
+      assertEqual(f0.getName(), TestApp`getFestival(1).getName());
+     assertEqual(2, len TestApp`getFestivalEvents(1));
+     assertEqual(2, card TestApp`getFestivalUsers(1));
+     assertEqual(ev2.getName(),TestApp`getEvent(1,1).getName());
+    assertEqual(1,len TestApp`getRunwaysByEvent(1,1));
+    assertEqual(r2.getName(),TestApp`getOneRunwayByEvent(1,1,1).getName());
+    assertEqual(m2.getName(),(TestApp`getModelsByRunway(1,1,1) (1)).getName());
+    assertEqual(1, card TestApp`getDesignersByRunway(1,1,1));
+    assertEqual(2, len getFestivals());
+    assertEqual(3, len getEvents());
+    assertEqual(2, len getDesigners());
+    assertEqual(4, len getModels());
+    assertEqual(3, len getRunways());
+    assertEqual(2, card getAppUsers());
   );
   
-(*@
-\label{getFestivals:163}
-@*)
   public  static getFestivals : () ==> seq of FashionFestival
-  getFestivals() == return (*@\vdmnotcovered{festivals}@*);
+  getFestivals() == return festivals;
   
-(*@
-\label{getEvents:166}
-@*)
   public  static getEvents : () ==> seq of Event
-  getEvents() == (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{events}@*);
+  getEvents() == return events;
   
-(*@
-\label{getDesigners:169}
-@*)
   public  static getDesigners : () ==> seq of Designer
-  getDesigners() == (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{designers}@*);
+  getDesigners() == return designers;
    
-(*@
-\label{getModels:172}
-@*)
  public  static getModels : () ==> seq of Model
-  getModels() == (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{models}@*);
+  getModels() == return models;
   
-(*@
-\label{getUsers:175}
-@*)
-  public  static getUsers : () ==> seq of FashionUser
-  getUsers() == return (*@\vdmnotcovered{users}@*);
+  public  static getAppUsers : () ==> set of FashionUser
+  getAppUsers() == return appUsers;
   
+  public  static getRunways : () ==> seq of Runway
+  getRunways() == return runways;
+  
+  public static setAppUser: (String) *  (String) * (String) * (int) ==> ()
+  setAppUser(username,password,name,age) == 
+  (*@\vdmnotcovered{(}@*)
+   dcl u5 : FashionUser:= new (*@\vdmnotcovered{FashionUser}@*)((*@\vdmnotcovered{username}@*),(*@\vdmnotcovered{password}@*),name,(*@\vdmnotcovered{age}@*));
+   appUsers := (*@\vdmnotcovered{appUsers}@*) (*@\vdmnotcovered{union}@*) {(*@\vdmnotcovered{u5}@*)};
+   );
+
 end Tests
 \end{vdmpp}
 \bigskip
@@ -202,20 +299,24 @@ end Tests
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[getDesigners:169]{getDesigners} & 169&0.0\% & 0 \\
+\hyperref[getAppUsers:205]{getAppUsers} & 205&100.0\% & 2 \\
 \hline
-\hyperref[getEvents:166]{getEvents} & 166&0.0\% & 0 \\
+\hyperref[getDesigners:199]{getDesigners} & 199&100.0\% & 1 \\
 \hline
-\hyperref[getFestivals:163]{getFestivals} & 163&0.0\% & 0 \\
+\hyperref[getEvents:196]{getEvents} & 196&100.0\% & 1 \\
 \hline
-\hyperref[getModels:172]{getModels} & 172&0.0\% & 0 \\
+\hyperref[getFestivals:193]{getFestivals} & 193&100.0\% & 10 \\
 \hline
-\hyperref[getUsers:175]{getUsers} & 175&0.0\% & 0 \\
+\hyperref[getModels:202]{getModels} & 202&100.0\% & 1 \\
 \hline
-\hyperref[run:16]{run} & 16&100.0\% & 1 \\
+\hyperref[getRunways:208]{getRunways} & 208&100.0\% & 1 \\
+\hline
+\hyperref[run:17]{run} & 17&100.0\% & 3 \\
+\hline
+\hyperref[setAppUser:211]{setAppUser} & 211&0.0\% & 0 \\
 \hline
 \hline
-Tests.vdmpp & & 97.8\% & 1 \\
+Tests.vdmpp & & 98.0\% & 19 \\
 \hline
 \end{longtable}
 
