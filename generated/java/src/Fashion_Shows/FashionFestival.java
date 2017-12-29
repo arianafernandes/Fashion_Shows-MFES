@@ -11,6 +11,7 @@ public class FashionFestival {
   public String local = "";
   private VDMSeq events = SeqUtil.seq();
   private Number numberEvents = 0L;
+  private VDMSet fashionUsers = SetUtil.set();
 
   public void cg_init_FashionFestival_1(
       final String nm, final String di, final String df, final String lc) {
@@ -63,6 +64,11 @@ public class FashionFestival {
     return numberEvents;
   }
 
+  public VDMSet getFashionUsers() {
+
+    return Utils.copy(fashionUsers);
+  }
+
   public void printFashionFestival() {
 
     IO.print("Name: ");
@@ -96,6 +102,8 @@ public class FashionFestival {
         + Utils.toString(events)
         + ", numberEvents := "
         + Utils.toString(numberEvents)
+        + ", fashionUsers := "
+        + Utils.toString(fashionUsers)
         + "}";
   }
 }

@@ -5,8 +5,8 @@ import java.util.Scanner;
 import org.overture.codegen.runtime.*;
 
 public class App {
-
 	private static Scanner inputScanner = new Scanner(System.in);
+	private static int optionLogin;
 	private static int optionFestival;
 	private static int optionEvent;
 	private static int optionRunway;
@@ -14,17 +14,52 @@ public class App {
 	private static int optionDesigner;
 	
 	private static void printMenuInitial()
-	{
-		System.out.println("+========================================================================+");
+	{	System.out.println("+========================================================================+");
+	    System.out.println("|                                                                        |");
 		System.out.println("|                WELCOME TO THE FASHIONS_SHOWS  APP                      |");
+		System.out.println("|                                                                        |");
+		System.out.println("|   Welcome to the App You Need to Win Fashion Week!                     |");
+		System.out.println("|                                                                        |");
+		System.out.println("| 1. Login                                                               |");
+		System.out.println("| 2. Visitor                                                             |");
 		System.out.println("+========================================================================+\n");
-		System.out.println("Welcome to the App You Need to Win Fashion Week!\n");
-		System.out.println("List of fashion festivals happening now: \n");
-		TestApp.getFestivalsNames();
-		System.out.println("Please select a Festival number to get more information about\n");
-		optionFestival = inputScanner.nextInt();
-		TestApp.getFestival(optionFestival).printFashionFestival();
-		printMenuFestival(optionFestival);
+		
+		optionLogin = inputScanner.nextInt();
+		
+		if(optionLogin == 1){
+			MenuLogin();
+		}
+		else{
+			System.out.println("List of fashion festivals happening now: \n");
+			TestApp.getFestivalsNames();
+			System.out.println("Please select a Festival number to get more information about\n");
+			optionFestival = inputScanner.nextInt();
+			TestApp.getFestival(optionFestival).printFashionFestival();
+			printMenuFestival(optionFestival);
+		}
+	}
+	
+	private static void MenuLogin(){
+		System.out.println("Login\n");
+	 	Scanner scn = new Scanner(System.in);
+        System.out.print("Username Name: ");
+        String optionUsername = scn.nextLine();
+        System.out.print("Password: ");
+        String optionPassword = scn.nextLine();
+        
+		Iterator<FashionUser> iteratorU = TestApp.getUsers().iterator();
+		 while(iteratorU.hasNext()) {
+		    FashionUser userTemp = iteratorU.next();
+			if( (userTemp.getUsername().equals(optionUsername)) && (userTemp.getPassword().equals(optionPassword))){
+					System.out.println("Login com sucesso!\n");
+					System.out.println("List of fashion festivals happening now: \n");
+					TestApp.getFestivalsNames();
+					System.out.println("Please select a Festival number to get more information about\n");
+					optionFestival = inputScanner.nextInt();
+					TestApp.getFestival(optionFestival).printFashionFestival();
+					printMenuFestival(optionFestival);
+				}
+			}
 	}
 	
 	private static void printMenuFestival(int optionFestival){
@@ -56,7 +91,9 @@ public class App {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+			       
+
 		TestApp.printTests();
 		printMenuInitial();
 	}

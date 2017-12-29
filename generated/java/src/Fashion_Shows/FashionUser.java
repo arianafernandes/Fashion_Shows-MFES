@@ -5,6 +5,8 @@ import org.overture.codegen.runtime.*;
 
 @SuppressWarnings("all")
 public class FashionUser {
+  private String username;
+  private String password;
   public String name;
   public Number age;
   public Object gender;
@@ -13,17 +15,31 @@ public class FashionUser {
   private VDMSeq events = SeqUtil.seq();
   private Number numberEvents = 0L;
 
-  public void cg_init_FashionUser_1(final String nm, final Number ag, final Object gr) {
+  public void cg_init_FashionUser_1(
+      final String u, final String p, final String nm, final Number ag, final Object gr) {
 
+    username = u;
+    password = p;
     name = nm;
     age = ag;
     gender = gr;
     return;
   }
 
-  public FashionUser(final String nm, final Number ag, final Object gr) {
+  public FashionUser(
+      final String u, final String p, final String nm, final Number ag, final Object gr) {
 
-    cg_init_FashionUser_1(nm, ag, gr);
+    cg_init_FashionUser_1(u, p, nm, ag, gr);
+  }
+
+  public String getUsername() {
+
+    return username;
+  }
+
+  public String getPassword() {
+
+    return password;
   }
 
   public String getName() {
@@ -91,7 +107,11 @@ public class FashionUser {
   public String toString() {
 
     return "FashionUser{"
-        + "name := "
+        + "username := "
+        + Utils.toString(username)
+        + ", password := "
+        + Utils.toString(password)
+        + ", name := "
         + Utils.toString(name)
         + ", age := "
         + Utils.toString(age)

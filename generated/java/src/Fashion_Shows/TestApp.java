@@ -9,7 +9,7 @@ public class TestApp {
   private static VDMSeq events = SeqUtil.seq();
   private static VDMSeq designers = SeqUtil.seq();
   private static VDMSeq models = SeqUtil.seq();
-  private static VDMSeq users = SeqUtil.seq();
+  private static VDMSet users = SetUtil.set();
   private static VDMSeq eventsTemp = SeqUtil.seq();
   private static VDMSeq modelsTemp = SeqUtil.seq();
   private static VDMSeq designersTemp = SeqUtil.seq();
@@ -18,13 +18,17 @@ public class TestApp {
 
   public static void printTests() {
 
-    IO.print("\nExecuting Tests.vdmpp operations...\n");
+    IO.print("Executing Tests.vdmpp operations...");
     new Tests().run();
+  }
+
+  public static VDMSet getUsers() {
+
+    return Tests.getAppUsers();
   }
 
   public static void getFestivalsNames() {
 
-    IO.print("\nPrint Festivals");
     long toVar_1 = Tests.getFestivals().size();
 
     for (Long counter = 1L; counter <= toVar_1; counter++) {
@@ -46,9 +50,14 @@ public class TestApp {
     return ((FashionFestival) Utils.get(Tests.getFestivals(), optionFestival)).getEvents();
   }
 
+  public static VDMSet getFestivalUsers(final Number optionFestival) {
+
+    return ((FashionFestival) Utils.get(Tests.getFestivals(), optionFestival)).getFashionUsers();
+  }
+
   public static void getFestivalEventsNames(final Number optionFestival) {
 
-    IO.print("\n");
+    IO.print("\"n\"");
     long toVar_2 =
         ((FashionFestival) Utils.get(Tests.getFestivals(), optionFestival)).getEvents().size();
 

@@ -8,7 +8,7 @@ instance variables
 	private static events: seq of Event := [];
 	private static designers: seq of Designer := [];
 	private static models: seq of Model := [];
-	private static users: seq of FashionUser := [];
+	private static appUsers: set of FashionUser := {};
   private static runways: seq of Runway := [];
 	
 	
@@ -30,9 +30,10 @@ operations
     dcl m1: Model:= new Model("Claudia Schiffer",47,"Alemã","Alemanha");
  		dcl m2: Model:= new Model("Naomi Campbell",47,"Inglesa","Inglaterra");
  		dcl m3: Model:= new Model("Kate Moss",43,"Inglesa","Inglaterra");
- 		dcl u0: FashionUser:= new FashionUser("Joao", 30, <Homem>);
+ 		dcl u0: FashionUser:= new FashionUser("Joao","1234","Joao", 30, <Homem>);
+ 		dcl u1: FashionUser:= new FashionUser("Maria","1234","Maria", 34, <Mulher>);
  		dcl r0: Runway := new Runway("Meet winter collecion");
- 		dcl r1: Runway := new Runway("African Powe");
+ 		dcl r1: Runway := new Runway("African Power");
  		dcl r2: Runway := new Runway("Nautical Vibes");
  		
  		r0.insertDesigner(d0);
@@ -59,14 +60,16 @@ operations
  		models := models ^ [m1];
  		models := models ^ [m2];
  		models := models ^ [m3];
- 		users := users ^ [u0];
+ 		appUsers := appUsers union {u0};
+ 		appUsers := appUsers union {u1};
  		runways := runways ^ [r0];
+ 		runways := runways ^ [r1];
+ 		runways := runways ^ [r2];
  		
  		ev0.insertRunway(r0);
  		ev1.insertRunway(r1);
  		ev1.insertRunway(r2);
- 		ev1.insertRunway(r2);
- 		
+ 		ev2.insertRunway(r2);
  		
     -- EXECUTE testInit()
     IO`print("TestEvent.vdmpp (1/10): testInit() started...\n");
@@ -97,11 +100,12 @@ operations
     f0.insertEvent(ev0);
     f0.insertEvent(ev2);
     f1.insertEvent(ev1);
+    f1.insertEvent(ev0);
     
 		assertEqual(2,f0.getNumberEvents());
 		assertEqual(ev0.getName(),((f0.getEvents() (2)).getName()));
-		assertEqual(1,f1.getNumberEvents());
-		assertEqual(ev1.getName(),((f1.getEvents() (1)).getName()));
+		assertEqual(2,f1.getNumberEvents());
+		assertEqual(ev1.getName(),((f1.getEvents() (2)).getName()));
     
     -- EXECUTE testEventParams()
     IO`print("TestEvent.vdmpp (3/10): testEventParams() started...\n");
@@ -181,6 +185,8 @@ operations
      
     -- PRINT SUCCESS MESSAGE
     IO`print("TestFashionFestival.vdmpp (DONE): all tests successfully executed!\n");
+    
+    --IO`print(TestApp`getUsers());
   );
   
   public  static getFestivals : () ==> seq of FashionFestival
@@ -195,10 +201,10 @@ operations
 	public  static getModels : () ==> seq of Model
   getModels() == return models;
   
-  public  static getUsers : () ==> seq of FashionUser
-  getUsers() == return users;
+  public  static getAppUsers : () ==> set of FashionUser
+  getAppUsers() == return appUsers;
   
   public  static getRunways : () ==> seq of Runway
   getRunways() == return runways;
-  
+
 end Tests
