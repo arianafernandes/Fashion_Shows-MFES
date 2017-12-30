@@ -24,7 +24,7 @@ public class App {
 		System.out.println("|                                                                        |");
 		System.out.println("| 1. Login                                                               |");
 		System.out.println("| 2. Visitor                                                             |");
-		/*System.out.println("| 3. Register                                                            |");*/
+		System.out.println("| 3. Register                                                            |");
 		System.out.println("+========================================================================+\n");
 		
 		optionLogin = inputScanner.nextInt();
@@ -35,7 +35,7 @@ public class App {
 		if(optionLogin == 2){
 			printFestivals();
 		}
-		/*if(optionLogin == 3){
+		if(optionLogin == 3){
 			Scanner scn = new Scanner(System.in);
 	        System.out.print("Userame: ");
 	        String username = scn.nextLine();
@@ -44,9 +44,9 @@ public class App {
 	        System.out.print("Name: ");
 	        String name = scn.nextLine();
 	        System.out.print("Age: ");
-	        int age = scn.nextInt();
+	        String age = scn.nextLine();
 	        System.out.print("Doing the Register...");
-	        TestApp.registerUser(username,password,name,age);
+	        Tests.setAppUser(username,password,name,age);
 	        Iterator<FashionUser> iteratorU = TestApp.getUsers().iterator();
 			 while(iteratorU.hasNext()) {
 			    FashionUser userTemp = iteratorU.next();
@@ -55,7 +55,9 @@ public class App {
 						System.out.print(TestApp.getUsers().size());
 						}
 				}
-		}*/
+			System.out.print("Register done with success.");
+			MenuLoggado(username);
+		}
 	}
 	
 	
@@ -73,7 +75,13 @@ public class App {
 			if( (userTemp.getUsername().equals(optionUsername)) && (userTemp.getPassword().equals(optionPassword))){
 					System.out.println("Login com sucesso!\n");
 					UserName = optionUsername;
-				 	System.out.println("+========================================================================+");
+					MenuLoggado(UserName);
+			}
+		 }
+	}
+			
+	private static void MenuLoggado(String UserName){
+					System.out.println("+========================================================================+");
 					System.out.println("|                                                                        |");
 					System.out.println("|                                                                        |");
 				    System.out.println("|                          FASHIONS_SHOWS  APP                           |");
@@ -91,8 +99,6 @@ public class App {
 					}
 					
 				}
-			}
-	}
 	
 	private static void MenuProfile(String UserName){
 		System.out.println("+========================================================================+");
@@ -212,7 +218,7 @@ public class App {
 	}
 	
 	private static void printMenuRunway(int optionFestival, int optionEvent, int optionRunway){
-		TestApp.getOneRunwayByEvent(optionFestival, optionEvent, optionRunway).printRunway();
+		System.out.println(TestApp.getOneRunwayByEvent(optionFestival, optionEvent, optionRunway).printRunway());
 		System.out.println("List of the Designers of the runway:\n");
 		Iterator<Designer> iterator = TestApp.getDesignersByRunway(optionFestival, optionEvent, optionRunway).iterator();
 		 while(iterator.hasNext()) {

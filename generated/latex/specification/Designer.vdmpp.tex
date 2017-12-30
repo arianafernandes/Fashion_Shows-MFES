@@ -3,30 +3,27 @@ class Designer
 
 types
  public String = seq of char;
- public DesignerName = String;
- public DesignerAge = String;
- public DesignerNationality = String;
- public DesignerAddress = String;
- public DesignerStyle = String;
  
 instance variables
- public name : DesignerName;
- public age : DesignerAge;
- public nationality : DesignerNationality;
- public address : DesignerAddress;
- public style : DesignerStyle;
+ public name : String;
+ public age : String;
+ public nationality : String;
+ public address : String;
+ public style : String;
  public output : String := "";
- public nr : int := 0;
+ 
+inv len name > 0 and len age > 0 and len nationality > 0 and len address > 0 and len style > 0;
+ 
+operations
 (*@
-\label{Designer:19}
+\label{Designer:17}
 @*)
- operations
   public Designer : 
-          DesignerName * 
-          DesignerAge *
-          DesignerNationality * 
-          DesignerAddress * 
-          DesignerStyle   ==> Designer
+          String * 
+          String *
+          String * 
+          String * 
+          String   ==> Designer
   Designer(nm, ag, nt , ad, sty) ==
   (
     name := nm;
@@ -37,47 +34,45 @@ instance variables
     return self;
   );
   
-(*@
-\label{getName:36}
-@*)
   --retorna os parametros da class event
-  public pure getName : () ==> String
-    getName() == return name;
 (*@
-\label{getAge:39}
+\label{getName:34}
 @*)
-    
+  public pure getName : () ==> String
+    getName() == return name
+    post RESULT = name;
+   
+(*@
+\label{getAge:38}
+@*)
    public pure getAge : () ==> String
-     getAge() == return age;
+     getAge() == return age
+    post RESULT = age;
+  
 (*@
 \label{getNationality:42}
 @*)
-     
   public pure getNationality : () ==> String
-     getNationality() == return nationality;
-(*@
-\label{getAddress:45}
-@*)
-     
-  public pure getAddress : () ==> String
-     getAddress() == return address;      
-(*@
-\label{getStyle:48}
-@*)
-     
-  public pure getStyle : () ==> String
-     getStyle() == return style;
-(*@
-\label{printDesigner:51}
-@*)
-(*@
-\label{printModel:51}
-@*)
+     getNationality() == return nationality
+    post RESULT = nationality;
   
 (*@
-\label{toString:52}
+\label{getAddress:46}
 @*)
+  public pure getAddress : () ==> String
+     getAddress() == return address      
+    post RESULT = address;   
+  
+(*@
+\label{getStyle:50}
+@*)
+  public pure getStyle : () ==> String
+     getStyle() == return style
+    post RESULT = style;
    
+(*@
+\label{printDesigner:54}
+@*)
   public printDesigner: () ==> String
   printDesigner() == (
   output := "Designer Name: "^name^"\n"
@@ -86,7 +81,9 @@ instance variables
        ^"Address: "^address^"\n"
        ^"Style: "^style^"\n";
   return output;
-  );
+  )
+  post RESULT = output;
+  
  
      
 end Designer
@@ -97,26 +94,22 @@ end Designer
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[Designer:19]{Designer} & 19&100.0\% & 2 \\
+\hyperref[Designer:17]{Designer} & 17&100.0\% & 2 \\
 \hline
-\hyperref[getAddress:45]{getAddress} & 45&100.0\% & 2 \\
+\hyperref[getAddress:46]{getAddress} & 46&100.0\% & 2 \\
 \hline
-\hyperref[getAge:39]{getAge} & 39&100.0\% & 2 \\
+\hyperref[getAge:38]{getAge} & 38&100.0\% & 2 \\
 \hline
-\hyperref[getName:36]{getName} & 36&100.0\% & 6 \\
+\hyperref[getName:34]{getName} & 34&100.0\% & 6 \\
 \hline
 \hyperref[getNationality:42]{getNationality} & 42&100.0\% & 2 \\
 \hline
-\hyperref[getStyle:48]{getStyle} & 48&100.0\% & 2 \\
+\hyperref[getStyle:50]{getStyle} & 50&100.0\% & 2 \\
 \hline
-\hyperref[printDesigner:51]{printDesigner} & 51&100.0\% & 1 \\
-\hline
-\hyperref[printModel:51]{printModel} & 51&100.0\% & 1 \\
-\hline
-\hyperref[toString:52]{toString} & 52&100.0\% & 1 \\
+\hyperref[printDesigner:54]{printDesigner} & 54&100.0\% & 1 \\
 \hline
 \hline
-Designer.vdmpp & & 100.0\% & 19 \\
+Designer.vdmpp & & 100.0\% & 17 \\
 \hline
 \end{longtable}
 

@@ -3,16 +3,12 @@ class FashionUser
 
 types
  public String = seq of char;
- public Username = String;
- public Password = String;
- public UserName = String;
- public UserAge = String;
  
 instance variables
- private username: Username;
- private password: Password;
- public name: UserName;
- public age: UserAge;
+ private username: String;
+ private password: String;
+ public name: String;
+ public age: String;
  --designers favoritos
  private  designers: seq of Designer := [];
  private  numberDesigners: int := 0;
@@ -23,15 +19,18 @@ instance variables
  private events: seq of Event := [];
  private  numberEvents: int := 0;
  private output : String := "";
+ 
+ inv len username > 0 and len password = 6 and len name > 0 and len age > 0;
 
+
+operations  
 (*@
 \label{FashionUser:26}
 @*)
-operations  
-  public FashionUser : Username *
-            Password *
-            UserName *
-            UserAge  ==> FashionUser
+  public FashionUser : String *
+            String *
+            String *
+            String  ==> FashionUser
   FashionUser(u, p, nm, ag) ==
   (
    username := u;
@@ -41,114 +40,126 @@ operations
     return self;
   );
   
+  --retorna os parametros da class fashionUSer
 (*@
 \label{getUsername:40}
 @*)
-  --retorna os parametros da class fashionUSer
   public pure getUsername : () ==> String
-    getUsername() == return username;
-(*@
-\label{getPassword:43}
-@*)
+    getUsername() == return username
+    post RESULT = username;
     
+(*@
+\label{getPassword:44}
+@*)
   public pure getPassword : () ==> String
-    getPassword() == return password;
-(*@
-\label{getName:46}
-@*)
+    getPassword() == return password
+    post RESULT = password;
   
-  public pure getName : () ==> String
-    getName() == return name;
 (*@
-\label{getAge:49}
+\label{getName:48}
 @*)
+  public pure getName : () ==> String
+    getName() == return name
+    post RESULT = name;
     
-   public pure getAge : () ==> String
-     getAge() == return age;
-     
+(*@
+\label{getAge:52}
+@*)
+  public pure getAge : () ==> String
+  getAge() == return age
+  post RESULT = age;   
   
    
     --DESIGNERES FAVORITOS  
-(*@
-\label{insertDesigner:56}
-@*)
    --Adiciona designer favorito ao utilizador
+(*@
+\label{insertDesigner:59}
+@*)
   public insertDesigner : Designer ==> ()
    insertDesigner(d) ==
    (
      numberDesigners := numberDesigners + 1;
      designers := designers ^ [d];
-   );
+   )
+   pre d not in set elems designers
+   post d in set elems designers;
    
-(*@
-\label{getNumberFavDesigners:64}
-@*)
   --retorna nr designers favoritos
+(*@
+\label{getNumberFavDesigners:69}
+@*)
    public pure getNumberFavDesigners : () ==> nat
-   getNumberFavDesigners() == return numberDesigners;
+   getNumberFavDesigners() == return numberDesigners
+   post RESULT = numberDesigners;
+    
 (*@
-\label{getDesigners:67}
+\label{getDesigners:73}
 @*)
-   
    public getDesigners: () ==> seq of Designer
-   getDesigners() == return designers;
+   getDesigners() == return designers
+   post RESULT = designers;
    
 (*@
-\label{insertModel:71}
+\label{insertModel:77}
 @*)
-   
    public insertModel : Model ==> ()
    insertModel(d) ==
    (
      numberModels := numberModels + 1;
      models := models ^ [d];
-   );
+   )
+   pre d not in set elems models
+   post d in set elems models;
    
-(*@
-\label{getNumberFavModels:79}
-@*)
   --retorna nr designers favoritos
-   public pure getNumberFavModels : () ==> nat
-   getNumberFavModels() == return numberModels;
 (*@
-\label{getModels:82}
+\label{getNumberFavModels:87}
 @*)
+   public pure getNumberFavModels : () ==> nat
+   getNumberFavModels() == return numberModels
+   post RESULT = numberModels;
    
+(*@
+\label{getModels:91}
+@*)
    public getModels: () ==> seq of Model
-   getModels() == return models;
-   
+   getModels() == return models
+    post RESULT = models;
    
     --EVENTOS DO UTILIZADOR
-(*@
-\label{insertEvent:88}
-@*)
     --Adiciona evento
+(*@
+\label{insertEvent:97}
+@*)
   public insertEvent : Event ==> ()
    insertEvent(ev) ==
    (
      numberEvents := numberEvents + 1;
      events := events ^ [ev];
-   );
+   )
+   pre ev not in set elems events
+   post ev in set elems events;
    
-(*@
-\label{getNumberEvents:96}
-@*)
+   
   --Retorna nr designers favoritos
+(*@
+\label{getNumberEvents:108}
+@*)
    public pure getNumberEvents : () ==> nat
-   getNumberEvents() == return numberEvents;
-(*@
-\label{getEvents:99}
-@*)
+   getNumberEvents() == return numberEvents
+  post RESULT = numberEvents;
+  
 
+(*@
+\label{getEvents:113}
+@*)
    public getEvents: () ==> seq of Event
-   getEvents() == return events;
-(*@
-\label{printUser:102}
-@*)
-(*@
-\label{printFashionFestival:102}
-@*)
+   getEvents() == return events
+   post RESULT = events;
    
+(*@
+\label{printUser:117}
+@*)
    public printUser: () ==> String
   printUser() == (
   output := "Username: "^username^"\n"
@@ -156,8 +167,9 @@ operations
        ^"Name: "^name^"\n"
        ^"Age: "^age^"\n";
   return output;
-  );
-
+  )
+   post RESULT = output;
+   
 end FashionUser
 \end{vdmpp}
 \bigskip
@@ -166,40 +178,38 @@ end FashionUser
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[FashionUser:26]{FashionUser} & 26&100.0\% & 2 \\
+\hyperref[FashionUser:26]{FashionUser} & 26&100.0\% & 3 \\
 \hline
-\hyperref[getAge:49]{getAge} & 49&100.0\% & 2 \\
+\hyperref[getAge:52]{getAge} & 52&100.0\% & 2 \\
 \hline
-\hyperref[getDesigners:67]{getDesigners} & 67&100.0\% & 2 \\
+\hyperref[getDesigners:73]{getDesigners} & 73&100.0\% & 2 \\
 \hline
-\hyperref[getEvents:99]{getEvents} & 99&100.0\% & 2 \\
+\hyperref[getEvents:113]{getEvents} & 113&100.0\% & 2 \\
 \hline
-\hyperref[getModels:82]{getModels} & 82&100.0\% & 2 \\
+\hyperref[getModels:91]{getModels} & 91&100.0\% & 2 \\
 \hline
-\hyperref[getName:46]{getName} & 46&100.0\% & 2 \\
+\hyperref[getName:48]{getName} & 48&100.0\% & 2 \\
 \hline
-\hyperref[getNumberEvents:96]{getNumberEvents} & 96&100.0\% & 1 \\
+\hyperref[getNumberEvents:108]{getNumberEvents} & 108&100.0\% & 1 \\
 \hline
-\hyperref[getNumberFavDesigners:64]{getNumberFavDesigners} & 64&100.0\% & 1 \\
+\hyperref[getNumberFavDesigners:69]{getNumberFavDesigners} & 69&100.0\% & 1 \\
 \hline
-\hyperref[getNumberFavModels:79]{getNumberFavModels} & 79&100.0\% & 1 \\
+\hyperref[getNumberFavModels:87]{getNumberFavModels} & 87&100.0\% & 1 \\
 \hline
-\hyperref[getPassword:43]{getPassword} & 43&100.0\% & 2 \\
+\hyperref[getPassword:44]{getPassword} & 44&100.0\% & 2 \\
 \hline
 \hyperref[getUsername:40]{getUsername} & 40&100.0\% & 2 \\
 \hline
-\hyperref[insertDesigner:56]{insertDesigner} & 56&100.0\% & 2 \\
+\hyperref[insertDesigner:59]{insertDesigner} & 59&100.0\% & 3 \\
 \hline
-\hyperref[insertEvent:88]{insertEvent} & 88&100.0\% & 2 \\
+\hyperref[insertEvent:97]{insertEvent} & 97&100.0\% & 4 \\
 \hline
-\hyperref[insertModel:71]{insertModel} & 71&100.0\% & 2 \\
+\hyperref[insertModel:77]{insertModel} & 77&100.0\% & 6 \\
 \hline
-\hyperref[printFashionFestival:102]{printFashionFestival} & 102&100.0\% & 1 \\
-\hline
-\hyperref[printUser:102]{printUser} & 102&100.0\% & 1 \\
+\hyperref[printUser:117]{printUser} & 117&100.0\% & 1 \\
 \hline
 \hline
-FashionUser.vdmpp & & 100.0\% & 27 \\
+FashionUser.vdmpp & & 100.0\% & 34 \\
 \hline
 \end{longtable}
 

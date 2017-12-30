@@ -15,43 +15,60 @@ public class Tests extends MyTestCase {
   public void run() {
 
     FashionFestival f0 =
-        new FashionFestival("Porto Fashion Week", "04/05/2018", "10/05/2018", "Porto");
+        new FashionFestival(" Porto Fashion Week", "04/05/2018", "10/05/2018", "Porto");
     FashionFestival f1 =
-        new FashionFestival("Madrid Weekend", "26/08/2018", "30/08/2018", "Madrid");
+        new FashionFestival(" Madrid Fashion Week", "26/08/2018", "30/08/2018", "Madrid");
     Event ev0 =
         new Event(
-            "BaixaShow", "04/05/2018", "Baixa", "12", "3", "flores", "Homem", "Primavera_Verao");
+            " Meet Portugal Fashion Designers",
+            "04/05/2018",
+            "Baixa",
+            "12:00",
+            "3h",
+            "Portugal",
+            "Unisexo",
+            "Primavera_Verao");
     Event ev1 =
         new Event(
-            "Fashion Night Out Porto",
+            " Fashion Night Out Porto",
             "10/06/2018",
             "Baixa",
-            "20",
-            "2",
+            "20:00",
+            "2h",
             "GeometricForms",
             "Unisexo",
             "Primavera_Verao");
     Event ev2 =
         new Event(
-            "Black Friday",
+            " Madrid Black Fashion",
             "12/06/2018",
-            "Vila do Conde",
-            "10",
-            "4",
+            "Madrid",
+            "19:00",
+            "4h",
             "Fashion Sales",
             "Unisexo",
             "Outono_Inverno");
     Designer d0 = new Designer("Yves S. L.", "72", "Frances", "Paris", "Classico");
     Designer d1 = new Designer("Ralph Lauren", "69", "Frances", "Paris", "Classico");
     Model m0 = new Model("Sara Sampaio", "24", "Portuguesa", "New York");
-    Model m1 = new Model("Claudia Schiffer", "47", "Alemã", "Alemanha");
+    Model m1 = new Model("Claudia Schiffer", "47", "Alema", "Alemanha");
     Model m2 = new Model("Naomi Campbell", "47", "Inglesa", "Inglaterra");
     Model m3 = new Model("Kate Moss", "43", "Inglesa", "Inglaterra");
-    FashionUser u0 = new FashionUser("Joao", "1234", "Joao", "30");
-    FashionUser u1 = new FashionUser("Maria", "1234", "Maria", "34");
-    Runway r0 = new Runway("Meet winter collecion");
-    Runway r1 = new Runway("African Power");
-    Runway r2 = new Runway("Nautical Vibes");
+    FashionUser u0 = new FashionUser("Joao", "123456", "Joao", "30");
+    FashionUser u1 = new FashionUser("Maria", "654321", "Maria", "34");
+    Runway r0 = new Runway(" Meet winter collecion");
+    Runway r1 = new Runway(" African Power");
+    Runway r2 = new Runway(" Nautical Vibes");
+    f0.insertEvent(ev0);
+    f0.insertEvent(ev2);
+    f1.insertEvent(ev0);
+    f1.insertEvent(ev1);
+    f0.insertFashionUser(u0);
+    f0.insertFashionUser(u1);
+    ev0.insertRunway(r0);
+    ev1.insertRunway(r1);
+    ev1.insertRunway(r2);
+    ev2.insertRunway(r2);
     r0.insertDesigner(d0);
     r0.insertDesigner(d1);
     r0.insertModel(m0);
@@ -61,6 +78,16 @@ public class Tests extends MyTestCase {
     r1.insertModel(m3);
     r2.insertDesigner(d0);
     r2.insertModel(m2);
+    u0.insertEvent(ev0);
+    u0.insertEvent(ev1);
+    u0.insertDesigner(d0);
+    u0.insertDesigner(d1);
+    u0.insertModel(m0);
+    u0.insertModel(m1);
+    u1.insertEvent(ev2);
+    u1.insertEvent(ev0);
+    u1.insertDesigner(d1);
+    u1.insertModel(m3);
     festivals = SeqUtil.conc(Utils.copy(Tests.festivals), SeqUtil.seq(f0));
     festivals = SeqUtil.conc(Utils.copy(Tests.festivals), SeqUtil.seq(f1));
     events = SeqUtil.conc(Utils.copy(Tests.events), SeqUtil.seq(ev0));
@@ -77,10 +104,6 @@ public class Tests extends MyTestCase {
     runways = SeqUtil.conc(Utils.copy(Tests.runways), SeqUtil.seq(r0));
     runways = SeqUtil.conc(Utils.copy(Tests.runways), SeqUtil.seq(r1));
     runways = SeqUtil.conc(Utils.copy(Tests.runways), SeqUtil.seq(r2));
-    ev0.insertRunway(r0);
-    ev1.insertRunway(r1);
-    ev1.insertRunway(r2);
-    ev2.insertRunway(r2);
     assertNotNull(f0);
     assertNotNull(f1);
     assertNotNull(ev0);
@@ -94,16 +117,10 @@ public class Tests extends MyTestCase {
     assertNotNull(m3);
     assertNotNull(u0);
     assertNotNull(u1);
-    assertEqual("Porto Fashion Week", f0.getName());
+    assertEqual(" Porto Fashion Week", f0.getName());
     assertEqual("04/05/2018", f0.getDateBegin());
     assertEqual("10/05/2018", f0.getDateEnd());
     assertEqual("Porto", f0.getLocal());
-    f0.insertEvent(ev0);
-    f0.insertEvent(ev2);
-    f1.insertEvent(ev0);
-    f1.insertEvent(ev1);
-    f0.insertFashionUser(u0);
-    f0.insertFashionUser(u1);
     assertEqual(2L, f0.getNumberEvents());
     assertEqual(ev0.getName(), ((Event) Utils.get(f0.getEvents(), 2L)).getName());
     assertEqual(2L, f1.getNumberEvents());
@@ -125,13 +142,14 @@ public class Tests extends MyTestCase {
             + f0.getLocal()
             + "\n",
         f0.printFashionFestival());
-    assertEqual("BaixaShow", ev0.getName());
+    assertEqual(f0.getName() + "\n", f0.printFashionFestivalName());
+    assertEqual(" Meet Portugal Fashion Designers", ev0.getName());
     assertEqual("04/05/2018", ev0.getDate());
     assertEqual("Baixa", ev0.getLocal());
-    assertEqual("12", ev0.getTime());
-    assertEqual("3", ev0.getDuration());
-    assertEqual("flores", ev0.getTheme());
-    assertEqual("Homem", ev0.getGender());
+    assertEqual("12:00", ev0.getTime());
+    assertEqual("3h", ev0.getDuration());
+    assertEqual("Portugal", ev0.getTheme());
+    assertEqual("Unisexo", ev0.getGender());
     assertEqual("Primavera_Verao", ev0.getCollection());
     assertEqual(1L, ev0.getNumberRunways());
     assertEqual(2L, ev1.getNumberRunways());
@@ -160,6 +178,7 @@ public class Tests extends MyTestCase {
     assertEqual(r0.getDesignersNumber(), r0.getDesigners().size());
     assertEqual(1L, r0.getNumberModels());
     assertEqual(m0.getName(), ((Model) Utils.get(r0.getModels(), 1L)).getName());
+    assertEqual(r0.getName() + "\n", r0.printRunway());
     assertEqual("Yves S. L.", d0.getName());
     assertEqual("72", d0.getAge());
     assertEqual("Frances", d0.getNationality());
@@ -203,7 +222,7 @@ public class Tests extends MyTestCase {
     assertEqual("Joao", u0.getName());
     assertEqual("30", u0.getAge());
     assertEqual("Joao", u0.getUsername());
-    assertEqual("1234", u0.getPassword());
+    assertEqual("123456", u0.getPassword());
     assertEqual(
         "Username: "
             + u0.getUsername()
@@ -218,28 +237,25 @@ public class Tests extends MyTestCase {
             + u0.getAge()
             + "\n",
         u0.printUser());
-    u0.insertEvent(ev0);
-    u0.insertEvent(ev1);
     assertEqual(2L, u0.getNumberEvents());
     assertEqual(ev0.getName(), ((Event) Utils.get(u0.getEvents(), 1L)).getName());
     assertEqual(ev1.getName(), ((Event) Utils.get(u0.getEvents(), 2L)).getName());
-    u0.insertDesigner(d0);
-    u0.insertDesigner(d1);
     assertEqual(2L, u0.getNumberFavDesigners());
     assertEqual(d0.getName(), ((Designer) Utils.get(u0.getDesigners(), 1L)).getName());
     assertEqual(d1.getName(), ((Designer) Utils.get(u0.getDesigners(), 2L)).getName());
-    u0.insertModel(m0);
-    u0.insertModel(m1);
     assertEqual(2L, u0.getNumberFavModels());
     assertEqual(m0.getName(), ((Model) Utils.get(u0.getModels(), 1L)).getName());
     assertEqual(m1.getName(), ((Model) Utils.get(u0.getModels(), 2L)).getName());
     assertEqual(2L, TestApp.getUsers().size());
     assertEqual(2L, TestApp.getFestivals().size());
+    //assertEqual(" Porto Fashion Week\n", TestApp.getFestivalsNames());
     assertEqual(f0.getName(), TestApp.getFestival(1L).getName());
     assertEqual(2L, TestApp.getFestivalEvents(1L).size());
+    //assertEqual(" Madrid Black Fashion", TestApp.getFestivalEventsNames(1L));
     assertEqual(2L, TestApp.getFestivalUsers(1L).size());
     assertEqual(ev2.getName(), TestApp.getEvent(1L, 1L).getName());
     assertEqual(1L, TestApp.getRunwaysByEvent(1L, 1L).size());
+    //assertEqual(" Nautical Vibes", TestApp.getRunwaysNames(1L, 1L));
     assertEqual(r2.getName(), TestApp.getOneRunwayByEvent(1L, 1L, 1L).getName());
     assertEqual(
         m2.getName(), ((Model) Utils.get(TestApp.getModelsByRunway(1L, 1L, 1L), 1L)).getName());

@@ -2,24 +2,22 @@ class Model
 
 types
 	public String = seq of char;
-	public ModelName = String;
-	public ModelAge = String;
-	public ModelNationality = String;
-	public ModelAddress = String;
 	
 instance variables
-	public name : ModelName;
-	public age : ModelAge;
-	public nationality : ModelNationality;
-	public address : ModelAddress;
+	public name : String;
+	public age : String;
+	public nationality : String;
+	public address : String;
 	public output : String := "";
+	
+	inv len name > 0 and len age > 0 and len nationality > 0 and len address > 0;
 	
 	operations
   public Model : 
-  								ModelName * 
-  								ModelAge *
-  								ModelNationality * 
-  								ModelAddress ==> Model
+  								String * 
+  								String *
+  								String * 
+  								String ==> Model
   Model(nm, ag, nt , ad) ==
   (
     name := nm;
@@ -31,16 +29,20 @@ instance variables
   
   --retorna os parametros da class Model
 	 public pure getName : () ==> String
-	   getName() == return name;
+	   getName() == return name
+	   post RESULT = name;
 	   
 	  public pure getAge : () ==> String
-		   getAge() == return age;
+		   getAge() == return age
+		   post RESULT = age;
 		   
 		public pure getNationality : () ==> String
-		   getNationality() == return nationality;
+		   getNationality() == return nationality
+		   post RESULT = nationality;
 		   
 		public pure getAddress : () ==> String
-		   getAddress() == return address;  	   
+		   getAddress() == return address 
+		post RESULT = address;
 		
 		public printModel: () ==> String
 		printModel() == (
@@ -49,7 +51,7 @@ instance variables
 							^"Nationality: "^nationality^"\n"
 							^"Address: "^address^"\n";
 		return output;
-		);
-		  
+		)
+		post RESULT = output;  
 		
 end Model

@@ -5,100 +5,76 @@ types
 public String = seq of char;
 
 instance variables
-private  static festivals: seq of FashionFestival := [];
-private  static events: seq of Event := [];
-private  static designers: seq of Designer := [];
-private  static models: seq of Model := [];
-private  static users: set of FashionUser := {};
-private  static eventsTemp: seq of Event := [];
-private  static modelsTemp: seq of Model := [];
-private  static designersTemp: seq of Designer := [];
-private  static festivalTemp: FashionFestival := new FashionFestival();
-private  static runwaysTemp: seq of Runway := [];
+
 operations
 
-(*@
-\label{printTests:19}
-@*)
 public static printTests: () ==> ()
  printTests() == 
  (
-  IO`print("Executing Tests.vdmpp operations...");
     new Tests().run();   
    );
    
    
-(*@
-\label{getUsers:27}
-@*)
  public static getUsers: () ==> set of FashionUser
  getUsers() ==
+(*@
+\label{printTests:19}
+@*)
  ( 
  return Tests`getAppUsers();
  );
  
-(*@
-\label{registerUser:33}
-@*)
-  public static registerUser: (String) *  (String) * (String) * (String) ==> ()
-  registerUser(username,password,name,age) == 
-  (*@\vdmnotcovered{(}@*)
-   (*@\vdmnotcovered{Tests`setAppUser}@*)(username,password,(*@\vdmnotcovered{name}@*),(*@\vdmnotcovered{age}@*));
-  );
   
-  
-  
-  
-(*@
-\label{getFestivals:42}
-@*)
   public static getFestivals: () ==> seq of FashionFestival
   getFestivals() ==
+(*@
+\label{getUsers:26}
+@*)
   (
    return Tests`getFestivals();
   );
    
   --Nomes dos festivais disponiveis
+  public static getFestivalsNames: () ==> String
 (*@
-\label{getFestivalsNames:49}
+\label{registerUser:32}
 @*)
-  public static getFestivalsNames: () ==> ()
  getFestivalsNames() ==
- (*@\vdmnotcovered{(}@*) 
- (*@\vdmnotcovered{for}@*) counter = 1 to len Tests`getFestivals() do (*@\vdmnotcovered{(}@*)
-    IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
-    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{counter}@*));
-    IO`print((Tests`getFestivals() (counter)).(*@\vdmnotcovered{getName}@*)());
-    IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
-    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+ ( 
+ for counter = 1 to len Tests`getFestivals() do (
+   IO`print(counter);
+    return (Tests`getFestivals() (counter)).printFashionFestivalName();
    );
+(*@
+\label{setAppUser:38}
+@*)
   );   
+(*@
+\label{getFestivals:39}
+@*)
   
   --Festival seleccionado apos isto imprimirs
-(*@
-\label{getFestival:62}
-@*)
   public static getFestival: (int) ==> FashionFestival
   getFestival(optionFestival) ==
   ( 
   return (Tests`getFestivals() (optionFestival));
   );
+(*@
+\label{getFestivalsNames:46}
+@*)
   
   --eventos do festival selecionado
-(*@
-\label{getFestivalEvents:69}
-@*)
   public static getFestivalEvents: (int) ==> seq of Event
   getFestivalEvents(optionFestival) ==
   ( 
   return (Tests`getFestivals() (optionFestival)).getEvents();
   );
   
-(*@
-\label{getFestivalUsers:75}
-@*)
   public static getFestivalUsers: (int) ==> set of FashionUser
   getFestivalUsers(optionFestival) ==
+(*@
+\label{getFestival:56}
+@*)
   ( 
   return (Tests`getFestivals() (optionFestival)).getFashionUsers();
   );
@@ -107,92 +83,84 @@ public static printTests: () ==> ()
     
   --nomes dos eventos do festival selecionado
 (*@
-\label{getFestivalEventsNames:84}
+\label{getFestivalEvents:63}
 @*)
-  public static getFestivalEventsNames: (int) ==> ()
+  public static getFestivalEventsNames: (int) ==> String
   getFestivalEventsNames(optionFestival) ==
-  (*@\vdmnotcovered{(}@*) 
-    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash "n\textbackslash ""}@*));
-    (*@\vdmnotcovered{for}@*) counter = 1 to len (Tests`getFestivals() (optionFestival)).getEvents() do (*@\vdmnotcovered{(}@*)
-    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{counter}@*));
-    IO`print((*@\vdmnotcovered{": "}@*));
-    IO`print((((*@\vdmnotcovered{Tests`getFestivals}@*)() (optionFestival)).getEvents() (counter)).(*@\vdmnotcovered{getName}@*)());
-    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+  ( 
+    for counter = 1 to len (Tests`getFestivals() (optionFestival)).getEvents() do (
+    IO`print(counter);
+    return (((Tests`getFestivals() (optionFestival)).getEvents() (counter)).getName());
+(*@
+\label{getFestivalUsers:69}
+@*)
     );
   );
 
  --Evento selecionado do festival selecionado
-(*@
-\label{getEvent:97}
-@*)
  public static getEvent: (int) * (int) ==> Event
   getEvent(optionFestival,optionEvent) ==
   ( 
   return (getFestivalEvents(optionFestival) (optionEvent));
   );
+(*@
+\label{getFestivalEventsNames:78}
+@*)
   
  --Retorna desfiles do evento selecionado do festival selecionado
-(*@
-\label{getRunwaysByEvent:104}
-@*)
   public static getRunwaysByEvent : (int) * (int) ==> seq of Runway
  getRunwaysByEvent(optionFestival, optionEvent) ==
  (
   return ((getFestivalEvents(optionFestival) (optionEvent)).getRunways());
  );
  
-(*@
-\label{getRunwaysNames:110}
-@*)
- public static getRunwaysNames: (int) * (int) ==> ()
+ public static getRunwaysNames: (int) * (int) ==> String
   getRunwaysNames(optionFestival,optionEvent) ==
-  (*@\vdmnotcovered{(}@*) 
-    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
-    (*@\vdmnotcovered{for}@*) counter = 1 to len getRunwaysByEvent(optionFestival,optionEvent) do (*@\vdmnotcovered{(}@*)
-    (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{counter}@*));
-    IO`print((*@\vdmnotcovered{": "}@*));
-    IO`print((getRunwaysByEvent(optionFestival,(*@\vdmnotcovered{optionEvent}@*)) ((*@\vdmnotcovered{counter}@*))).(*@\vdmnotcovered{getName}@*)());
-    IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
+(*@
+\label{getEvent:88}
+@*)
+  ( 
+    for counter = 1 to len getRunwaysByEvent(optionFestival,optionEvent) do (
+    IO`print(counter);
+    return ((getRunwaysByEvent(optionFestival,optionEvent) (counter)).getName());
     );
   );
   
- --Retorna desfile seleciondo do evento selecionado do festival selecionado
 (*@
-\label{getOneRunwayByEvent:123}
+\label{getRunwaysByEvent:95}
 @*)
+ --Retorna desfile seleciondo do evento selecionado do festival selecionado
   public static getOneRunwayByEvent : (int) * (int) * (int) ==> Runway
  getOneRunwayByEvent(optionFestival, optionEvent, optionRunWay) ==
  (
   return (getRunwaysByEvent(optionFestival,optionEvent)) (optionRunWay);
  );
+(*@
+\label{getRunwaysNames:101}
+@*)
  
  --Retorna modelos do desfile seleciondo do evento selecionado do festival selecionado
-(*@
-\label{getModelsByRunway:130}
-@*)
  public static getModelsByRunway : (int) * (int) * (int) ==> seq of Model
  getModelsByRunway(optionFestival, optionEvent, optionRunWay) ==
  (
  return getOneRunwayByEvent(optionFestival,optionEvent,optionRunWay).getModels();
  );
     
-(*@
-\label{getModelsInfsByRunway:136}
-@*)
    
   --Retorna designers do desfile seleciondo do evento selecionado do festival selecionado  
+(*@
+\label{getOneRunwayByEvent:111}
+@*)
   public static getDesignersByRunway : (int) * (int) * (int) ==> set of Designer
  getDesignersByRunway(optionFestival, optionEvent, optionRunWay) ==
  (
  return getOneRunwayByEvent(optionFestival,optionEvent,optionRunWay).getDesigners();
  );
- 
-  
-(*@
-\label{getDesignersByRunway:145}
-@*)
   
 
+(*@
+\label{getModelsByRunway:118}
+@*)
 public static main : () ==> ()
   main() ==
   (
@@ -207,42 +175,42 @@ end TestApp
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[getDesignersByRunway:145]{getDesignersByRunway} & 145&100.0\% & 1 \\
+\hyperref[getDesignersByRunway:126]{getDesignersByRunway} & 126&100.0\% & 1 \\
 \hline
-\hyperref[getEvent:97]{getEvent} & 97&100.0\% & 1 \\
+\hyperref[getEvent:88]{getEvent} & 88&100.0\% & 1 \\
 \hline
-\hyperref[getFestival:62]{getFestival} & 62&100.0\% & 1 \\
+\hyperref[getFestival:56]{getFestival} & 56&100.0\% & 1 \\
 \hline
-\hyperref[getFestivalEvents:69]{getFestivalEvents} & 69&100.0\% & 6 \\
+\hyperref[getFestivalEvents:63]{getFestivalEvents} & 63&100.0\% & 40 \\
 \hline
-\hyperref[getFestivalEventsNames:84]{getFestivalEventsNames} & 84&0.0\% & 0 \\
+\hyperref[getFestivalEventsNames:78]{getFestivalEventsNames} & 78&100.0\% & 8 \\
 \hline
-\hyperref[getFestivalUsers:75]{getFestivalUsers} & 75&100.0\% & 1 \\
+\hyperref[getFestivalUsers:69]{getFestivalUsers} & 69&100.0\% & 1 \\
 \hline
-\hyperref[getFestivals:42]{getFestivals} & 42&100.0\% & 1 \\
+\hyperref[getFestivals:39]{getFestivals} & 39&100.0\% & 1 \\
 \hline
-\hyperref[getFestivalsNames:49]{getFestivalsNames} & 49&0.0\% & 0 \\
+\hyperref[getFestivalsNames:46]{getFestivalsNames} & 46&100.0\% & 1 \\
 \hline
-\hyperref[getModelsByRunway:130]{getModelsByRunway} & 130&100.0\% & 1 \\
+\hyperref[getModelsByRunway:118]{getModelsByRunway} & 118&100.0\% & 1 \\
 \hline
-\hyperref[getModelsInfsByRunway:136]{getModelsInfsByRunway} & 136&100.0\% & 1 \\
+\hyperref[getOneRunwayByEvent:111]{getOneRunwayByEvent} & 111&100.0\% & 3 \\
 \hline
-\hyperref[getOneRunwayByEvent:123]{getOneRunwayByEvent} & 123&100.0\% & 3 \\
+\hyperref[getRunwaysByEvent:95]{getRunwaysByEvent} & 95&100.0\% & 6 \\
 \hline
-\hyperref[getRunwaysByEvent:104]{getRunwaysByEvent} & 104&100.0\% & 4 \\
+\hyperref[getRunwaysNames:101]{getRunwaysNames} & 101&100.0\% & 1 \\
 \hline
-\hyperref[getRunwaysNames:110]{getRunwaysNames} & 110&0.0\% & 0 \\
+\hyperref[getUsers:26]{getUsers} & 26&100.0\% & 1 \\
 \hline
-\hyperref[getUsers:27]{getUsers} & 27&100.0\% & 1 \\
+\hyperref[main:133]{main} & 133&100.0\% & 1 \\
 \hline
-\hyperref[main:154]{main} & 154&100.0\% & 1 \\
+\hyperref[printTests:19]{printTests} & 19&100.0\% & 2 \\
 \hline
-\hyperref[printTests:19]{printTests} & 19&100.0\% & 1 \\
+\hyperref[registerUser:32]{registerUser} & 32&100.0\% & 1 \\
 \hline
-\hyperref[registerUser:33]{registerUser} & 33&0.0\% & 0 \\
+\hyperref[setAppUser:38]{setAppUser} & 38&100.0\% & 1 \\
 \hline
 \hline
-TestApp.vdmpp & & 50.0\% & 23 \\
+TestApp.vdmpp & & 100.0\% & 71 \\
 \hline
 \end{longtable}
 

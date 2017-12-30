@@ -61,7 +61,7 @@ public class Runway {
 
   public String printRunway() {
 
-    output = "Runway Name: " + name + "\n";
+    output = name + "\n";
     return output;
   }
 

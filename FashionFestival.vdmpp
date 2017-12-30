@@ -2,27 +2,26 @@ class FashionFestival
 	
 types
 	public String = seq of char;
-	public FestivalName = String;
-	public FestivalDateBegin = String;
-	public FestivalDateEnd = String;
-	public FestivalLocal = String;
 
 instance variables
-	public  name : FestivalName := "";
-	public  dateBegin : FestivalDateBegin := "";
-	public  dateEnd : FestivalDateEnd := "";
-	public  local : FestivalLocal := "";
-	private  events: seq of Event := [];
-	private  numberEvents: int := 0;	
-	private  fashionUsers : set of FashionUser := {};
-	private output : String := "";
+	public  name : String := "";
+	public  dateBegin : String := "";
+	public  dateEnd : String := "";
+	public  local : String := "";
+	public events: seq of Event := [];
+	public numberEvents: int := 0;	
+	public fashionUsers : set of FashionUser := {};
+	public output : String := "";
+	public outputN : String := "";
+	
+	inv len name > 0 and len dateBegin > 0 and len dateEnd > 0 and len local > 0;
 	
 operations
 	public FashionFestival : 
-  												FestivalName *
-  												FestivalDateBegin * 
-  												FestivalDateEnd *
-  												FestivalLocal												
+  												String *
+  												String * 
+  												String *
+  												String												
   												==> FashionFestival
   FashionFestival(nm, di, df , lc) ==
   (
@@ -35,19 +34,24 @@ operations
   
   --retorna os parametros da class event
 	 public pure getName : () ==> String
-	   getName() == return name;
+	   getName() == return name
+	 post RESULT = name;
 	   
 	  public pure getDateBegin : () ==> String
-		   getDateBegin() == return dateBegin;
-		
+		   getDateBegin() == return dateBegin
+		post RESULT = dateBegin; 
+			
 		public pure getDateEnd : () ==> String
-		   getDateEnd() == return dateEnd;
-		   
+		   getDateEnd() == return dateEnd
+		post RESULT = dateEnd;   
+		
 		public pure getLocal : () ==> String
-		   getLocal() == return local;
+		   getLocal() == return local
+		post RESULT = local;
 		
 		public pure getEvents : () ==> seq of Event
-		   getEvents() == return events;
+		   getEvents() == return events
+		post RESULT = events;
 		   
 	--Adiciona designer ao evento
 	public insertEvent : Event ==> ()
@@ -55,27 +59,34 @@ operations
   (
     events := [ev] ^ events;
     numberEvents := numberEvents + 1;
-  );
-  
+  )
+  pre ev not in set elems getEvents()
+  post ev in set elems getEvents();
   
   	--Adiciona designer ao evento
 	public insertFashionUser: (FashionUser)  ==> ()
   insertFashionUser(us) ==
   (
     fashionUsers := fashionUsers union {us};
-  );
+  )
+  pre us not in set  getFashionUsers()
+  post us in set  getFashionUsers();
   
 	--retorna nr designers do evento
   public pure getNumberEvents : () ==> int
-  getNumberEvents() == return numberEvents;
+  getNumberEvents() == return numberEvents
+  post RESULT = numberEvents;
   
   --retorna utilizadores da aplicaçao
   public pure getFashionUsers : () ==> set of FashionUser
-  getFashionUsers() == return fashionUsers;
+  getFashionUsers() == return fashionUsers
+  post RESULT = fashionUsers;
   
   public pure getNumberFashionUsers: () ==> nat
   getNumberFashionUsers() ==
-  return (card fashionUsers);
+  return (card fashionUsers)
+  post RESULT = (card fashionUsers);
+  
   
   public printFashionFestival: () ==> String
 		printFashionFestival() == (
@@ -84,6 +95,15 @@ operations
 							^"Date End: "^dateEnd^"\n"
 							^"Local: "^local^"\n";
 		return output;
-		);
-  
+		)
+		post RESULT = output;
+		
+		
+   public printFashionFestivalName: () ==> String
+		printFashionFestivalName() == (
+		outputN := name^"\n";
+		return outputN;
+		)
+		post RESULT = outputN;
+		
 end FashionFestival

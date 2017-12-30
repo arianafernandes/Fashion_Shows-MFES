@@ -4,22 +4,12 @@ types
 public String = seq of char;
 
 instance variables
-private  static festivals: seq of FashionFestival := [];
-private  static events: seq of Event := [];
-private  static designers: seq of Designer := [];
-private  static models: seq of Model := [];
-private  static users: set of FashionUser := {};
-private  static eventsTemp: seq of Event := [];
-private  static modelsTemp: seq of Model := [];
-private  static designersTemp: seq of Designer := [];
-private  static festivalTemp: FashionFestival := new FashionFestival();
-private  static runwaysTemp: seq of Runway := [];
+
 operations
 
 public static printTests: () ==> ()
 	printTests() == 
 	(
-		IO`print("Executing Tests.vdmpp operations...");
     new Tests().run();   
    );
    
@@ -30,14 +20,6 @@ public static printTests: () ==> ()
 	return Tests`getAppUsers();
  );
  
-  public static registerUser: (String) *  (String) * (String) * (String) ==> ()
-  registerUser(username,password,name,age) == 
-  (
-  	Tests`setAppUser(username,password,name,age);
-  );
-  
-  
-  
   
   public static getFestivals: () ==> seq of FashionFestival
   getFestivals() ==
@@ -46,15 +28,12 @@ public static printTests: () ==> ()
   );
    
   --Nomes dos festivais disponiveis
-  public static getFestivalsNames: () ==> ()
+  public static getFestivalsNames: () ==> String
 	getFestivalsNames() ==
 	(	
 	for counter = 1 to len Tests`getFestivals() do (
-  		IO`print("\n");
-  		IO`print(counter);
-  		IO`print((Tests`getFestivals() (counter)).getName());
-	  	IO`print("\n");
-	  	IO`print("\n");
+			IO`print(counter);
+  		return (Tests`getFestivals() (counter)).printFashionFestivalName();
    );
   );  	
   
@@ -81,15 +60,12 @@ public static printTests: () ==> ()
 	 
 	 	 
 	 --nomes dos eventos do festival selecionado
-	 public static getFestivalEventsNames: (int) ==> ()
+	 public static getFestivalEventsNames: (int) ==> String
 		getFestivalEventsNames(optionFestival) ==
 		(	
-		 	IO`print("\"n\"");
-  		for counter = 1 to len (Tests`getFestivals() (optionFestival)).getEvents() do (
+		 	for counter = 1 to len (Tests`getFestivals() (optionFestival)).getEvents() do (
   		IO`print(counter);
-  		IO`print(": ");
-  		IO`print(((Tests`getFestivals() (optionFestival)).getEvents() (counter)).getName());
-  		IO`print("\n");
+  		return (((Tests`getFestivals() (optionFestival)).getEvents() (counter)).getName());
 	 		);
 	 );
 
@@ -107,15 +83,12 @@ public static printTests: () ==> ()
 		return ((getFestivalEvents(optionFestival) (optionEvent)).getRunways());
 	);
 	
-	public static getRunwaysNames: (int) * (int) ==> ()
+	public static getRunwaysNames: (int) * (int) ==> String
 		getRunwaysNames(optionFestival,optionEvent) ==
 		(	
-		 	IO`print("\n");
   		for counter = 1 to len getRunwaysByEvent(optionFestival,optionEvent) do (
   		IO`print(counter);
-  		IO`print(": ");
-  		IO`print((getRunwaysByEvent(optionFestival,optionEvent) (counter)).getName());
-  		IO`print("\n");
+  		return ((getRunwaysByEvent(optionFestival,optionEvent) (counter)).getName());
 	 		);
 	 );
 	 
@@ -140,8 +113,6 @@ public static printTests: () ==> ()
 	(
 	return getOneRunwayByEvent(optionFestival,optionEvent,optionRunWay).getDesigners();
 	);
-	
-  
   
 
 public static main : () ==> ()
