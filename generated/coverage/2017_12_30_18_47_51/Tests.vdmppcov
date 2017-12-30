@@ -221,6 +221,9 @@ operations
   		assertEqual(3, card getAppUsers());
   		IO`print("\n(8/8) Test Fashion App passed\n");
   		
+  		IO`print((getEvents() (1)).getName());
+  		IO`print((getEvents() (2)).getName());
+  		IO`print((getEvents() (3)).getName());
   		IO`print("\nAll tests passed (8/8)\n");
   );
   

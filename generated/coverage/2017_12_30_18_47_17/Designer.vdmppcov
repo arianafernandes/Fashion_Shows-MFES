@@ -1,0 +1,67 @@
+class Designer
+
+types
+	public String = seq of char;
+	
+instance variables
+	public name : String;
+	public age : String;
+	public nationality : String;
+	public address : String;
+	public style : String;
+	public output : String := "";
+	
+inv len name > 0 and len age > 0 and len nationality > 0 and len address > 0 and len style > 0;
+	
+operations
+  public Designer : 
+  								String * 
+  								String *
+  								String * 
+  								String * 
+  								String   ==> Designer
+  Designer(nm, ag, nt , ad, sty) ==
+  (
+    name := nm;
+    age := ag;
+    nationality := nt;
+    address := ad;
+    style := sty;
+    return self;
+  );
+  
+  --retorna os parametros da class event
+	 public pure getName : () ==> String
+	   getName() == return name
+	   post RESULT = name;
+	  
+	  public pure getAge : () ==> String
+		   getAge() == return age
+		  post RESULT = age;
+		
+		public pure getNationality : () ==> String
+		   getNationality() == return nationality
+		  post RESULT = nationality;
+		
+		public pure getAddress : () ==> String
+		   getAddress() == return address  	   
+		  post RESULT = address;   
+		
+		public pure getStyle : () ==> String
+		   getStyle() == return style
+		  post RESULT = style;
+			
+		public printDesigner: () ==> String
+		printDesigner() == (
+		output := "Designer Name: "^name^"\n"
+							^"Age: "^age^"\n"
+							^"Nationality: "^nationality^"\n"
+							^"Address: "^address^"\n"
+							^"Style: "^style^"\n";
+		return output;
+		)
+		post RESULT = output;
+		
+	
+		   
+end Designer

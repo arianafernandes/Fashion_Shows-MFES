@@ -54,8 +54,13 @@ public class FashionUser {
 
   public void insertDesigner(final Designer d) {
 
-    numberDesigners = numberDesigners.longValue() + 1L;
-    designers = SeqUtil.conc(Utils.copy(designers), SeqUtil.seq(d));
+    if (!(SetUtil.inSet(d, SeqUtil.elems(Utils.copy(designers))))) {
+      designers = SeqUtil.conc(Utils.copy(designers), SeqUtil.seq(d));
+      numberDesigners = numberDesigners.longValue() + 1L;
+
+    } else {
+      IO.print("Impossivel adicionar designer ao utilizador");
+    }
   }
 
   public Number getNumberFavDesigners() {
@@ -70,8 +75,13 @@ public class FashionUser {
 
   public void insertModel(final Model d) {
 
-    numberModels = numberModels.longValue() + 1L;
-    models = SeqUtil.conc(Utils.copy(models), SeqUtil.seq(d));
+    if (!(SetUtil.inSet(d, SeqUtil.elems(Utils.copy(models))))) {
+      numberModels = numberModels.longValue() + 1L;
+      models = SeqUtil.conc(Utils.copy(models), SeqUtil.seq(d));
+
+    } else {
+      IO.print("Impossivel adicionar modelo ao utilizador");
+    }
   }
 
   public Number getNumberFavModels() {
@@ -86,8 +96,13 @@ public class FashionUser {
 
   public void insertEvent(final Event ev) {
 
-    numberEvents = numberEvents.longValue() + 1L;
-    events = SeqUtil.conc(Utils.copy(events), SeqUtil.seq(ev));
+    if (!(SetUtil.inSet(ev, SeqUtil.elems(Utils.copy(events))))) {
+      numberEvents = numberEvents.longValue() + 1L;
+      events = SeqUtil.conc(Utils.copy(events), SeqUtil.seq(ev));
+
+    } else {
+      IO.print("Impossivel adicionar evento ao utilizador");
+    }
   }
 
   public Number getNumberEvents() {

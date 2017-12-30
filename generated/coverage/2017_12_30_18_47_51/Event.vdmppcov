@@ -1,0 +1,107 @@
+class Event
+	
+types
+	public String = seq of char;	
+
+instance variables
+	public  name : String := "";
+	public  date : String := "";
+	public  local : String := "";
+	public  time : String := "";
+	public  duration : String := "";
+	public  theme : String := "";
+	public  gender: String := "";
+	public  collection: String := "";
+	public  output: String := "";
+	--Lista de desfiles
+	private runways: seq of Runway := [];
+	
+	inv len name > 0 and len date > 0 and len local > 0 and len time > 0 and len duration > 0 and 
+			len theme > 0 and len gender > 0 and len collection > 0;
+	
+	
+operations
+	public Event : 
+  							String * 
+  							String *
+  							String *
+  							String *
+  							String *
+  							String *
+  							String *  
+  							String ==> Event
+	Event(nm, dt, lc, hr , dr, tm, gr, cl) == (
+		name := nm;
+		date := dt;
+		local := lc;
+		time := hr;
+		duration := dr;
+		theme := tm;
+		gender := gr;
+		collection := cl;
+		return self
+	);
+	
+	--retorna os parametros da class event
+	 public pure getName : () ==> String
+	   getName() == return name
+	   post RESULT = name;
+	   
+	  public pure getDate : () ==> String
+		   getDate() == return date
+		post RESULT = date;
+		   
+		public pure getLocal : () ==> String
+		   getLocal() == return local
+		post RESULT = local;
+		   
+		public pure getTime : () ==> String
+		   getTime() == return time	   
+		post RESULT = time;
+		   
+		public pure getDuration : () ==> String
+		   getDuration() == return duration
+		post RESULT = duration;
+		   
+		public pure getTheme : () ==> String
+		   getTheme() == return theme
+		post RESULT = theme;
+		  
+		public pure getGender : () ==> String
+		   getGender() == return gender
+		post RESULT = gender;
+		   
+		public pure getCollection : () ==> String
+		   getCollection() == return collection
+		post RESULT = collection;
+		
+		public pure getRunways : () ==> seq of Runway
+		   getRunways() == return runways
+		post RESULT = runways;
+		
+		public pure getNumberRunways : () ==> nat
+		   getNumberRunways() == return len runways
+		post RESULT = len runways;
+		   
+		public insertRunway : Runway ==> ()
+	  insertRunway(r) ==
+	  (
+	    runways := runways ^  [r];
+	  )
+	  pre r not in set elems getRunways()
+  	post r  in set elems getRunways();
+	  
+  
+  public printEvent: () ==> String
+		printEvent() == (
+		output := "Event Name: "^name^"\n"
+							^"Date: "^date^"\n"
+							^"Time: "^time^"\n"
+							^"Theme: "^theme^"\n"
+							^"Gender: "^gender^"\n"
+							^"Collection: "^collection^"\n";
+		return output;
+		)
+		post RESULT = output;
+		
+end Event

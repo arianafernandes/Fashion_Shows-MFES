@@ -1,0 +1,72 @@
+class Runway
+
+types
+	public String = seq of char;
+	
+instance variables
+	public  name : String := "";
+	private designers: set of Designer := {};
+	private numberDesigners: int := card designers;
+	private models: seq of Model := [];
+	private numberModels: int := 0;
+	private output : String := "";
+	
+	inv len name > 0;
+	
+	operations
+	public Runway : 
+  							(String)
+  							 ==> Runway
+		Runway(nm) == (
+		name := nm;
+		return self
+	);
+	
+	public pure getName : () ==> String
+	   getName() == return name
+	post RESULT = name;
+  
+ public pure getModels : () ==> seq of Model
+		   getModels() == return models
+	post RESULT = models;
+		   
+	public pure getDesigners : () ==> set of Designer
+		   getDesigners() == return designers
+	post RESULT = designers;
+	
+	public pure getDesignersNumber : () ==> nat
+		   getDesignersNumber() == return card designers 
+	post RESULT = (card designers);
+		   	   
+	public insertDesigner : Designer ==> ()
+  insertDesigner(dg) ==
+  (
+    designers := designers union  {dg};
+  )
+  pre dg not in set getDesigners()
+  post dg in set getDesigners();
+  
+  --MODELOS DO DESFILE
+  --Adiciona model ao desfile
+	public insertModel : Model ==> ()
+  insertModel(md) ==
+  (
+    numberModels := numberModels + 1;
+    models := models ^  [md];
+  )
+  pre md not in set elems getModels()
+  post md  in set elems getModels();
+  
+ 	--retorna nr modelso do desfile
+  public pure getNumberModels : () ==> int
+  getNumberModels() == return numberModels
+  post RESULT = numberModels;
+  
+  public printRunway: () ==> String
+		printRunway() == (
+		output := name^"\n";
+		return output;
+		)
+	post RESULT = output;
+  		
+end Runway
