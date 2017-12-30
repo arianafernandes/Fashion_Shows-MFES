@@ -1,0 +1,227 @@
+\begin{vdmpp}[breaklines=true]
+class FashionUser
+
+types
+ public String = seq of char;
+ 
+instance variables
+ private username: String;
+ private password: String;
+ public name: String;
+ public age: String;
+ --designers favoritos
+ private  designers: seq of Designer := [];
+ private  numberDesigners: int := 0;
+  --modelos favoritos
+ private  models: seq of Model := [];
+ private  numberModels: int := 0;
+ --eventos que utilizador vai
+ private events: seq of Event := [];
+ private  numberEvents: int := 0;
+ private output : String := "";
+ 
+ inv len username > 0 and len password = 6 and len name > 0 and len age > 0;
+
+
+operations  
+(*@
+\label{FashionUser:26}
+@*)
+  public FashionUser : String *
+            String *
+            String *
+            String  ==> FashionUser
+  FashionUser(u, p, nm, ag) ==
+  (
+   username := u;
+   password := p;
+    name := nm;
+    age := ag;
+    return self;
+  );
+  
+  --retorna os parametros da class fashionUSer
+(*@
+\label{getUsername:40}
+@*)
+  public pure getUsername : () ==> String
+    getUsername() == return username
+    post RESULT = username;
+    
+(*@
+\label{getPassword:44}
+@*)
+  public pure getPassword : () ==> String
+    getPassword() == return password
+    post RESULT = password;
+  
+(*@
+\label{getName:48}
+@*)
+  public pure getName : () ==> String
+    getName() == return name
+    post RESULT = name;
+    
+(*@
+\label{getAge:52}
+@*)
+  public pure getAge : () ==> String
+  getAge() == return age
+  post RESULT = age;   
+  
+   
+    --DESIGNERES FAVORITOS  
+   --Adiciona designer favorito ao utilizador
+(*@
+\label{insertDesigner:59}
+@*)
+  public insertDesigner : Designer ==> ()
+   insertDesigner(d) ==
+   (
+     if d not in set elems designers 
+     then(
+      designers := designers ^ [d];
+      numberDesigners := numberDesigners + 1;)
+      else
+       IO`print((*@\vdmnotcovered{"Impossivel adicionar designer ao utilizador"}@*));
+    )
+(*@
+\label{getNumberFavDesigners:69}
+@*)
+   pre d not in set elems designers
+   post d in set elems designers;
+   
+  --retorna nr designers favoritos
+(*@
+\label{getDesigners:73}
+@*)
+   public pure getNumberFavDesigners : () ==> nat
+   getNumberFavDesigners() == return numberDesigners
+   post RESULT = numberDesigners;
+    
+(*@
+\label{insertModel:77}
+@*)
+   public getDesigners: () ==> seq of Designer
+   getDesigners() == return designers
+   post RESULT = designers;
+   
+   public insertModel : Model ==> ()
+   insertModel(d) ==
+   (
+    if d not in set elems models 
+     then(
+     numberModels := numberModels + 1;
+(*@
+\label{getNumberFavModels:87}
+@*)
+     models := models ^ [d];)
+     else
+     (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Impossivel adicionar modelo ao utilizador"}@*));
+   )
+(*@
+\label{getModels:91}
+@*)
+   pre d not in set elems models
+   post d in set elems models;
+   
+  --retorna nr designers favoritos
+   public pure getNumberFavModels : () ==> nat
+   getNumberFavModels() == return numberModels
+(*@
+\label{insertEvent:97}
+@*)
+   post RESULT = numberModels;
+   
+   public getModels: () ==> seq of Model
+   getModels() == return models
+    post RESULT = models;
+   
+    --EVENTOS DO UTILIZADOR
+    --Adiciona evento
+  public insertEvent : Event ==> ()
+   insertEvent(ev) ==
+   (
+(*@
+\label{getNumberEvents:108}
+@*)
+    if ev not in set elems events
+     then(
+     numberEvents := numberEvents + 1;
+     events := events ^ [ev];)
+     else 
+(*@
+\label{getEvents:113}
+@*)
+     (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Impossivel adicionar evento ao utilizador"}@*));
+   )
+   pre ev not in set elems events
+   post ev in set elems events;
+(*@
+\label{printUser:117}
+@*)
+   
+   
+  --Retorna nr designers favoritos
+   public pure getNumberEvents : () ==> nat
+   getNumberEvents() == return numberEvents
+  post RESULT = numberEvents;
+  
+
+   public getEvents: () ==> seq of Event
+   getEvents() == return events
+   post RESULT = events;
+   
+   public printUser: () ==> String
+  printUser() == (
+  output := "Username: "^username^"\n"
+       ^"Password: "^password^"\n"
+       ^"Name: "^name^"\n"
+       ^"Age: "^age^"\n";
+  return output;
+  )
+   post RESULT = output;
+   
+end FashionUser
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[FashionUser:26]{FashionUser} & 26&100.0\% & 3 \\
+\hline
+\hyperref[getAge:52]{getAge} & 52&100.0\% & 2 \\
+\hline
+\hyperref[getDesigners:73]{getDesigners} & 73&100.0\% & 2 \\
+\hline
+\hyperref[getEvents:113]{getEvents} & 113&100.0\% & 2 \\
+\hline
+\hyperref[getModels:91]{getModels} & 91&100.0\% & 2 \\
+\hline
+\hyperref[getName:48]{getName} & 48&100.0\% & 2 \\
+\hline
+\hyperref[getNumberEvents:108]{getNumberEvents} & 108&100.0\% & 1 \\
+\hline
+\hyperref[getNumberFavDesigners:69]{getNumberFavDesigners} & 69&100.0\% & 1 \\
+\hline
+\hyperref[getNumberFavModels:87]{getNumberFavModels} & 87&100.0\% & 1 \\
+\hline
+\hyperref[getPassword:44]{getPassword} & 44&100.0\% & 2 \\
+\hline
+\hyperref[getUsername:40]{getUsername} & 40&100.0\% & 2 \\
+\hline
+\hyperref[insertDesigner:59]{insertDesigner} & 59&92.3\% & 3 \\
+\hline
+\hyperref[insertEvent:97]{insertEvent} & 97&92.3\% & 0 \\
+\hline
+\hyperref[insertModel:77]{insertModel} & 77&92.3\% & 3 \\
+\hline
+\hyperref[printUser:117]{printUser} & 117&100.0\% & 1 \\
+\hline
+\hline
+FashionUser.vdmpp & & 96.9\% & 27 \\
+\hline
+\end{longtable}
+

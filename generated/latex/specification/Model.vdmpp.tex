@@ -1,0 +1,100 @@
+\begin{vdmpp}[breaklines=true]
+class Model
+
+types
+ public String = seq of char;
+ 
+instance variables
+ public name : String;
+ public age : String;
+ public nationality : String;
+ public address : String;
+ public output : String := "";
+ 
+ inv len name > 0 and len age > 0 and len nationality > 0 and len address > 0;
+ 
+ operations
+(*@
+\label{Model:16}
+@*)
+  public Model : 
+          String * 
+          String *
+          String * 
+          String ==> Model
+  Model(nm, ag, nt , ad) ==
+  (
+    name := nm;
+    age := ag;
+    nationality := nt;
+    address := ad;
+    return self;
+  );
+  
+  --retorna os parametros da class Model
+(*@
+\label{getName:31}
+@*)
+  public pure getName : () ==> String
+    getName() == return name
+    post RESULT = name;
+    
+(*@
+\label{getAge:35}
+@*)
+   public pure getAge : () ==> String
+     getAge() == return age
+     post RESULT = age;
+     
+(*@
+\label{getNationality:39}
+@*)
+  public pure getNationality : () ==> String
+     getNationality() == return nationality
+     post RESULT = nationality;
+     
+(*@
+\label{getAddress:43}
+@*)
+  public pure getAddress : () ==> String
+     getAddress() == return address 
+  post RESULT = address;
+  
+(*@
+\label{printModel:47}
+@*)
+  public printModel: () ==> String
+  printModel() == (
+  output := "Model Name: "^name^"\n"
+       ^"Age: "^age^"\n"
+       ^"Nationality: "^nationality^"\n"
+       ^"Address: "^address^"\n";
+  return output;
+  )
+  post RESULT = output;  
+  
+end Model
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[Model:16]{Model} & 16&100.0\% & 4 \\
+\hline
+\hyperref[getAddress:43]{getAddress} & 43&100.0\% & 2 \\
+\hline
+\hyperref[getAge:35]{getAge} & 35&100.0\% & 2 \\
+\hline
+\hyperref[getName:31]{getName} & 31&100.0\% & 10 \\
+\hline
+\hyperref[getNationality:39]{getNationality} & 39&100.0\% & 2 \\
+\hline
+\hyperref[printModel:47]{printModel} & 47&100.0\% & 1 \\
+\hline
+\hline
+Model.vdmpp & & 100.0\% & 21 \\
+\hline
+\end{longtable}
+

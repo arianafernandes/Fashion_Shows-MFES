@@ -1,0 +1,130 @@
+\begin{vdmpp}[breaklines=true]
+class Runway
+
+types
+ public String = seq of char;
+ 
+instance variables
+ public  name : String := "";
+ private designers: set of Designer := {};
+ private numberDesigners: int := card designers;
+ private models: seq of Model := [];
+ private numberModels: int := 0;
+ private output : String := "";
+ 
+ inv len name > 0;
+ 
+ operations
+(*@
+\label{Runway:17}
+@*)
+ public Runway : 
+         (String)
+          ==> Runway
+  Runway(nm) == (
+  name := nm;
+  return self
+ );
+ 
+(*@
+\label{getName:25}
+@*)
+ public pure getName : () ==> String
+    getName() == return name
+ post RESULT = name;
+  
+(*@
+\label{getModels:29}
+@*)
+ public pure getModels : () ==> seq of Model
+     getModels() == return models
+ post RESULT = models;
+     
+(*@
+\label{getDesigners:33}
+@*)
+ public pure getDesigners : () ==> set of Designer
+     getDesigners() == return designers
+ post RESULT = designers;
+ 
+(*@
+\label{getDesignersNumber:37}
+@*)
+ public pure getDesignersNumber : () ==> nat
+     getDesignersNumber() == return card designers 
+ post RESULT = (card designers);
+         
+(*@
+\label{insertDesigner:41}
+@*)
+ public insertDesigner : Designer ==> ()
+  insertDesigner(dg) ==
+  (
+    designers := designers union  {dg};
+  )
+  pre dg not in set getDesigners()
+  post dg in set getDesigners();
+  
+  --MODELOS DO DESFILE
+  --Adiciona model ao desfile
+(*@
+\label{insertModel:51}
+@*)
+ public insertModel : Model ==> ()
+  insertModel(md) ==
+  (
+    numberModels := numberModels + 1;
+    models := models ^  [md];
+  )
+  pre md not in set elems getModels()
+  post md  in set elems getModels();
+  
+  --retorna nr modelso do desfile
+(*@
+\label{getNumberModels:61}
+@*)
+  public pure getNumberModels : () ==> int
+  getNumberModels() == return numberModels
+  post RESULT = numberModels;
+  
+(*@
+\label{printRunway:65}
+@*)
+  public printRunway: () ==> String
+  printRunway() == (
+  output := name^"\n";
+  return output;
+  )
+ post RESULT = output;
+    
+end Runway
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[Runway:17]{Runway} & 17&100.0\% & 3 \\
+\hline
+\hyperref[getDesigners:33]{getDesigners} & 33&100.0\% & 10 \\
+\hline
+\hyperref[getDesignersNumber:37]{getDesignersNumber} & 37&100.0\% & 1 \\
+\hline
+\hyperref[getModels:29]{getModels} & 29&100.0\% & 12 \\
+\hline
+\hyperref[getName:25]{getName} & 25&100.0\% & 6 \\
+\hline
+\hyperref[getNumberModels:61]{getNumberModels} & 61&100.0\% & 1 \\
+\hline
+\hyperref[insertDesigner:41]{insertDesigner} & 41&100.0\% & 8 \\
+\hline
+\hyperref[insertModel:51]{insertModel} & 51&100.0\% & 5 \\
+\hline
+\hyperref[printRunway:65]{printRunway} & 65&100.0\% & 1 \\
+\hline
+\hline
+Runway.vdmpp & & 100.0\% & 47 \\
+\hline
+\end{longtable}
+
