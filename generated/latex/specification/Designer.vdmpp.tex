@@ -4,7 +4,7 @@ class Designer
 types
  public String = seq of char;
  public DesignerName = String;
- public DesignerAge = nat;
+ public DesignerAge = String;
  public DesignerNationality = String;
  public DesignerAddress = String;
  public DesignerStyle = String;
@@ -15,11 +15,12 @@ instance variables
  public nationality : DesignerNationality;
  public address : DesignerAddress;
  public style : DesignerStyle;
- 
- operations
+ public output : String := "";
+ public nr : int := 0;
 (*@
 \label{Designer:19}
 @*)
+ operations
   public Designer : 
           DesignerName * 
           DesignerAge *
@@ -36,58 +37,57 @@ instance variables
     return self;
   );
   
-  --retorna os parametros da class event
 (*@
 \label{getName:36}
 @*)
+  --retorna os parametros da class event
   public pure getName : () ==> String
     getName() == return name;
-    
 (*@
 \label{getAge:39}
 @*)
-   public pure getAge : () ==> nat
+    
+   public pure getAge : () ==> String
      getAge() == return age;
-     
 (*@
 \label{getNationality:42}
 @*)
+     
   public pure getNationality : () ==> String
      getNationality() == return nationality;
-     
 (*@
 \label{getAddress:45}
 @*)
+     
   public pure getAddress : () ==> String
      getAddress() == return address;      
-     
 (*@
 \label{getStyle:48}
 @*)
+     
   public pure getStyle : () ==> String
      getStyle() == return style;
-     
 (*@
 \label{printDesigner:51}
 @*)
-  public printDesigner: () ==> ()
-  printDesigner() == (*@\vdmnotcovered{(}@*)
-  IO`print((*@\vdmnotcovered{"Designer Name: "}@*));
-   IO`print((*@\vdmnotcovered{name}@*));
-   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
-   IO`print((*@\vdmnotcovered{"Age: "}@*));
-   IO`print((*@\vdmnotcovered{age}@*));
-   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
-   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Nationality: "}@*));
-   IO`print((*@\vdmnotcovered{nationality}@*));
-   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
-   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Address: "}@*));
-    IO`print((*@\vdmnotcovered{address}@*));
-   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
-   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Style: "}@*));
-   IO`print((*@\vdmnotcovered{style}@*));
-   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
+(*@
+\label{printModel:51}
+@*)
+  
+(*@
+\label{toString:52}
+@*)
+   
+  public printDesigner: () ==> String
+  printDesigner() == (
+  output := "Designer Name: "^name^"\n"
+       ^"Age: "^age^"\n"
+       ^"Nationality: "^nationality^"\n"
+       ^"Address: "^address^"\n"
+       ^"Style: "^style^"\n";
+  return output;
   );
+ 
      
 end Designer
 \end{vdmpp}
@@ -99,20 +99,24 @@ Function or operation & Line & Coverage & Calls \\
 \hline
 \hyperref[Designer:19]{Designer} & 19&100.0\% & 2 \\
 \hline
-\hyperref[getAddress:45]{getAddress} & 45&100.0\% & 1 \\
+\hyperref[getAddress:45]{getAddress} & 45&100.0\% & 2 \\
 \hline
-\hyperref[getAge:39]{getAge} & 39&100.0\% & 1 \\
+\hyperref[getAge:39]{getAge} & 39&100.0\% & 2 \\
 \hline
-\hyperref[getName:36]{getName} & 36&100.0\% & 5 \\
+\hyperref[getName:36]{getName} & 36&100.0\% & 6 \\
 \hline
-\hyperref[getNationality:42]{getNationality} & 42&100.0\% & 1 \\
+\hyperref[getNationality:42]{getNationality} & 42&100.0\% & 2 \\
 \hline
-\hyperref[getStyle:48]{getStyle} & 48&100.0\% & 1 \\
+\hyperref[getStyle:48]{getStyle} & 48&100.0\% & 2 \\
 \hline
-\hyperref[printDesigner:51]{printDesigner} & 51&0.0\% & 0 \\
+\hyperref[printDesigner:51]{printDesigner} & 51&100.0\% & 1 \\
+\hline
+\hyperref[printModel:51]{printModel} & 51&100.0\% & 1 \\
+\hline
+\hyperref[toString:52]{toString} & 52&100.0\% & 1 \\
 \hline
 \hline
-Designer.vdmpp & & 42.5\% & 11 \\
+Designer.vdmpp & & 100.0\% & 19 \\
 \hline
 \end{longtable}
 

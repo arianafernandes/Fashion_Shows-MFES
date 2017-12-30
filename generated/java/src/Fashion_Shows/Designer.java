@@ -6,13 +6,15 @@ import org.overture.codegen.runtime.*;
 @SuppressWarnings("all")
 public class Designer {
   public String name;
-  public Number age;
+  public String age;
   public String nationality;
   public String address;
   public String style;
+  public String output = "";
+  public Number nr = 0L;
 
   public void cg_init_Designer_1(
-      final String nm, final Number ag, final String nt, final String ad, final String sty) {
+      final String nm, final String ag, final String nt, final String ad, final String sty) {
 
     name = nm;
     age = ag;
@@ -23,7 +25,7 @@ public class Designer {
   }
 
   public Designer(
-      final String nm, final Number ag, final String nt, final String ad, final String sty) {
+      final String nm, final String ag, final String nt, final String ad, final String sty) {
 
     cg_init_Designer_1(nm, ag, nt, ad, sty);
   }
@@ -33,7 +35,7 @@ public class Designer {
     return name;
   }
 
-  public Number getAge() {
+  public String getAge() {
 
     return age;
   }
@@ -53,23 +55,25 @@ public class Designer {
     return style;
   }
 
-  public void printDesigner() {
+  public String printDesigner() {
 
-    IO.print("Designer Name: ");
-    IO.print(name);
-    IO.print("\n");
-    IO.print("Age: ");
-    IO.print(age);
-    IO.print("\n");
-    IO.print("Nationality: ");
-    IO.print(nationality);
-    IO.print("\n");
-    IO.print("Address: ");
-    IO.print(address);
-    IO.print("\n");
-    IO.print("Style: ");
-    IO.print(style);
-    IO.print("\n");
+    output =
+        "Designer Name: "
+            + name
+            + "\n"
+            + "Age: "
+            + age
+            + "\n"
+            + "Nationality: "
+            + nationality
+            + "\n"
+            + "Address: "
+            + address
+            + "\n"
+            + "Style: "
+            + style
+            + "\n";
+    return output;
   }
 
   public Designer() {}
@@ -87,6 +91,10 @@ public class Designer {
         + Utils.toString(address)
         + ", style := "
         + Utils.toString(style)
+        + ", output := "
+        + Utils.toString(output)
+        + ", nr := "
+        + Utils.toString(nr)
         + "}";
   }
 }

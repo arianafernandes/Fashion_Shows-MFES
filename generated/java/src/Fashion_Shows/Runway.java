@@ -10,6 +10,7 @@ public class Runway {
   private Number numberDesigners = designers.size();
   private VDMSeq models = SeqUtil.seq();
   private Number numberModels = 0L;
+  private String output = "";
 
   public void cg_init_Runway_1(final String nm) {
 
@@ -37,6 +38,11 @@ public class Runway {
     return Utils.copy(designers);
   }
 
+  public Number getDesignersNumber() {
+
+    return designers.size();
+  }
+
   public void insertDesigner(final Designer dg) {
 
     designers = SetUtil.union(Utils.copy(designers), SetUtil.set(dg));
@@ -53,11 +59,10 @@ public class Runway {
     return numberModels;
   }
 
-  public void printRunway() {
+  public String printRunway() {
 
-    IO.print("Runway Name: ");
-    IO.print(name);
-    IO.print("\n");
+    output = "Runway Name: " + name + "\n";
+    return output;
   }
 
   public Runway() {}
@@ -75,6 +80,8 @@ public class Runway {
         + Utils.toString(models)
         + ", numberModels := "
         + Utils.toString(numberModels)
+        + ", output := "
+        + Utils.toString(output)
         + "}";
   }
 }

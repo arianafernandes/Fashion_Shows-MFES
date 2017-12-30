@@ -5,21 +5,22 @@ types
 	public EventName = String;
 	public EventDate = String;
 	public EventLocal = String;
-	public EventTime = nat;
-	public EventDuration = nat;
+	public EventTime = String;
+	public EventDuration = String;
 	public EventTheme = String;
-	public EventGender = <Homem> | <Mulher> | <Unisexo>;
-  public EventCollection = <Outono_Inverno> | <Primavera_Verao>;
+	public EventGender = String;
+  public EventCollection = String;
 
 instance variables
 	public  name : EventName := "";
 	public  date : EventDate := "";
 	public  local : EventLocal := "";
-	public  time : EventTime := 0;
-	public  duration : EventDuration := 0;
+	public  time : EventTime := "";
+	public  duration : EventDuration := "";
 	public  theme : EventTheme := "";
-	public  gender: EventGender := <Homem>;
-	public  collection: EventCollection := <Outono_Inverno>;
+	public  gender: EventGender := "";
+	public  collection: EventCollection := "";
+	public  output: String := "";
 	
 	--Lista de desfiles
 	private runways: seq of Runway := [];
@@ -56,19 +57,19 @@ operations
 		public pure getLocal : () ==> String
 		   getLocal() == return local;
 		   
-		public pure getTime : () ==> nat
+		public pure getTime : () ==> String
 		   getTime() == return time;  	   
 		   
-		public pure getDuration : () ==> nat
+		public pure getDuration : () ==> String
 		   getDuration() == return duration;
 		   
 		public pure getTheme : () ==> String
 		   getTheme() == return theme;
 		   
-		public pure getGender : () ==> EventGender
+		public pure getGender : () ==> String
 		   getGender() == return gender;
 		   
-		public pure getCollection : () ==> EventCollection
+		public pure getCollection : () ==> String
 		   getCollection() == return collection;
 		
 		public pure getRunways : () ==> seq of Runway
@@ -83,25 +84,15 @@ operations
 	    runways := runways ^  [r];
 	  );
   
-		public printEvent: () ==> ()
+  public printEvent: () ==> String
 		printEvent() == (
-		IO`print("Event Name: ");
-			IO`print(name);
-			IO`print("\n");
-			IO`print("Date: ");
-			IO`print(date);
-			IO`print("\n");
-			IO`print("Time: ");
-			IO`print(time);
-			IO`print("\n");
-			IO`print("Theme: ");
-		  IO`print(theme);
-			IO`print("\n");
-			IO`print("Gender: ");
-			IO`print(gender);
-			IO`print("\n");
-			IO`print("Collection: ");
-			IO`print(collection);
-			IO`print("\n");
+		output := "Event Name: "^name^"\n"
+							^"Date: "^date^"\n"
+							^"Time: "^time^"\n"
+							^"Theme: "^theme^"\n"
+							^"Gender: "^gender^"\n"
+							^"Collection: "^collection^"\n";
+		return output;
 		);
+		
 end Event

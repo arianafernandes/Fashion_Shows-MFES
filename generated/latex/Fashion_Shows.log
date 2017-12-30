@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.26)  29 DEC 2017 22:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.26)  30 DEC 2017 13:59
 entering extended mode
 **./Fashion_Shows.tex
 (Fashion_Shows.tex
@@ -290,52 +290,58 @@ LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <8> not available
 
 {C:/Users/arian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <8> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 39.
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 77.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 43.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspcr.fd"
-File: omspcr.fd 
-)
-LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 77.
-
-Underfull \vbox (badness 10000) detected at line 117
+Underfull \vbox (badness 10000) detected at line 121
  []
 
-[2]) (specification/Event.vdmpp.tex [3] [4]
-Underfull \vbox (badness 10000) detected at line 184
+[2]) (specification/Event.vdmpp.tex [3]
+Underfull \vbox (badness 10000) detected at line 180
  []
 
-) (specification/FashionFestival.vdmpp.tex [5]
+[4]) (specification/FashionFestival.vdmpp.tex [5]
 Missing character: There is no ç in font pcrro7t!
  [6]
-Underfull \vbox (badness 10000) detected at line 167
+Underfull \vbox (badness 10000) detected at line 161
  []
 
 ) (specification/FashionUser.vdmpp.tex [7] [8]
 Underfull \vbox (badness 10000) detected at line 204
  []
 
-[9]) (specification/Model.vdmpp.tex [10]
-Underfull \vbox (badness 10000) detected at line 101
+) (specification/Model.vdmpp.tex [9]
+Underfull \vbox (badness 10000) detected at line 102
  []
 
-) (specification/MyTestCase.vdmpp.tex [11]
+[10]) (specification/MyTestCase.vdmpp.tex
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 49.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspcr.fd"
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 49.
+
 Underfull \vbox (badness 10000) detected at line 72
  []
 
-) (specification/Runway.vdmpp.tex [12]
-Underfull \vbox (badness 10000) detected at line 119
+[11]) (specification/Runway.vdmpp.tex [12]
+Underfull \vbox (badness 10000) detected at line 124
  []
 
 ) (specification/TestApp.vdmpp.tex [13] [14] [15]
-Underfull \vbox (badness 10000) detected at line 257
+
+LaTeX Warning: Hyper reference `main:154' on page 16 undefined on input line 23
+8.
+
+
+Underfull \vbox (badness 10000) detected at line 247
  []
 
-[16]) (specification/Tests.vdmpp.tex
+) (specification/Tests.vdmpp.tex [16]
 Missing character: There is no ã in font pcrr7t!
  [17] [18] [19] [20]
-Underfull \vbox (badness 10000) detected at line 321
+Underfull \vbox (badness 10000) detected at line 345
  []
 
 )
@@ -349,18 +355,21 @@ Package rerunfilecheck Info: File `Fashion_Shows.out' has not changed.
 (rerunfilecheck)             Checksum: 450B16056C6858FE4ED566B0AA59F404;396.
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 31.
  ) 
 Here is how much of TeX's memory you used:
- 7769 strings out of 493312
- 115711 string characters out of 3138898
- 415157 words of memory out of 3000000
- 10127 multiletter control sequences out of 15000+200000
+ 7763 strings out of 493312
+ 115617 string characters out of 3138898
+ 493343 words of memory out of 3000000
+ 10129 multiletter control sequences out of 15000+200000
  17044 words of font info for 41 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 33i,6n,48p,278b,1928s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,6n,48p,248b,1928s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/latxfont/lcircle1.pfb><C:/Program Files/MiKTeX 2.9/
@@ -368,9 +377,9 @@ fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
 /courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8
 a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Fashion_Shows.pdf (21 pages, 298832 bytes).
+Output written on Fashion_Shows.pdf (21 pages, 298224 bytes).
 PDF statistics:
- 1575 PDF objects out of 1728 (max. 8388607)
- 1120 named destinations out of 1200 (max. 500000)
+ 1570 PDF objects out of 1728 (max. 8388607)
+ 1112 named destinations out of 1200 (max. 500000)
  73 words of extra memory for PDF output out of 10000 (max. 10000000)
 

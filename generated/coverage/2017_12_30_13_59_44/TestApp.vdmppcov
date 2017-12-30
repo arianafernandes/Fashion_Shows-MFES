@@ -30,7 +30,7 @@ public static printTests: () ==> ()
 	return Tests`getAppUsers();
  );
  
-  public static registerUser: (String) *  (String) * (String) * (int) ==> ()
+  public static registerUser: (String) *  (String) * (String) * (String) ==> ()
   registerUser(username,password,name,age) == 
   (
   	Tests`setAppUser(username,password,name,age);
@@ -133,14 +133,7 @@ public static printTests: () ==> ()
 	return getOneRunwayByEvent(optionFestival,optionEvent,optionRunWay).getModels();
 	);
     
-  public static getModelsInfsByRunway : (int) * (int) * (int) ==> ()
-	getModelsInfsByRunway(optionFestival, optionEvent, optionRunWay) ==
-	(
-			for counter = 1 to len getModelsByRunway(optionFestival, optionEvent, optionRunWay) do (
-				getModelsByRunway(optionFestival, optionEvent, optionRunWay) (counter).printModel();
-			);
-	);
-	
+  	
   --Retorna designers do desfile seleciondo do evento selecionado do festival selecionado  
   public static getDesignersByRunway : (int) * (int) * (int) ==> set of Designer
 	getDesignersByRunway(optionFestival, optionEvent, optionRunWay) ==

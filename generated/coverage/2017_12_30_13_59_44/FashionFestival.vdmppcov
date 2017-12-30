@@ -15,6 +15,7 @@ instance variables
 	private  events: seq of Event := [];
 	private  numberEvents: int := 0;	
 	private  fashionUsers : set of FashionUser := {};
+	private output : String := "";
 	
 operations
 	public FashionFestival : 
@@ -76,20 +77,13 @@ operations
   getNumberFashionUsers() ==
   return (card fashionUsers);
   
-  public printFashionFestival: () ==> ()
+  public printFashionFestival: () ==> String
 		printFashionFestival() == (
-		IO`print("Name: ");
-		IO`print(name);
-		IO`print("\n");
-		IO`print("Date Begin: ");
-		IO`print(dateBegin);
-		IO`print("\n");
-		IO`print("Date End: ");
-		IO`print(dateEnd);
-		IO`print("\n");
-		IO`print("Local: ");
-	  IO`print(local);
-		IO`print("\n");
+		output := "Name: "^name^"\n"
+							^"Date Begin: "^dateBegin^"\n"
+							^"Date End: "^dateEnd^"\n"
+							^"Local: "^local^"\n";
+		return output;
 		);
   
 end FashionFestival

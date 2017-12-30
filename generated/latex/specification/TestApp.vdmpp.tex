@@ -40,7 +40,7 @@ public static printTests: () ==> ()
 (*@
 \label{registerUser:33}
 @*)
-  public static registerUser: (String) *  (String) * (String) * (int) ==> ()
+  public static registerUser: (String) *  (String) * (String) * (String) ==> ()
   registerUser(username,password,name,age) == 
   (*@\vdmnotcovered{(}@*)
    (*@\vdmnotcovered{Tests`setAppUser}@*)(username,password,(*@\vdmnotcovered{name}@*),(*@\vdmnotcovered{age}@*));
@@ -179,18 +179,8 @@ public static printTests: () ==> ()
 (*@
 \label{getModelsInfsByRunway:136}
 @*)
-  public static getModelsInfsByRunway : (int) * (int) * (int) ==> ()
- getModelsInfsByRunway(optionFestival, optionEvent, optionRunWay) ==
- (*@\vdmnotcovered{(}@*)
-   (*@\vdmnotcovered{for}@*) counter = 1 to len getModelsByRunway(optionFestival, optionEvent, optionRunWay) do (*@\vdmnotcovered{(}@*)
-    (*@\vdmnotcovered{getModelsByRunway}@*)((*@\vdmnotcovered{optionFestival}@*), (*@\vdmnotcovered{optionEvent}@*), (*@\vdmnotcovered{optionRunWay}@*)) ((*@\vdmnotcovered{counter}@*)).printModel();
-   );
- );
- 
+   
   --Retorna designers do desfile seleciondo do evento selecionado do festival selecionado  
-(*@
-\label{getDesignersByRunway:145}
-@*)
   public static getDesignersByRunway : (int) * (int) * (int) ==> set of Designer
  getDesignersByRunway(optionFestival, optionEvent, optionRunWay) ==
  (
@@ -198,11 +188,11 @@ public static printTests: () ==> ()
  );
  
   
+(*@
+\label{getDesignersByRunway:145}
+@*)
   
 
-(*@
-\label{main:154}
-@*)
 public static main : () ==> ()
   main() ==
   (
@@ -235,7 +225,7 @@ Function or operation & Line & Coverage & Calls \\
 \hline
 \hyperref[getModelsByRunway:130]{getModelsByRunway} & 130&100.0\% & 1 \\
 \hline
-\hyperref[getModelsInfsByRunway:136]{getModelsInfsByRunway} & 136&0.0\% & 0 \\
+\hyperref[getModelsInfsByRunway:136]{getModelsInfsByRunway} & 136&100.0\% & 1 \\
 \hline
 \hyperref[getOneRunwayByEvent:123]{getOneRunwayByEvent} & 123&100.0\% & 3 \\
 \hline
@@ -252,7 +242,7 @@ Function or operation & Line & Coverage & Calls \\
 \hyperref[registerUser:33]{registerUser} & 33&0.0\% & 0 \\
 \hline
 \hline
-TestApp.vdmpp & & 45.3\% & 22 \\
+TestApp.vdmpp & & 50.0\% & 23 \\
 \hline
 \end{longtable}
 

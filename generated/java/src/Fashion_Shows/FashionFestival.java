@@ -12,6 +12,7 @@ public class FashionFestival {
   private VDMSeq events = SeqUtil.seq();
   private Number numberEvents = 0L;
   private VDMSet fashionUsers = SetUtil.set();
+  private String output = "";
 
   public void cg_init_FashionFestival_1(
       final String nm, final String di, final String df, final String lc) {
@@ -59,6 +60,11 @@ public class FashionFestival {
     numberEvents = numberEvents.longValue() + 1L;
   }
 
+  public void insertFashionUser(final FashionUser us) {
+
+    fashionUsers = SetUtil.union(Utils.copy(fashionUsers), SetUtil.set(us));
+  }
+
   public Number getNumberEvents() {
 
     return numberEvents;
@@ -69,20 +75,27 @@ public class FashionFestival {
     return Utils.copy(fashionUsers);
   }
 
-  public void printFashionFestival() {
+  public Number getNumberFashionUsers() {
 
-    IO.print("Name: ");
-    IO.print(name);
-    IO.print("\n");
-    IO.print("Date Begin: ");
-    IO.print(dateBegin);
-    IO.print("\n");
-    IO.print("Date End: ");
-    IO.print(dateEnd);
-    IO.print("\n");
-    IO.print("Local: ");
-    IO.print(local);
-    IO.print("\n");
+    return fashionUsers.size();
+  }
+
+  public String printFashionFestival() {
+
+    output =
+        "Name: "
+            + name
+            + "\n"
+            + "Date Begin: "
+            + dateBegin
+            + "\n"
+            + "Date End: "
+            + dateEnd
+            + "\n"
+            + "Local: "
+            + local
+            + "\n";
+    return output;
   }
 
   public FashionFestival() {}
@@ -104,6 +117,8 @@ public class FashionFestival {
         + Utils.toString(numberEvents)
         + ", fashionUsers := "
         + Utils.toString(fashionUsers)
+        + ", output := "
+        + Utils.toString(output)
         + "}";
   }
 }

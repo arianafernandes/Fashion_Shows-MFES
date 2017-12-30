@@ -8,16 +8,17 @@ public class FashionUser {
   private String username;
   private String password;
   public String name;
-  public Number age;
+  public String age;
   private VDMSeq designers = SeqUtil.seq();
   private Number numberDesigners = 0L;
   private VDMSeq models = SeqUtil.seq();
   private Number numberModels = 0L;
   private VDMSeq events = SeqUtil.seq();
   private Number numberEvents = 0L;
+  private String output = "";
 
   public void cg_init_FashionUser_1(
-      final String u, final String p, final String nm, final Number ag) {
+      final String u, final String p, final String nm, final String ag) {
 
     username = u;
     password = p;
@@ -26,7 +27,7 @@ public class FashionUser {
     return;
   }
 
-  public FashionUser(final String u, final String p, final String nm, final Number ag) {
+  public FashionUser(final String u, final String p, final String nm, final String ag) {
 
     cg_init_FashionUser_1(u, p, nm, ag);
   }
@@ -46,7 +47,7 @@ public class FashionUser {
     return name;
   }
 
-  public Number getAge() {
+  public String getAge() {
 
     return age;
   }
@@ -99,19 +100,22 @@ public class FashionUser {
     return Utils.copy(events);
   }
 
-  public void printUser() {
+  public String printUser() {
 
-    IO.print("Username: ");
-    IO.print(username);
-    IO.print("\n");
-    IO.print("Password: ");
-    IO.print(password);
-    IO.print(" Name: ");
-    IO.print(name);
-    IO.print("\n");
-    IO.print("Age: ");
-    IO.print(age);
-    IO.print("\n");
+    output =
+        "Username: "
+            + username
+            + "\n"
+            + "Password: "
+            + password
+            + "\n"
+            + "Name: "
+            + name
+            + "\n"
+            + "Age: "
+            + age
+            + "\n";
+    return output;
   }
 
   public FashionUser() {}
@@ -139,6 +143,8 @@ public class FashionUser {
         + Utils.toString(events)
         + ", numberEvents := "
         + Utils.toString(numberEvents)
+        + ", output := "
+        + Utils.toString(output)
         + "}";
   }
 }

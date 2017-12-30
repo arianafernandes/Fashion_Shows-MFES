@@ -2,8 +2,8 @@
 \contentsline {section}{\numberline {2}Event}{3}{section.2}
 \contentsline {section}{\numberline {3}FashionFestival}{5}{section.3}
 \contentsline {section}{\numberline {4}FashionUser}{7}{section.4}
-\contentsline {section}{\numberline {5}Model}{10}{section.5}
+\contentsline {section}{\numberline {5}Model}{9}{section.5}
 \contentsline {section}{\numberline {6}MyTestCase}{11}{section.6}
 \contentsline {section}{\numberline {7}Runway}{12}{section.7}
 \contentsline {section}{\numberline {8}TestApp}{13}{section.8}
-\contentsline {section}{\numberline {9}Tests}{17}{section.9}
+\contentsline {section}{\numberline {9}Tests}{16}{section.9}

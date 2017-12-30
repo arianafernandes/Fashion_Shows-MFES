@@ -3,7 +3,7 @@ class Designer
 types
 	public String = seq of char;
 	public DesignerName = String;
-	public DesignerAge = nat;
+	public DesignerAge = String;
 	public DesignerNationality = String;
 	public DesignerAddress = String;
 	public DesignerStyle = String;
@@ -14,7 +14,8 @@ instance variables
 	public nationality : DesignerNationality;
 	public address : DesignerAddress;
 	public style : DesignerStyle;
-	
+	public output : String := "";
+	public nr : int := 0;
 	operations
   public Designer : 
   								DesignerName * 
@@ -36,7 +37,7 @@ instance variables
 	 public pure getName : () ==> String
 	   getName() == return name;
 	   
-	  public pure getAge : () ==> nat
+	  public pure getAge : () ==> String
 		   getAge() == return age;
 		   
 		public pure getNationality : () ==> String
@@ -47,24 +48,17 @@ instance variables
 		   
 		public pure getStyle : () ==> String
 		   getStyle() == return style;
-		   
-		public printDesigner: () ==> ()
+		
+			
+		public printDesigner: () ==> String
 		printDesigner() == (
-		IO`print("Designer Name: ");
-			IO`print(name);
-			IO`print("\n");
-			IO`print("Age: ");
-			IO`print(age);
-			IO`print("\n");
-			IO`print("Nationality: ");
-			IO`print(nationality);
-			IO`print("\n");
-			IO`print("Address: ");
-		  IO`print(address);
-			IO`print("\n");
-			IO`print("Style: ");
-			IO`print(style);
-			IO`print("\n");
+		output := "Designer Name: "^name^"\n"
+							^"Age: "^age^"\n"
+							^"Nationality: "^nationality^"\n"
+							^"Address: "^address^"\n"
+							^"Style: "^style^"\n";
+		return output;
 		);
+	
 		   
 end Designer

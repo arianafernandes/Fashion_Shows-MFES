@@ -16,11 +16,12 @@ instance variables
  private  events: seq of Event := [];
  private  numberEvents: int := 0; 
  private  fashionUsers : set of FashionUser := {};
+ private output : String := "";
  
-operations
 (*@
 \label{FashionFestival:20}
 @*)
+operations
  public FashionFestival : 
               FestivalName *
               FestivalDateBegin * 
@@ -36,41 +37,41 @@ operations
     return self;
   );
   
-  --retorna os parametros da class event
 (*@
 \label{getName:36}
 @*)
+  --retorna os parametros da class event
   public pure getName : () ==> String
     getName() == return name;
-    
 (*@
 \label{getDateBegin:39}
 @*)
+    
    public pure getDateBegin : () ==> String
      getDateBegin() == return dateBegin;
-  
 (*@
 \label{getDateEnd:42}
 @*)
+  
   public pure getDateEnd : () ==> String
      getDateEnd() == return dateEnd;
-     
 (*@
 \label{getLocal:45}
 @*)
+     
   public pure getLocal : () ==> String
      getLocal() == return local;
-  
 (*@
 \label{getEvents:48}
 @*)
+  
   public pure getEvents : () ==> seq of Event
      getEvents() == return events;
      
- --Adiciona designer ao evento
 (*@
 \label{insertEvent:52}
 @*)
+ --Adiciona designer ao evento
  public insertEvent : Event ==> ()
   insertEvent(ev) ==
   (
@@ -80,53 +81,46 @@ operations
   
   
 (*@
-\label{getNumberEvents:60}
-@*)
-   --Adiciona designer ao evento
-(*@
 \label{insertFashionUser:61}
 @*)
+   --Adiciona designer ao evento
  public insertFashionUser: (FashionUser)  ==> ()
   insertFashionUser(us) ==
   (
-(*@
-\label{getFashionUsers:64}
-@*)
     fashionUsers := fashionUsers union {us};
   );
   
 (*@
-\label{printFashionFestival:67}
-@*)
-(*@
-\label{getNumberFashionUsers:67}
+\label{getNumberEvents:68}
 @*)
  --retorna nr designers do evento
   public pure getNumberEvents : () ==> int
   getNumberEvents() == return numberEvents;
   
+(*@
+\label{getFashionUsers:72}
+@*)
   --retorna utilizadores da aplicaçao
   public pure getFashionUsers : () ==> set of FashionUser
   getFashionUsers() == return fashionUsers;
+(*@
+\label{getNumberFashionUsers:75}
+@*)
   
   public pure getNumberFashionUsers: () ==> nat
   getNumberFashionUsers() ==
   return (card fashionUsers);
+(*@
+\label{printFashionFestival:79}
+@*)
   
-  public printFashionFestival: () ==> ()
-  printFashionFestival() == (*@\vdmnotcovered{(}@*)
-  (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Name: "}@*));
-  IO`print((*@\vdmnotcovered{name}@*));
-  (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
-  (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Date Begin: "}@*));
-  IO`print((*@\vdmnotcovered{dateBegin}@*));
-  IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
-  (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"Date End: "}@*));
-  IO`print((*@\vdmnotcovered{dateEnd}@*));
-  (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{"\textbackslash n"}@*));
-  IO`print((*@\vdmnotcovered{"Local: "}@*));
-   (*@\vdmnotcovered{IO`print}@*)((*@\vdmnotcovered{local}@*));
-  IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
+  public printFashionFestival: () ==> String
+  printFashionFestival() == (
+  output := "Name: "^name^"\n"
+       ^"Date Begin: "^dateBegin^"\n"
+       ^"Date End: "^dateEnd^"\n"
+       ^"Local: "^local^"\n";
+  return output;
   );
   
 end FashionFestival
@@ -139,30 +133,30 @@ Function or operation & Line & Coverage & Calls \\
 \hline
 \hyperref[FashionFestival:20]{FashionFestival} & 20&100.0\% & 2 \\
 \hline
-\hyperref[getDateBegin:39]{getDateBegin} & 39&100.0\% & 1 \\
+\hyperref[getDateBegin:39]{getDateBegin} & 39&100.0\% & 2 \\
 \hline
-\hyperref[getDateEnd:42]{getDateEnd} & 42&100.0\% & 1 \\
+\hyperref[getDateEnd:42]{getDateEnd} & 42&100.0\% & 2 \\
 \hline
 \hyperref[getEvents:48]{getEvents} & 48&100.0\% & 9 \\
 \hline
-\hyperref[getFashionUsers:64]{getFashionUsers} & 64&100.0\% & 2 \\
+\hyperref[getFashionUsers:72]{getFashionUsers} & 72&100.0\% & 2 \\
 \hline
-\hyperref[getLocal:45]{getLocal} & 45&100.0\% & 1 \\
+\hyperref[getLocal:45]{getLocal} & 45&100.0\% & 2 \\
 \hline
-\hyperref[getName:36]{getName} & 36&100.0\% & 3 \\
+\hyperref[getName:36]{getName} & 36&100.0\% & 4 \\
 \hline
-\hyperref[getNumberEvents:60]{getNumberEvents} & 60&100.0\% & 2 \\
+\hyperref[getNumberEvents:68]{getNumberEvents} & 68&100.0\% & 2 \\
 \hline
-\hyperref[getNumberFashionUsers:67]{getNumberFashionUsers} & 67&100.0\% & 1 \\
+\hyperref[getNumberFashionUsers:75]{getNumberFashionUsers} & 75&100.0\% & 1 \\
 \hline
 \hyperref[insertEvent:52]{insertEvent} & 52&100.0\% & 4 \\
 \hline
 \hyperref[insertFashionUser:61]{insertFashionUser} & 61&100.0\% & 2 \\
 \hline
-\hyperref[printFashionFestival:67]{printFashionFestival} & 67&0.0\% & 0 \\
+\hyperref[printFashionFestival:79]{printFashionFestival} & 79&100.0\% & 1 \\
 \hline
 \hline
-FashionFestival.vdmpp & & 67.1\% & 28 \\
+FashionFestival.vdmpp & & 100.0\% & 33 \\
 \hline
 \end{longtable}
 

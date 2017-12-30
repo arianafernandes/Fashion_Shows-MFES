@@ -6,11 +6,12 @@ import org.overture.codegen.runtime.*;
 @SuppressWarnings("all")
 public class Model {
   public String name;
-  public Number age;
+  public String age;
   public String nationality;
   public String address;
+  public String output = "";
 
-  public void cg_init_Model_1(final String nm, final Number ag, final String nt, final String ad) {
+  public void cg_init_Model_1(final String nm, final String ag, final String nt, final String ad) {
 
     name = nm;
     age = ag;
@@ -19,7 +20,7 @@ public class Model {
     return;
   }
 
-  public Model(final String nm, final Number ag, final String nt, final String ad) {
+  public Model(final String nm, final String ag, final String nt, final String ad) {
 
     cg_init_Model_1(nm, ag, nt, ad);
   }
@@ -29,7 +30,7 @@ public class Model {
     return name;
   }
 
-  public Number getAge() {
+  public String getAge() {
 
     return age;
   }
@@ -44,20 +45,22 @@ public class Model {
     return address;
   }
 
-  public void printModel() {
+  public String printModel() {
 
-    IO.print("Model Name: ");
-    IO.print(name);
-    IO.print("\n");
-    IO.print("Age: ");
-    IO.print(age);
-    IO.print("\n");
-    IO.print("Nationality: ");
-    IO.print(nationality);
-    IO.print("\n");
-    IO.print("Address: ");
-    IO.print(address);
-    IO.print("\n");
+    output =
+        "Model Name: "
+            + name
+            + "\n"
+            + "Age: "
+            + age
+            + "\n"
+            + "Nationality: "
+            + nationality
+            + "\n"
+            + "Address: "
+            + address
+            + "\n";
+    return output;
   }
 
   public Model() {}
@@ -73,6 +76,8 @@ public class Model {
         + Utils.toString(nationality)
         + ", address := "
         + Utils.toString(address)
+        + ", output := "
+        + Utils.toString(output)
         + "}";
   }
 }

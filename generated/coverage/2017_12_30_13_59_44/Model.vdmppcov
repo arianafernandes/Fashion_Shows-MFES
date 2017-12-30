@@ -3,7 +3,7 @@ class Model
 types
 	public String = seq of char;
 	public ModelName = String;
-	public ModelAge = nat;
+	public ModelAge = String;
 	public ModelNationality = String;
 	public ModelAddress = String;
 	
@@ -12,6 +12,7 @@ instance variables
 	public age : ModelAge;
 	public nationality : ModelNationality;
 	public address : ModelAddress;
+	public output : String := "";
 	
 	operations
   public Model : 
@@ -32,7 +33,7 @@ instance variables
 	 public pure getName : () ==> String
 	   getName() == return name;
 	   
-	  public pure getAge : () ==> nat
+	  public pure getAge : () ==> String
 		   getAge() == return age;
 		   
 		public pure getNationality : () ==> String
@@ -40,20 +41,15 @@ instance variables
 		   
 		public pure getAddress : () ==> String
 		   getAddress() == return address;  	   
-		   
-		public printModel: () ==> ()
+		
+		public printModel: () ==> String
 		printModel() == (
-		IO`print("Model Name: ");
-			IO`print(name);
-			IO`print("\n");
-			IO`print("Age: ");
-			IO`print(age);
-			IO`print("\n");
-			IO`print("Nationality: ");
-			IO`print(nationality);
-			IO`print("\n");
-			IO`print("Address: ");
-		  IO`print(address);
-			IO`print("\n");
-		);   
+		output := "Model Name: "^name^"\n"
+							^"Age: "^age^"\n"
+							^"Nationality: "^nationality^"\n"
+							^"Address: "^address^"\n";
+		return output;
+		);
+		  
+		
 end Model

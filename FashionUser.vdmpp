@@ -5,7 +5,7 @@ types
 	public Username = String;
 	public Password = String;
 	public UserName = String;
-	public UserAge = nat;
+	public UserAge = String;
 	
 instance variables
 	private username: Username;
@@ -21,6 +21,7 @@ instance variables
 	--eventos que utilizador vai
 	private events: seq of Event := [];
 	private  numberEvents: int := 0;
+	private output : String := "";
 
 operations  
   public FashionUser : Username *
@@ -46,7 +47,7 @@ operations
 	 public pure getName : () ==> String
 	   getName() == return name;
 	   
-	  public pure getAge : () ==> nat
+	  public pure getAge : () ==> String
 		   getAge() == return age;
 		   
   
@@ -99,19 +100,13 @@ operations
  		public getEvents: () ==> seq of Event
 	  getEvents() == return events;
 	  
-	  public printUser: () ==> ()
+	  public printUser: () ==> String
 		printUser() == (
-			IO`print("Username: ");
-			IO`print(username);
-			IO`print("\n");
-			IO`print("Password: ");
-			IO`print(password);
-			IO`print(" Name: ");
-			IO`print(name);
-			IO`print("\n");
-			IO`print("Age: ");
-			IO`print(age);
-			IO`print("\n");
+		output := "Username: "^username^"\n"
+							^"Password: "^password^"\n"
+							^"Name: "^name^"\n"
+							^"Age: "^age^"\n";
+		return output;
 		);
 
 end FashionUser

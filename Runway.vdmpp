@@ -10,7 +10,7 @@ instance variables
 	private numberDesigners: int := card designers;
 	private models: seq of Model := [];
 	private numberModels: int := 0;
-	
+	private output : String := "";
 	operations
 	public Runway : 
   							RunwayName 
@@ -52,11 +52,11 @@ instance variables
   public pure getNumberModels : () ==> int
   getNumberModels() == return numberModels;
   
-  	public printRunway: () ==> ()
+  public printRunway: () ==> String
 		printRunway() == (
-		  IO`print("Runway Name: ");
-			IO`print(name);
-			IO`print("\n");
+		output := "Runway Name: "^name^"\n";
+		return output;
 		);
 		
+  		
 end Runway

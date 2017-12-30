@@ -28,7 +28,7 @@ public class TestApp {
   }
 
   public static void registerUser(
-      final String username, final String password, final String name, final Number age) {
+      final String username, final String password, final String name, final String age) {
 
     Tests.setAppUser(username, password, name, age);
   }
@@ -120,19 +120,6 @@ public class TestApp {
       final Number optionFestival, final Number optionEvent, final Number optionRunWay) {
 
     return getOneRunwayByEvent(optionFestival, optionEvent, optionRunWay).getModels();
-  }
-
-  public static void getModelsInfsByRunway(
-      final Number optionFestival, final Number optionEvent, final Number optionRunWay) {
-
-    long toVar_4 = getModelsByRunway(optionFestival, optionEvent, optionRunWay).size();
-
-    for (Long counter = 1L; counter <= toVar_4; counter++) {
-      ((Model)
-              Utils.get(
-                  TestApp.getModelsByRunway(optionFestival, optionEvent, optionRunWay), counter))
-          .printModel();
-    }
   }
 
   public static VDMSet getDesignersByRunway(

@@ -8,22 +8,23 @@ public class Event {
   public String name = "";
   public String date = "";
   public String local = "";
-  public Number time = 0L;
-  public Number duration = 0L;
+  public String time = "";
+  public String duration = "";
   public String theme = "";
-  public Object gender = Fashion_Shows.quotes.HomemQuote.getInstance();
-  public Object collection = Fashion_Shows.quotes.Outono_InvernoQuote.getInstance();
+  public String gender = "";
+  public String collection = "";
+  public String output = "";
   private VDMSeq runways = SeqUtil.seq();
 
   public void cg_init_Event_1(
       final String nm,
       final String dt,
       final String lc,
-      final Number hr,
-      final Number dr,
+      final String hr,
+      final String dr,
       final String tm,
-      final Object gr,
-      final Object cl) {
+      final String gr,
+      final String cl) {
 
     name = nm;
     date = dt;
@@ -40,11 +41,11 @@ public class Event {
       final String nm,
       final String dt,
       final String lc,
-      final Number hr,
-      final Number dr,
+      final String hr,
+      final String dr,
       final String tm,
-      final Object gr,
-      final Object cl) {
+      final String gr,
+      final String cl) {
 
     cg_init_Event_1(nm, dt, lc, hr, dr, tm, gr, cl);
   }
@@ -64,12 +65,12 @@ public class Event {
     return local;
   }
 
-  public Number getTime() {
+  public String getTime() {
 
     return time;
   }
 
-  public Number getDuration() {
+  public String getDuration() {
 
     return duration;
   }
@@ -79,12 +80,12 @@ public class Event {
     return theme;
   }
 
-  public Object getGender() {
+  public String getGender() {
 
     return gender;
   }
 
-  public Object getCollection() {
+  public String getCollection() {
 
     return collection;
   }
@@ -94,31 +95,38 @@ public class Event {
     return Utils.copy(runways);
   }
 
+  public Number getNumberRunways() {
+
+    return runways.size();
+  }
+
   public void insertRunway(final Runway r) {
 
     runways = SeqUtil.conc(Utils.copy(runways), SeqUtil.seq(r));
   }
 
-  public void printEvent() {
+  public String printEvent() {
 
-    IO.print("Event Name: ");
-    IO.print(name);
-    IO.print("\n");
-    IO.print("Date: ");
-    IO.print(date);
-    IO.print("\n");
-    IO.print("Time: ");
-    IO.print(time);
-    IO.print("\n");
-    IO.print("Theme: ");
-    IO.print(theme);
-    IO.print("\n");
-    IO.print("Gender: ");
-    IO.print(((Object) gender));
-    IO.print("\n");
-    IO.print("Collection: ");
-    IO.print(((Object) collection));
-    IO.print("\n");
+    output =
+        "Event Name: "
+            + name
+            + "\n"
+            + "Date: "
+            + date
+            + "\n"
+            + "Time: "
+            + time
+            + "\n"
+            + "Theme: "
+            + theme
+            + "\n"
+            + "Gender: "
+            + gender
+            + "\n"
+            + "Collection: "
+            + collection
+            + "\n";
+    return output;
   }
 
   public Event() {}
@@ -142,6 +150,8 @@ public class Event {
         + Utils.toString(gender)
         + ", collection := "
         + Utils.toString(collection)
+        + ", output := "
+        + Utils.toString(output)
         + ", runways := "
         + Utils.toString(runways)
         + "}";

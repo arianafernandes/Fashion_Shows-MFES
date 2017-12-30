@@ -11,7 +11,7 @@ instance variables
  private numberDesigners: int := card designers;
  private models: seq of Model := [];
  private numberModels: int := 0;
- 
+ private output : String := "";
  operations
 (*@
 \label{Runway:15}
@@ -43,50 +43,53 @@ instance variables
      getDesigners() == return designers;  
  
 (*@
-\label{insertDesigner:32}
-@*)
-(*@
 \label{getDesignersNumber:32}
 @*)
  public pure getDesignersNumber : () ==> nat
      getDesignersNumber() == return card designers;  
          
+(*@
+\label{insertDesigner:35}
+@*)
  public insertDesigner : Designer ==> ()
   insertDesigner(dg) ==
   (
    
     designers := designers union  {dg};
   );
-(*@
-\label{insertModel:41}
-@*)
   
   --MODELOS DO DESFILE
   --Adiciona model ao desfile
+(*@
+\label{insertModel:44}
+@*)
  public insertModel : Model ==> ()
   insertModel(md) ==
   (
     numberModels := numberModels + 1;
     models := models ^  [md];
-(*@
-\label{getNumberModels:49}
-@*)
   );
   
   --retorna nr modelso do desfile
 (*@
-\label{printRunway:52}
+\label{getNumberModels:52}
 @*)
   public pure getNumberModels : () ==> int
   getNumberModels() == return numberModels;
   
-   public printRunway: () ==> ()
+(*@
+\label{printRunway:55}
+@*)
+(*@
+\label{printModel:55}
+@*)
+  public printRunway: () ==> String
   printRunway() == (*@\vdmnotcovered{(}@*)
-    IO`print((*@\vdmnotcovered{"Runway Name: "}@*));
-   IO`print((*@\vdmnotcovered{name}@*));
-   IO`print((*@\vdmnotcovered{"\textbackslash n"}@*));
+  output := "Runway Name: "^name^(*@\vdmnotcovered{"\textbackslash n"}@*);
+  return (*@\vdmnotcovered{output}@*);
   );
   
+    
 end Runway
 \end{vdmpp}
 \bigskip
@@ -105,16 +108,18 @@ Function or operation & Line & Coverage & Calls \\
 \hline
 \hyperref[getName:23]{getName} & 23&100.0\% & 4 \\
 \hline
-\hyperref[getNumberModels:49]{getNumberModels} & 49&100.0\% & 1 \\
+\hyperref[getNumberModels:52]{getNumberModels} & 52&100.0\% & 1 \\
 \hline
-\hyperref[insertDesigner:32]{insertDesigner} & 32&100.0\% & 4 \\
+\hyperref[insertDesigner:35]{insertDesigner} & 35&100.0\% & 4 \\
 \hline
-\hyperref[insertModel:41]{insertModel} & 41&100.0\% & 5 \\
+\hyperref[insertModel:44]{insertModel} & 44&100.0\% & 5 \\
 \hline
-\hyperref[printRunway:52]{printRunway} & 52&0.0\% & 0 \\
+\hyperref[printModel:55]{printModel} & 55&0.0\% & 0 \\
+\hline
+\hyperref[printRunway:55]{printRunway} & 55&0.0\% & 0 \\
 \hline
 \hline
-Runway.vdmpp & & 84.4\% & 22 \\
+Runway.vdmpp & & 81.2\% & 22 \\
 \hline
 \end{longtable}
 
