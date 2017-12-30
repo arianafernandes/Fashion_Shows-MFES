@@ -118,6 +118,7 @@ public static printTests: () ==> ()
 public static main : () ==> ()
   main() ==
   (
+  	IO`print("Executing all tests...\n");
   	printTests();
   );
 

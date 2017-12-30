@@ -4,17 +4,7 @@ import java.util.*;
 import org.overture.codegen.runtime.*;
 
 @SuppressWarnings("all")
-public class MyTestCase {
-  protected void assertTrue(final Boolean arg) {
-
-    return;
-  }
-
-  protected void assertFalse(final Boolean arg) {
-
-    return;
-  }
-
+public class MyTests {
   protected void assertNotNull(final Object arg) {
 
     return;
@@ -31,10 +21,10 @@ public class MyTestCase {
     }
   }
 
-  public MyTestCase() {}
+  public MyTests() {}
 
   public String toString() {
 
-    return "MyTestCase{}";
+    return "MyTests{}";
   }
 }

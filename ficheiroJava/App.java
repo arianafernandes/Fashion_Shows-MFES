@@ -14,11 +14,13 @@ public class App {
 	private static int optionRunway;
 	private static int optionExit;
 	private static String UserName;
+	public static final int BACK_INPUT = 0;
+	public static final int MENU_INPUT = 1;
 	
 	private static void printMenuInitial()
 	{	System.out.println("+========================================================================+");
 	    System.out.println("|                                                                        |");
-		System.out.println("|                WELCOME TO THE FASHIONS_SHOWS  APP                      |");
+		System.out.println("|                  WELCOME TO THE FASHIONS_SHOWS  APP                    |");
 		System.out.println("|                                                                        |");
 		System.out.println("|   Welcome to the App You Need to Win Fashion Week!                     |");
 		System.out.println("|                                                                        |");
@@ -28,14 +30,14 @@ public class App {
 		System.out.println("+========================================================================+\n");
 		
 		optionLogin = inputScanner.nextInt();
-		
-		if(optionLogin == 1){
+		switch(optionLogin){
+		case 1:
 			MenuLogin();
-		}
-		if(optionLogin == 2){
+			break;
+		case 2:
 			printFestivals();
-		}
-		if(optionLogin == 3){
+			break;
+		case 3:
 			Scanner scn = new Scanner(System.in);
 	        System.out.print("Userame: ");
 	        String username = scn.nextLine();
@@ -57,9 +59,9 @@ public class App {
 				}
 			System.out.print("Register done with success.");
 			MenuLoggado(username);
+			break;
 		}
 	}
-	
 	
 	private static void MenuLogin(){
 		System.out.println("Login\n");
@@ -87,31 +89,44 @@ public class App {
 				    System.out.println("|                          FASHIONS_SHOWS  APP                           |");
 					System.out.println("| 1. My Profile                                                          |");
 					System.out.println("| 2. All Festivals                                                       |");
+					System.out.println("| 0. Exit                                                                |");
+					System.out.println("| 9. Home Menu                                                           |");
 					System.out.println("+========================================================================+\n");
 					
 					optionProfile = inputScanner.nextInt();
-					
-					if(optionProfile == 1){
+					switch(optionProfile){
+					case 1:
 						MenuProfile(UserName);
-					}
-					if(optionProfile == 2){
-					printFestivals();
-					}
-					
+						break;
+					case 2:
+						printFestivals();
+						break;
+					case 0:
+						System.exit(0);
+						break;
+					case 9:
+						printMenuInitial();
+						break;
 				}
+	}
 	
 	private static void MenuProfile(String UserName){
-		System.out.println("+========================================================================+");
+		System.out.println("\n+===========================FASHIONS_SHOWS APP===========================+");
 		System.out.println("|                                                                        |");
-		System.out.println("|                                                                        |");
-	    System.out.println("|                          FASHIONS_SHOWS  APP                           |");
+	    System.out.println("|                              My Profile                                |");
 		System.out.println("| 1. My Events                                                           |");
 		System.out.println("| 2. My Favorite Designers                                               |");
 		System.out.println("| 3. My Favorite Models                                                  |");
+		System.out.println("| 4. Add Events                                                          |");
+		System.out.println("| 5. Add Designers					                                     |");
+		System.out.println("| 6. Add Models			                                                 |");
+		System.out.println("| 0. Exit                                                                |");
+		System.out.println("| 9. Home Menu                                                           |");
 		System.out.println("+========================================================================+\n");
 		optionP = inputScanner.nextInt();
 		
-		if(optionP == 1){
+		switch(optionP){
+		case 1:
 			Iterator<FashionUser> iterator = TestApp.getUsers().iterator();
 			 while(iterator.hasNext()) {
 				 FashionUser setUser = iterator.next();
@@ -123,12 +138,11 @@ public class App {
 			 }
 		}
 		}
-			 printExit();
-		}
-		if(optionP == 2){
-			Iterator<FashionUser> iterator = TestApp.getUsers().iterator();
-			 while(iterator.hasNext()) {
-				 FashionUser setUser = iterator.next();
+			break;
+		case 2:
+			Iterator<FashionUser> iterator2 = TestApp.getUsers().iterator();
+			 while(iterator2.hasNext()) {
+				 FashionUser setUser = iterator2.next();
 				 if(setUser.getUsername().equals(UserName)){
 					 Iterator<Designer> iteratorE = setUser.getDesigners().iterator();
 					 while(iteratorE.hasNext()) {
@@ -137,12 +151,11 @@ public class App {
 			 }
 		}
 		}
-			 printExit();
-		}
-		if(optionP == 3){
-			Iterator<FashionUser> iterator = TestApp.getUsers().iterator();
-			 while(iterator.hasNext()) {
-				 FashionUser setUser = iterator.next();
+			break;
+		case 3:
+			Iterator<FashionUser> iterator3 = TestApp.getUsers().iterator();
+			 while(iterator3.hasNext()) {
+				 FashionUser setUser = iterator3.next();
 				 if(setUser.getUsername().equals(UserName)){
 					 Iterator<Model> iteratorE = setUser.getModels().iterator();
 					 while(iteratorE.hasNext()) {
@@ -151,14 +164,27 @@ public class App {
 					 }
 				 }
 			 }
-			 printExit();
+			break;
+		case 4:
+			MenuProfile(UserName);
+			break;
+		case 5:
+			MenuProfile(UserName);
+			break;
+		case 6:
+			MenuProfile(UserName);
+			break;
+		case 0:
+			System.exit(0);
+			break;
+		case 9:
+			printMenuInitial();
+			break;
 		}
 	}
 	
 	private static void printFestivals(){
-		System.out.println("+========================================================================+");
-	    System.out.println("|                                                                        |");
-		System.out.println("|                          FASHIONS_SHOWS  APP                           |");
+		System.out.println("+===========================FASHIONS_SHOWS APP===========================+");
 		System.out.println("|                                                                        |");
 		System.out.println("|   List of fashion festivals happening now:                             |");
 		System.out.println("|                                                                        |");
@@ -168,7 +194,7 @@ public class App {
 		optionFestival = inputScanner.nextInt();
 		System.out.println(TestApp.getFestival(optionFestival).printFashionFestival());
 		System.out.println(TestApp.getFestivals().size());
-		if(optionFestival > TestApp.getFestivals().size()){
+		if(optionFestival > TestApp.getFestivals().size() && optionFestival != 9 && optionFestival != 0){
 			printInvalidOption();
 			printFestivals();
 		}
@@ -178,9 +204,7 @@ public class App {
 	}
 	
 	private static void printMenuFestival(int optionFestival){
-		System.out.println("+========================================================================+");
-	    System.out.println("|                                                                        |");
-		System.out.println("|                          FASHIONS_SHOWS  APP                           |");
+		System.out.println("+===========================FASHIONS_SHOWS APP===========================+");
 		System.out.println("|                                                                        |");
 		System.out.println("|   List of events of the festival happening now:                        |");
 		System.out.println("|                                                                        |");
@@ -195,11 +219,10 @@ public class App {
 		else{
 		printMenuEvent(optionFestival,optionEvent);
 		}
+		
 	}
 	private static void printMenuEvent(int optionFestival, int optionEvent){
-		System.out.println("+========================================================================+");
-	    System.out.println("|                                                                        |");
-		System.out.println("|                          FASHIONS_SHOWS  APP                           |");
+		System.out.println("+===========================FASHIONS_SHOWS APP===========================+");
 		System.out.println("|                                                                        |");
 		System.out.println("|   List of the runways of the event:                                    |");
 		System.out.println("|                                                                        |");
@@ -213,7 +236,6 @@ public class App {
 		}
 		else{
 		printMenuRunway(optionFestival,optionEvent,optionRunway);
-		
 		}
 	}
 	
@@ -234,32 +256,33 @@ public class App {
 	}
 	
 	public static void printExit(){
-		System.out.println("+========================================================================+");
-		System.out.println("|                                                                        |");
-		System.out.println("|                                                                        |");
-	    System.out.println("|                          FASHIONS_SHOWS  APP                           |");
-		System.out.println("| 0. Home Menu                                                           |");
-		System.out.println("| 9. Exit                                                                |");
+		System.out.println("+===========================FASHIONS_SHOWS APP===========================+");
+		System.out.println("| 0. Exit                                                                |");
+		System.out.println("| 9. Home Menu                                                           |");
 		System.out.println("+========================================================================+\n");
 		optionExit = inputScanner.nextInt();
 		if(optionExit == 0){
-			printMenuInitial();
+			System.exit(0);
 		}
 		if(optionExit == 9){
-			System.exit(0);
+			printMenuInitial();
 		}
 	}
 	
 	public static void printInvalidOption(){
-		System.out.println("+========================================================================+");
-		System.out.println("|                          Invalid Option!                               |");
+		
+		System.out.println("+===========================FASHIONS_SHOWS APP===========================+");
+		System.out.println("|                                                                        |");
+		System.out.println("|                            Invalid Option!                             |");
 		System.out.println("|                                                                        |");
 		System.out.println("| Please choose a valid number.                                          |");
 		System.out.println("+========================================================================+\n");
 	}
 	
+	
 	public static void main(String[] args) {
 		TestApp.printTests();
+		
 		printMenuInitial();
 	}
 

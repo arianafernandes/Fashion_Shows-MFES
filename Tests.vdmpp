@@ -1,4 +1,4 @@
-class Tests is subclass of MyTestCase
+class Tests is subclass of MyTests
 
 types
 public String = seq of char;
@@ -17,6 +17,7 @@ operations
   public run : () ==> ()
   run() ==
   (
+    
     -- VARIABLE DECLARATIONS
   	dcl f0: FashionFestival := new FashionFestival(" Porto Fashion Week", "04/05/2018", "10/05/2018", "Porto");
   	dcl f1: FashionFestival := new FashionFestival(" Madrid Fashion Week", "26/08/2018", "30/08/2018", "Madrid");
@@ -63,7 +64,6 @@ operations
     u0.insertDesigner(d1);
     u0.insertModel(m0);
 	  u0.insertModel(m1); 
-    
     u1.insertEvent(ev2);
 	  u1.insertEvent(ev0);
     u1.insertDesigner(d1);
@@ -86,6 +86,7 @@ operations
  		runways := runways ^ [r1];
  		runways := runways ^ [r2];
  		
+ 		IO`print("(1/8) Test Creation of Elements\n");
     assertNotNull(f0);
     assertNotNull(f1);
     assertNotNull(ev0);
@@ -99,8 +100,10 @@ operations
     assertNotNull(m3);
     assertNotNull(u0);
     assertNotNull(u1);
+    IO`print("(1/8) Test Creation of Elements passed\n");
     
     -- EXECUTE FASHION FESTIVAL
+    IO`print("(2/8) Test Fashion Festival\n");
     assertEqual(" Porto Fashion Week", f0.getName());
     assertEqual("04/05/2018", f0.getDateBegin());
     assertEqual("10/05/2018", f0.getDateEnd());
@@ -115,8 +118,10 @@ operations
     assertEqual(("Name: "^f0.getName()^"\n"^"Date Begin: "^f0.getDateBegin()^"\n"^"Date End: "^f0.getDateEnd()^"\n"
     						^"Local: "^f0.getLocal()^"\n"),f0.printFashionFestival());
     assertEqual(f0.getName()^"\n",f0.printFashionFestivalName());
+    IO`print("(2/8) Test Fashion Festival passed\n");
     
     -- EXECUTE EVENT
+    IO`print("(3/8) Test Fashion Event\n");
     assertEqual(" Meet Portugal Fashion Designers", ev0.getName());
     assertEqual("04/05/2018", ev0.getDate());
     assertEqual("Baixa", ev0.getLocal());
@@ -131,14 +136,18 @@ operations
  		assertEqual(r0.getName(),(ev0.getRunways() (1)).getName());
  		assertEqual(("Event Name: "^ev0.getName()^"\n"^"Date: "^ev0.getDate()^"\n"^"Time: "^ev0.getTime()^"\n"^"Theme: "^ev0.getTheme()^"\n"
  								^"Gender: "^ev0.getGender()^"\n"^"Collection: "^ev0.getCollection()^"\n")	,ev0.printEvent());
-   
+   IO`print("(3/8) Test Fashion Event passed\n");
+  
     -- EXECUTE Runway
+   IO`print("(4/8) Test Fashion Runway\n");
    assertEqual(r0.getDesignersNumber(),card r0.getDesigners());
 	 assertEqual(1,r0.getNumberModels());
 	 assertEqual(m0.getName(),(r0.getModels() (1)).getName());
    assertEqual((r0.getName()^"\n"),r0.printRunway());
+   IO`print("(4/8) Test Fashion Runway passed\n");
    
     -- EXECUTE DESIGNER
+    IO`print("(5/8) Test Fashion Designer\n");
     assertEqual("Yves S. L.", d0.getName());
     assertEqual("72", d0.getAge());    
     assertEqual("Frances", d0.getNationality()); 
@@ -150,8 +159,10 @@ operations
 							^"Address: "^d0.getAddress()^"\n"
 							^"Style: "^d0.getStyle()^"\n")
      						,d0.printDesigner());
+    IO`print("(5/8) Test Fashion Designer passed\n");
      						
     -- EXECUTE MODEL
+    IO`print("(6/8) Test Fashion Model\n");
     assertEqual("Sara Sampaio", m0.getName());
     assertEqual("24", m0.getAge());    
     assertEqual("Portuguesa", m0.getNationality()); 
@@ -161,8 +172,10 @@ operations
 							^"Nationality: "^m0.getNationality()^"\n"
 							^"Address: "^m0.getAddress()^"\n")
      						,m0.printModel());
+    IO`print("(6/8) Test Fashion Model passed\n");
     
     -- FASHION USER
+    IO`print("(7/8) Test Fashion User\n");
     assertEqual("Joao", u0.getName());
     assertEqual("30", u0.getAge());    
     assertEqual("Joao", u0.getUsername());
@@ -181,8 +194,10 @@ operations
      assertEqual(2,u0.getNumberFavModels());
      assertEqual(m0.getName(), (u0.getModels() (1)).getName());    
      assertEqual(m1.getName(), (u0.getModels() (2)).getName());    
+     IO`print("(7/8) Test Fashion User passed\n");
      
      --TestApp
+     	IO`print("(8/8) Test Fashion App\n");
       assertEqual(2, card TestApp`getUsers());
       assertEqual(2, len TestApp`getFestivals());
       assertEqual(" Porto Fashion Week\n",TestApp`getFestivalsNames());
@@ -204,7 +219,10 @@ operations
   		assertEqual(2, card getAppUsers());
   		setAppUser("ariana","123456","ariana","21");
   		assertEqual(3, card getAppUsers());
+  		IO`print("\n(8/8) Test Fashion App passed\n");
   		
+  		
+  		IO`print("\nAll tests passed (8/8)\n");
   );
   
   public  static getFestivals : () ==> seq of FashionFestival

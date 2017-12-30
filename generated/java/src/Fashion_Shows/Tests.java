@@ -4,7 +4,7 @@ import java.util.*;
 import org.overture.codegen.runtime.*;
 
 @SuppressWarnings("all")
-public class Tests extends MyTestCase {
+public class Tests extends MyTests {
   private static VDMSeq festivals = SeqUtil.seq();
   private static VDMSeq events = SeqUtil.seq();
   private static VDMSeq designers = SeqUtil.seq();
@@ -104,6 +104,7 @@ public class Tests extends MyTestCase {
     runways = SeqUtil.conc(Utils.copy(Tests.runways), SeqUtil.seq(r0));
     runways = SeqUtil.conc(Utils.copy(Tests.runways), SeqUtil.seq(r1));
     runways = SeqUtil.conc(Utils.copy(Tests.runways), SeqUtil.seq(r2));
+    IO.print("(1/8) Test Creation of Elements\n");
     assertNotNull(f0);
     assertNotNull(f1);
     assertNotNull(ev0);
@@ -117,6 +118,8 @@ public class Tests extends MyTestCase {
     assertNotNull(m3);
     assertNotNull(u0);
     assertNotNull(u1);
+    IO.print("(1/8) Test Creation of Elements passed\n");
+    IO.print("(2/8) Test Fashion Festival\n");
     assertEqual(" Porto Fashion Week", f0.getName());
     assertEqual("04/05/2018", f0.getDateBegin());
     assertEqual("10/05/2018", f0.getDateEnd());
@@ -143,6 +146,8 @@ public class Tests extends MyTestCase {
             + "\n",
         f0.printFashionFestival());
     assertEqual(f0.getName() + "\n", f0.printFashionFestivalName());
+    IO.print("(2/8) Test Fashion Festival passed\n");
+    IO.print("(3/8) Test Fashion Event\n");
     assertEqual(" Meet Portugal Fashion Designers", ev0.getName());
     assertEqual("04/05/2018", ev0.getDate());
     assertEqual("Baixa", ev0.getLocal());
@@ -175,10 +180,14 @@ public class Tests extends MyTestCase {
             + ev0.getCollection()
             + "\n",
         ev0.printEvent());
+    IO.print("(3/8) Test Fashion Event passed\n");
+    IO.print("(4/8) Test Fashion Runway\n");
     assertEqual(r0.getDesignersNumber(), r0.getDesigners().size());
     assertEqual(1L, r0.getNumberModels());
     assertEqual(m0.getName(), ((Model) Utils.get(r0.getModels(), 1L)).getName());
     assertEqual(r0.getName() + "\n", r0.printRunway());
+    IO.print("(4/8) Test Fashion Runway passed\n");
+    IO.print("(5/8) Test Fashion Designer\n");
     assertEqual("Yves S. L.", d0.getName());
     assertEqual("72", d0.getAge());
     assertEqual("Frances", d0.getNationality());
@@ -201,6 +210,8 @@ public class Tests extends MyTestCase {
             + d0.getStyle()
             + "\n",
         d0.printDesigner());
+    IO.print("(5/8) Test Fashion Designer passed\n");
+    IO.print("(6/8) Test Fashion Model\n");
     assertEqual("Sara Sampaio", m0.getName());
     assertEqual("24", m0.getAge());
     assertEqual("Portuguesa", m0.getNationality());
@@ -219,6 +230,8 @@ public class Tests extends MyTestCase {
             + m0.getAddress()
             + "\n",
         m0.printModel());
+    IO.print("(6/8) Test Fashion Model passed\n");
+    IO.print("(7/8) Test Fashion User\n");
     assertEqual("Joao", u0.getName());
     assertEqual("30", u0.getAge());
     assertEqual("Joao", u0.getUsername());
@@ -246,6 +259,8 @@ public class Tests extends MyTestCase {
     assertEqual(2L, u0.getNumberFavModels());
     assertEqual(m0.getName(), ((Model) Utils.get(u0.getModels(), 1L)).getName());
     assertEqual(m1.getName(), ((Model) Utils.get(u0.getModels(), 2L)).getName());
+    IO.print("(7/8) Test Fashion User passed\n");
+    IO.print("(8/8) Test Fashion App\n");
     assertEqual(2L, TestApp.getUsers().size());
     assertEqual(2L, TestApp.getFestivals().size());
     //assertEqual(" Porto Fashion Week\n", TestApp.getFestivalsNames());
@@ -266,6 +281,10 @@ public class Tests extends MyTestCase {
     assertEqual(4L, getModels().size());
     assertEqual(3L, getRunways().size());
     assertEqual(2L, getAppUsers().size());
+    setAppUser("ariana", "123456", "ariana", "21");
+    assertEqual(3L, getAppUsers().size());
+    IO.print("\n(8/8) Test Fashion App passed\n");
+    IO.print("\nAll tests passed (8/8)\n");
   }
 
   public static VDMSeq getFestivals() {

@@ -1,20 +1,6 @@
-class MyTestCase
+class MyTests
 
 operations
-
-  -- Simulates assertion checking by reducing it to pre-condition checking.
-  -- If 'arg' does not hold, a pre-condition violation will be signaled.
-  -- Verification of pre-conditions must be enabled in order for this to work
-  protected assertTrue : bool ==> ()
-  assertTrue(arg) == return
-  pre arg;
-
-  -- Simulates assertion checking by reducing it to pre-condition checking.
-  -- If 'arg' holds, a pre-condition violation will be signaled.
-  -- Verification of pre-conditions must be enabled in order for this to work
-  protected assertFalse : bool ==> ()
-  assertFalse(arg) == return
-  pre not arg;
 
   -- Simulates assertion checking by reducing it to pre-condition checking.
   -- If 'arg' is null or undefined, a pre-condition violation will be signaled.
@@ -37,4 +23,4 @@ operations
     )
   post expected = actual;
 
-end MyTestCase
+end MyTests
