@@ -64,6 +64,10 @@ instance variables
 	
 	
 operations
+
+	/*
+   * DESCRIPTION: Constructor of Event class
+   */
 	public Event : 
   							String * 
   							String *
@@ -85,47 +89,79 @@ operations
 		return self
 	);
 	
-	--retorna os parametros da class event
+	/*
+   * DESCRIPTION: Returns the name of the Event
+   */
 	 public pure getName : () ==> String
 	   getName() == return name
 	   post RESULT = name;
 	   
+	/*
+   * DESCRIPTION: Returns the date of the Event
+   */
 	  public pure getDate : () ==> String
 		   getDate() == return date
 		post RESULT = date;
 		   
+	/*
+   * DESCRIPTION: Returns the local of the Event
+   */
 		public pure getLocal : () ==> String
 		   getLocal() == return local
 		post RESULT = local;
-		   
+
+	/*
+   * DESCRIPTION: Returns the time of the Event
+   */   
 		public pure getTime : () ==> String
 		   getTime() == return time	   
 		post RESULT = time;
-		   
+
+	/*
+   * DESCRIPTION: Returns the duration of the Event
+   */  
 		public pure getDuration : () ==> String
 		   getDuration() == return duration
 		post RESULT = duration;
-		   
+		
+	/*
+   * DESCRIPTION: Returns the theme of the Event
+   */		   
 		public pure getTheme : () ==> String
 		   getTheme() == return theme
 		post RESULT = theme;
-		  
+		
+	/*
+   * DESCRIPTION: Returns the gender of the Event
+   */		  
 		public pure getGender : () ==> String
 		   getGender() == return gender
 		post RESULT = gender;
-		   
+
+	/*
+   * DESCRIPTION: Returns the collection of the Event
+   */
 		public pure getCollection : () ==> String
 		   getCollection() == return collection
 		post RESULT = collection;
-		
+
+	/*
+   * DESCRIPTION: Returns all runways of the Event
+   */
 		public pure getRunways : () ==> seq of Runway
 		   getRunways() == return runways
 		post RESULT = runways;
-		
+
+	/*
+   * DESCRIPTION: Returns the number of runways of the Event
+   */
 		public pure getNumberRunways : () ==> nat
 		   getNumberRunways() == return len runways
 		post RESULT = len runways;
-		   
+
+	/*
+   * DESCRIPTION: Insert one runway in the event
+   */
 		public insertRunway : Runway ==> ()
 	  insertRunway(r) ==
 	  (
@@ -134,7 +170,9 @@ operations
 	  pre r not in set elems getRunways()
   	post r  in set elems getRunways();
 	  
-  
+  /*
+   * DESCRIPTION: Prints all informations about the event
+   */
   public printEvent: () ==> String
 		printEvent() == (
 		output := "Event Name: "^name^"\n"

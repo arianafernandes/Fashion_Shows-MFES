@@ -4,25 +4,75 @@ types
 	public String = seq of char;
 	
 instance variables
+
+	/*
+   * DESCRIPTION: Username of the User
+   */
 	private username: String;
+	
+	/*
+   * DESCRIPTION: Password of the User
+   */
 	private password: String;
+
+	/*
+   * DESCRIPTION: Name of the User
+   */
 	public name: String;
+	
+	/*
+   * DESCRIPTION: Age of the User
+   */
 	public age: String;
-	--designers favoritos
+	
+	/*
+   * DESCRIPTION: Favorite designers of the User
+   */
 	private  designers: seq of Designer := [];
+	
+	/*
+   * DESCRIPTION: Number of favorite designers of the User
+   */
 	private  numberDesigners: int := 0;
-  --modelos favoritos
+	
+	/*
+   * DESCRIPTION: Favorite models of the User
+   */
 	private  models: seq of Model := [];
+	
+	/*
+   * DESCRIPTION: Number of favorite models of the User
+   */
 	private  numberModels: int := 0;
-	--eventos que utilizador vai
+	
+	/*
+   * DESCRIPTION: Events of the User
+   */
 	private events: seq of Event := [];
+	
+	/*
+   * DESCRIPTION: Number of events of the User
+   */
 	private  numberEvents: int := 0;
+	
+	/*
+   * DESCRIPTION: Returns in a string all informations about the User
+   */ 
 	private output : String := "";
 	
+	/*
+   * DESCRIPTION: Invariant of class Designer 
+   * All class members must have lenght bigger than zero
+   * Password lenght must be equals to 6
+   */
 	inv len username > 0 and len password = 6 and len name > 0 and len age > 0;
 
 
 operations  
+
+	/*
+   * DESCRIPTION: Constructor of FashionUser class
+   */
   public FashionUser : String *
   										String *
   										String *
@@ -36,26 +86,37 @@ operations
     return self;
   );
   
-  --retorna os parametros da class fashionUSer
+ 	/*
+   * DESCRIPTION: Returns the Userame of the FashionUser
+   */ 
   public pure getUsername : () ==> String
 	   getUsername() == return username
 	   post RESULT = username;
-	   
+
+ 	/*
+   * DESCRIPTION: Returns the password of the FashionUser
+   */
   public pure getPassword : () ==> String
 	   getPassword() == return password
  		 post RESULT = password;
   
+  /*
+   * DESCRIPTION: Returns the name of the FashionUser
+   */
 	 public pure getName : () ==> String
 	   getName() == return name
 	   post RESULT = name;
 	   
+	/*
+   * DESCRIPTION: Returns the age of the FashionUser
+   */
 	 public pure getAge : () ==> String
 		getAge() == return age
 		post RESULT = age;   
   
-	  
-	   --DESIGNERES FAVORITOS  
-	  --Adiciona designer favorito ao utilizador
+	/*
+   * DESCRIPTION: Insert one designer in the favorite designers of the User
+   */
 		public insertDesigner : Designer ==> ()
 	  insertDesigner(d) ==
 	  (
@@ -69,15 +130,23 @@ operations
 	  pre d not in set elems designers
 	  post d in set elems designers;
 	  
-		--retorna nr designers favoritos
+	/*
+   * DESCRIPTION: Returns the number of favorites designers of the User
+   */	   
 	  public pure getNumberFavDesigners : () ==> nat
 	  getNumberFavDesigners() == return numberDesigners
 	  post RESULT = numberDesigners;
-	   
+	 
+	/*
+   * DESCRIPTION: Returns the favorites designers of the User
+   */	   
 	  public getDesigners: () ==> seq of Designer
 	  getDesigners() == return designers
 	  post RESULT = designers;
-	  
+
+	/*
+   * DESCRIPTION: Insert one model in the favorite models of the User
+   */	  
 	  public insertModel : Model ==> ()
 	  insertModel(d) ==
 	  (
@@ -91,17 +160,23 @@ operations
 	  pre d not in set elems models
 	  post d in set elems models;
 	  
-		--retorna nr designers favoritos
+	/*
+   * DESCRIPTION: Returns the number of favorites models of the User
+   */
 	  public pure getNumberFavModels : () ==> nat
 	  getNumberFavModels() == return numberModels
 	  post RESULT = numberModels;
-	  
+
+	/*
+   * DESCRIPTION: Returns the favorites models of the User
+   */	  
 	  public getModels: () ==> seq of Model
 	  getModels() == return models
 	   post RESULT = models;
 	  
-	   --EVENTOS DO UTILIZADOR
-	   --Adiciona evento
+	/*
+   * DESCRIPTION: Insert one event in the events of the User
+   */	    
 		public insertEvent : Event ==> ()
 	  insertEvent(ev) ==
 	  (
@@ -116,16 +191,23 @@ operations
 	  post ev in set elems events;
 	  
 	  
-		--Retorna nr designers favoritos
+	/*
+   * DESCRIPTION: Returns the number of events of the User
+   */
 	  public pure getNumberEvents : () ==> nat
 	  getNumberEvents() == return numberEvents
 		post RESULT = numberEvents;
 		
-
+	/*
+   * DESCRIPTION: Returns events of the User
+   */
  		public getEvents: () ==> seq of Event
 	  getEvents() == return events
 	  post RESULT = events;
 	  
+  /*
+   * DESCRIPTION: Returns in a string all informations about the User
+   */ 
 	  public printUser: () ==> String
 		printUser() == (
 		output := "Username: "^username^"\n"

@@ -3,31 +3,38 @@ class TestApp
 types
 public String = seq of char;
 
-instance variables
-
 operations
 
+/*
+ * DESCRIPTION: Execute tests
+ */ 
 public static printTests: () ==> ()
 	printTests() == 
 	(
     new Tests().run();   
    );
    
-   
+/*
+ * DESCRIPTION: Return app users
+ */    
  public static getUsers: () ==> set of FashionUser
 	getUsers() ==
 	(	
 	return Tests`getAppUsers();
  );
  
-  
+ /*
+ * DESCRIPTION: Return app festivals
+ */     
   public static getFestivals: () ==> seq of FashionFestival
   getFestivals() ==
   (
   	return Tests`getFestivals();
   );
    
-  --Nomes dos festivais disponiveis
+/*
+ * DESCRIPTION: Return app festivals names in a list
+ */    
   public static getFestivalsNames: () ==> String
 	getFestivalsNames() ==
 	(	
@@ -37,29 +44,36 @@ public static printTests: () ==> ()
    );
   );  	
   
-  --Festival seleccionado apos isto imprimirs
+/*
+ * DESCRIPTION: Return festival by festival ID
+ */    
   public static getFestival: (int) ==> FashionFestival
 		getFestival(optionFestival) ==
 		(	
 		return (Tests`getFestivals() (optionFestival));
 	 );
 	 
-	 --eventos do festival selecionado
-	 public static getFestivalEvents: (int) ==> seq of Event
+	/*
+	 * DESCRIPTION: Return events of selected festival
+	 */    
+ 	 public static getFestivalEvents: (int) ==> seq of Event
 		getFestivalEvents(optionFestival) ==
 		(	
 		return (Tests`getFestivals() (optionFestival)).getEvents();
 	 );
 	 
+	 /*
+	 * DESCRIPTION: Return festivals users
+	 */  
 	 public static getFestivalUsers: (int) ==> set of FashionUser
 		getFestivalUsers(optionFestival) ==
 		(	
 		return (Tests`getFestivals() (optionFestival)).getFashionUsers();
 	 );
 	 
-	 
-	 	 
-	 --nomes dos eventos do festival selecionado
+	/*
+	 * DESCRIPTION: Return events names of selected festival in a list
+	 */  	 	 
 	 public static getFestivalEventsNames: (int) ==> String
 		getFestivalEventsNames(optionFestival) ==
 		(	
@@ -69,20 +83,27 @@ public static printTests: () ==> ()
 	 		);
 	 );
 
-	--Evento selecionado do festival selecionado
+	/*
+	 * DESCRIPTION: Return selected event of selected festival
+	 */ 
 	public static getEvent: (int) * (int) ==> Event
 		getEvent(optionFestival,optionEvent) ==
 		(	
 		return (getFestivalEvents(optionFestival) (optionEvent));
 	 );
 	 
-	--Retorna desfiles do evento selecionado do festival selecionado
+	/*
+	 * DESCRIPTION: Return all runways of selected event  of selected festival
+	 */ 
   public static getRunwaysByEvent : (int) * (int) ==> seq of Runway
 	getRunwaysByEvent(optionFestival, optionEvent) ==
 	(
 		return ((getFestivalEvents(optionFestival) (optionEvent)).getRunways());
 	);
-	
+
+	/*
+	 * DESCRIPTION: Return all runways names of selected event  of selected festival
+	 */ 	
 	public static getRunwaysNames: (int) * (int) ==> String
 		getRunwaysNames(optionFestival,optionEvent) ==
 		(	
@@ -91,30 +112,38 @@ public static printTests: () ==> ()
   		return ((getRunwaysByEvent(optionFestival,optionEvent) (counter)).getName());
 	 		);
 	 );
-	 
-	--Retorna desfile seleciondo do evento selecionado do festival selecionado
+	
+	/*
+	 * DESCRIPTION: Return selected runway of selected event of selected festival
+	 */  
   public static getOneRunwayByEvent : (int) * (int) * (int) ==> Runway
 	getOneRunwayByEvent(optionFestival, optionEvent, optionRunWay) ==
 	(
 		return (getRunwaysByEvent(optionFestival,optionEvent)) (optionRunWay);
 	);
 	
-	--Retorna modelos do desfile seleciondo do evento selecionado do festival selecionado
-	public static getModelsByRunway : (int) * (int) * (int) ==> seq of Model
+	/*
+	 * DESCRIPTION: Return models of selected runway of selected event of selected festival
+	 */
+	 	public static getModelsByRunway : (int) * (int) * (int) ==> seq of Model
 	getModelsByRunway(optionFestival, optionEvent, optionRunWay) ==
 	(
 	return getOneRunwayByEvent(optionFestival,optionEvent,optionRunWay).getModels();
 	);
     
   	
-  --Retorna designers do desfile seleciondo do evento selecionado do festival selecionado  
+	/*
+	 * DESCRIPTION: Return designers of selected runway of selected event of selected festival
+	 */
   public static getDesignersByRunway : (int) * (int) * (int) ==> set of Designer
 	getDesignersByRunway(optionFestival, optionEvent, optionRunWay) ==
 	(
 	return getOneRunwayByEvent(optionFestival,optionEvent,optionRunWay).getDesigners();
 	);
   
-
+	/*
+	 * DESCRIPTION: Main funcion
+	 */
 public static main : () ==> ()
   main() ==
   (

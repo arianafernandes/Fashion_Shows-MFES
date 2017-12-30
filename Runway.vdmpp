@@ -4,16 +4,48 @@ types
 	public String = seq of char;
 	
 instance variables
+
+	/*
+   * DESCRIPTION: Name of the Runway
+   */	
 	public  name : String := "";
-	private designers: set of Designer := {};
-	private numberDesigners: int := card designers;
-	private models: seq of Model := [];
-	private numberModels: int := 0;
-	private output : String := "";
 	
+	/*
+   * DESCRIPTION: Designers who participate in the Runway (set)
+   */	
+	private designers: set of Designer := {};
+	
+	/*
+   * DESCRIPTION: Number of designers
+   */	
+	private numberDesigners: int := card designers;
+	
+	/*
+   * DESCRIPTION: Models who participate in the Runway (by order of show -> seq)
+   */
+	private models: seq of Model := [];
+
+	/*
+   * DESCRIPTION: Number of models
+   */	
+	private numberModels: int := 0;
+	
+	/*
+   * DESCRIPTION: Output information of the Runway
+   */	
+	private output : String := "";
+
+	/*
+   * DESCRIPTION: Invariant of class Runway 
+   * Name must have lenght bigger than zero
+   */	
 	inv len name > 0;
 	
 	operations
+		
+	/*
+   * DESCRIPTION: Constructor of Runway class
+   */
 	public Runway : 
   							(String)
   							 ==> Runway
@@ -21,23 +53,38 @@ instance variables
 		name := nm;
 		return self
 	);
-	
+
+	/*
+   * DESCRIPTION: Returns the name of the Runway
+   */
 	public pure getName : () ==> String
 	   getName() == return name
 	post RESULT = name;
-  
+
+	/*
+   * DESCRIPTION: Returns the models of the Runway
+   */  
  public pure getModels : () ==> seq of Model
 		   getModels() == return models
 	post RESULT = models;
-		   
+
+	/*
+   * DESCRIPTION: Returns the designers of the Runway
+   */  		   
 	public pure getDesigners : () ==> set of Designer
 		   getDesigners() == return designers
 	post RESULT = designers;
 	
+	/*
+   * DESCRIPTION: Returns the number of designers of the Runway
+   */  
 	public pure getDesignersNumber : () ==> nat
 		   getDesignersNumber() == return card designers 
 	post RESULT = (card designers);
-		   	   
+		   
+	/*
+   * DESCRIPTION: Insert one designer in the Runway
+   */  		   
 	public insertDesigner : Designer ==> ()
   insertDesigner(dg) ==
   (
@@ -45,9 +92,10 @@ instance variables
   )
   pre dg not in set getDesigners()
   post dg in set getDesigners();
-  
-  --MODELOS DO DESFILE
-  --Adiciona model ao desfile
+
+	/*
+   * DESCRIPTION: Insert one model in the Runway
+   */   
 	public insertModel : Model ==> ()
   insertModel(md) ==
   (
@@ -57,11 +105,16 @@ instance variables
   pre md not in set elems getModels()
   post md  in set elems getModels();
   
- 	--retorna nr modelso do desfile
+	/*
+   * DESCRIPTION: Returns number of models in the Runway
+   */ 
   public pure getNumberModels : () ==> int
   getNumberModels() == return numberModels
   post RESULT = numberModels;
   
+ 	/*
+   * DESCRIPTION: Returns in a string all information about the Runway
+   */ 
   public printRunway: () ==> String
 		printRunway() == (
 		output := name^"\n";

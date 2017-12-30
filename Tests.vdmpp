@@ -4,16 +4,42 @@ types
 public String = seq of char;
 
 instance variables
+
+	/*
+	 * DESCRIPTION: festivals of the app
+	 */
 	private static festivals: seq of FashionFestival := [];
+	
+	/*
+	 * DESCRIPTION: events of the app
+	 */
 	private static events: seq of Event := [];
+	
+	/*
+	 * DESCRIPTION: designers of the app
+	 */
 	private static designers: seq of Designer := [];
+	
+	/*
+	 * DESCRIPTION: models of the app
+	 */
 	private static models: seq of Model := [];
+	
+	/*
+	 * DESCRIPTION: users of the app
+	 */
 	private static appUsers: set of FashionUser := {};
+	
+	/*
+	 * DESCRIPTION: runways of the app
+	 */
   private static runways: seq of Runway := [];
 	
 	
 operations
-
+	/*
+	 * DESCRIPTION: run funcion
+	 */
   public run : () ==> ()
   run() ==
   (
@@ -224,30 +250,51 @@ operations
   		IO`print("\nAll tests passed (8/8)\n");
   );
   
+  /*
+	 * DESCRIPTION: Return app festivals
+	 */
   public  static getFestivals : () ==> seq of FashionFestival
   getFestivals() == return festivals
   post RESULT = festivals;
-  
+
+  /*
+	 * DESCRIPTION: Return app events
+	 */  
   public  static getEvents : () ==> seq of Event
   getEvents() == return events
   post RESULT = events;
   
+  /*
+	 * DESCRIPTION: Return app designers
+	 */
   public  static getDesigners : () ==> seq of Designer
   getDesigners() == return designers
   post RESULT = designers;
-   
+
+  /*
+	 * DESCRIPTION: Return app models
+	 */  
 	public  static getModels : () ==> seq of Model
   getModels() == return models
   post RESULT = models;
-    
+ 
+  /*
+	 * DESCRIPTION: Return app users
+	 */     
   public  static getAppUsers : () ==> set of FashionUser
   getAppUsers() == return appUsers
   post RESULT = appUsers;
-    
+
+  /*
+	 * DESCRIPTION: Return app runways
+	 */     
   public  static getRunways : () ==> seq of Runway
   getRunways() == return runways
   post RESULT = runways;
-    
+ 
+   /*
+	 * DESCRIPTION: Register a new user
+	 */     
   public static setAppUser: (String) *  (String) * (String) * (String) ==> ()
   setAppUser(username,password,name,age) == 
   (

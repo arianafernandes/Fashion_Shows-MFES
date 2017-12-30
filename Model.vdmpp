@@ -4,15 +4,43 @@ types
 	public String = seq of char;
 	
 instance variables
+
+	/*
+   * DESCRIPTION: Name of the Model
+   */
 	public name : String;
+	
+	/*
+   * DESCRIPTION: Age of the Model
+   */
 	public age : String;
+
+	/*
+   * DESCRIPTION: Nationality of the Model
+   */	
 	public nationality : String;
+	
+	/*
+   * DESCRIPTION: Address of the Model
+   */
 	public address : String;
+	
+	/*
+   * DESCRIPTION: Output information of the Model
+   */	
 	public output : String := "";
 	
+	/*
+   * DESCRIPTION: Invariant of class Model 
+   * All class members must have lenght bigger than zero
+   */
 	inv len name > 0 and len age > 0 and len nationality > 0 and len address > 0;
 	
 	operations
+	
+	/*
+   * DESCRIPTION: Constructor of Model class
+   */
   public Model : 
   								String * 
   								String *
@@ -27,23 +55,37 @@ instance variables
     return self;
   );
   
-  --retorna os parametros da class Model
+	/*
+   * DESCRIPTION: Returns the name of the Model
+   */
 	 public pure getName : () ==> String
 	   getName() == return name
 	   post RESULT = name;
-	   
+
+	/*
+   * DESCRIPTION: Returns the age of the Model
+   */	   
 	  public pure getAge : () ==> String
 		   getAge() == return age
 		   post RESULT = age;
-		   
+
+	/*
+   * DESCRIPTION: Returns the nationality of the Model
+   */		   
 		public pure getNationality : () ==> String
 		   getNationality() == return nationality
 		   post RESULT = nationality;
-		   
+
+	/*
+   * DESCRIPTION: Returns the address of the Model
+   */		   
 		public pure getAddress : () ==> String
 		   getAddress() == return address 
 		post RESULT = address;
-		
+
+	 /*
+    * DESCRIPTION: Returns in a string all informations about the Designer
+    */		
 		public printModel: () ==> String
 		printModel() == (
 		output := "Model Name: "^name^"\n"
