@@ -18,7 +18,7 @@ public class App {
 	public static final int MENU_INPUT = 1;
 	
 	private static void printMenuInitial()
-	{	System.out.println("+========================================================================+");
+	{	System.out.println("\n+========================================================================+");
 	    System.out.println("|                                                                        |");
 		System.out.println("|                  WELCOME TO THE FASHIONS_SHOWS  APP                    |");
 		System.out.println("|                                                                        |");
@@ -43,6 +43,11 @@ public class App {
 	        String username = scn.nextLine();
 	        System.out.print("Password: ");
 	        String password = scn.nextLine();
+	        while(password.length() != 6){
+	        	System.out.print("Password must have 6 characters.\n");
+	        	System.out.print("Password: ");
+	 	        password = scn.nextLine();
+	        }
 	        System.out.print("Name: ");
 	        String name = scn.nextLine();
 	        System.out.print("Age: ");
@@ -60,6 +65,9 @@ public class App {
 			System.out.print("Register done with success.");
 			MenuLoggado(username);
 			break;
+			default:
+				printInvalidOption();
+				break;
 		}
 	}
 	
@@ -75,15 +83,19 @@ public class App {
 		 while(iteratorU.hasNext()) {
 		    FashionUser userTemp = iteratorU.next();
 			if( (userTemp.getUsername().equals(optionUsername)) && (userTemp.getPassword().equals(optionPassword))){
-					System.out.println("Login com sucesso!\n");
+					System.out.println("Login done with success!\n");
 					UserName = optionUsername;
 					MenuLoggado(UserName);
 			}
 		 }
+		 System.out.println("User not found!\n"
+		 					+ "Please try doing login again with a valid user/password or register yourself.");
+		 printMenuInitial();
 	}
 			
 	private static void MenuLoggado(String UserName){
-					System.out.println("+========================================================================+");
+					System.out.println("Welcome back "+UserName +"\n");
+					System.out.println("\n+========================================================================+");
 					System.out.println("|                                                                        |");
 					System.out.println("|                                                                        |");
 				    System.out.println("|                          FASHIONS_SHOWS  APP                           |");
@@ -107,6 +119,9 @@ public class App {
 					case 9:
 						printMenuInitial();
 						break;
+					default:
+						printInvalidOption();
+						break;
 				}
 	}
 	
@@ -117,9 +132,9 @@ public class App {
 		System.out.println("| 1. My Events                                                           |");
 		System.out.println("| 2. My Favorite Designers                                               |");
 		System.out.println("| 3. My Favorite Models                                                  |");
-		System.out.println("| 4. Add Events                                                          |");
-		System.out.println("| 5. Add Designers					                                     |");
-		System.out.println("| 6. Add Models			                                                 |");
+		System.out.println("| 4. Add Event                                                           |");
+		System.out.println("| 5. Add Designer 					                                     |");
+		System.out.println("| 6. Add Model  		                                                 |");
 		System.out.println("| 0. Exit                                                                |");
 		System.out.println("| 9. Home Menu                                                           |");
 		System.out.println("+========================================================================+\n");
@@ -127,6 +142,7 @@ public class App {
 		
 		switch(optionP){
 		case 1:
+			System.out.println("My Events: \n");
 			Iterator<FashionUser> iterator = TestApp.getUsers().iterator();
 			 while(iterator.hasNext()) {
 				 FashionUser setUser = iterator.next();
@@ -142,6 +158,7 @@ public class App {
 			 MenuProfile(UserName);
 			break;
 		case 2:
+			System.out.println("My favorite Designers: \n");
 			Iterator<FashionUser> iterator2 = TestApp.getUsers().iterator();
 			 while(iterator2.hasNext()) {
 				 FashionUser setUser = iterator2.next();
@@ -157,6 +174,7 @@ public class App {
 			 MenuProfile(UserName);
 			break;
 		case 3:
+			System.out.println("My favorite Models: \n");
 			Iterator<FashionUser> iterator3 = TestApp.getUsers().iterator();
 			 while(iterator3.hasNext()) {
 				 FashionUser setUser = iterator3.next();
@@ -246,9 +264,11 @@ public class App {
 		case 9:
 			printMenuInitial();
 			break;
-		}
+		default:
+		printInvalidOption();
+		break;
 	}
-	
+	}	
 	private static void MenuEvents(){
 	//print all Events of the app
 		 System.out.println("List of the Events of the App:\n");
@@ -263,7 +283,7 @@ public class App {
 	}
 	
 	private static void printFestivals(){
-		System.out.println("+===========================FASHIONS_SHOWS APP===========================+");
+		System.out.println("\n+===========================FASHIONS_SHOWS APP===========================+");
 		System.out.println("|                                                                        |");
 		System.out.println("|   List of fashion festivals happening now:                             |");
 		System.out.println("|                                                                        |");
@@ -283,7 +303,7 @@ public class App {
 	}
 	
 	private static void printMenuFestival(int optionFestival){
-		System.out.println("+===========================FASHIONS_SHOWS APP===========================+");
+		System.out.println("\n+===========================FASHIONS_SHOWS APP===========================+");
 		System.out.println("|                                                                        |");
 		System.out.println("|   List of events of the festival happening now:                        |");
 		System.out.println("|                                                                        |");
@@ -301,7 +321,7 @@ public class App {
 		
 	}
 	private static void printMenuEvent(int optionFestival, int optionEvent){
-		System.out.println("+===========================FASHIONS_SHOWS APP===========================+");
+		System.out.println("\n+===========================FASHIONS_SHOWS APP===========================+");
 		System.out.println("|                                                                        |");
 		System.out.println("|   List of the runways of the event:                                    |");
 		System.out.println("|                                                                        |");
@@ -335,7 +355,7 @@ public class App {
 	}
 	
 	public static void printExit(){
-		System.out.println("+===========================FASHIONS_SHOWS APP===========================+");
+		System.out.println("\n+===========================FASHIONS_SHOWS APP===========================+");
 		System.out.println("| 0. Exit                                                                |");
 		System.out.println("| 9. Home Menu                                                           |");
 		System.out.println("+========================================================================+\n");
@@ -350,11 +370,11 @@ public class App {
 	
 	public static void printInvalidOption(){
 		
-		System.out.println("+===========================FASHIONS_SHOWS APP===========================+");
+		System.out.println("\n+===========================FASHIONS_SHOWS APP===========================+");
 		System.out.println("|                                                                        |");
 		System.out.println("|                            Invalid Option!                             |");
 		System.out.println("|                                                                        |");
-		System.out.println("| Please choose a valid number.                                          |");
+		System.out.println("| Please choose a valid option number.                                   |");
 		System.out.println("+========================================================================+\n");
 	}
 	

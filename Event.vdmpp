@@ -4,18 +4,61 @@ types
 	public String = seq of char;	
 
 instance variables
+
+	/*
+   * DESCRIPTION: Name of the Event
+   */	
 	public  name : String := "";
-	public  date : String := "";
-	public  local : String := "";
-	public  time : String := "";
-	public  duration : String := "";
-	public  theme : String := "";
-	public  gender: String := "";
-	public  collection: String := "";
-	public  output: String := "";
-	--Lista de desfiles
-	private runways: seq of Runway := [];
 	
+	/*
+   * DESCRIPTION: Date of the Event
+   */	
+	public  date : String := "";
+
+	/*
+   * DESCRIPTION: Local of the Event
+   */	
+	public  local : String := "";
+
+	/*
+   * DESCRIPTION: Time of the Event
+   */	
+	public  time : String := "";
+
+	/*
+   * DESCRIPTION: Duration of the Event
+   */	
+	public  duration : String := "";
+
+	/*
+   * DESCRIPTION: Theme of the Event
+   */	
+	public  theme : String := "";
+	
+	/*
+   * DESCRIPTION: Gender of the Event
+   */	
+	public  gender: String := "";
+
+	/*
+   * DESCRIPTION: Collection of the Event
+   */	
+	public  collection: String := "";
+
+	/*
+   * DESCRIPTION: Output information of the Event
+   */
+	public  output: String := "";
+	
+	/*
+   * DESCRIPTION: Seq of Runways of the Event
+   */	
+	private runways: seq of Runway := [];
+
+	/*
+   * DESCRIPTION: Invariant of class Event 
+   * All class members must have lenght bigger than zero
+   */	
 	inv len name > 0 and len date > 0 and len local > 0 and len time > 0 and len duration > 0 and 
 			len theme > 0 and len gender > 0 and len collection > 0;
 	

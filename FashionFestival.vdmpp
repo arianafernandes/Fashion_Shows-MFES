@@ -4,19 +4,62 @@ types
 	public String = seq of char;
 
 instance variables
+
+	/*
+   * DESCRIPTION: Name of the Fashion Festival
+   */	
 	public  name : String := "";
+	
+	/*
+   * DESCRIPTION: Date of Begin of the Fashion Festival
+   */	
 	public  dateBegin : String := "";
+	
+	/*
+   * DESCRIPTION: Date of End of the Fashion Festival
+   */	
 	public  dateEnd : String := "";
+	
+	/*
+   * DESCRIPTION: Local of the Fashion Festival
+   */	
 	public  local : String := "";
+	
+	/*
+   * DESCRIPTION: Seq of events of the Fashion Festival
+   */		
 	public events: seq of Event := [];
+	
+	/*
+   * DESCRIPTION: Number of events of the Fashion Festival
+   */		
 	public numberEvents: int := 0;	
+	
+	/*
+   * DESCRIPTION: Seq of fashion users of the Fashion Festival
+   */	
 	public fashionUsers : set of FashionUser := {};
+	
+	/*
+   * DESCRIPTION: Output all informations about the Fashion Festival
+   */
 	public output : String := "";
+	
+	/*
+   * DESCRIPTION: Output the name of the Fashion Festival
+   */
 	public outputN : String := "";
 	
+	/*
+   * DESCRIPTION: Invariant of class Fashion Festival 
+   * All class members must have lenght bigger than zero
+   */
 	inv len name > 0 and len dateBegin > 0 and len dateEnd > 0 and len local > 0;
 	
 operations
+	/*
+   * DESCRIPTION: Constructor of FashionFestival class
+   */
 	public FashionFestival : 
   												String *
   												String * 
@@ -32,28 +75,44 @@ operations
     return self;
   );
   
-  --retorna os parametros da class event
+ 	/*
+   * DESCRIPTION: Returns the name of the Fashion Festival
+   */
 	 public pure getName : () ==> String
 	   getName() == return name
 	 post RESULT = name;
-	   
+
+ 	/*
+   * DESCRIPTION: Returns the date of begin of the Fashion Festival
+   */   
 	  public pure getDateBegin : () ==> String
 		   getDateBegin() == return dateBegin
 		post RESULT = dateBegin; 
 			
+ 	/*
+   * DESCRIPTION: Returns the date of end of the Fashion Festival
+   */
 		public pure getDateEnd : () ==> String
 		   getDateEnd() == return dateEnd
 		post RESULT = dateEnd;   
 		
+ 	/*
+   * DESCRIPTION: Returns the local of the Fashion Festival
+   */
 		public pure getLocal : () ==> String
 		   getLocal() == return local
 		post RESULT = local;
 		
+ 	/*
+   * DESCRIPTION: Returns the events of the Fashion Festival
+   */
 		public pure getEvents : () ==> seq of Event
 		   getEvents() == return events
 		post RESULT = events;
 		   
-	--Adiciona designer ao evento
+ 	/*
+   * DESCRIPTION: Insert one event in the events of the Fashion Festival
+   */
 	public insertEvent : Event ==> ()
   insertEvent(ev) ==
   (
@@ -63,7 +122,9 @@ operations
   pre ev not in set elems getEvents()
   post ev in set elems getEvents();
   
-  	--Adiciona designer ao evento
+ 	/*
+   * DESCRIPTION: Insert one fashion user in the events of the Fashion Festival
+   */
 	public insertFashionUser: (FashionUser)  ==> ()
   insertFashionUser(us) ==
   (
@@ -72,22 +133,31 @@ operations
   pre us not in set  getFashionUsers()
   post us in set  getFashionUsers();
   
-	--retorna nr designers do evento
+ 	/*
+   * DESCRIPTION: Returns the number of events of the Fashion Festival
+   */
   public pure getNumberEvents : () ==> int
   getNumberEvents() == return numberEvents
   post RESULT = numberEvents;
   
-  --retorna utilizadores da aplicaçao
+ 	/*
+   * DESCRIPTION: Returns the fashion users of the Fashion Festival
+   */
   public pure getFashionUsers : () ==> set of FashionUser
   getFashionUsers() == return fashionUsers
   post RESULT = fashionUsers;
   
+ 	/*
+   * DESCRIPTION: Returns the number of fashion users of the Fashion Festival
+   */  
   public pure getNumberFashionUsers: () ==> nat
   getNumberFashionUsers() ==
   return (card fashionUsers)
   post RESULT = (card fashionUsers);
-  
-  
+
+ 	/*
+   * DESCRIPTION: Returns in a string all informations about the Fashion Festival
+   */  
   public printFashionFestival: () ==> String
 		printFashionFestival() == (
 		output := "Name: "^name^"\n"
@@ -98,7 +168,9 @@ operations
 		)
 		post RESULT = output;
 		
-		
+ 	/*
+   * DESCRIPTION: Returns in a string the name of the Fashion Festival
+   */		
    public printFashionFestivalName: () ==> String
 		printFashionFestivalName() == (
 		outputN := name^"\n";

@@ -4,16 +4,47 @@ types
 	public String = seq of char;
 	
 instance variables
+
+	/*
+   * DESCRIPTION: Name of the Designer
+   */
 	public name : String;
+	
+	/*
+   * DESCRIPTION: Age of the Designer
+   */
 	public age : String;
+	
+	/*
+   * DESCRIPTION: Nationality of the Designer
+   */
 	public nationality : String;
+	
+	/*
+   * DESCRIPTION: Address of the Designer
+   */
 	public address : String;
+	
+	/*
+   * DESCRIPTION: Style of the Designer
+   */
 	public style : String;
+	
+	/*
+   * DESCRIPTION: Output information of the Designer
+   */
 	public output : String := "";
 	
-inv len name > 0 and len age > 0 and len nationality > 0 and len address > 0 and len style > 0;
+	/*
+   * DESCRIPTION: Invariant of class Designer 
+   * All class members must have lenght bigger than zero
+   */
+	inv len name > 0 and len age > 0 and len nationality > 0 and len address > 0 and len style > 0;
 	
 operations
+	/*
+   * DESCRIPTION: Constructor of Designer class
+   */
   public Designer : 
   								String * 
   								String *
@@ -30,23 +61,37 @@ operations
     return self;
   );
   
-  --retorna os parametros da class event
+  /*
+   * DESCRIPTION: Returns the name of the Designer
+   */
 	 public pure getName : () ==> String
 	   getName() == return name
 	   post RESULT = name;
 	  
+	/*
+   * DESCRIPTION: Returns the age of the Designer
+   */
 	  public pure getAge : () ==> String
 		   getAge() == return age
 		  post RESULT = age;
 		
+	 /*
+    * DESCRIPTION: Returns the nationality of the Designer
+    */
 		public pure getNationality : () ==> String
 		   getNationality() == return nationality
 		  post RESULT = nationality;
 		
+	 /*
+    * DESCRIPTION: Returns the address of the Designer
+    */
 		public pure getAddress : () ==> String
 		   getAddress() == return address  	   
-		  post RESULT = address;   
-		
+		  post RESULT = address;  
+		   
+	 /*
+    * DESCRIPTION: Returns in a string all informations about the Designer
+    */		
 		public pure getStyle : () ==> String
 		   getStyle() == return style
 		  post RESULT = style;
