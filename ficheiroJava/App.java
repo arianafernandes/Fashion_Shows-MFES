@@ -134,7 +134,8 @@ public class App {
 					 Iterator<Event> iteratorE = setUser.getEvents().iterator();
 					 while(iteratorE.hasNext()) {
 						 Event setEvent = iteratorE.next();
-						 setEvent.printEvent();
+						 System.out.println(setEvent.printEvent());
+						 
 			 }
 		}
 		}
@@ -166,13 +167,76 @@ public class App {
 			 }
 			break;
 		case 4:
-			MenuProfile(UserName);
+			System.out.println("List of the Events of the App:\n");
+			 for(int i = 1; i < Tests.getEvents().size(); i++){
+				 Event setElementE = ((Event) Utils.get(Tests.getEvents(), i));
+				 System.out.println(i);
+				 System.out.println(setElementE.printEvent());
+			 }
+			 
+			Iterator<FashionUser> iterator4 = TestApp.getUsers().iterator();
+			 while(iterator4.hasNext()) {
+				 FashionUser setUser = iterator4.next();
+				 if(setUser.getUsername().equals(UserName)){
+					 System.out.println("Select the Event:\n");
+					 
+					 int optionAddEvent;
+					 optionAddEvent = inputScanner.nextInt();
+					 
+					 Event ev = ((Event) Utils.get(Tests.getEvents(), optionAddEvent));
+					 setUser.insertEvent(ev);
+					 System.out.println("The event is now in your profile.");
+					 MenuProfile(UserName);
+				 }
+			 }
 			break;
 		case 5:
-			MenuProfile(UserName);
+			System.out.println("List of the Designers of the App:\n");
+			 for(int i = 1; i < Tests.getDesigners().size(); i++){
+				 Designer setElementE = ((Designer) Utils.get(Tests.getDesigners(), i));
+				 System.out.println(i);
+				 System.out.println(setElementE.printDesigner());
+			 }
+			 
+			Iterator<FashionUser> iterator5 = TestApp.getUsers().iterator();
+			 while(iterator5.hasNext()) {
+				 FashionUser setUser = iterator5.next();
+				 if(setUser.getUsername().equals(UserName)){
+					 System.out.println("Select the Designer:\n");
+					 
+					 int optionAddEvent;
+					 optionAddEvent = inputScanner.nextInt();
+					 
+					 Designer ev = ((Designer) Utils.get(Tests.getDesigners(), optionAddEvent));
+					 setUser.insertDesigner(ev);
+					 System.out.println("The designer is now in your profile.");
+					 MenuProfile(UserName);
+				 }
+			 }
 			break;
 		case 6:
-			MenuProfile(UserName);
+			System.out.println("List of the Models of the App:\n");
+			 for(int i = 1; i < Tests.getModels().size(); i++){
+				 Model setElementE = ((Model) Utils.get(Tests.getModels(), i));
+				 System.out.println(i);
+				 System.out.println(setElementE.printModel());
+			 }
+			 
+			Iterator<FashionUser> iterator6 = TestApp.getUsers().iterator();
+			 while(iterator6.hasNext()) {
+				 FashionUser setUser = iterator6.next();
+				 if(setUser.getUsername().equals(UserName)){
+					 System.out.println("Select the Model:\n");
+					 
+					 int optionAddEvent;
+					 optionAddEvent = inputScanner.nextInt();
+					 
+					 Designer ev = ((Designer) Utils.get(Tests.getDesigners(), optionAddEvent));
+					 setUser.insertDesigner(ev);
+					 System.out.println("The Moodel is now in your profile.");
+					 MenuProfile(UserName);
+				 }
+			 }
 			break;
 		case 0:
 			System.exit(0);
@@ -181,6 +245,19 @@ public class App {
 			printMenuInitial();
 			break;
 		}
+	}
+	
+	private static void MenuEvents(){
+	//print all Events of the app
+		 System.out.println("List of the Events of the App:\n");
+		 for(int i = 1; i < Tests.getEvents().size(); i++){
+			 Event setElementE = ((Event) Utils.get(Tests.getEvents(), i));
+			 System.out.println(i);
+			 System.out.println(setElementE.printEvent());
+		 }
+		 System.out.println("Select the Event:\n");
+		 
+		 
 	}
 	
 	private static void printFestivals(){
